@@ -1,0 +1,272 @@
+@font-face {
+    font-family: Dosis;
+    src: url('BCZ-Boxes/fonts/Dosis-Bold.ttf');
+}
+
+@font-face {
+    font-family: Organo;
+    src: url('BCZ-Boxes/fonts/Organo.ttf');
+}
+
+@font-face {
+    font-family: Station;
+    src: url('BCZ-Boxes/fonts/Station.ttf');
+}
+
+@font-face {
+    font-family: AnjaEliane;
+    src: url('BCZ-Boxes/fonts/AnjaEliane.ttf');
+}
+
+@font-face {
+    font-family: Masterblast;
+    src: url('BCZ-Boxes/fonts/Masterblast.otf');
+}
+
+@font-face {
+    font-family: Code-H;
+    src: url('BCZ-Boxes/fonts/CODE-Bold.otf');
+}
+
+@font-face {
+    font-family: Code-L;
+    src: url('BCZ-Boxes/fonts/CODE-Light.otf');
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.b-untouchable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: default;
+}
+
+.b-fakeLink:hover,
+.b-fakeLinkList > div:hover ,
+.b-fakeLinkList > span:hover {
+    cursor: pointer;
+}
+
+.ztop {
+    position: relative;
+    z-index: 9999;
+}
+
+/*Boxes*/
+
+.boxx {
+    content: " ";
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .boxx {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .boxx {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .boxx {
+        width: 1170px;
+    }
+}
+
+.b-line {
+    content: " ";
+    display: table;
+    padding-left: -10px;
+    padding-right: -10px;
+    clear: both;
+}
+
+/*Navigaton Bar*/
+
+.b-navbar {
+    width: 100%;
+    height: 100px;
+    background: #c8c8c8;
+}
+
+/*Positions*/
+.b-gum-top,
+.b-gum-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.b-gum-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+
+.b-gum-bottom {
+    bottom: 0;
+    margin-bottom: 0;
+    border-width: 1px 0 0;
+}
+
+.b-gum {
+    position: fixed;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+/*
+ * EXTRAS
+ */
+
+.b-dot-1 {
+    display: inline_block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid red;
+}
+
+.b-dot-1:after {
+    content: "";
+    position: relative;
+    display: inline_block;
+    float: left;
+    width: 10px;
+    height: 3px;
+    background: red;
+    margin: 6px 0px 0px 15px;
+}
+
+.container-full {
+    width: 100%;
+}
+
+.container-full:after {
+    content: '';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+.container-full {
+    zoom: 1;
+}
+
+.dashboard {
+    background: #444444;
+}
+
+.dashboard-sidebar {
+    width: 15%;
+    float: left;
+    margin: 10px 0;
+}
+
+.dashboard-content {
+    width: 85%;
+    float: left;
+    padding: 15px;
+    background: #f0f0f0;
+    min-height: 500px;
+}
+
+.dashboard-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.dashboard-nav > li > a {
+    color: #f0f0f0;
+    font: 1.2em Dosis, Helvetica;
+    vertical-align: middle;
+    line-height: 34px;
+    padding-left: 15px;
+    display: block;
+}
+
+.dashboard-nav > li.active > a {
+    background: #0088cc;
+}
+
+.dashboard-nav > li {
+    cursor: pointer;
+}
+
+.dashboard-nav > li.active > a:after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;           /* Go big on the size, and let overflow hide */
+    border-bottom: 17px solid transparent;
+    border-right: 17px solid #f0f0f0;
+    float: right;
+    z-index: 2;
+}
+
+.dashboard-nav > li:hover {
+    background: #c0c0c0;
+}
+
+.dashboard-nav > li:hover > a {
+    color: #101010;
+}
+
+
+{====================================================================================================================
+=============================================== EXTTRAS & SUPER EXTRAS =============================================
+====================================================================================================================}
+
+
+
+
+.searchIcon{
+	display:block;
+	float:left;
+	border-radius:50%;
+	width:22px;
+	height:22px;
+	border:#fff solid 3px; 
+	
+	margin-left:calc(50% - 14px);
+	margin-top:5px;
+	}
+.searchIcon:after{
+	display:block;
+	content:"";
+	float:left;
+	position:absolute;
+	margin-left:18px;
+	margin-top:13px;
+	border-radius:10px;
+	width:6px;
+	height:14px;
+	background:#fff;
+	transform:rotate(-45deg);
+}
