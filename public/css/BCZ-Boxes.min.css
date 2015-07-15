@@ -2,6 +2,23 @@
     font-family: Dosis;
     src: url('BCZ-Boxes/fonts/Dosis-Bold.ttf');
 }
+@font-face {
+    font-family: Dosis-SM;
+    src: url('BCZ-Boxes/fonts/Dosis-Book.ttf');
+}
+@font-face {
+    font-family: Dosis-M;
+    src: url('BCZ-Boxes/fonts/Dosis-Medium.ttf');
+}
+@font-face {
+    font-family: Dosis-L;
+    src: url('BCZ-Boxes/fonts/Dosis-Light.ttf');
+}
+@font-face {
+    font-family: Dosis-SB;
+    src: url('BCZ-Boxes/fonts/Dosis-SemiBold.ttf');
+}
+
 
 @font-face {
     font-family: Organo;

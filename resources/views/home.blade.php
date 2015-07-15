@@ -16,9 +16,9 @@
 						"Apartments",
 						"Villas");
 						
-	$navItems = array(array("Cat 1 - 1",
-							"Cat 1 - 2",
-							"Cat 1 - 3"),
+	$navItems = array(array("shbi",
+							"Rinoy",
+							"shaaji 1 - 3"),
 							
 					  array("Cat 2 - 1",
 							"Cat 2 - 2",
@@ -65,7 +65,7 @@
 							"Cat 12 - 3"),	
 							);	
 
-		$navItemsCont = array(array(array("item  - 1", "item  - 2", "item  - 3"),
+		$navItemsCont = array(array(array("dasd", "dasd", "asd"),
 								array("item  - 1", "item  - 2", "item  - 3"),
 								array("item  - 1", "item  - 2", "item  - 3")
 								),
@@ -123,7 +123,7 @@
 			<div class="catList">
 				@for($i=1;$i<=12;$i++)
 				<div class="catItem">
-					<div> {{$navItemName[$i-1]}} </div>
+					<div> {{$navItemName[$i-1]}} <span style="position:absolute; absolute:20px; ">|</span></div>
 					<div class="catCont">
 					<span style="font-size:30px; color:#f8a12e; font-family:Dosis;">GUI of this space is in construction, But the Functions Works Cool , For test purpose check the path {{ $i }}</span>
 					<?php
