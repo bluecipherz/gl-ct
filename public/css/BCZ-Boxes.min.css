@@ -287,3 +287,41 @@ a:hover {
 	background:#fff;
 	transform:rotate(-45deg);
 }
+
+
+ /* BendLine - ( Hover animation )
+ 
+	To use it , Paste this code ->
+	
+	<div class="BendLineBase">
+		<span class="BendLine"><span class="BendLine1"></span><span class="BendLine2"></span></span>
+	</div> 
+ */
+ 
+.BendLine{
+	margin-top:-5px;
+	position:absolute; 
+	left:195px; /* Use this to position the BendLine */
+	width:2px;
+}
+.BendLine > .BendLine1,.BendLine2{
+	display:block;
+	float:left;
+	width:2px;
+	height:15px;
+	background:#e0e0e0;
+	transition:background 0.2s, transform 0.4s , margin 0.4s;
+}
+.BendLine > .BendLine1{
+	
+}
+.BendLine > .BendLine2{
+	
+}
+
+.BendLineBase:hover .BendLine1,.catList > .BendLineBase:hover .BendLine2{ background:#881a8c ; }
+
+.BendLineBase:hover .BendLine1 { margin-top:5px; transform:rotate(-45deg);}
+.BendLineBase:hover .BendLine2 { margin-top:-5px;  transform:rotate(45deg);}
+
+
