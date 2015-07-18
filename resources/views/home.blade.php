@@ -3,8 +3,7 @@
 @section('content')
 
 <?php
-	$navItemName = array("All of Globex",
-						"Motors",
+	$navItemName = array("Motors",
 						"Auto Accessories",
 						"Auto Spare Parts",
 						"Jobs",
@@ -14,23 +13,20 @@
 						"Home and Kitchen",
 						"Electronics",
 						"Apartments",
-						"Villas");
+						"Villas",
+						"All of Globex");
 						
-	$navItems = array(array("Cat 1 - 1",
-							"Cat 1 - 2",
-							"Cat 1 - 3"),
+	$navItems = array(array("Used Cars for Sale",
+							"Boats",
+							"Heavy Vehicles",
+							"Motorcycles"),
 							
-					  array("Cat 2 - 1",
-							"Cat 2 - 2",
-							"Cat 2 - 3"),
+					  array("Apparel , Merchandise & Accessories",
+							"Automotive Tools"),
 							
-					  array("Cat 3 - 1",
-							"Cat 3 - 2",
-							"Cat 3 - 3"),
-							
-					  array("Cat 4 - 1",
-							"Cat 4 - 2",
-							"Cat 4 - 3"),
+					  array("Boat parts",
+							"Car Parts",
+							"Motorcycle Parts"),
 							
 					  array("Cat 5 - 1",
 							"Cat 5 - 2",
@@ -63,56 +59,66 @@
 					  array("Cat 12 - 1",
 							"Cat 12 - 2",
 							"Cat 12 - 3"),	
+					  array("shbi",
+							"Rinoy",
+							"shaaji 1 - 3",
+							"Rinoy",
+							"Rinoy",
+							"Rinoy")		
 							);	
 
-		$navItemsCont = array(array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+		$navItemsCont = array(array(array("AUDI", "BMW", "Ford","Land Rover", "Mercedes-Benz","Land Rover", "Mercedes-Benz" ),
+								array("MotorBoats", "Row/Paddle Boats", "Sail Boats"),
+								array("Buses", "Cranes", "Forklifts","Trailers", "Trucks", "Tankers", "Parts & Engine"),
+								array("Cruiser/Chopper", "Mo-Ped", "Off-Road/Dual Purpose","Scooter", "Sport Bike", "Standard Motorcycle","Touring", "Trike")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+								
+						  array(array("Apparel", "Boat Accessories", "Car / 4x4 Accessories","Merchandise", "Motorcycle Accessories"),
+								array("Tool Accessories", "Tool sets", "Tools")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("Body parts & Accessories", "Engine Parts", "Plumbing & Ventilation" ),
+								array("A/C & Heating Parts", "Batteries", "Brakes","Engine & Computer Parts", "Exhaust/Air Intake","Exterior Parts","Interior Parts","Lighting","Suspension","Wheels/Tires"),
+								array("Accessories", "Body & Frames", "Engines & Components","Lighting",  "Wheels/Tires","Number Plates")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3"),
-								array("item  - 1", "item  - 2", "item  - 3")
-								)
+						  array(array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5"),
+								array("item1", "item2", "item3","item4", "item5")
+								)		
 						  
 						  );
 ?>
@@ -122,24 +128,61 @@
 			<div class="cbtn b-fakeLink">CATEGORIES <span class=""></span></div>
 			<div class="catList">
 				@for($i=1;$i<=12;$i++)
-				<div class="catItem">
-					<div> {{$navItemName[$i-1]}} </div>
+				<div class="catItem BendLineBase">
+					<div class="catLi cItem"> {{$navItemName[$i-1]}}<span class="BendLine"><span class="BendLine1"></span><span class="BendLine2"></span></span></div>
 					<div class="catCont">
-					<span style="font-size:30px; color:#f8a12e; font-family:Dosis;">GUI of this space is in construction, But the Functions Works Cool , For test purpose check the path {{ $i }}</span>
-					<?php
-					$ItemC = sizeof($navItems[$i-1]);
-					for($j=1;$j<=$ItemC ; $j++){
-					?>
-						<div class="catContHead">
-							{{ $navItems[$i-1][$j-1] }}
+						<div class="catSec-1 col-md-4">
+						
+							<?php
+							$ItemC = sizeof($navItems[$i-1]);
+							
+							$jCounter = 1;
+							
+							for($j=1;$j<=$ItemC ; $j++){ 
+							
+							
+							?>
+								<a class="catContHead cItem">
+									{{ $navItems[$i-1][$j-1] }} <span class="catPointer"> < </span>
+								</a>
+								<?php  
+									$LBreak = 0;
+									$ItemChNext = 0;
+									$ItemChPrev = 0;
+									
+									$ItemCh = sizeof($navItemsCont[$i-1][$j-1]);
+									if(isset($navItemsCont[$i-1][$j])){
+										$ItemChNext = sizeof($navItemsCont[$i-1][$j]);
+									}
+									if(isset($navItemsCont[$i-2][$j])){
+										$ItemChPrev = sizeof($navItemsCont[$i-2][$j]);
+									}
+									
+									if($ItemCh >10) $ItemCh = 11;
+									if($ItemChNext >10) $ItemChNext = 11;
+									if( $ItemChNext > (10 - $ItemCh) ){ $jCounter++; }  
+									
+									for($k=1;$k<=$ItemCh ; $k++){
+								?>
+									<a class="catContHeadItems cItem">{{ $navItemsCont[$i-1][$j-1][$k-1] }} <span class="catPointer"> < </span></a>
+									
+								<?php }
+									if($jCounter == 2 && $jCounter < $ItemC) {
+										$LBreak = 0;
+										?>
+											</div>
+											<div class="catSec-2 col-md-4">
+										<?php
+									}else if($jCounter == 4) {
+										$LBreak = 0;
+										?>
+											</div>
+											<div class="catSec-3 col-md-4">
+										<?php
+									}
+									$jCounter++;	
+								} ?>	
 						</div>
-						<?php
-							$ItemCh = sizeof($navItemsCont[$i-1][$j-1]);
-							for($k=1;$k<=$ItemCh ; $k++){
-						?>
-							<div class="catContHeadItems">{{ $navItemsCont[$i-1][$j-1][$k-1] }}</div>
-						<?php } ?>
-					<?php } ?>	
 					</div>
 				</div>
 				@endfor
