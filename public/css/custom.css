@@ -299,3 +299,322 @@ body{
 	position: relative; width: 10px; height: 5px;
 	
 }
+
+.overlay {
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	z-index: 10;
+	background-color : rgba(0,0,0,0.5); /* dim the background */
+}
+
+.overlay-content {
+	position : absolute;
+	top : 80px;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	z-index: 10;
+	background-color : rgba(0,0,0,0.5); /* dim the background */
+}
+
+.login-box {
+	width : 450px;
+	height: 350px;
+	background : #ffffff;
+	text-align : center;
+	margin-left : 500px;
+}
+
+.login-box > h2 {
+	font-family : Dosis;
+	font-weight : Normal;
+	margin-top : 100px; /* this is what makes the box go to center vertically */
+	padding-top : 30px;
+	font-weight : normal;
+}
+
+.login-box > .logoBarOuter {
+	font : 2em Code-H;
+	margin-bottom : 20px;
+	width : 100%;
+	text-align : center;
+}
+
+.login-box > .form-group {
+	clear : both;
+	width : 100%;
+}
+
+.glob-control {
+	padding: 15px;
+	border : 0;
+	font : 1.2em Dosis;
+	font-weight : normal;
+	outline : none;
+}
+
+input.glob-control {
+	background : #eeeeee;
+	font : 1em Dosis;
+	font-weight : normal;
+}
+
+input[type="checkbox"].glob-control {
+	
+}
+
+button.glob-control {
+	padding : 10px;
+	background : #881a8c;
+	color : #ffffff;
+	width : 140px;
+}
+
+select.glob-control {
+	padding : 5px 10px;
+	background : #eeeeee;
+}
+
+.filter-sidebar {
+	width : 220px;
+	text-align : center;
+	float : left;
+	background : #ffffff;
+	border-left : 1px solid #cccccc;
+	border-right : 1px solid #cccccc;
+}
+
+.filter-sidebar > h4 {
+	font-family : Dosis;
+}
+
+.filter-sidebar > div {
+	float : left;
+	width : 100%;
+}
+
+.filter-sidebar > .category-list {
+	text-align : left;
+	padding-top : 10px;
+	padding-left : 15px;
+}
+
+.rulerCont { /* universal */
+	padding : 5px 10px;
+}
+
+.rulerCont > hr {
+	margin : 0;
+}
+
+.priceCont > h5 {
+	margin-top : 10px;
+	margin-bottom : 0;
+}
+
+.priceList {
+	width : 50%;
+	float : left;
+	padding : 5px;
+}
+
+.priceList > .glob-control {
+	padding : 2px;
+	width : 80%;
+}
+
+.content {
+	float : left;
+	width : 740px;
+	font-family : Dosis;
+	background : #ffffff;
+	border-right : 1px solid #cccccc;
+}
+
+.content > .top-links {
+	text-align : center;
+	float : left;
+	width : 100%;
+	padding : 10px;
+	background : #eeeeee;
+}
+
+.productsCont {
+	padding : 15px;
+	float : left;
+	width : 100%;
+}
+
+.productCont {
+	width : 236.3px;
+	min-height : 236.3px;
+	padding : 10px;
+	float : left;
+	border : 2px solid transparent;
+}
+
+.productCont:hover {
+	border : 2px solid #cccccc;
+	background : #eeeeee;
+}
+
+.productCont > .product-thumbnail {
+	text-align : center;
+	width : 100%;
+	height : 150px;
+	float : left;
+}
+
+.product-thumbnail > .sampleThumb {
+	width : 150px;
+	height : 150px;
+	background : #881a8c;
+	float : left;
+}
+
+.productCont > .product-description {
+	float : left;
+}
+
+.productPrice {
+	color : green;
+	float : left;
+	width : 100%;
+}
+
+.product-desc-small {
+	float : left;
+	width : 100%;
+}
+
+.resellAdFullCont {
+	padding : 0 15px 15px;
+	float : left;
+	width : 100%;
+}
+
+.resellAdFull {
+	background : #eeeeee;
+	float : left;
+	width : 100%;
+	/*border : 2px solid transparent;*/
+	border-left : 2px solid #cccccc;
+	border-right : 2px solid #cccccc;
+}
+
+.resellAdFull > .product-thumbnail {
+	width : 180px;
+	background : #e3e3e3;
+	padding : 15px;
+	float : left;
+	min-height : 180px;
+}
+
+.resellAdFull > .resellDescription {
+	padding : 10px 15px 0;
+	float : left;
+	width : 526.684px;
+	height : 140px;
+}
+
+.productDetailBar {
+	background : #dddddd;
+	float : left;
+	width : 526.684px;
+	padding : 10px;
+}
+
+.productDetailBar > .productPrice {
+	float : left;
+	width : 50%;
+}
+
+.productDetailBar > .productLocation {
+	width : 50%;
+	float : left;
+}
+
+.productDetailBar > .productLocation > span {
+	float : right;
+}
+
+.cartWindow {
+	width : 1000px;
+	height: 400px;
+	background : #ffffff;
+	margin-left : 252px;
+}
+
+.cartWindow > .cartHead {
+	padding : 10px;
+	background : #dddddd;
+}
+
+.cartWindow > .cartHead > span {
+	font : 1.6em Dosis;
+	margin-left : 10px;
+}
+
+.cartWindow .cartTableRowInverse {
+	background : #444444;
+	color : #ffffff;
+	padding : 10px;
+	margin-bottom : 10px;
+	font : 1.3em Dosis;
+	text-align : right;
+	padding-right : 20px;
+}
+
+.cartWindow .cartTable {
+	width : 100%;
+	font : 1.3em Dosis;
+}
+
+.cartWindow .cartTable th {
+	background : #444444;
+	color : #ffffff;
+}
+
+.cartWindow .cartTable td,th {
+	padding : 10px;
+	text-align : center;
+}
+
+.cartWindow .cartTable td:nth-child(even) {
+	background : #eeeeee;
+}
+
+.cartWindow .cartFoot {
+	float : left;
+	width : 100%;
+	text-align : right;
+}
+
+.cartWindow .cartContinue {
+	width : 200px;
+	background : #444444;
+}
+
+.cartWindow .cartCheckout {
+	width : 200px;
+	margin-left : 10px;
+	margin-right : 10px;
+}
+
+/**
+	reusable pattern below
+	all codes below have been designed and patterned to be reused again
+	it can even be added to the bcz boxes framework(not really, just kidding)
+*/
+
+.productDetails-horizontal { /* add a vertical version of this */
+	
+}
+
+.testClass {
+	font : 6em Walkway;
+	font-weight : bold;
+}

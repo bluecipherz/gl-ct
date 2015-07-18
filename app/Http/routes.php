@@ -19,3 +19,22 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('login', function() {
+	return view('pages.login');
+});
+
+Route::get('search', function() {
+	return view('pages.search');
+});
+
+Route::get('cart', function() {
+	return view('pages.cart');
+});
+
+Route::get('register', function() {
+	return view('pages.register');
+});
+Route::get('test', function() {
+	return view('pages.test');
+});

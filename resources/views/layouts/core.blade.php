@@ -7,6 +7,7 @@
 	<title>GlobexCart - @yield('title') </title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/jquery-ui.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/BCZ-Boxes.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
