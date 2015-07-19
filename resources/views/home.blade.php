@@ -16,9 +16,9 @@
 							<?php
 							$ItemC = sizeof($navItems[$i-1]);
 							
-							//$jCounter = 1;
+							$jCounter = 1;
 							
-							//for($j=1;$j<=$ItemC ; $j++){ 
+							for($j=1;$j<=$ItemC ; $j++){ 
 							
 							
 							?>
