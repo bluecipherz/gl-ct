@@ -129,28 +129,36 @@ class HomeController extends Controller {
 								array("item1", "item2", "item3","item4", "item5"),
 								array("item1", "item2", "item3","item4", "item5")
 								),
-						  array(array("item1", "item2", "item3","item4", "item5"),
+						  array(
+							array("item1", "item2", "item3","item4", "item5"),
 								array("item1", "item2", "item3","item4", "item5"),
 								array("item1", "item2", "item3","item4", "item5")
-								),
-						  array(array("item1", "item2", "item3","item4", "item5"),
+							),
+						  array(
+							array("item1", "item2", "item3","item4", "item5"),
 								array("item1", "item2", "item3","item4", "item5"),
 								array("item1", "item2", "item3","item4", "item5")
-								),
-						  array(array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5")
-								),
-						  array(array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5"),
-								array("item1", "item2", "item3","item4", "item5")
-								)		
-						  
+							),
+						  array(
+							array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5")
+							),
+						  array(
+								array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5"),
+								array("item1", "item2", "item3", "item4", "item5")
+							)
 						  );
-		return view('home', ['navItemName', 'navItems', 'navItemsCont']);
+		$data = ['navItemName' => $navItemName, 'navItems' => $navItems, 'navItemsCont' => $navItemsCont];
+		return view('home', $data);
+	}
+	
+	public function hell() {
+		return view('home');
 	}
 
 }

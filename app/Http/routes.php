@@ -35,6 +35,7 @@ Route::get('cart', function() {
 Route::get('register', function() {
 	return view('pages.register');
 });
+
 Route::get('test', function() {
 	return view('pages.test');
 });
