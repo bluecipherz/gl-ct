@@ -20,20 +20,24 @@
 	font-weight: bold;
 }
 @font-face {
-    font-family: Dosis-SM;
+    font-family: Dosis;
     src: url('BCZ-Boxes/fonts/Dosis-Book.ttf');
+	font-weight: book;
 }
 @font-face {
-    font-family: Dosis-M;
+    font-family: Dosis;
     src: url('BCZ-Boxes/fonts/Dosis-Medium.ttf');
+	font-weight: medium;
 }
 @font-face {
-    font-family: Dosis-L;
+    font-family: Dosis;
     src: url('BCZ-Boxes/fonts/Dosis-Light.ttf');
+	font-weight: light;
 }
 @font-face {
-    font-family: Dosis-SB;
+    font-family: Dosis;
     src: url('BCZ-Boxes/fonts/Dosis-SemiBold.ttf');
+	font-weight: semibold;
 }
 
 
@@ -168,7 +172,8 @@ a:hover {
     padding-right: 0;
     top: 0;
     z-index: 0;
-}
+} 
+.b-display{display:block;}
 
 /*
  * EXTRAS
@@ -327,18 +332,46 @@ a:hover {
 	width:2px;
 	height:15px;
 	background:#e0e0e0;
-	transition:background 0.2s, transform 0.4s , margin 0.4s;
+	transition:background 0.2s, transform  .3s , margin 0.3s;
 }
-.BendLine > .BendLine1{
-	
-}
-.BendLine > .BendLine2{
-	
-}
+
 
 .BendLineBase:hover .BendLine1,.catList > .BendLineBase:hover .BendLine2{ background:#881a8c ; }
 
 .BendLineBase:hover .BendLine1 { margin-top:5px; transform:rotate(-45deg);}
 .BendLineBase:hover .BendLine2 { margin-top:-5px;  transform:rotate(45deg);}
+
+
+@media (min-width: 768px) {
+	
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+
+	.BendLine > .BendLine1,.BendLine2{
+		width:3px;
+		height:15px;
+		background:#e0e0e0;
+		transition:background 0.2s, transform  0.3s , margin 0.2s;
+	}
+	.BendLineBase:hover .BendLine1 { margin-top:5px; transform:rotate(-45deg);}
+	.BendLineBase:hover .BendLine2 { margin-top:-4px;  transform:rotate(45deg);}
+
+}
+
+@media (min-width: 1400px) {
+
+	.BendLine > .BendLine1,.BendLine2{
+		width:2px;
+		height:15px;
+		background:#e0e0e0;
+		transition:background 0.2s, transform  0.3s , margin 0.2s;
+	}
+	.BendLineBase:hover .BendLine1 { margin-top:5px; transform:rotate(-45deg);}
+	.BendLineBase:hover .BendLine2 { margin-top:-5px;  transform:rotate(45deg);}
+
+}
 
 
