@@ -4,6 +4,11 @@
 
 <div class="container">
 	<div class="row">
+		@if(isset($message))
+		<div class="col-lg-12 col-md-12">
+			<div class="alert alert-danger">{{ $message }}<span class="close"></span></div>
+		</div>
+		@endif
 		<div class="col-lg-2 col-md-2">
 			<div class="input-group">
 				<span class="input-group-btn">
@@ -17,10 +22,6 @@
 				@endforeach
 			</ul>
 		</div>
-		@if($message)
-			hello
-			<div class="alert alert-danger">{{ $message }}<span class="close"></span></div>
-		@endif
 		@include('admin/partials/' . $currentPage)
 	</div>
 </div>

@@ -27,7 +27,6 @@ class AdminController extends Controller {
 	public function __construct() {
 		View::share('pages', $this->pages);
 		View::share('currentPage', $this->currentPage);
-		View::share('message', 'KOOZ');
 	}
 
 	/**
