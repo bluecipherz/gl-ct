@@ -29,7 +29,7 @@ jQuery(document).ready(function() {
 	
 	if(login){
 		attrId =2;
-		tabCompleted = 2;
+		tabCompleted = attrId;
 		findAttr(attrId);
 		tabAttr(parent,tabID,that,WizTabN);
 		
@@ -104,5 +104,28 @@ jQuery(document).ready(function() {
 			}
 			attrIdCounter++;	
 		}
+	}
+	
+	
+	$(".regbtn").click(function() {
+		$(".w-log").css({"margin-top":"-400px"});
+	});
+	$(".logbtn").click(function() {
+		$(".w-log").css({"margin-top":"0px"});
+	});
+	
+		var btbId = 4;
+		w4tbSwitch(btbId);
+	
+	$(" .w4-tab > div").click(function (){
+		btbId = $(this).attr("btnId");
+		w4tbSwitch(btbId);
+	});
+	
+	function w4tbSwitch(btbId){
+		$(" .w4-tab > div").removeClass("w4-tab-act");
+		$(".w4-tab-b-" + btbId).addClass("w4-tab-act");
+		$("#wizardT-4 > .w4-content > div").removeClass("w4-tab-c-act");
+		$("#w4-" + btbId).addClass("w4-tab-c-act");
 	}
 });

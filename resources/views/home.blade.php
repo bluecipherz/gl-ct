@@ -44,7 +44,6 @@
 									
 									for($k=1; $k<=$ItemCh; $k++){
 								?>
-
 									<a class="catContHeadItems cItem">{{ $navItemsCont[$i-1][$j-1][$k-1] }} <span class="catPointer"> < </span></a>
 									
 								<?php }
