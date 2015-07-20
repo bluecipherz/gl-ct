@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use View;
+use App\Product;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -26,6 +27,7 @@ class AdminController extends Controller {
 	public function __construct() {
 		View::share('pages', $this->pages);
 		View::share('currentPage', $this->currentPage);
+		View::share('message', 'KOOZ');
 	}
 
 	/**
@@ -37,7 +39,12 @@ class AdminController extends Controller {
 	{
 		$pageKey = ucfirst($page); // first letter caps
 		if(array_key_exists($pageKey, $this->pages)) {
-			return view('admin.main')->with('currentPage', $page);
+			if($page == 'products') {
+				$products = Product::all();
+				return view('admin.main')->with('currentPage', $page)->with('products', $products);
+			} else {
+				return view('admin.main')->with('currentPage', $page);
+			}
 		} else {
 			abort(404);
 		}

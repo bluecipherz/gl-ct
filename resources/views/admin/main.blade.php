@@ -17,6 +17,10 @@
 				@endforeach
 			</ul>
 		</div>
+		@if($message)
+			hello
+			<div class="alert alert-danger">{{ $message }}<span class="close"></span></div>
+		@endif
 		@include('admin/partials/' . $currentPage)
 	</div>
 </div>

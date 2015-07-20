@@ -40,6 +40,8 @@ Route::get('admin', function() {
 	return 'ok';
 });
 
+Route::resource('products', 'ProductController');
+
 Route::get('admin/{page}', 'AdminController@recieve');
 
 Route::get('test', function() {
