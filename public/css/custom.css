@@ -151,6 +151,7 @@ body{
 	height:100%;
 	background:#881a8c;
 	font-family:Dosis;
+	font-weight: normal;
 	font-size:110%; 
 	color:#fff;
 	padding:9px;
@@ -225,7 +226,8 @@ body{
 	background:rgba(0,0,0,0.07);
 	text-align:left;
 	padding-left:20px;
-	font-family:Dosis-M;
+	font-family:Dosis;
+	font-weight: normal;
 	padding-top:10px;
 }
 .catContHead:hover{
@@ -241,7 +243,8 @@ body{
 	color:rgba(0,0,0,0.8);
 	text-align:left;
 	padding-left:20px;
-	font-family:Dosis-SM;
+	font-family:Dosis;
+	font-weight: 100;
 	padding-top:10px;
 }
 .catContHeadItems:hover{
@@ -746,7 +749,7 @@ select.glob-control {
 
 .cust-btn{
 	font-family:Dosis;
-	font-weight:book;
+	font-weight:200;
 	display:inline_block;
 	float:left;
 	min-width:100px;
@@ -823,6 +826,40 @@ select.glob-control {
 			width:250px;
 			margin-right:25px;
 		}
+		
+	{ login }	
 	
+		.login{
+			max-height:400px;
+			overflow:hidden;
+		}
+	
+		{ login }
+		
+			.w-log{
+				display:block;
+				height:400px;
+			}
+			
+			.wlg-sub1-sec1{
+				display:block;
+				padding:50px;
+				text-align:center;
+			}
+			
+			.hard-logo{
+				font-family:Code-H;
+				display:block; 
+				color:rgba(0,0,0,0.7);
+				font-size:400%;
+			}
+		
+		{ register }
+		
+			.w-reg{
+				display:block;
+				height:400px;
+			}
+		
 	
 
