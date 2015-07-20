@@ -16,9 +16,9 @@
 							<?php
 							$ItemC = sizeof($navItems[$i-1]);
 							
-							//$jCounter = 1;
+							$jCounter = 1;
 							
-							//for($j=1;$j<=$ItemC ; $j++){ 
+							for($j=1;$j<=$ItemC ; $j++){ 
 							
 							
 							?>
@@ -38,12 +38,13 @@
 										$ItemChPrev = sizeof($navItemsCont[$i-2][$j]);
 									}
 									
-									if($ItemCh >10) $ItemCh = 11;
-									if($ItemChNext >10) $ItemChNext = 11;
-									if( $ItemChNext > (10 - $ItemCh) ){ $jCounter++; }  
+									if($ItemCh > 10) $ItemCh = 11;
+									if($ItemChNext > 10) $ItemChNext = 11;
+									if($ItemChNext > (10 - $ItemCh)){ $jCounter++; }  
 									
-									for($k=1;$k<=$ItemCh ; $k++){
+									for($k=1; $k<=$ItemCh; $k++){
 								?>
+
 									<a class="catContHeadItems cItem">{{ $navItemsCont[$i-1][$j-1][$k-1] }} <span class="catPointer"> < </span></a>
 									
 								<?php }
