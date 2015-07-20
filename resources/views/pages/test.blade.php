@@ -15,19 +15,34 @@
 		<div id="tab-content">
 			<div id="wizardT-1" class="CDisplay"> 
 				<div class="login">
-					<span>Register with <span>GLOBEXCART</span></span>
-					<div>
-						<input type="text" class="glob-control" placeholder="Your email"/>
+					<div class="w-log">
+						<div class="w-log-sec-1" >
+							<span class="wlg-sub1-sec1" >login</span>
+							<span class="hard-logo" >GLOBEXCART</span>
+						</div>
+						<div class="w-log-sec-2" >
+						
+						</div>
+						<div class="w-log-sec-3" >
+							<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
+							<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
+						</div>
 					</div>
-					<div>
-						<input type="text" class="glob-control" placeholder="Your password"/>
+					<div class="w-reg">
+						<span>Register with <span>GLOBEXCART</span></span>
+						<div>
+							<input type="text" class="glob-control" placeholder="Your email"/>
+						</div>
+						<div>
+							<input type="text" class="glob-control" placeholder="Your password"/>
+						</div>
+						<div>
+							<input type="text" class="glob-control" placeholder="Confirm Password"/>
+						</div>
+						<div>Register with email and recieve latest offers ogf globex cart</div>
+						<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
+						<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
 					</div>
-					<div>
-						<input type="text" class="glob-control" placeholder="Confirm Password"/>
-					</div>
-					<div>Register with email and recieve latest offers ogf globex cart</div>
-					<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
-					<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
 				</div> 
 				<div class="loggedin">
 					<div class="lgin-sec-1">
