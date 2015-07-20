@@ -36,6 +36,13 @@ Route::get('register', function() {
 	return view('pages.register');
 });
 
+Route::get('admin', function() {
+	return 'ok';
+});
+
+Route::get('admin/{page}', 'AdminController@recieve');
+
 Route::get('test', function() {
 	return view('pages.test');
 });
+
