@@ -23,6 +23,40 @@ jQuery(document).ready(function() {
 	var login = false;
 	var tab1Sec = 1;
 	
+	
+	/* setting up default values */
+	
+	$mainlrpheight = ( $(window).height() - $(".login-box").outerHeight() ) / 2 ;
+	$pageName = "";
+	if ($(".pageType").length) { $pageName = $(".pageType").attr('page'); }
+	
+	/* Home reg/login functions */
+	if($mainlrpheight > 100){$(".login-box-main").css({"marginTop": $mainlrpheight });}
+	
+	
+	$(".acctBtn").click(function(){
+		if(!login && $pageName != "login"){
+			$(".mainReg").css({"display":"block"});
+			$("body").css("overflow", "hidden");
+			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
+		}
+	});
+	
+	$(".overlay-backbtn").click(function(){
+		$(".mainReg").css({"opacity":"0"}); 
+		$("body").css("overflow", "auto");
+		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 500); 
+	});
+	
+	$(".loginMBLbtn").click(function(){
+		console.log("heelll");
+		$(".loginMB").css({"margin-top":"-400px"}); 
+	});
+	$(".regMBLbtn").click(function(){
+		$(".loginMB").css({"margin-top":"0"}); 
+	});
+	
+	
 	that = "";
 	attrId =1;
 	

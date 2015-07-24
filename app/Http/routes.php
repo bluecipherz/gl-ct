@@ -36,6 +36,10 @@ Route::get('register', function() {
 	return view('pages.register');
 });
 
+Route::get('adpost', function() {
+	return view('pages.adpost');
+});
+
 Route::get('admin', function() {
 	return 'ok';
 });

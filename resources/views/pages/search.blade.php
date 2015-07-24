@@ -1,7 +1,6 @@
 @extends('layouts.core')
 
 @section('content')
-
 <div class="boxx">
 	<div class="row">
 		<div class="filter-sidebar">
@@ -12,12 +11,12 @@
 				<option>Kidilam</option>
 			</select>
 			<div class="category-list"><!-- CHECKBOXES -->
-				<p><input type="checkbox" class="glob-control" /> Category</p>
-				<p><input type="checkbox" class="glob-control" /> Category</p>
-				<p><input type="checkbox" class="glob-control" /> Category</p>
-				<p><input type="checkbox" class="glob-control" /> Category</p>
-				<p><input type="checkbox" class="glob-control" /> Category</p>
-				<p><input type="checkbox" class="glob-control" /> Category</p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
 			</div>
 			<div class="rulerCont"><hr></div>
 			<div class="priceCont">
@@ -35,12 +34,12 @@
 			</div>
 			<div class="rulerCont"><hr></div>
 			<div class="category-list"><!-- CHECKBOXES -->
-				<p><input type="checkbox" class="glob-control" /> Sub Category</p>
-				<p><input type="checkbox" class="glob-control" /> Sub Category</p>
-				<p><input type="checkbox" class="glob-control" /> Sub Category</p>
-				<p><input type="checkbox" class="glob-control" /> Sub Category</p>
-				<p><input type="checkbox" class="glob-control" /> Sub Category</p>
-				<p><input type="checkbox" class="glob-control" /> Sub Category</p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
 			</div>
 		</div>
 		
@@ -49,7 +48,7 @@
 				<a href="#">Price</a> | <a href="#">Relevance</a> | <a href="#">Discount</a> | <a href="#">Popular</a>
 			</div>
 			<div class="productsCont">
-				<div class="productCont">
+				<div class="productCont b-fakeLink">
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
 						<span class="sampleThumb"></span>
@@ -62,7 +61,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="productCont">
+				<div class="productCont b-fakeLink">
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
 						<span class="sampleThumb"></span>
@@ -75,7 +74,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="productCont">
+				@for($i=1;$i < 10; $i++)
+				<div class="productCont b-fakeLink">
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
 						<span class="sampleThumb"></span>
@@ -88,9 +88,11 @@
 						</div>
 					</div>
 				</div>
+				@endfor
 			</div>
 			<div class="resellAdFullCont">
-				<div class="resellAdFull">
+				@for($i=1;$i < 10; $i++)
+				<div class="resellAdFull b-fakeLink">
 					<div class="product-thumbnail">
 						<span class="sampleThumb"></span>
 					</div>
@@ -109,6 +111,7 @@
 						</div>
 					</div>
 				</div>
+				@endfor
 			</div>
 		</div>
 	</div>

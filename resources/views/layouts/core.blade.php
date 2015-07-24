@@ -23,6 +23,7 @@
 	<![endif]-->
 </head>
 <body>
+	
 	<nav class="mainNav ">
 		<div class="NavTop" >
 			<div class="boxx" >
@@ -31,34 +32,57 @@
 		</div>
 		<div class="NavBottom" >
 			<div class="boxx" >
-					<div class="logoBarOuter b-untouchable">
-						GLOBEX<span>CART</span>
+				<div class="logoBarOuter b-untouchable">
+					GLOBEX<span>CART</span>
+				</div>
+				<div class="searchBarOuter" >
+					<div class="serachBar" ><input type="text" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
+				</div>
+				<div class="userBarOuter pull-right b-untouchable">
+					<div class="userBtn">
+						<img src="img/nav/help.png">
+						<div>Help</div>
 					</div>
-					<div class="searchBarOuter" >
-						<div class="serachBar" ><input type="text" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
+					<div class="userBtn acctBtn">
+						<img src="img/nav/account.png">
+						<div>Account</div>
 					</div>
-					<div class="userBarOuter pull-right b-untouchable">
-						<div class="userBtn">
-							<img src="img/nav/help.png">
-							<div>Help</div>
-						</div>
-						<div class="userBtn">
-							<img src="img/nav/account.png">
-							<div>Account</div>
-						</div>
-						<div class="userBtn">
-							<img src="img/nav/cart.png">
-							<span class="cartCount">12</span>
-							<div>Cart</div>
-						</div>
-						<div class="userBtn">
-							<img src="img/nav/more.png">
-							<div>More</div>
-						</div>
+					<div class="userBtn">
+						<img src="img/nav/cart.png">
+						<span class="cartCount">12</span>
+						<div>Cart</div>
 					</div>
+					<div class="userBtn">
+						<img src="img/nav/more.png">
+						<div>More</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
+	<div class="mainNav-f ">
+	</div>
+	<div class="overlay col-md-12 mainReg">
+		<div class="overlay-backbtn"></div>
+		<div class="login-box login-box-main col-md-4 col-md-offset-4">
+			<div class="loginMB">
+				<h2>Login</h2>
+				<div class="logoBarOuter">GLOBEX<span>CART</span></div>
+				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control"/></div>
+				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control"/></div>
+				<div class="form-group"><button class="glob-control">Login</button></div>
+				<div class="form-group">Don't have an account ? <span class="b-fakeLink-text loginMBLbtn">Register Now</span></div>
+			</div>
+			<div class="regMB">
+				<div class="logoBarOuter"><h2>Register with</h2> GLOBEX<span>CART</span></div>
+				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control"/></div>
+				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control"/></div>
+				<div class="form-group"><input type="text" placeholder="Confirm Password" class="glob-control"/></div>
+				<div class="form-group"><button class="glob-control">Register</button></div>
+				<div class="form-group">Already have an account ? <span class="b-fakeLink-text regMBLbtn">Login</span></div>
+			</div>
+		</div>
+	</div>
 
 	@yield('content')
 
