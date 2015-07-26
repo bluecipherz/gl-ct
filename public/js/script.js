@@ -167,6 +167,7 @@ jQuery(document).ready(function() {
 		if(e.keyCode == 13) { // search
 			var input = $(this).val();
 			var terms = input.replace(' ', '+');
+			console.log("asdasd");
 			$.get('/search?q=' + input).success(function(rsp) {
 				$(".productsCont").html($(rsp).find(".productsCont").html());
 			});
