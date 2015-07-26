@@ -36,7 +36,7 @@
 					GLOBEX<span>CART</span>
 				</div>
 				<div class="searchBarOuter" >
-					<div class="serachBar" ><input type="text" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
+					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
 				</div>
 				<div class="userBarOuter pull-right b-untouchable">
 					<div class="userBtn">

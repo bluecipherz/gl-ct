@@ -48,47 +48,21 @@
 				<a href="#">Price</a> | <a href="#">Relevance</a> | <a href="#">Discount</a> | <a href="#">Popular</a>
 			</div>
 			<div class="productsCont">
+				@foreach($products as $product)
 				<div class="productCont b-fakeLink">
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
 						<span class="sampleThumb"></span>
 					</div>
 					<div class="product-description">
-						<h4>Porsche Carrera</h4>
-						<div class="productPrice">84599 AED</div>
+						<h4>{{ $product->name }}</h4>
+						<div class="productPrice">{{ $product->cost . ' AED' }}</div>
 						<div class="product-desc-small">
-							A small small description that enables customers to percieve the product.
+							{{ $product->desc }}
 						</div>
 					</div>
 				</div>
-				<div class="productCont b-fakeLink">
-					<div class="product-thumbnail">
-						<!-- <img src="" class="" /> -->
-						<span class="sampleThumb"></span>
-					</div>
-					<div class="product-description">
-						<h4>Porsche Carrera</h4>
-						<div class="productPrice">84599 AED</div>
-						<div class="product-desc-small">
-							A small small description that enables customers to percieve the product.
-						</div>
-					</div>
-				</div>
-				@for($i=1;$i < 10; $i++)
-				<div class="productCont b-fakeLink">
-					<div class="product-thumbnail">
-						<!-- <img src="" class="" /> -->
-						<span class="sampleThumb"></span>
-					</div>
-					<div class="product-description">
-						<h4>Porsche Carrera</h4>
-						<div class="productPrice">84599 AED</div>
-						<div class="product-desc-small">
-							A small small description that enables customers to percieve the product.
-						</div>
-					</div>
-				</div>
-				@endfor
+				@endforeach
 			</div>
 			<div class="resellAdFullCont">
 				@for($i=1;$i < 10; $i++)

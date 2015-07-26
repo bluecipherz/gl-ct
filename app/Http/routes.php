@@ -24,9 +24,8 @@ Route::get('login', function() {
 	return view('pages.login');
 });
 
-Route::get('search', function() {
-	return view('pages.search');
-});
+Route::get('products/all-products', 'ProductController@allproducts');
+Route::get('search', 'ProductController@search');
 
 Route::get('cart', function() {
 	return view('pages.cart');

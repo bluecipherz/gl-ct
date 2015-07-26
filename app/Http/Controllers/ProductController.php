@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use DB;
 use App\Product;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -7,6 +8,30 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
+
+
+	public function allproducts()
+	{
+		return response()->json(Product::all()->lists('name'));
+	}
+
+	public function search(Request $request)
+	{
+		$q = $request->get('q');
+		if($q) {
+			$searchTerms = explode(' ', $q);
+			$query = DB::table('products');
+			foreach($searchTerms as $term)
+			{
+				$query->where('name', 'LIKE', '%' . $term . '%');
+			}
+			$results = $query->get();
+			return view('pages.search', ['products' => $results]);
+		} else {
+			$products = Product::all();
+			return view('pages.search', compact('products'));
+		}
+	}
 
 	/**
 	 * Display a listing of the resource.

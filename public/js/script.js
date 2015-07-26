@@ -162,4 +162,21 @@ jQuery(document).ready(function() {
 		$("#wizardT-4 > .w4-content > div").removeClass("w4-tab-c-act");
 		$("#w4-" + btbId).addClass("w4-tab-c-act");
 	}
+	
+	$("#search_q").keydown(function(e) {
+		if(e.keyCode == 13) { // search
+			var input = $(this).val();
+			var terms = input.replace(' ', '+');
+			$.get('/search?q=' + input).success(function(rsp) {
+				$(".productsCont").html($(rsp).find(".productsCont").html());
+			});
+		}
+	});
+	
+	$.get('/products/all-products').success(function(response) {
+		$("#search_q").autocomplete({
+			source : response
+		});
+	});
+	
 });
