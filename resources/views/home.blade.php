@@ -9,7 +9,7 @@
 			<div class="catList">
 				@for($i=1;$i<=12;$i++)
 				<div class="catItem BendLineBase">
-					<div class="catLi cItem"> {{$navItemName[$i-1]}}<span class="BendLine"><span class="BendLine1"></span><span class="BendLine2"></span></span></div>
+					<div class="catLi cItem"> {{$navItemName[$i-1]}}<!--<span class="BendLine"><span class="BendLine1"></span><span class="BendLine2"></span></span>--></div>
 					<div class="catCont">
 						<div class="catSec-1 col-md-4">
 						
