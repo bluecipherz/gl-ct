@@ -56,6 +56,24 @@
 									</div>
 								</div>
 								<div class="form-group">
+									{!! Form::label('category', 'Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+									<div class="col-lg-6 col-md-6">
+									{!! Form::select('category', $cats, null, ['class' => 'form-control']) !!}
+									</div>
+								</div>
+								<div class="form-group">
+									{!! Form::label('sub_category', 'Sub Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+									<div class="col-lg-6 col-md-6">
+									{!! Form::select('sub_category', $subcats, null, ['class' => 'form-control']) !!}
+									</div>
+								</div>
+								<div class="form-group">
+									{!! Form::label('post_sub_cat', 'Post Sub Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+									<div class="col-lg-6 col-md-6">
+									{!! Form::select('post_sub_cat', $postsubcats, null, ['class' => 'form-control']) !!}
+									</div>
+								</div>
+								<div class="form-group">
 									<div class="col-lg-2 col-md-2 col-md-offset-2 col-lg-offset-2">
 									{!! Form::submit('Create Product', ['class' => 'btn btn-default']) !!}
 									</div>

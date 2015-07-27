@@ -10,6 +10,24 @@ use Illuminate\Http\Request;
 class ProductController extends Controller {
 
 
+	public function postsubcats(Request $request)
+	{
+		$subcategory = $request->get('sub_category');
+		$data = DB::table('post_sub_cats')->where('sub_category_id', $subcategory)->lists('name');
+		array_unshift($data, null);
+		unset($data[0]);
+		return response()->json($data);
+	}
+
+	public function subcats(Request $request)
+	{
+		$category = $request->get('category');
+		$data = DB::table('sub_categories')->where('category_id', $category)->lists('name');
+		array_unshift($data, null);
+		unset($data[0]);
+		return response()->json($data);
+	}
+
 	public function allproducts()
 	{
 		return response()->json(Product::all()->lists('name'));
@@ -60,7 +78,10 @@ class ProductController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$values = array_except($request->all(), ['_token']);
+		$values = array_except($request->all(), ['_token', 'category', 'sub_category', 'post_sub_cat']);
+		// $values['category_id'] = $request->get('category');
+		// $values['sub_category_id'] = $request->get('sub_category');
+		$values['post_sub_cat_id'] = $request->get('post_sub_cat');
 		Product::create($values);
 		return redirect()->back()->with('message', 'Created');
 	}

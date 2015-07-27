@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Category;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,20 +32,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$navItemName = array(
-			"Motors",
-			"Auto Accessories",
-			"Auto Spare Parts",
-			"Jobs",
-			"Classifieds",
-			"Property for Sale",
-			"Property for Rent",
-			"Home and Kitchen",
-			"Electronics",
-			"Apartments",
-			"Villas",
-			"All of Globex",
-		);
+		$navItemName = Category::all()->lists('name');
+		//$navItems = DB::table('subcategories')->get();
 							
 		$navItems = array(
 			array(

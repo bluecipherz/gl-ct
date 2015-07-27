@@ -107,12 +107,13 @@ jQuery(document).ready(function() {
 			tabAttr(parent,tabID,that,WizTabN);
 		}
 	});
+
 	function tabAttr(parent,tabID,that,WizTabN){
 		parent.find("li").removeClass('Cnext');
 		parent.find("li").removeClass('CFinished');
 		for(i=1;i<=3;i++){
 			tabID++
-			parent.find("li:nth-child("+ tabID +")").addClass('Cnext');
+			parent.find("li:nth-child(" + tabID + ")").addClass('Cnext');
 		}
 		tabID = tabID - 3;
 		for(i=1;i<=3;i++){
@@ -163,19 +164,64 @@ jQuery(document).ready(function() {
 		$("#w4-" + btbId).addClass("w4-tab-c-act");
 	}
 	
+	/*
+	 * THE BELOW INVOLVES THE USE OF HISTORY API
+	 *
+	 */
+	
 	$("#search_q").keydown(function(e) {
 		if(e.keyCode == 13) { // search
+			console.log(window.location);
 			var input = $(this).val();
-			var terms = input.replace(' ', '+');
+			var terms = input.trim().replace(/\s+/g, '+');
+			var url = '/search?q=' + terms;
+			if(!window.location.pathname.startsWith('/search')) {
+				window.location.replace('/search?q=' + terms);
+			}
 			$.get('/search?q=' + input).success(function(rsp) {
 				$(".productsCont").html($(rsp).find(".productsCont").html());
+				/* HISTORY API */
+				if(url != window.location) {
+					window.history.pushState({path : url}, '', url);
+				}
 			});
 		}
 	});
 	
+	/**
+     * Go back action
+     */
+	window.addEventListener("popstate", function(e) {
+		history.back();
+	});
+	
+	// END HISTORY API
+	
 	$.get('/products/all-products').success(function(response) {
 		$("#search_q").autocomplete({
 			source : response
+		});
+	});
+	
+	$("#category").change(function() {
+		var category_id = $(this).val();
+		$.get('/products/sub-categories', {category : category_id}).success(function(response) {
+			var select = $("#sub_category");
+			select.empty();
+			$.each(response, function(key, value) {
+				select.append($("<option>").attr("value", key).text(value));
+			});
+		});
+	});
+	
+	$("#sub_category").change(function() {
+		var category_id = $(this).val();
+		$.get('/products/post-sub-cats', {sub_category : category_id}).success(function(response) {
+			var select = $("#post_sub_cat");
+			select.empty();
+			$.each(response, function(key, value) {
+				select.append($("<option>").attr("value", key).text(value));
+			});
 		});
 	});
 	

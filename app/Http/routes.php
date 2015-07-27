@@ -26,6 +26,8 @@ Route::get('login', function() {
 
 Route::get('products/all-products', 'ProductController@allproducts');
 Route::get('search', 'ProductController@search');
+Route::get('products/sub-categories', 'ProductController@subcats');
+Route::get('products/post-sub-cats', 'ProductController@postsubcats');
 
 Route::get('cart', function() {
 	return view('pages.cart');
