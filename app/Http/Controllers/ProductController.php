@@ -10,7 +10,31 @@ use Illuminate\Http\Request;
 class ProductController extends Controller {
 
 
-	public function postsubcats(Request $request)
+	public function createPostSubCat(Request $request)
+	{
+		DB::table('post_sub_cats')->insert(
+			['name' => $request->get('name'), 'sub_category_id' => $request->get('sub_category')]
+		);
+		return redirect()->back();
+	}
+
+	public function createSubCat(Request $request)
+	{
+		DB::table('sub_categories')->insert(
+			['name' => $request->get('name'), 'category_id' => $request->get('category')]
+		);
+		return redirect()->back();
+	}
+
+	public function createCat(Request $request)
+	{
+		DB::table('categories')->insert(
+			['name' => $request->get('name')]
+		);
+		return redirect()->back();
+	}
+
+	public function postSubCats(Request $request)
 	{
 		$subcategory = $request->get('sub_category');
 		$data = DB::table('post_sub_cats')->where('sub_category_id', $subcategory)->lists('name');
@@ -19,7 +43,7 @@ class ProductController extends Controller {
 		return response()->json($data);
 	}
 
-	public function subcats(Request $request)
+	public function subCats(Request $request)
 	{
 		$category = $request->get('category');
 		$data = DB::table('sub_categories')->where('category_id', $category)->lists('name');
@@ -28,7 +52,7 @@ class ProductController extends Controller {
 		return response()->json($data);
 	}
 
-	public function allproducts()
+	public function allProducts()
 	{
 		return response()->json(Product::all()->lists('name'));
 	}

@@ -24,10 +24,14 @@ Route::get('login', function() {
 	return view('pages.login');
 });
 
-Route::get('products/all-products', 'ProductController@allproducts');
+Route::get('products/all-products', 'ProductController@allProducts');
 Route::get('search', 'ProductController@search');
-Route::get('products/sub-categories', 'ProductController@subcats');
-Route::get('products/post-sub-cats', 'ProductController@postsubcats');
+// these route functions are temporarily placed in ProductController
+Route::get('category/sub-categories', 'ProductController@subCats');
+Route::get('category/post-sub-cats', 'ProductController@postSubCats');
+Route::post('category', ['uses' => 'ProductController@createCat', 'as' => 'category.store']);
+Route::post('sub-category', ['uses' => 'ProductController@createSubCat', 'as' => 'subcat.store']);
+Route::post('post-sub-cat', ['uses' => 'ProductController@createPostSubCat', 'as' => 'postsubcat.store']);
 
 Route::get('cart', function() {
 	return view('pages.cart');

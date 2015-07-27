@@ -205,7 +205,7 @@ jQuery(document).ready(function() {
 	
 	$("#category").change(function() {
 		var category_id = $(this).val();
-		$.get('/products/sub-categories', {category : category_id}).success(function(response) {
+		$.get('/category/sub-categories', {category : category_id}).success(function(response) {
 			var select = $("#sub_category");
 			select.empty();
 			$.each(response, function(key, value) {
@@ -216,7 +216,7 @@ jQuery(document).ready(function() {
 	
 	$("#sub_category").change(function() {
 		var category_id = $(this).val();
-		$.get('/products/post-sub-cats', {sub_category : category_id}).success(function(response) {
+		$.get('/category/post-sub-cats', {sub_category : category_id}).success(function(response) {
 			var select = $("#post_sub_cat");
 			select.empty();
 			$.each(response, function(key, value) {

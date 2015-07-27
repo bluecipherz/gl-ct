@@ -76,6 +76,13 @@ class AdminController extends Controller {
 				$cats = Category::all()->lists('name');
 				$subcats = DB::table('sub_categories')->lists('name');
 				$postsubcats = DB::table('post_sub_cats')->lists('name');
+				
+				array_unshift($subcats, null);
+				unset($subcats[0]);
+				
+				array_unshift($postsubcats, null);
+				unset($postsubcats[0]);
+				
 				return view('admin.main')
 						->with('currentPage', $page)
 						->with('cats', $cats)
