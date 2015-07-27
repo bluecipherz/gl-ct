@@ -1,6 +1,10 @@
 .adm-sidebar{
 	display:inline_block;
+	position:fixed;
 	float:left;
+	top:80px;
+	left:0px;
+	bottom:0px;
 	width:200px;
 	background:#384047;
 	min-height:300px;
@@ -9,15 +13,16 @@
 	display:inline_block;
 	float:right;
 	width:200px;
-	min-height:500px;
+	min-height:400px;
 	background:#d7d6db;
 }
 .adm-cont{
 	display:inline_block;
 	float:left;
 	width:calc( 100% - 400px );
-	min-height:300px;
-	background:#fff;
+	margin-left:200px;
+	min-height:600px;
+	padding-top:20px;
 }
 
 /*Boxes*/
@@ -75,6 +80,15 @@
 	margin:15px 0px 15px 10px;
 	width:40px;
 }
+.cust-adm-s-btn:focus{
+	background:#8a6798;
+	border:none;
+	outline:none;
+}
+.cust-adm-s-btn:active{
+	border:none;
+	outline:none;
+}
 
 .cust-adm-search-f{
 	border:none;
@@ -131,9 +145,21 @@
 	outline:none;
 	color:#cdc1d1;
 	height:35px;
-	padding:7px 0 0 20px;
+	padding:0;
 	
 }
 .cust-list-group > li > a{
+	display:block;
+	float:left;
 	color:#cdc1d1;
+	width:100%;
+	height:100%;
+	padding:7px 0 0 20px;
+}
+.cust-list-group > li > a:hover{
+	background:#5a5065;	
+}
+
+.cust-list-group > li > .adm-act{
+	background:#60536e;	
 }
