@@ -1,0 +1,165 @@
+.adm-sidebar{
+	display:inline_block;
+	position:fixed;
+	float:left;
+	top:80px;
+	left:0px;
+	bottom:0px;
+	width:200px;
+	background:#384047;
+	min-height:300px;
+}
+.adm-sidebar-r{
+	display:inline_block;
+	float:right;
+	width:200px;
+	min-height:400px;
+	background:#d7d6db;
+}
+.adm-cont{
+	display:inline_block;
+	float:left;
+	width:calc( 100% - 400px );
+	margin-left:200px;
+	min-height:600px;
+	padding-top:20px;
+}
+
+/*Boxes*/
+
+.adm-container {
+    content: " ";
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .adm-container {
+        width: 750px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .adm-container {
+        width: 970px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .adm-container {
+        width: 1170px;
+        width: 100%;
+    }
+}
+
+
+/*Boxes ends*/
+
+.cust-input-group{
+	display:inline_block;
+	width:200px;
+	height:60px;
+	float:left;
+	background:#50575d;
+	font-family:Dosis;
+	font-weight:300;
+}
+
+.cust-adm-s-btn{
+	border:none;
+	outline:none;
+	border-radius:none;
+	background:#8a6798;
+	height:30px;
+	margin:15px 0px 15px 10px;
+	width:40px;
+}
+.cust-adm-s-btn:focus{
+	background:#8a6798;
+	border:none;
+	outline:none;
+}
+.cust-adm-s-btn:active{
+	border:none;
+	outline:none;
+}
+
+.cust-adm-search-f{
+	border:none;
+	outline:none;
+	border-radius:none;
+	background:#474d53;
+	height:30px;
+	max-width:140px;
+	margin:15px 10px 15px 0px;
+	color:#cdc1d1;
+}
+.cust-adm-search-f:focus{
+	border:none;
+	outline:none;
+	border-radius:none;
+	background:#000;
+	box-shadow:none;
+}
+
+.adm-path-panel{
+	display:inline_block;
+	float:left;
+	font-family:Dosis;
+	font-weight:600;
+	color:#483450;
+	font-size:200%;
+	padding:10px 0px 0px 40px;
+}
+
+.adm-NavTop{
+	background:#384047;
+	height:20px;
+	width:100%;
+}
+
+.adm-NavBottom{
+	background:#8a6798;
+	height:60px;
+	width:100%;
+}
+.cust-list-group{
+	float:left;
+	background:#384047;
+	font-family:Dosis;
+	font-weight:300;
+}
+
+.cust-list-group > li{
+	float:left;
+	background:#424551;
+	width:200px;
+	margin:0 0 4px 0;
+	border:none;
+	outline:none;
+	color:#cdc1d1;
+	height:35px;
+	padding:0;
+	
+}
+.cust-list-group > li > a{
+	display:block;
+	float:left;
+	color:#cdc1d1;
+	width:100%;
+	height:100%;
+	padding:7px 0 0 20px;
+}
+.cust-list-group > li > a:hover{
+	background:#5a5065;	
+}
+
+.cust-list-group > li > .adm-act{
+	background:#60536e;	
+}

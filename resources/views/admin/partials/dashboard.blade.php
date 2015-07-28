@@ -1,6 +1,4 @@
 
-		<div class="col-lg-10 col-md-10">
-			<h3 class="h3">Dashboard</h3>
 			<div>
 				<div class="col-lg-6 col-md-6">
 					<div class="panel panel-default">
@@ -43,4 +41,3 @@
 					</div>
 				</div>
 			</div>
-		</div>

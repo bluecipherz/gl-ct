@@ -1,6 +1,4 @@
 
-		<div class="col-lg-10 col-md-10">
-			<h3 class="h3">Products</h3>
 			<div>
 				<div class="col-lg-12 col-md-12">
 					<div class="panel panel-default">
@@ -121,6 +119,4 @@
 						</div>
 					</div>
 				</div>
-				</div>
 			</div>
-		</div>

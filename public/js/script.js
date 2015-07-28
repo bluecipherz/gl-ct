@@ -225,4 +225,11 @@ jQuery(document).ready(function() {
 		});
 	});
 	
+	//ADMIN
+	
+	$(" .cust-list-group > li > a").click(function(){
+		$(".cust-list-group > li > a").removeClass('.adm-act');
+		$(this).addClass('.adm-act');
+	});
+	
 });
