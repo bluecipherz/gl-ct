@@ -2,8 +2,10 @@
 
 use DB;
 use View;
+use App\User;
 use App\Category;
 use App\Product;
+use App\Order;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -11,25 +13,26 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller {
 
+	/**
+	 *	ADMIN ROUTE DEFINITIONS
+	 */
 	protected $pages = [
-		'Dashboard' => ['link' => '/admin/dashboard', 'partial' => 'dashboard'],
-		'Products' => ['link' => '/admin/products', 'partial' => 'products'],
-		'Categories' => ['link' => '/admin/categories', 'partial' => 'categories'],
-		'Ads' => ['link' => '/admin/ads', 'partial' => 'ads'],
-		'Orders' => ['link' => '/admin/orders', 'partial' => 'orders'],
-		'Customers' => ['link' => '/admin/customers', 'partial' => 'customers'],
-		'Price Rules' => ['link' => '/admin/price-rules', 'partial' => 'price_rules'],
-		'Shipping' => ['link' => '/admin/shipping', 'partial' => 'shipping'],
-		'Preferences' => ['link' => '/admin/preferences', 'partial' => 'preferences'],
-		'Administration' => ['link' => '/admin/administration', 'partial' => 'administration'],
-		'Statistics' => ['link' => '/admin/statistics', 'partial' => 'statistics'],
+		'dashboard' => ['name' => 'Dashboard', 'partial' => 'dashboard'],
+		'products' => ['name' => 'Products', 'partial' => 'products'],
+		'categories' => ['name' => 'Categories', 'partial' => 'categories'],
+		'ads' => ['name' => 'Ads', 'partial' => 'ads'],
+		'orders' => ['name' => 'Orders', 'partial' => 'orders'],
+		'transactions' => ['name' => 'Transactions', 'partial' => 'transactions'],
+		'customers' => ['name' => 'Customers', 'partial' => 'customers'],
+		'price-rules' => ['name' => 'Price Rules', 'partial' => 'price_rules'],
+		'shipping' => ['name' => 'Shipping', 'partial' => 'shipping'],
+		'preferences' => ['name' => 'Preferences', 'partial' => 'preferences'],
+		'administration' => ['name' => 'Administration', 'partial' => 'administration'],
+		'statistics' => ['name' => 'Statistics', 'partial' => 'statistics'],
 	];
-	
-	protected $currentPage = 'dashboard'; // default
 
 	public function __construct() {
 		View::share('pages', $this->pages);
-		View::share('currentPage', $this->currentPage);
 	}
 
 	/**
@@ -37,32 +40,61 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function recieve($page)
+	public function recieve($page = null)
 	{
-		$pageKey = ucfirst($page); // first letter caps
-		if(array_key_exists($pageKey, $this->pages)) {
-			if($page == 'products') {
-				$products = Product::all();
+		// reroute to dashboard if $page is null
+		if($page == null) {
+			return redirect('/admin/dashboard');
+		}
+		// check if page exists in $pages array
+		if(array_key_exists($page, $this->pages)) {
+			/**
+			 * ADMIN ROUTES
+			 */
+            if ($page == 'price-rules') {
+                $price_rules = DB::table('pricing_rules')->get();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('price_rules', $price_rules);
+            } else if ($page == 'customers') {
+                $users = User::all();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('customers', $users);
+            } else if ($page == 'orders') {
+                $orders = Order::all();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('orders', $orders);
+            } else if ($page == 'ads') {
+                $products = Product::all()->where('reseller', 1);
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('products', $products);
+            } else if($page == 'products') {
+				// retrieve all products, categories, sub-categories and post-sub-categories
+				$products = Product::all()->where('reseller', 0);
 				$_cats = Category::all();
-				$_subcats = DB::table('sub_categories')->where('category_id', $_cats->first()->id);
-				$_postsubcats = DB::table('post_sub_cats')->where('sub_category_id', $_subcats->first()->id);
-				
-				$cats = $_cats->lists('name');
-				$subcats = $_subcats->lists('name');
-				$postsubcats = $_postsubcats->lists('name');
+				$_subcats = DB::table('sub_categories')->get();
+				$_postsubcats = DB::table('post_sub_cats')->get();
 				
 				/*
 				 * SHIFT EACH KEY OF EACH ARRAY BY ONE (ADD 1)
 				 */
 				
-				array_unshift($cats, null);
-				unset($cats[0]);
+				$cats = [];
+				$subcats = [];
+				$postsubcats = [];
 				
-				array_unshift($subcats, null);
-				unset($subcats[0]);
-				
-				array_unshift($postsubcats, null);
-				unset($postsubcats[0]);
+				foreach($_cats as $cat) {
+					$cats[$cat->id] = $cat->name;
+				}
+				foreach($_subcats as $cat) {
+					$subcats[$cat->id] = $cat->name;
+				}
+				foreach($_postsubcats as $cat) {
+					$postsubcats[$cat->id] = $cat->name;
+				}
 				
 				/* END SHIFT */
 				
@@ -74,14 +106,19 @@ class AdminController extends Controller {
 						->with('postsubcats', $postsubcats);
 			} else if($page == 'categories') {
 				$cats = Category::all()->lists('name');
-				$subcats = DB::table('sub_categories')->lists('name');
-				$postsubcats = DB::table('post_sub_cats')->lists('name');
+				$_subcats = DB::table('sub_categories')->get();
+				$_postsubcats = DB::table('post_sub_cats')->get();
 				
-				array_unshift($subcats, null);
-				unset($subcats[0]);
+				$subcats = [];
+				$postsubcats = [];
 				
-				array_unshift($postsubcats, null);
-				unset($postsubcats[0]);
+				foreach($_subcats as $cat) {
+					$subcats[$cat->id] = $cat->name;
+				}
+				foreach($_postsubcats as $cat) {
+					$postsubcats[$cat->id] = $cat->name;
+				}
+				
 				
 				return view('admin.main')
 						->with('currentPage', $page)

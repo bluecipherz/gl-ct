@@ -106,6 +106,7 @@ class ProductController extends Controller {
 		// $values['category_id'] = $request->get('category');
 		// $values['sub_category_id'] = $request->get('sub_category');
 		$values['post_sub_cat_id'] = $request->get('post_sub_cat');
+		$values['reseller'] = false;
 		Product::create($values);
 		return redirect()->back()->with('message', 'Created');
 	}

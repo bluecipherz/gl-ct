@@ -45,13 +45,9 @@ Route::get('adpost', function() {
 	return view('pages.adpost');
 });
 
-Route::get('admin', function() {
-	return 'ok';
-});
-
 Route::resource('products', 'ProductController');
 
-Route::get('admin/{page}', 'AdminController@recieve');
+Route::get('admin/{page?}', 'AdminController@recieve');
 
 Route::get('test', function() {
 	return view('pages.test');

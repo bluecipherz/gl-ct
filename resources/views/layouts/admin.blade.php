@@ -36,7 +36,7 @@
 				<input type="text" class="form-control cust-adm-search-f" placeholder="Search">
 			</div>
 			<div class="adm-path-panel">
-				Admin panel > @yield('path')
+				Admin Panel / @yield('path')
 			</div>
 		</div>
 	</nav>

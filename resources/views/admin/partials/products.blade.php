@@ -18,7 +18,7 @@
 									<td>{{ $product->brand }}</td>
 									<td>{{ $product->cost }}</td>
 								</tr>
-								@empty>
+								@empty
 								<tr>
 									<td colspan="3">No products</td>
 								</tr>
