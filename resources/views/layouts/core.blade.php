@@ -33,27 +33,27 @@
 		<div class="NavBottom" >
 			<div class="boxx" >
 				<div class="logoBarOuter b-untouchable">
-					GLOBEX<span>CART</span>
+					<a href="{{ url('/home') }}">GLOBEX<span>CART</span></a>
 				</div>
 				<div class="searchBarOuter" >
 					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
 				</div>
 				<div class="userBarOuter pull-right b-untouchable">
 					<div class="userBtn">
-						<img src="img/nav/help.png">
+						<img src="{{ asset('img/nav/help.png') }}">
 						<div>Help</div>
 					</div>
 					<div class="userBtn acctBtn">
-						<img src="img/nav/account.png">
+						<img src="{{ asset('img/nav/account.png') }}">
 						<div>Account</div>
 					</div>
 					<div class="userBtn">
-						<img src="img/nav/cart.png">
+						<img src="{{ asset('img/nav/cart.png') }}">
 						<span class="cartCount">12</span>
 						<div>Cart</div>
 					</div>
 					<div class="userBtn">
-						<img src="img/nav/more.png">
+						<img src="{{ asset('img/nav/more.png') }}">
 						<div>More</div>
 					</div>
 				</div>
