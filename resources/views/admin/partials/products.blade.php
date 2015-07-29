@@ -18,7 +18,7 @@
 									<td>{{ $product->brand }}</td>
 									<td>{{ $product->cost }}</td>
 								</tr>
-								@empty>
+								@empty
 								<tr>
 									<td colspan="3">No products</td>
 								</tr>
@@ -37,19 +37,19 @@
 								<div class="form-group">
 									{!! Form::label('name', 'Name', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
 									<div class="col-lg-6 col-md-6">	
-									{!! Form::text('name', null, ['class' => 'form-control']) !!}
+									{!! Form::text('name', null, ['class' => 'form-control', 'required' => 'true']) !!}
 									</div>
 								</div>
 								<div class="form-group">
 									{!! Form::label('brand', 'Brand', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
 									<div class="col-lg-6 col-md-6">
-									{!! Form::text('brand', null, ['class' => 'form-control']) !!}
+									{!! Form::text('brand', null, ['class' => 'form-control', 'required' => 'true']) !!}
 									</div>
 								</div>
 								<div class="form-group">
 									{!! Form::label('cost', 'Cost', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
 									<div class="col-lg-6 col-md-6">
-									{!! Form::text('cost', null, ['class' => 'form-control']) !!}
+									{!! Form::text('cost', null, ['class' => 'form-control', 'required' => 'true']) !!}
 									</div>
 								</div>
 								<div class="form-group">

@@ -1,24 +1,23 @@
+
 <div class="col-md-12 col-lg-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Administrators
+			Latest Transactions
 		</div>
 		<div class="panel-body">
 			<table class="table">
 				<tr>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Active</th>
+					<th>Order</th>
+					<th>Amount</th>
 				</tr>
-				@forelse($admins as $admin)
+				@forelse($transactions as $transaction)
 				<tr>
-					<td>{{ $admin->name }}</td>
-					<td>{{ $admin->email }}</td>
-					<td>{{ $admin->active }}</td>
+					<td>{{ $transaction->order_id }}</td>
+					<td>{{ $transaction->amount }}</td>
 				</tr>
 				@empty
 				<tr>
-					<td colspan="3">No admins</td>
+					<td colspan="2">No Transactions</td>
 				</tr>
 				@endforelse
 			</table>

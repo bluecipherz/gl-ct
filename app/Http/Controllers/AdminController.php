@@ -2,8 +2,11 @@
 
 use DB;
 use View;
+use App\User;
+use App\Admin;
 use App\Category;
 use App\Product;
+use App\Order;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -15,17 +18,18 @@ class AdminController extends Controller {
 	 *	ADMIN ROUTE DEFINITIONS
 	 */
 	protected $pages = [
-		'Dashboard' => ['link' => '/admin/dashboard', 'partial' => 'dashboard'],
-		'Products' => ['link' => '/admin/products', 'partial' => 'products'],
-		'Categories' => ['link' => '/admin/categories', 'partial' => 'categories'],
-		'Ads' => ['link' => '/admin/ads', 'partial' => 'ads'],
-		'Orders' => ['link' => '/admin/orders', 'partial' => 'orders'],
-		'Customers' => ['link' => '/admin/customers', 'partial' => 'customers'],
-		'Price Rules' => ['link' => '/admin/price-rules', 'partial' => 'price_rules'],
-		'Shipping' => ['link' => '/admin/shipping', 'partial' => 'shipping'],
-		'Preferences' => ['link' => '/admin/preferences', 'partial' => 'preferences'],
-		'Administration' => ['link' => '/admin/administration', 'partial' => 'administration'],
-		'Statistics' => ['link' => '/admin/statistics', 'partial' => 'statistics'],
+		'dashboard' => ['name' => 'Dashboard', 'partial' => 'dashboard'],
+		'products' => ['name' => 'Products', 'partial' => 'products'],
+		'categories' => ['name' => 'Categories', 'partial' => 'categories'],
+		'ads' => ['name' => 'Ads', 'partial' => 'ads'],
+		'orders' => ['name' => 'Orders', 'partial' => 'orders'],
+		'transactions' => ['name' => 'Transactions', 'partial' => 'transactions'],
+		'customers' => ['name' => 'Customers', 'partial' => 'customers'],
+		'price-rules' => ['name' => 'Price Rules', 'partial' => 'price_rules'],
+		'shipping' => ['name' => 'Shipping', 'partial' => 'shipping'],
+		'preferences' => ['name' => 'Preferences', 'partial' => 'preferences'],
+		'administration' => ['name' => 'Administration', 'partial' => 'administration'],
+		'statistics' => ['name' => 'Statistics', 'partial' => 'statistics'],
 	];
 
 	public function __construct() {
@@ -43,13 +47,55 @@ class AdminController extends Controller {
 		if($page == null) {
 			return redirect('/admin/dashboard');
 		}
-		$pageKey = ucfirst($page); // first letter caps
 		// check if page exists in $pages array
-		if(array_key_exists($pageKey, $this->pages)) {
+		if(array_key_exists($page, $this->pages)) {
 			/**
 			 * ADMIN ROUTES
 			 */
-			if($page == 'products') {
+            if ($page == 'administration') {
+                $admins = Admin::all();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('admins', $admins);
+					
+            } else if ($page == 'transactions') {
+                $transactions = DB::table('transactions')->get();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('transactions', $transactions);
+					
+            } else if ($page == 'shipping') {
+                $shippers = DB::table('shippers')->get();
+                $shipments = DB::table('shipments')->get();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('shippers', $shippers)
+                    ->with('shipments', $shipments);
+            } else if ($page == 'price-rules') {
+                $price_rules = DB::table('pricing_rules')->get();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('price_rules', $price_rules);
+					
+            } else if ($page == 'customers') {
+                $users = User::all();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('customers', $users);
+					
+            } else if ($page == 'orders') {
+                $orders = Order::all();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('orders', $orders);
+					
+            } else if ($page == 'ads') {
+                $products = Product::all()->where('reseller', 1);
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('products', $products);
+					
+            } else if($page == 'products') {
 				// retrieve all products, categories, sub-categories and post-sub-categories
 				$products = Product::all()->where('reseller', 0);
 				$_cats = Category::all();
@@ -82,6 +128,7 @@ class AdminController extends Controller {
 						->with('cats', $cats)
 						->with('subcats', $subcats)
 						->with('postsubcats', $postsubcats);
+						
 			} else if($page == 'categories') {
 				$cats = Category::all()->lists('name');
 				$_subcats = DB::table('sub_categories')->get();

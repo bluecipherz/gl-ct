@@ -35,6 +35,7 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->integer('percent');
+            $table->integer('duration');
 			$table->timestamps();
 		});
 		Schema::create('products', function(Blueprint $table)
@@ -48,10 +49,45 @@ class CreateProductsTable extends Migration {
 			$table->integer('post_sub_cat_id')->unsigned();
 			$table->foreign('post_sub_cat_id')->references('id')->on('post_sub_cats')->onDelete('cascade');
 			$table->boolean('reseller')->default(false);
-			$table->integer('pricing_rule_id')->unsigned();
+			$table->integer('pricing_rule_id')->unsigned()->nullable();
 			$table->foreign('pricing_rule_id')->references('id')->on('pricing_rules')->onDelete('cascade');
 			$table->timestamps();
 		});
+        Schema::create('orders', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('qty')->default(1);
+            $table->timestamps();
+        });
+        Schema::create('shippers', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('cost');
+            $table->timestamps();
+        });
+        Schema::create('shipments', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->integer('shipper_id')->unsigned();
+            $table->foreign('shipper_id')->references('id')->on('shippers')->onDelete('cascade');
+            $table->integer('status');
+            $table->timestamps();
+        });
+        Schema::create('transactions', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+			$table->integer('amount');
+            $table->timestamps();
+        });
 	}
 
 	/**
@@ -61,7 +97,11 @@ class CreateProductsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('products');
+        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('shipments');
+        Schema::dropIfExists('shippers');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('products');
 		Schema::dropIfExists('pricing_rules');
 		Schema::dropIfExists('post_sub_cats');
 		Schema::dropIfExists('sub_categories');

@@ -15,10 +15,14 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+// Route::controllers([
+	// 'auth' => 'Auth\AuthController',
+	// 'password' => 'Auth\PasswordController',
+// ]);
+
+Route::post('/auth/register', 'AuthController@registerUser');
+Route::post('/auth/login', 'AuthController@loginUser');
+Route::get('/auth/logout', 'AuthController@logoutUser');
 
 Route::get('login', function() {
 	return view('pages.login');

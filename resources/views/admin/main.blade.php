@@ -11,7 +11,7 @@
 		<div class="adm-sidebar">
 			<ul class="list-group cust-list-group">
 				@foreach($pages as $page => $pageDetails)
-				<li class="list-group-item"><a href="{{ $pageDetails['link'] }}">{{ $page }}</a></li>
+				<li class="list-group-item"><a href="{{ '/admin/' . $page }}">{{ $pageDetails['name'] }}</a></li>
 				@endforeach
 			</ul>
 		</div>
@@ -19,8 +19,8 @@
 		
 		</div>
 		<div class="adm-cont" >
-			@include('admin/partials/' . $currentPage)
-			@section('path', '' . $currentPage )
+			@include('admin/partials/' . $pages[$currentPage]['partial'])
+			@section('path', '' . $pages[$currentPage]['name'] )
 		</div>
 		
 	</div>

@@ -36,7 +36,7 @@
 				<input type="text" class="form-control cust-adm-search-f" placeholder="Search">
 			</div>
 			<div class="adm-path-panel">
-				Admin panel > @yield('path')
+				Admin Panel / @yield('path')
 			</div>
 		</div>
 	</nav>
@@ -51,7 +51,6 @@
 	<script src="{{ asset('/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
-	<script src="{{ asset('/js/app.js') }}"></script>
 	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
 	<script src="{{ asset('/js/script.js') }}"></script>
 	

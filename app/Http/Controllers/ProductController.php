@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class ProductController extends Controller {
 
 
+	public function placeOrder(Product $product, $qty) {
+		$product->stock = $product->stock - 1;
+		Order::create()
+	}
+
 	public function createPostSubCat(Request $request)
 	{
 		DB::table('post_sub_cats')->insert(
