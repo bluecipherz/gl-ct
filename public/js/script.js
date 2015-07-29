@@ -1,12 +1,24 @@
 jQuery(document).ready(function() {
-	$(".catList > div").hover(function(){
-		$(this).find(".catCont").css({"display":"block"});
-		$(this).css({"border-right":"none"});
-	},
-	function(){
-		$(".catList > div").find(".catCont").css({"display":"none"});
-		$(".catList > div").css({"border-right":"1px solid rgba(0,0,0,0.1)"});
-	}
+
+	/*
+	 * Configure all ajax requests to use CSRF token
+	 * This applies to all pages.
+	 */
+	$.ajaxSetup({
+		headers : {
+			'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+	
+	$(".catList > div").hover(
+		function(){
+			$(this).find(".catCont").css({"display":"block"});
+			$(this).css({"border-right":"none"});
+		},
+		function(){
+			$(".catList > div").find(".catCont").css({"display":"none"});
+			$(".catList > div").css({"border-right":"1px solid rgba(0,0,0,0.1)"});
+		}
 	);
 	
 	$('.adhead-timer').countdown({
@@ -20,7 +32,6 @@ jQuery(document).ready(function() {
 	var WizTabN = "";
 	var tabID = "";
 	var parent = "";
-	var login = false;
 	var tab1Sec = 1;
 	
 	
@@ -35,7 +46,9 @@ jQuery(document).ready(function() {
 	
 	
 	$(".acctBtn").click(function(){
-		if(!login && $pageName != "login"){
+        console.log('clicked' + login);
+		if($pageName != "login"){
+            console.log('clicked2');
 			$(".mainReg").css({"display":"block"});
 			$("body").css("overflow", "hidden");
 			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
@@ -43,10 +56,14 @@ jQuery(document).ready(function() {
 	});
 	
 	$(".overlay-backbtn").click(function(){
-		$(".mainReg").css({"opacity":"0"}); 
-		$("body").css("overflow", "auto");
-		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 500); 
+		hideOverlay();
 	});
+	
+	function hideOverlay() {
+		$(".mainReg").css({"opacity":"0"});
+		$("body").css("overflow", "auto");
+		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 500);
+	}
 	
 	$(".loginMBLbtn").click(function(){
 		console.log("heelll");
@@ -196,13 +213,19 @@ jQuery(document).ready(function() {
 	});
 	
 	// END HISTORY API
-	
-	$.get('/products/all-products').success(function(response) {
-		$("#search_q").autocomplete({
-			source : response
-		});
-	});
-	
+
+
+
+    if(window.location.pathname.startsWith('/admin')) {
+
+        $.get('/products/all-products').success(function(response) {
+            $("#search_q").autocomplete({
+                source : response
+            });
+        });
+
+    }
+
 	$("#category").change(function() {
 		var category_id = $(this).val();
 		$.get('/category/sub-categories', {category : category_id}).success(function(response) {
@@ -230,6 +253,49 @@ jQuery(document).ready(function() {
 	$(" .cust-list-group > li > a").click(function(){
 		$(".cust-list-group > li > a").removeClass('.adm-act');
 		$(this).addClass('.adm-act');
+	});
+	
+	$("#auth-register-btn").click(function(e) {
+		var email = $("#auth-register-email").val();
+		var pass = $("#auth-register-pass").val();
+		var passAgain = $("#auth-register-pass-again").val();
+		
+		if(email == '' || pass == '' || pass != passAgain) {
+			alert('Somethings wrong');
+		} else {
+			$.post('/auth/register', {email:email, password:pass, password_confirmation:passAgain})
+				.success(function(response) {
+					console.log('success : ' + response.responseText);
+					hideOverlay();
+					$('.login-box')
+						.html(response);
+				})
+				.fail(function(response) {
+					console.log('fail : ' + response.responseText);
+				});
+		}
+	});
+	
+	$("#auth-login-btn").click(function(e) {
+		var email = $("#auth-login-email").val();
+		var pass = $("#auth-login-pass").val();
+		
+		if(email == '' || pass == '') {
+			alert('Login incorrect');
+		} else {
+			$.post('/auth/login', {email:email, password:pass})
+				.success(function(response) {
+					console.log('success : ' + response);
+					hideOverlay();
+					//$('.loginMB').hide();
+					//$('.regMB').hide();
+					$('.login-box')
+						.html(response);
+				})
+				.fail(function(response) {
+					console.log('fail : ' + response.responseText);
+				});
+		}
 	});
 	
 });

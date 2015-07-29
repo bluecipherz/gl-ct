@@ -15,10 +15,14 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+// Route::controllers([
+	// 'auth' => 'Auth\AuthController',
+	// 'password' => 'Auth\PasswordController',
+// ]);
+
+Route::post('/auth/register', 'AuthController@registerUser');
+Route::post('/auth/login', 'AuthController@loginUser');
+Route::get('/auth/logout', 'AuthController@logoutUser');
 
 Route::get('login', function() {
 	return view('pages.login');
@@ -50,6 +54,8 @@ Route::resource('products', 'ProductController');
 Route::get('admin/{page?}', 'AdminController@recieve');
 
 Route::get('test', function() {
-	return view('pages.test');
+//	return view('pages.test');
+    $response = new Response('asd', 422);
+    throw new App\Exceptions\LoginException($response);
 });
 

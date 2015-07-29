@@ -80,6 +80,14 @@ class CreateProductsTable extends Migration {
             $table->integer('status');
             $table->timestamps();
         });
+        Schema::create('transactions', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+			$table->integer('amount');
+            $table->timestamps();
+        });
 	}
 
 	/**
@@ -89,6 +97,7 @@ class CreateProductsTable extends Migration {
 	 */
 	public function down()
 	{
+        Schema::dropIfExists('transactions');
         Schema::dropIfExists('shipments');
         Schema::dropIfExists('shippers');
         Schema::dropIfExists('orders');

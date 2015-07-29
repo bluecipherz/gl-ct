@@ -3,6 +3,7 @@
 use DB;
 use View;
 use App\User;
+use App\Admin;
 use App\Category;
 use App\Product;
 use App\Order;
@@ -33,6 +34,8 @@ class AdminController extends Controller {
 
 	public function __construct() {
 		View::share('pages', $this->pages);
+
+       // $this->middleware('admin');
 	}
 
 	/**
@@ -51,26 +54,49 @@ class AdminController extends Controller {
 			/**
 			 * ADMIN ROUTES
 			 */
-            if ($page == 'price-rules') {
+            if ($page == 'administration') {
+                $admins = Admin::all();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('admins', $admins);
+					
+            } else if ($page == 'transactions') {
+                $transactions = DB::table('transactions')->get();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('transactions', $transactions);
+					
+            } else if ($page == 'shipping') {
+                $shippers = DB::table('shippers')->get();
+                $shipments = DB::table('shipments')->get();
+                return view('admin.main')
+                    ->with('currentPage', $page)
+                    ->with('shippers', $shippers)
+                    ->with('shipments', $shipments);
+            } else if ($page == 'price-rules') {
                 $price_rules = DB::table('pricing_rules')->get();
                 return view('admin.main')
                     ->with('currentPage', $page)
                     ->with('price_rules', $price_rules);
+					
             } else if ($page == 'customers') {
                 $users = User::all();
                 return view('admin.main')
                     ->with('currentPage', $page)
                     ->with('customers', $users);
+					
             } else if ($page == 'orders') {
                 $orders = Order::all();
                 return view('admin.main')
                     ->with('currentPage', $page)
                     ->with('orders', $orders);
+					
             } else if ($page == 'ads') {
                 $products = Product::all()->where('reseller', 1);
                 return view('admin.main')
                     ->with('currentPage', $page)
                     ->with('products', $products);
+					
             } else if($page == 'products') {
 				// retrieve all products, categories, sub-categories and post-sub-categories
 				$products = Product::all()->where('reseller', 0);
@@ -104,6 +130,7 @@ class AdminController extends Controller {
 						->with('cats', $cats)
 						->with('subcats', $subcats)
 						->with('postsubcats', $postsubcats);
+						
 			} else if($page == 'categories') {
 				$cats = Category::all()->lists('name');
 				$_subcats = DB::table('sub_categories')->get();

@@ -2,6 +2,8 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use App\Exceptions\LoginException;
 
 class Handler extends ExceptionHandler {
 
@@ -36,6 +38,9 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+        if($e instanceof LoginException) {
+            return $e->getResponse();
+        }
 		return parent::render($request, $e);
 	}
 
