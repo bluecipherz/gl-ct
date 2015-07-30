@@ -34,6 +34,8 @@ class AdminController extends Controller {
 
 	public function __construct() {
 		View::share('pages', $this->pages);
+
+       // $this->middleware('admin');
 	}
 
 	/**

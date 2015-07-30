@@ -5,6 +5,7 @@ use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Exceptions\LoginException;
 
 use Illuminate\Http\Request;
 
@@ -25,6 +26,10 @@ class AuthController extends Controller {
 		'password' => 'required'
 	];
 
+    public function __construct() {
+		
+    }
+	
 	public function registerUser(Request $request) {
 		$validator =  Validator::make($request->all(), $this->user_register_rules);
 		if($validator->fails()) {
@@ -46,13 +51,20 @@ class AuthController extends Controller {
 	public function loginUser(Request $request) {
 		$credentials = [
 			'email' => $request->get('email'),
-			'password' => $request->get('password')
+			'password' => $request->get('password'),
+            'active' => true
 		];
 		if(Auth::attempt($credentials)) {
 			// return redirect()->intended('/home');
 			return view('auth.partials.logged');
-		}
+		} else {
+            throw new LoginException(response('Login incorrect', 422));
+        }
 	}
+
+    public function loginAdmin(Request $request) {
+
+    }
 	
 	public function logoutUser() {
 		Auth::logout();

@@ -46,7 +46,9 @@ jQuery(document).ready(function() {
 	
 	
 	$(".acctBtn").click(function(){
-		if(!login && $pageName != "login"){
+        console.log('clicked' + login);
+		if($pageName != "login"){
+            console.log('clicked2');
 			$(".mainReg").css({"display":"block"});
 			$("body").css("overflow", "hidden");
 			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
@@ -211,13 +213,19 @@ jQuery(document).ready(function() {
 	});
 	
 	// END HISTORY API
-	
-	$.get('/products/all-products').success(function(response) {
-		$("#search_q").autocomplete({
-			source : response
-		});
-	});
-	
+
+
+
+    if(window.location.pathname.startsWith('/admin')) {
+
+        $.get('/products/all-products').success(function(response) {
+            $("#search_q").autocomplete({
+                source : response
+            });
+        });
+
+    }
+
 	$("#category").change(function() {
 		var category_id = $(this).val();
 		$.get('/category/sub-categories', {category : category_id}).success(function(response) {

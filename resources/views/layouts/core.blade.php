@@ -15,7 +15,11 @@
 	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
 	
 	<script>
-		var login = {{ Auth::check() }};
+        @if(Auth::check())
+            {{ 'var login = true;' }}
+        @else
+            {{ 'var login = false;' }}
+        @endif
 	</script>
 
 	<!-- Fonts 

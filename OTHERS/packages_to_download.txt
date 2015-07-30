@@ -1,0 +1,5 @@
+kalnoy/nestedset
+sboo/multiauth
+dompdf/dompdf
+stripe/stripe-php
+fzaninotto/faker

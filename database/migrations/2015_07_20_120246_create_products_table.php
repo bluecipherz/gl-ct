@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 		Schema::create('sub_categories', function(BluePrint $table) {
 			$table->increments('id');
@@ -23,6 +24,7 @@ class CreateProductsTable extends Migration {
 			$table->integer('category_id')->unsigned();
 			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 		Schema::create('post_sub_cats', function(BluePrint $table) {
 			$table->increments('id');
@@ -30,6 +32,7 @@ class CreateProductsTable extends Migration {
 			$table->integer('sub_category_id')->unsigned();
 			$table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 		Schema::create('pricing_rules', function(BluePrint $table) {
 			$table->increments('id');
@@ -37,12 +40,13 @@ class CreateProductsTable extends Migration {
 			$table->integer('percent');
             $table->integer('duration');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 		Schema::create('products', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->integer('cost');
+			$table->integer('price');
 			$table->integer('stock');
 			$table->text('desc');
 			$table->string('brand');
@@ -52,16 +56,25 @@ class CreateProductsTable extends Migration {
 			$table->integer('pricing_rule_id')->unsigned()->nullable();
 			$table->foreign('pricing_rule_id')->references('id')->on('pricing_rules')->onDelete('cascade');
 			$table->timestamps();
+			$table->softDeletes();
 		});
         Schema::create('orders', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->integer('qty')->default(1);
             $table->timestamps();
+			$table->softDeletes();
+        });
+        Schema::create('order_items', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->integer('quantity')->default(1);
+            $table->float('price');
+            $table->timestamps();
+			$table->softDeletes();
         });
         Schema::create('shippers', function(Blueprint $table)
         {
@@ -69,6 +82,7 @@ class CreateProductsTable extends Migration {
             $table->string('name');
             $table->integer('cost');
             $table->timestamps();
+			$table->softDeletes();
         });
         Schema::create('shipments', function(Blueprint $table)
         {
@@ -79,6 +93,7 @@ class CreateProductsTable extends Migration {
             $table->foreign('shipper_id')->references('id')->on('shippers')->onDelete('cascade');
             $table->integer('status');
             $table->timestamps();
+			$table->softDeletes();
         });
         Schema::create('transactions', function(Blueprint $table)
         {
@@ -87,6 +102,7 @@ class CreateProductsTable extends Migration {
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 			$table->integer('amount');
             $table->timestamps();
+			$table->softDeletes();
         });
 	}
 
@@ -100,6 +116,7 @@ class CreateProductsTable extends Migration {
         Schema::dropIfExists('transactions');
         Schema::dropIfExists('shipments');
         Schema::dropIfExists('shippers');
+        Schema::dropIfExists('order_items');
         Schema::dropIfExists('orders');
         Schema::dropIfExists('products');
 		Schema::dropIfExists('pricing_rules');

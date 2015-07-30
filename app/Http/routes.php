@@ -54,6 +54,8 @@ Route::resource('products', 'ProductController');
 Route::get('admin/{page?}', 'AdminController@recieve');
 
 Route::get('test', function() {
-	return view('pages.test');
+//	return view('pages.test');
+    $response = new Response('asd', 422);
+    throw new App\Exceptions\LoginException($response);
 });
 
