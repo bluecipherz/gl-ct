@@ -36,17 +36,33 @@
 				<input type="text" class="form-control cust-adm-search-f" placeholder="Search">
 			</div>
 			<div class="adm-path-panel">
-				Admin Panel / @yield('path')
+				Admin Panel / {{ $pageTitle }}
 			</div>
 		</div>
 	</nav>
 	<div class="mainNav-f ">
 	</div>
-	
 
-	@yield('content')
 
-	<!-- Scripts -->
+    <div class="adm-container">
+        <div class="row">
+            @if(isset($message))
+                <div class="col-lg-12 col-md-12">
+                    <div class="alert alert-danger">{{ $message }}<span class="close"></span></div>
+                </div>
+            @endif
+            @include('admin.sidebar')
+            <div class="adm-sidebar-r">
+
+            </div>
+            <div class="adm-cont" >
+                @yield('content')
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
 	
 	<script src="{{ asset('/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('/js/jquery-ui.js') }}"></script>

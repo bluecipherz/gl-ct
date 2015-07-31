@@ -6,6 +6,8 @@
  * Time: 9:58 AM
  */
 
+use App\Repositories\Criteria\Criteria;
+
 /**
  * Interface CriteriaInterface
  * @package App\Repositories\Contracts

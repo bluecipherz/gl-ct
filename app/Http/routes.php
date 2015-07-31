@@ -51,7 +51,21 @@ Route::get('adpost', function() {
 
 Route::resource('products', 'ProductController');
 
-Route::get('admin/{page?}', 'AdminController@recieve');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('dashboard', 'AdminPanelController@dashboard');
+    Route::get('products', 'AdminPanelController@products');
+    Route::get('categories', 'AdminPanelController@categories');
+    Route::get('advertisements', 'AdminPanelController@advertisements');
+    Route::get('orders', 'AdminPanelController@orders');
+    Route::get('transactions', 'AdminPanelController@transactions');
+    Route::get('customers', 'AdminPanelController@customers');
+    Route::get('price-rules', 'AdminPanelController@priceRules');
+    Route::get('shipping', 'AdminPanelController@shipping');
+    Route::get('preferences', 'AdminPanelController@preferences');
+    Route::get('administration', 'AdminPanelController@administration');
+    Route::get('statistics', 'AdminPanelController@statistics');
+});
+
 
 Route::get('test', function() {
 //	return view('pages.test');

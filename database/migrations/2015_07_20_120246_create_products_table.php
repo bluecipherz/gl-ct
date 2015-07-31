@@ -12,6 +12,44 @@ class CreateProductsTable extends Migration {
 	 */
 	public function up()
 	{
+		Schema::create('customers', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->string('email')->unique();
+			$table->string('password', 60);
+            $table->boolean('active')->default(true);
+			$table->rememberToken();
+			$table->timestamps();
+			$table->softDeletes();
+		});
+		Schema::create('admins', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->string('email')->unique();
+			$table->string('password', 60);
+            $table->boolean('active')->default(true);
+			$table->rememberToken();
+			$table->timestamps();
+			$table->softDeletes();
+		});
+		Schema::create('roles', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->timestamps();
+			$table->softDeletes();
+		});
+		Schema::create('admins_roles', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('admin_id')->unsigned();
+			$table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+			$table->integer('role_id')->unsigned();
+			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+			$table->timestamps();
+		});
 		Schema::create('categories', function(BluePrint $table) {
 			$table->increments('id');
 			$table->string('name');
@@ -34,7 +72,7 @@ class CreateProductsTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 		});
-		Schema::create('pricing_rules', function(BluePrint $table) {
+		Schema::create('price_rules', function(BluePrint $table) {
 			$table->increments('id');
 			$table->string('name');
 			$table->integer('percent');
@@ -61,8 +99,8 @@ class CreateProductsTable extends Migration {
         Schema::create('orders', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
 			$table->softDeletes();
         });
@@ -104,6 +142,16 @@ class CreateProductsTable extends Migration {
             $table->timestamps();
 			$table->softDeletes();
         });
+		Schema::create('advertisements', function(Blueprint $table)
+		{
+			$table->increments('id');
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+			$table->string('name');
+			$table->integer('quantity')->default(1);
+			$table->timestamps();
+			$table->softDeletes();
+		});
 	}
 
 	/**
@@ -113,16 +161,21 @@ class CreateProductsTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::dropIfExists('advertisements');
         Schema::dropIfExists('transactions');
         Schema::dropIfExists('shipments');
         Schema::dropIfExists('shippers');
         Schema::dropIfExists('order_items');
         Schema::dropIfExists('orders');
         Schema::dropIfExists('products');
-		Schema::dropIfExists('pricing_rules');
+		Schema::dropIfExists('price_rules');
 		Schema::dropIfExists('post_sub_cats');
 		Schema::dropIfExists('sub_categories');
 		Schema::dropIfExists('categories');
+		Schema::dropIfExists('admins_roles');
+		Schema::dropIfExists('roles');
+		Schema::dropIfExists('admins');
+		Schema::dropIfExists('customers');
 	}
 
 }

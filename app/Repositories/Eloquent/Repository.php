@@ -10,6 +10,8 @@ use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Exceptions\RepositoryException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
+use App\Repositories\Criteria\Criteria;
+use Illuminate\Support\Collection;
 
 /**
  * Class Repository
@@ -39,6 +41,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
 
     /**
      * @param App $app
+     * @param Collection $criteria
      */
     public function __construct(App $app, Collection $criteria)
     {
@@ -129,9 +132,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
      * @throws RepositoryException
      */
     public function makeModel() {
-        $model = $this->app->make($this->model);
+        $model = $this->app->make($this->model());
 
-        if (!model instanceof Model)
+        if (!$model instanceof Model)
             throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
 
         return $this->model = $model;

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Repositories\AdminRepository;
 use DB;
 use View;
 use App\User;
@@ -25,25 +26,109 @@ class AdminController extends Controller {
 		'orders' => ['name' => 'Orders', 'partial' => 'orders'],
 		'transactions' => ['name' => 'Transactions', 'partial' => 'transactions'],
 		'customers' => ['name' => 'Customers', 'partial' => 'customers'],
-		'price-rules' => ['name' => 'Price Rules', 'partial' => 'price_rules'],
+		'priceRules' => ['name' => 'Price Rules', 'partial' => 'price_rules'],
 		'shipping' => ['name' => 'Shipping', 'partial' => 'shipping'],
 		'preferences' => ['name' => 'Preferences', 'partial' => 'preferences'],
 		'administration' => ['name' => 'Administration', 'partial' => 'administration'],
 		'statistics' => ['name' => 'Statistics', 'partial' => 'statistics'],
 	];
 
-	public function __construct() {
-		View::share('pages', $this->pages);
+    protected $admin;
 
+	public function __construct(AdminRepository $admin) {
+//		View::share('pages', $this->pages);
+        $this->admin = $admin;
        // $this->middleware('admin');
 	}
+
+    public function dashboard()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function products()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function categories()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function ads()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function orders()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function transactions()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function customers()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function priceRules()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function shipping()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function preferences()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function administration()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        $admins = $this->admin->all();
+        return view('admin.main')
+            ->with('admins', $admins);
+    }
+
+    public function statistics()
+    {
+        $this->admin->setShowPage(__FUNCTION__);
+        return view('admin.main');
+    }
+
+    public function recieve($page = null)
+    {
+        if (page == null) {
+            abort(404);
+        }
+
+    }
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function recieve($page = null)
+	public function recieves($page = null)
 	{
 		// reroute to dashboard if $page is null
 		if($page == null) {
