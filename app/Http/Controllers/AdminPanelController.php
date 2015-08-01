@@ -8,16 +8,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Order;
-use App\PostSubCategory;
 use App\PriceRule;
 use App\Product;
 use App\Repositories\AdminPanelRepository;
 use App\Repositories\AdminRepository;
+use App\Repositories\AdvertisementRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use App\Shipment;
 use App\Shipper;
-use App\SubCategory;
 use App\Transaction;
 use Illuminate\Http\Request;
 
@@ -36,36 +35,23 @@ class AdminPanelController extends Controller {
         return view('admin.dashboard');
     }
 
-    public function products(ProductRepository $product, CategoryRepository $category)
+    public function products(ProductRepository $products, CategoryRepository $categories)
     {
-        $products = $product->paginate();
-        $cats = Category::all()->lists('name');
-        $subcats = SubCategory::all()->lists('name');
-        $postsubcats = PostSubCategory::all()->lists('name');
         return view('admin.products')
-            ->with('products', $products)
-            ->with('cats', $cats)
-            ->with('subcats', $subcats)
-            ->with('postsubcats', $postsubcats);
+            ->with('products', $products->paginate())
+            ->with('cats', $categories->all(['name']));
     }
 
-    public function categories()
+    public function categories(CategoryRepository $categories)
     {
-        $cats = Category::all()->lists('name');
-        $subcats = SubCategory::all()->lists('name');
-        $postsubcats = PostSubCategory::all()->lists('name');
         return view('admin.categories')
-            ->with('cats', $cats)
-            ->with('subcats', $subcats)
-            ->with('postsubcats', $postsubcats);
+            ->with('cats', $categories->all(['name']));
     }
 
-    public function advertisements()
+    public function advertisements(AdvertisementRepository $advertisements)
     {
-        $advertisments = Advertisement::all();
-
         return view('admin.advertisements')
-            ->with('advertisements', $advertisments);
+            ->with('advertisements', $advertisements->all());
     }
 
     public function orders()

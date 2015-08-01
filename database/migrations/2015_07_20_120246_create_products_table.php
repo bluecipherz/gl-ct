@@ -53,29 +53,13 @@ class CreateProductsTable extends Migration {
 		Schema::create('categories', function(BluePrint $table) {
 			$table->increments('id');
 			$table->string('name');
-            $table->integer('parent');
-			$table->timestamps();
-			$table->softDeletes();
-		});
-		Schema::create('sub_categories', function(BluePrint $table) {
-			$table->increments('id');
-			$table->string('name');
-			$table->integer('category_id')->unsigned();
-			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-			$table->timestamps();
-			$table->softDeletes();
-		});
-		Schema::create('post_sub_cats', function(BluePrint $table) {
-			$table->increments('id');
-			$table->string('name');
-			$table->integer('sub_category_id')->unsigned();
-			$table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
+            $table->integer('parent')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
 		Schema::create('price_rules', function(BluePrint $table) {
 			$table->increments('id');
-			$table->string('name');
+			$table->string('title');
 			$table->integer('percent');
             $table->integer('duration');
 			$table->timestamps();
@@ -87,13 +71,12 @@ class CreateProductsTable extends Migration {
 			$table->string('name');
 			$table->integer('price');
 			$table->integer('stock');
-			$table->text('desc');
+			$table->text('description');
 			$table->string('brand');
-			$table->integer('post_sub_cat_id')->unsigned();
-			$table->foreign('post_sub_cat_id')->references('id')->on('post_sub_cats')->onDelete('cascade');
-			$table->boolean('reseller')->default(false);
-			$table->integer('pricing_rule_id')->unsigned()->nullable();
-			$table->foreign('pricing_rule_id')->references('id')->on('pricing_rules')->onDelete('cascade');
+			$table->integer('category_id')->unsigned();
+			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+			$table->integer('price_rule_id')->unsigned()->nullable();
+			$table->foreign('price_rule_id')->references('id')->on('price_rules')->onDelete('cascade');
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -110,6 +93,8 @@ class CreateProductsTable extends Migration {
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('quantity')->default(1);
             $table->float('price');
             $table->timestamps();
@@ -119,7 +104,7 @@ class CreateProductsTable extends Migration {
         {
             $table->increments('id');
             $table->string('name');
-            $table->integer('cost');
+            $table->integer('charge');
             $table->timestamps();
 			$table->softDeletes();
         });
@@ -130,6 +115,7 @@ class CreateProductsTable extends Migration {
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->integer('shipper_id')->unsigned();
             $table->foreign('shipper_id')->references('id')->on('shippers')->onDelete('cascade');
+			$table->integer('distance');
             $table->integer('status');
             $table->timestamps();
 			$table->softDeletes();
@@ -148,7 +134,8 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-			$table->string('name');
+			$table->string('title');
+			$table->text('description');
 			$table->integer('quantity')->default(1);
 			$table->timestamps();
 			$table->softDeletes();

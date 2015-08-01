@@ -12,17 +12,21 @@
 								<tr>
 									<th>Product Name</th>
 									<th>Brand Name</th>
-									<th>Cost</th>
+									<th>Price</th>
+									<th>Description</th>
+									<th>Stock</th>
 								</tr>
 								@forelse($products as $product)
 								<tr>
 									<td>{{ $product->name }}</td>
 									<td>{{ $product->brand }}</td>
-									<td>{{ $product->cost }}</td>
+									<td><span class="glyphicon glyphicon-usd"></span> {{ $product->price }}</td>
+									<td>{{ str_limit($product->description, 50) }}</td>
+									<td>{{ $product->stock }}</td>
 								</tr>
 								@empty
 								<tr>
-									<td colspan="3">No products</td>
+									<td colspan="5">No products</td>
 								</tr>
 								@endforelse
 							</table>
@@ -58,18 +62,6 @@
 									{!! Form::label('category', 'Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
 									<div class="col-lg-6 col-md-6">
 									{!! Form::select('category', $cats, null, ['class' => 'form-control']) !!}
-									</div>
-								</div>
-								<div class="form-group">
-									{!! Form::label('sub_category', 'Sub Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
-									<div class="col-lg-6 col-md-6">
-									{!! Form::select('sub_category', $subcats, null, ['class' => 'form-control']) !!}
-									</div>
-								</div>
-								<div class="form-group">
-									{!! Form::label('post_sub_cat', 'Post Sub Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
-									<div class="col-lg-6 col-md-6">
-									{!! Form::select('post_sub_cat', $postsubcats, null, ['class' => 'form-control']) !!}
 									</div>
 								</div>
 								<div class="form-group">
