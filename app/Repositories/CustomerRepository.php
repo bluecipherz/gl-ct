@@ -9,6 +9,17 @@
 namespace App\Repositories;
 
 
-class CustomerRepository {
+use App\Repositories\Eloquent\Repository;
+
+class CustomerRepository extends Repository{
+
+    /**
+     * Specify model class
+     * @return mixed
+     */
+    public function model()
+    {
+        return 'App\Customer';
+    }
 
 }

@@ -52,18 +52,18 @@ Route::get('adpost', function() {
 Route::resource('products', 'ProductController');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('dashboard', 'AdminPanelController@dashboard');
-    Route::get('products', 'AdminPanelController@products');
-    Route::get('categories', 'AdminPanelController@categories');
-    Route::get('advertisements', 'AdminPanelController@advertisements');
-    Route::get('orders', 'AdminPanelController@orders');
-    Route::get('transactions', 'AdminPanelController@transactions');
-    Route::get('customers', 'AdminPanelController@customers');
-    Route::get('price-rules', 'AdminPanelController@priceRules');
-    Route::get('shipping', 'AdminPanelController@shipping');
-    Route::get('preferences', 'AdminPanelController@preferences');
-    Route::get('administration', 'AdminPanelController@administration');
-    Route::get('statistics', 'AdminPanelController@statistics');
+    Route::get('dashboard', ['uses' => 'AdminPanelController@dashboard', 'as' => 'admin.dashboard']);
+    Route::get('products', ['uses' => 'AdminPanelController@products', 'as' => 'admin.products']);
+    Route::get('categories', ['uses' => 'AdminPanelController@categories', 'as' => 'admin.categories']);
+    Route::get('advertisements', ['uses' => 'AdminPanelController@advertisements', 'as' => 'admin.advertisements']);
+    Route::get('orders', ['uses' => 'AdminPanelController@orders', 'as' => 'admin.orders']);
+    Route::get('transactions', ['uses' => 'AdminPanelController@transactions', 'as' => 'admin.transactions']);
+    Route::get('customers', ['uses' => 'AdminPanelController@customers', 'as' => 'admin.customers']);
+    Route::get('price-rules', ['uses' => 'AdminPanelController@priceRules', 'as' => 'admin.price-rules']);
+    Route::get('shipping', ['uses' => 'AdminPanelController@shipping', 'as' => 'admin.shipping']);
+    Route::get('preferences', ['uses' => 'AdminPanelController@preferences', 'as' => 'admin.preferences']);
+    Route::get('administration', ['uses' => 'AdminPanelController@administration', 'as' => 'admin.administration']);
+    Route::get('statistics', ['uses' => 'AdminPanelController@statistics', 'as' => 'admin.statistics']);
 });
 
 

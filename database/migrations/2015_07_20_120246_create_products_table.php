@@ -53,6 +53,7 @@ class CreateProductsTable extends Migration {
 		Schema::create('categories', function(BluePrint $table) {
 			$table->increments('id');
 			$table->string('name');
+            $table->integer('parent');
 			$table->timestamps();
 			$table->softDeletes();
 		});

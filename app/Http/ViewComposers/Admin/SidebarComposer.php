@@ -12,15 +12,15 @@ use Illuminate\Contracts\View\View;
 class SidebarComposer {
 
 
-    protected $navs;
+    protected $pages;
 
     /**
      * Create a new composer
-     *
+     * @param AdminPanelRepository $admin
      */
     public function __construct(AdminPanelRepository $admin) {
         // Dependencies automatically resolved by service container.
-        $this->navs = $admin->getPages();
+        $this->pages = $admin->getPages();
     }
 
     /**
@@ -30,13 +30,13 @@ class SidebarComposer {
      */
     public function compose(View $view)
     {
-        $view->with('pages', $this->navs);
-        $view->items->put('dashboard', [
-            'weight' => 0,
-            'request' => '*/$view->prefix',
-            'route' => 'dashboard.index',
-            'icon-class' => 'fa fa-dashboard',
-            'title' => 'Dashboard',
-        ]);
+        $view->with('pages', $this->pages);
+//        $view->pages->put('dashboard', [
+//            'weight' => 0,
+//            'request' => '*/$view->prefix',
+//            'route' => 'admin',
+//            'icon-class' => 'fa fa-dashboard',
+//            'title' => 'Dashboard',
+//        ]);
     }
 }

@@ -9,6 +9,16 @@
 namespace App\Repositories;
 
 
-class ShipperRepository {
+use App\Repositories\Eloquent\Repository;
 
+class ShipperRepository extends Repository {
+
+    /**
+     * Specify model class
+     * @return mixed
+     */
+    public function model()
+    {
+        return 'App\Shipper';
+    }
 }

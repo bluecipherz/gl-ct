@@ -9,6 +9,17 @@
 namespace App\Repositories;
 
 
-class AdvertisementRepository {
+use App\Repositories\Eloquent\Repository;
+
+class AdvertisementRepository extends Repository {
+
+    /**
+     * Specify model class
+     * @return mixed
+     */
+    public function model()
+    {
+        return 'App\Advertisement';
+    }
 
 }

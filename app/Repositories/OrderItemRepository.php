@@ -9,6 +9,17 @@
 namespace app\Repositories;
 
 
-class OrderItemRepository {
+use App\Repositories\Eloquent\Repository;
+
+class OrderItemRepository extends Repository {
+
+    /**
+     * Specify model class
+     * @return mixed
+     */
+    public function model()
+    {
+        return 'App\OrderItem';
+    }
 
 }

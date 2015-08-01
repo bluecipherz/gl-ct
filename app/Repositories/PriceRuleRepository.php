@@ -9,6 +9,16 @@
 namespace App\Repositories;
 
 
-class PriceRuleRepository {
+use App\Repositories\Eloquent\Repository;
 
+class PriceRuleRepository extends Repository {
+
+    /**
+     * Specify model class
+     * @return mixed
+     */
+    public function model()
+    {
+        return 'App\PriceRule';
+    }
 }

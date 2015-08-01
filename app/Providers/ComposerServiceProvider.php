@@ -13,7 +13,7 @@ class ComposerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		// Using class based composers
-//		$this->app->view->composer('admin.main', 'App\Http\ViewComposers\AdminPanelComposer');
+		$this->app->view->composer('layouts.admin', 'App\Http\ViewComposers\AdminPanelComposer');
         $this->app->view->composer('admin.sidebar', 'App\Http\ViewComposers\Admin\SidebarComposer');
 	}
 

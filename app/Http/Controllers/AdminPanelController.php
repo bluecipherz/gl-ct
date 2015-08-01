@@ -13,6 +13,8 @@ use App\PriceRule;
 use App\Product;
 use App\Repositories\AdminPanelRepository;
 use App\Repositories\AdminRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 use App\Shipment;
 use App\Shipper;
 use App\SubCategory;
@@ -31,18 +33,16 @@ class AdminPanelController extends Controller {
 
     public function dashboard()
     {
-        return view('admin.dashboard')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name']);
+        return view('admin.dashboard');
     }
 
-    public function products()
+    public function products(ProductRepository $product, CategoryRepository $category)
     {
-        $products = Product::all();
+        $products = $product->paginate();
         $cats = Category::all()->lists('name');
         $subcats = SubCategory::all()->lists('name');
         $postsubcats = PostSubCategory::all()->lists('name');
         return view('admin.products')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('products', $products)
             ->with('cats', $cats)
             ->with('subcats', $subcats)
@@ -55,7 +55,6 @@ class AdminPanelController extends Controller {
         $subcats = SubCategory::all()->lists('name');
         $postsubcats = PostSubCategory::all()->lists('name');
         return view('admin.categories')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('cats', $cats)
             ->with('subcats', $subcats)
             ->with('postsubcats', $postsubcats);
@@ -66,7 +65,6 @@ class AdminPanelController extends Controller {
         $advertisments = Advertisement::all();
 
         return view('admin.advertisements')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('advertisements', $advertisments);
     }
 
@@ -74,7 +72,6 @@ class AdminPanelController extends Controller {
     {
         $orders = Order::all();
         return view('admin.orders')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('orders', $orders);
     }
 
@@ -82,7 +79,6 @@ class AdminPanelController extends Controller {
     {
         $transactions = Transaction::all();
         return view('admin.transactions')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('transactions', $transactions);
     }
 
@@ -90,7 +86,6 @@ class AdminPanelController extends Controller {
     {
         $customers = Customer::all();
         return view('admin.customers')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('customers', $customers);
     }
 
@@ -98,7 +93,6 @@ class AdminPanelController extends Controller {
     {
         $priceRules = PriceRule::all();
         return view('admin.price_rules')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('price_rules', $priceRules);
     }
 
@@ -107,29 +101,25 @@ class AdminPanelController extends Controller {
         $shipments = Shipment::all();
         $shippers = Shipper::all();
         return view('admin.shipping')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('shipments', $shipments)
             ->with('shippers', $shippers);
     }
 
     public function preferences()
     {
-        return view('admin.statistics')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name']);
+        return view('admin.statistics');
     }
 
     public function administration()
     {
         $admins = Admin::all();
         return view('admin.administration')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name'])
             ->with('admins', $admins);
     }
 
     public function statistics()
     {
-        return view('admin.statistics')
-            ->with('pageTitle', $this->adminPanel->getPages()[__FUNCTION__]['name']);
+        return view('admin.statistics');
     }
 
 }

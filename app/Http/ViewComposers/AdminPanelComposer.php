@@ -1,28 +1,30 @@
-<?php namespace App\Http\ViewComposers;
-
-use App\Repositories\AdminPanelRepository;
-use Illuminate\Contracts\View\View;
-
+<?php
 /**
  * Created by PhpStorm.
  * User: bazi
- * Date: 30-Jul-15
- * Time: 11:29 PM
+ * Date: 01-Aug-15
+ * Time: 5:34 AM
  */
 
+namespace App\Http\ViewComposers;
+
+use App\Repositories\AdminPanelRepository;
+use Illuminate\Contracts\View\View;
+use Request;
 
 class AdminPanelComposer {
 
-    protected $adminPanel;
+    protected $pages;
 
-    public function __construct(AdminPanelRepository $adminPanel)
+    public function __construct(AdminPanelRepository $admin)
     {
-        $this->adminPanel = $adminPanel;
+        $this->pages = $admin->getPages();
     }
 
     public function compose(View $view)
     {
-        $view->with('pages', $this->adminPanel->getPages());
+        $title = array_search(Request::path(), array_column($this->pages, 'request', 'title'));
+        $view->with('pageTitle', $title);
     }
 
 }
