@@ -102,6 +102,12 @@
 
 	<!-- Scripts -->
 	
+	<footer>
+		<div class="boxx">
+			hello
+		</div>
+	</footer>
+	
 	<script src="{{ asset('/js/jquery-2.1.4.js') }}"></script>
 	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>

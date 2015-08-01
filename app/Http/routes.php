@@ -49,6 +49,11 @@ Route::get('adpost', function() {
 	return view('pages.adpost');
 });
 
+Route::get('help', function() {
+	return view('pages.help');
+});
+
+
 Route::resource('products', 'ProductController');
 
 Route::group(['prefix' => 'admin'], function () {
