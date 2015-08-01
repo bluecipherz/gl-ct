@@ -87,21 +87,103 @@
 		<div class="homeTop">
 			<div>
 				<span class="adhead"><span style="float:left; margin-right:10px;">Super Deals - <span style="font-size:90%;">Ends in </span></span><span class="adhead-timer"> </span></span>
+				<div class="adcont-2">
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+						<div class="addesc"> This is a kinda product </br> - This product has this</br> - This product has this</br> - This product has this</div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+						<div class="addesc"> This is a kinda product </br> - This product has this</br> - This product has this</br> - This product has this</div>
+					</a>	
+				</div>
 			</div>
 			
 			<div>
 				<span class="adhead">Motors</span>
+				<div class="adcont-3">
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>
+				</div>
 			</div>
 			
 			<div>
 				<span class="adhead">Spares</span>
+				<div class="adcont-5">
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>
+				</div>
 			</div>
 			
-			@for($i=1;$i<=3;$i++)
-				<div >
-					<span style="font-size:50px; color:#fff1de; font-family:Dosis;">This is add / Offer space {{$i}}</span>
+			<div >
+				<span class="adhead">Hot Searches</span>
+				<div class="adcont-4">
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
+					<a href="#"> 
+						<div class="adimg"> </div>
+						<div class="adtitle"><div>Title</div><div class="priceT">200 AED</div></div>
+					</a>	
 				</div>
-			@endfor
+			</div>
+			
 		</div>
 	</div>
 </div>

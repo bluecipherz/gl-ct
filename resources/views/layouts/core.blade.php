@@ -49,22 +49,17 @@
 					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
 				</div>
 				<div class="userBarOuter pull-right b-untouchable">
-					<div class="userBtn">
+					<a class="userBtn"  href="help">
 						<img src="{{ asset('img/nav/help.png') }}">
 						<div>Help</div>
-					</div>
+					</a>
 					<div class="userBtn acctBtn">
 						<img src="{{ asset('img/nav/account.png') }}">
 						<div>Account</div>
 					</div>
 					<div class="userBtn">
-						<img src="{{ asset('img/nav/cart.png') }}">
-						<span class="cartCount">12</span>
-						<div>Cart</div>
-					</div>
-					<div class="userBtn">
 						<img src="{{ asset('img/nav/more.png') }}">
-						<div>More</div>
+						<div>Contact Us</div>
 					</div>
 				</div>
 			</div>
@@ -103,8 +98,45 @@
 	<!-- Scripts -->
 	
 	<footer>
-		<div class="boxx">
-			hello
+		<div class="footerH">
+			<div class="boxx">
+				<div class="col-md-12">
+					<div class="col-md-3 fbox">
+						<span class="fbh">Support</span>
+						<a class="fbd">Help</a>
+						<a class="fbd">Contact us</a>
+					</div>
+					<div class="col-md-3 fbox">
+						<span class="fbh">Get social</span>
+						<a class="fbd">Facebook</a>
+						<a class="fbd">Twitter</a>
+						<a class="fbd">Instagram</a>
+						<a class="fbd">Youtube</a>
+					</div>
+					<div class="col-md-3 fbox">
+						<span class="fbh">UAE</span>
+						<a class="fbd">Dubai</a>
+						<a class="fbd">Abu Dhabi</a>
+						<a class="fbd">Ras al Khaimah</a>
+						<a class="fbd">Sharjah</a>
+						<a class="fbd">Fujairah</a>
+						<a class="fbd">Ajman</a>
+						<a class="fbd">Umm al Quwain</a>
+						<a class="fbd">Al Ain</a>
+					</div>
+					<div class="col-md-3 fbox">
+						<span class="fbh">Company</span>
+						<a class="fbd">About Us</a>
+						<a class="fbd">Terms of Use</a>
+						<a class="fbd">Privacy Policy</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footerF">
+			<div class="boxx">
+				<span class="footerFIcon b-untouchable">GLOBEXCART</span>
+			</div>
 		</div>
 	</footer>
 	
