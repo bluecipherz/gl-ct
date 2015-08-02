@@ -32,7 +32,44 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$navItemName = Category::whereIsRoot();
+        $root = Category::whereIsRoot()->first();
+
+        $vlimit = 11; // vertical limit
+        $hlimit = 2; // horizontal limit
+
+        $catarray = [];
+
+        $counter = 0; // vertical limit counter
+        echo 'point1';
+        foreach($root->children->all() as $cat) {
+            echo 'point2';
+            if($counter > $vlimit) break;
+            $catarray[$counter] = function($cat) {
+                echo 'point3';
+                $subcatarray = [];
+                $subcatarray['name'] = ['title' => $cat->name]; // the main category
+                $subcatarray['children'] = function($cat, $hlimit) { // get three columns
+                    echo 'point4';
+                    $postcatarray = [];
+                    $subcats = $cat->children->all();
+                    for($i = 0; $i < $hlimit; $i++) { // the three loops
+                        echo 'point5';
+                        $postcatarray[$i] = function($subcats) { // get column
+                            echo 'point6';
+                            return $subcats->children->all();
+                        };
+                    }
+                    return $postcatarray;
+                };
+                return $subcatarray;
+            };
+            $counter++;
+        }
+
+
+
+
+		$navItemName = Category::all();
 		//$navItems = DB::table('subcategories')->get();
 							
 		$navItems = array(
@@ -182,7 +219,8 @@ class HomeController extends Controller {
 	}
 	
 	public function hell() {
-		return view('home');
+        $root = Category::whereIsRoot()->first();
+
 	}
 
 }

@@ -73,14 +73,36 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 Route::get('test', function() {
-//    $root = App\Category::whereIsRoot()->first();
+    $root = App\Category::whereIsRoot()->first();
 //    $cats = $root->children->all();
-//    $subcats = [];
 //    foreach($cats as $cat) {
-//        echo $cat->name . '<br>';
-//        echo $cat->children->get(1);
+//        echo $cat . '<br>';
+//        $subcats = $cat->children->all();
+//        foreach($subcats as $subcat) {
+//            echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $subcat . '<br>';
+//            $postsubcats = $subcat->children->all();
+//            foreach ($postsubcats as $postsubcat) {
+//                echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $postsubcat . '<br>';
+//            }
+//        }
 //    }
-    $root = App\Category::reversed()->get();
-    echo $root;
+
+//    $root = App\Category::reversed()->get();
+//    echo $root;
+//    if($root->hasChildren()) {
+//        return 'woo';
+//    }
+
+//    $node = App\Category::find(122);
+//    echo $node->name . '<br>';
+//    if($node->children->count()) {
+//        echo 'shitzu<br>';
+//        foreach ($node->children->all() as $n) {
+//            echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $n->name . '<br>';
+//        }
+//    }
+
+
 });
 
+Route::get('hell', 'HomeController@hell');

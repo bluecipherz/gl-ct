@@ -12,15 +12,15 @@
 					<div class="catLi cItem"> {{$navItemName[$i-1]}}<!--<span class="BendLine"><span class="BendLine1"></span><span class="BendLine2"></span></span>--></div>
 					<div class="catCont">
 						<div class="catSec-1 col-md-4">
-						
+
 							<?php
 							$ItemC = sizeof($navItems[$i-1]);
-							
+
 							$jCounter = 1;
-							
+
 							for($j=1;$j<=$ItemC ; $j++){
-							
-							
+
+
 							?>
 								<a class="catContHead cItem">
 									{{ $navItems[$i-1][$j-1] }} <span class="catPointer"> < </span>
