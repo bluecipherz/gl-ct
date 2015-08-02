@@ -1,6 +1,6 @@
 @media (min-width: 768px) {
     .boxx {
-        width: 750px;
+        width: 970px;
     }
 }
 
@@ -14,4 +14,15 @@
     .boxx {
         width: 970px;
     }
+}
+
+/* min width */
+
+@media (max-width: 768px) {
+    .boxx {
+        min-width: 970px;
+    }
+	.footerH{
+		display:none;
+	}
 }
