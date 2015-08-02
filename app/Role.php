@@ -3,17 +3,17 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shipper extends Model {
+class Role extends Model {
 
     use SoftDeletes;
 
-    protected $table = 'shippers';
+    protected $table = 'roles';
 
     protected $guarded = ['id'];
 
-    public function shipments()
+    public function admins()
     {
-        return $this->hasMany('App\Shipment');
+        return $this->belongsToMany('App\Admin', 'admins_roles');
     }
 
 }

@@ -10,7 +10,7 @@
 						<div class="panel-body">
 							<ul class="list-group">
 								@forelse($cats as $category)
-								<li class="list-group-item">{{ $category }}</li>
+								<li class="list-group-item">{{ $category->name }}</li>
 								@empty>
 								<li class="list-group-item">Empty</li>
 								@endforelse

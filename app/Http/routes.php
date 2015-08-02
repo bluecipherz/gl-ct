@@ -68,8 +68,14 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 Route::get('test', function() {
-//	return view('pages.test');
-    $response = new Response('asd', 422);
-    throw new App\Exceptions\LoginException($response);
+//    $root = App\Category::whereIsRoot()->first();
+//    $cats = $root->children->all();
+//    $subcats = [];
+//    foreach($cats as $cat) {
+//        echo $cat->name . '<br>';
+//        echo $cat->children->get(1);
+//    }
+    $root = App\Category::reversed()->get();
+    echo $root;
 });
 

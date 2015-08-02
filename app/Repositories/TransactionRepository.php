@@ -6,7 +6,7 @@
  * Time: 9:20 AM
  */
 
-namespace app\Repositories;
+namespace App\Repositories;
 
 
 use App\Repositories\Eloquent\Repository;

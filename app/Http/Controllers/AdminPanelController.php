@@ -7,14 +7,23 @@ use App\Customer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Role;
 use App\Order;
+use App\OrderItem;
 use App\PriceRule;
 use App\Product;
 use App\Repositories\AdminPanelRepository;
 use App\Repositories\AdminRepository;
 use App\Repositories\AdvertisementRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\CustomerRepository;
+use App\Repositories\OrderItemRepository;
+use App\Repositories\OrderRepository;
+use App\Repositories\PriceRuleRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\ShipmentRepository;
+use App\Repositories\ShipperRepository;
+use App\Repositories\TransactionRepository;
 use App\Shipment;
 use App\Shipper;
 use App\Transaction;
@@ -54,41 +63,35 @@ class AdminPanelController extends Controller {
             ->with('advertisements', $advertisements->all());
     }
 
-    public function orders()
+    public function orders(OrderRepository $orders, OrderItemRepository $orderItems)
     {
-        $orders = Order::all();
         return view('admin.orders')
-            ->with('orders', $orders);
+            ->with('orders', $orders->all());
     }
 
-    public function transactions()
+    public function transactions(TransactionRepository $transactions)
     {
-        $transactions = Transaction::all();
         return view('admin.transactions')
-            ->with('transactions', $transactions);
+            ->with('transactions', $transactions->all());
     }
 
-    public function customers()
+    public function customers(CustomerRepository $customers)
     {
-        $customers = Customer::all();
         return view('admin.customers')
-            ->with('customers', $customers);
+            ->with('customers', $customers->all());
     }
 
-    public function priceRules()
+    public function priceRules(PriceRuleRepository $priceRules)
     {
-        $priceRules = PriceRule::all();
         return view('admin.price_rules')
-            ->with('price_rules', $priceRules);
+            ->with('price_rules', $priceRules->all());
     }
 
-    public function shipping()
+    public function shipping(ShipperRepository $shippers, ShipmentRepository $shipments)
     {
-        $shipments = Shipment::all();
-        $shippers = Shipper::all();
         return view('admin.shipping')
-            ->with('shipments', $shipments)
-            ->with('shippers', $shippers);
+            ->with('shipments', $shipments->all())
+            ->with('shippers', $shippers->all());
     }
 
     public function preferences()
@@ -96,11 +99,11 @@ class AdminPanelController extends Controller {
         return view('admin.statistics');
     }
 
-    public function administration()
+    public function administration(AdminRepository $admins)
     {
-        $admins = Admin::all();
         return view('admin.administration')
-            ->with('admins', $admins);
+            ->with('admins', $admins->all())
+            ->with('roles', Role::all());
     }
 
     public function statistics()

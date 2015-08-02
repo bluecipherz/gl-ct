@@ -1,4 +1,4 @@
-<?php namespace app\Http\ViewComposers\Admin;
+<?php namespace app\Http\ViewComposers;
 /**
  * Created by PhpStorm.
  * User: bazi

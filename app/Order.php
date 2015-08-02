@@ -11,27 +11,27 @@ class Order extends Model {
 
     protected $guarded = ["id"];
 
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\Customer');
     }
 
     public function orderItems()
     {
-        return $this->hasMany("OrderItem");
+        return $this->hasMany('App\OrderItem');
     }
 
     public function products()
     {
-        return $this->belongsToMany("Product", "order_item");
+        return $this->belongsToMany('App\Product', 'order_item');
     }
 
     /**
      * @return mixed
      */
-    public function total()
-    {
-        return $this->orderItems->sum('price');
-    }
+//    public function total()
+//    {
+//        return $this->orderItems->sum('price');
+//    }
 
 }

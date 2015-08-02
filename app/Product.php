@@ -22,19 +22,14 @@ class Product extends Model {
         return $this->hasMany("OrderItem");
     }
 
-    public function postSubCategory()
-    {
-        return $this->belongsTo('PostSubCategory');
-    }
-
-    public function subCategory()
-    {
-
-    }
-
     public function category()
     {
 
+    }
+
+    public function priceRule()
+    {
+        return $this->hasOne('App\PriceRule');
     }
 
 }

@@ -9,13 +9,13 @@
         <div class="panel-body">
             <table class="table">
                 <tr>
-                    <th>Name</th>
+                    <th>Title</th>
                     <th>Percent</th>
                     <th>Duration</th>
                 </tr>
                 @forelse($price_rules as $price_rule)
                     <tr>
-                        <td>{{ $price_rule->name }}</td>
+                        <td>{{ $price_rule->title }}</td>
                         <td>{{ $price_rule->percent }}</td>
                         <td>{{ $price_rule->duration }}</td>
                     </tr>

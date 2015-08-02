@@ -32,7 +32,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$navItemName = Category::all()->lists('name');
+		$navItemName = Category::whereIsRoot();
 		//$navItems = DB::table('subcategories')->get();
 							
 		$navItems = array(

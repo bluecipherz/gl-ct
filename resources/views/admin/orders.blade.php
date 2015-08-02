@@ -9,17 +9,21 @@
         <div class="panel-body">
             <table class="table">
                 <tr>
-                    <th>User</th>
-                    <th>Product</th>
-                    <th>Qty</th>
-                    <th>Order Date</th>
+                    <th>Id</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Total</th>
                 </tr>
                 @forelse($orders as $order)
                     <tr>
-                        <td>{{ $order->user_id }}</td>
-                        <td>{{ $order->product_id }}</td>
-                        <td>{{ $order->qty }}</td>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->customer->name }}</td>
+                        <td>
+                        @foreach($order->orderItems as $item)
+                        {{ $item->product->name . 'x' . $item->quantity }}
+                        @endforeach
+                        </td>
+                        <td>{{ $order->orderItems->sum('price') }}</td>
                     </tr>
                 @empty
                     <tr>

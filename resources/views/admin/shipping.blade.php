@@ -16,8 +16,8 @@
                 @forelse($shippers as $shipper)
                     <tr>
                         <td>{{ $shipper->name }}</td>
-                        <td>{{ $shipper->cost }}</td>
-                        <td>{{ '0' }}</td>
+                        <td>{{ $shipper->charge }}</td>
+                        <td>{{ $shipper->shipments()->count() }}</td>
                     </tr>
                 @empty
                     <tr>
@@ -41,8 +41,8 @@
                 @forelse($shipments as $shipment)
                     <tr>
                         <td>{{ $shipment->order_id }}</td>
-                        <td>{{ $shipment->shipper_id }}</td>
-                        <td>{{ $shipment->status }}</td>
+                        <td>{{ $shipment->shipper->name }}</td>
+                        <td>{{ $shipment->status() }}</td>
                     </tr>
                 @empty
                     <tr>

@@ -6,6 +6,8 @@
  * Time: 9:38 AM
  */
 
+use App\Repositories\Eloquent\Repository;
+
 /**
  * Class OrderRepository
  * @package App\Repositories
