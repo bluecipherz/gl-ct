@@ -227,26 +227,48 @@ class HomeController extends Controller {
         foreach ($root->children->all() as $cat) {
             if($counter > 11) break;
             $catset[$cat->name]['title'] = $cat->name;
+            echo $cat->name . '<br>';
             $subcats = $cat->children->all();
-            $col = 0;
-            foreach ($subcats as $subcat) {
-                if($col > 2) break; // advanced checking to be implemented
-                $postcats = $subcat->children->all();
-                $scounter = 0;
-                $colarray['title'] = $subcat->name;
-                foreach ($postcats as $postcat) {
-                    if($scounter > 11) break;
-                    $colarray['children'][$scounter] = $postcat->name;
-                    $scounter++;
+            $subcatcounter = 0;
+            $subcatcount = count($subcats);
+            for ($col = 0; $col < 3; $col++) {
+                echo 'col ' . $col . '<br>';
+                $rowcounter = 0;
+                $fillmore = true;
+                $postcatcounter = 0;
+                $postcats = [];
+                $postcatcount = 0;
+                $fillhead = true;
+                while($fillmore) {
+                    echo 'filling row ' . $rowcounter;
+                    if($fillhead) {
+                        echo ' subcat ' . $subcats[$subcatcounter]->name . '<br>';
+                        $colarray[$rowcounter]['title'] = $subcats[$subcatcounter]->name;
+                        $colarray[$rowcounter]['type'] = 'subcat';
+                        $postcats = $subcats[$subcatcounter]->children->all();
+                        $postcatcount = count($postcats) - 1;
+                        $subcatcounter++;
+                        $fillhead = false;
+                    } else {
+                        echo ' postcat ' . $postcats[$postcatcounter]->name . '<br>';
+                        $colarray[$rowcounter]['title'] = $postcats[$postcatcounter]->name;
+                        $colarray[$rowcounter]['type'] = 'postcat';
+                        $postcatcounter++;
+                        if($postcatcounter > $postcatcount) {
+                            $postcatcounter = 0;
+                            break;
+                        }
+                    }
+                    $rowcounter++;
+                    if($rowcounter > 11) $fillmore = false;
                 }
                 $catset[$cat->name]['children'][$col] = $colarray;
-                $col++;
             }
             $counter++;
         }
 
         foreach ($catset as $cat) {
-            echo $cat['title'] . 'count : ' . count($cat['children']) . '<br>';
+            echo $cat['title'] . '<br>';
             foreach($cat['children'] as $col) {
                 echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $col['title'] . '<br>';
                 foreach ($col['children'] as $item) {
