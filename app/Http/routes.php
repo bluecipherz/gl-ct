@@ -49,10 +49,11 @@ Route::get('adpost', function() {
 	return view('pages.adpost');
 });
 
-Route::get('help', function() {
-	return view('pages.help');
-});
-
+Route::get('help', function() { return view('pages.static.help'); });
+Route::get('contact-us', function() { return view('pages.contact-us'); });
+Route::get('about-us', function() { return view('pages.static.about-us'); });
+Route::get('terms-of-use', function() { return view('pages.static.terms-of-use'); });
+Route::get('privacy-policy', function() { return view('pages.static.privacy-policy'); });
 
 Route::resource('products', 'ProductController');
 

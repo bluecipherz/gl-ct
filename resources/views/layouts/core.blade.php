@@ -14,6 +14,8 @@
 	<link href="{{ asset('/css/admin-panel.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
 	
+	<link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}"/>
+	
 	<script>
         @if(Auth::check())
             {{ 'var login = true;' }}
@@ -43,7 +45,7 @@
 		<div class="NavBottom" >
 			<div class="boxx" >
 				<div class="logoBarOuter b-untouchable">
-					<a href="{{ url('/home') }}">GLOBEX<span>CART</span></a>
+					<a href="{{ url('/home') }}"><span class="logoimg"> <img draggable="false"  src="{{ asset('img/logo/LOGO-60.png') }}"> </span></a>
 				</div>
 				<div class="searchBarOuter" >
 					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
@@ -57,10 +59,10 @@
 						<img src="{{ asset('img/nav/account.png') }}">
 						<div>Account</div>
 					</div>
-					<div class="userBtn">
+					<a class="userBtn"  href="adpost">
 						<img src="{{ asset('img/nav/more.png') }}">
-						<div>Contact Us</div>
-					</div>
+						<div>Post ad</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -102,40 +104,40 @@
 			<div class="boxx">
 				<div class="col-md-12">
 					<div class="col-md-3 fbox">
-						<span class="fbh">Support</span>
-						<a class="fbd">Help</a>
-						<a class="fbd">Contact us</a>
+						<div><span class="fbh">Support</span></div>
+						<div><a href="help" class="fbd">Help</a></div>
+						<div><a href="contact-us" class="fbd">Contact us</a></div>
 					</div>
 					<div class="col-md-3 fbox">
-						<span class="fbh">Get social</span>
-						<a class="fbd">Facebook</a>
-						<a class="fbd">Twitter</a>
-						<a class="fbd">Instagram</a>
-						<a class="fbd">Youtube</a>
+						<div><span class="fbh">Get social</span></div>
+						<div><a href="http://www.facebook.com" class="fbd">Facebook</a></div>
+						<div><a href="http://www.twitter.com"  class="fbd">Twitter</a></div>
+						<div><a href="http://www.instagram.com"  class="fbd">Instagram</a></div>
 					</div>
 					<div class="col-md-3 fbox">
-						<span class="fbh">UAE</span>
-						<a class="fbd">Dubai</a>
-						<a class="fbd">Abu Dhabi</a>
-						<a class="fbd">Ras al Khaimah</a>
-						<a class="fbd">Sharjah</a>
-						<a class="fbd">Fujairah</a>
-						<a class="fbd">Ajman</a>
-						<a class="fbd">Umm al Quwain</a>
-						<a class="fbd">Al Ain</a>
+						<div><span class="fbh">UAE</span></div>
+						<div><a class="fbd">Dubai</a></div>
+						<div><a class="fbd">Abu Dhabi</a></div>
+						<div><a class="fbd">Ras al Khaimah</a></div>
+						<div><a class="fbd">Sharjah</a></div>
+						<div><a class="fbd">Fujairah</a></div>
+						<div><a class="fbd">Ajman</a></div>
+						<div><a class="fbd">Umm al Quwain</a></div>
+						<div><a class="fbd">Al Ain</a></div>
 					</div>
 					<div class="col-md-3 fbox">
-						<span class="fbh">Company</span>
-						<a class="fbd">About Us</a>
-						<a class="fbd">Terms of Use</a>
-						<a class="fbd">Privacy Policy</a>
+						<div><span class="fbh">Company</span></div>
+						<div><a href="about-us" class="fbd">About Us</a></div>
+						<div><a href="terms-of-use" class="fbd">Terms of Use</a></div>
+						<div><a href="privacy-policy" class="fbd">Privacy Policy</a></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="footerF">
 			<div class="boxx">
-				<span class="footerFIcon b-untouchable">GLOBEXCART</span>
+				<span class="footerFIcon b-untouchable"> <img draggable="false" src="{{ asset('img/logo/LOGO-100-b.png') }}"></span>
+				<span class=" b-untouchable"> GlobexKart 2015 </span>
 			</div>
 		</div>
 	</footer>
@@ -145,6 +147,7 @@
 	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
 	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
 	<script src="{{ asset('/js/script.js') }}"></script>
+	<script src="{{ asset('/js/static-page.js') }}"></script>
 	
 </body>
 </html>

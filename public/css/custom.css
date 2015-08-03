@@ -3,7 +3,8 @@
 	{ === BASE Settings
 	
 		old theme color - #881a8c 
-		theme color - #7c1972 
+		old theme color - #7c1972 
+		theme color - #9a59b5 
 		
 		pale theme - #504056;
 	
@@ -49,7 +50,7 @@ body{
 	width:200px;
 }
 .logoBarOuter > span{
-	color:#7c1972;
+	color:#9a59b5;
 }
 .searchBarOuter{
 	display:inline_block;
@@ -80,7 +81,7 @@ body{
 .serachBtn{
 	display:inline_block;
 	float:left;
-	background:#7c1972;
+	background:#9a59b5;
 	width:15%;
 	height:100%;
 	margin:0px;
@@ -120,7 +121,7 @@ body{
 	top:-10px;
 	right:0px;
 	font-size:70%;
-	background:#7c1972;
+	background:#9a59b5;
 	padding:5px;
 	color:#fff;
 	height:23px;
@@ -162,7 +163,7 @@ body{
 	float:left;
 	width:200px;
 	height:100%;
-	background:#7c1972;
+	background:#9a59b5;
 	font-family:Dosis;
 	font-weight: 300;
 	font-size:110%; 
@@ -578,6 +579,12 @@ body{
 	padding-top : 30px;
 }
 
+.logoimg > img{
+	max-height:50px;
+	margin:-10px 0 0 0px;
+	width:auto;
+}
+
 .login-box  .logoBarOuter {
 	font : 2em Code-H;
 	margin-bottom : 20px;
@@ -617,7 +624,7 @@ input[type="checkbox"].glob-control {
 
 button.glob-control {
 	padding : 10px;
-	background : #7c1972;
+	background : #9a59b5;
 	color : #ffffff;
 	width : 140px;
 }
@@ -797,7 +804,7 @@ label:hover:before {
 .product-thumbnail > .sampleThumb {
 	width : 150px;
 	height : 150px;
-	background : #7c1972;
+	background : #9a59b5;
 	float : left;
 	margin-left:calc(( 100% - 150px ) / 2 );
 }
@@ -975,18 +982,18 @@ label:hover:before {
 	text-align : center;
 	border-right : 2px solid #cccccc;
 	cursor : pointer;
-	border-bottom:3px #7c1972 solid;
+	border-bottom:3px #9a59b5 solid;
 }
 
 .wizard-tab > li.active {
-	background : #7c1972;
+	background : #9a59b5;
 	color : #ffffff;
 	cursor:default;
-	border-bottom:3px #7c1972 solid;
+	border-bottom:3px #9a59b5 solid;
 }
 .wizard-tab > .CNext{ 
 	color : #dddddd;
-	border-bottom:3px #7c1972 solid;
+	border-bottom:3px #9a59b5 solid;
 	cursor:default;
 }
 .wizard-tab > .CFinished{ 
@@ -1034,7 +1041,7 @@ label:hover:before {
 }
 .-btn-next{
 	color:#fff;
-	background:#7c1972;
+	background:#9a59b5;
 }
 	.-btn-next:hover{
 		background:#9b319f;
@@ -1493,10 +1500,10 @@ label:hover:before {
 		min-height:100px;
 		font-size:120%;
 	}
-	.fbox span ,.fbox a {
+	.fbox > div{
 		display:block;
-		width:100%;
 		float:left;
+		width:100%;
 		padding:3px 5% 3px 5%;
 	}
 	.fbox span {
@@ -1519,17 +1526,88 @@ label:hover:before {
 		width:100%;
 		min-height:200px;
 		text-align:center;
+		font-family:Dosis;
+		font-weight:400;
+		color:rgba(0,0,0,0.15);
 	}
 	.footerFIcon{
 		display:block;
 		float:left;
 		width:100%;
-		min-height:200px;
 		font-size:300%;
 		font-family:Dosis;
 		color:#a4a4a4;
 		font-weight:500;
 		margin-top:70px;
-
+		opacity:0.2;
 	}
 	
+	
+	/* static pages */
+	
+	.s-body{
+		min-height:500px;
+		background:#fff;
+		font-family:Dosis;
+		font-weight:300;
+	}
+	.s-title{
+		width:90%;
+		margin:10px 5% 10px 5%;
+		border-bottom:1px solid rgba(0,0,0,0.1);
+		padding:0 0 10px 20px;
+		font-weight:200;
+		font-size:200%;
+		color:#9a59b5;
+	}
+	.s-container{
+		margin:10px 80px 10px 80px;
+	}
+	
+	.s-text{
+		float:left;
+		padding:20px 0 40px 0;
+		line-height:180%;
+	}
+	
+	.s-text .s-h1{
+		display:block;
+		width:100%;
+		float:left;
+		margin:10px 0 10px 0;
+		font-weight:200;
+		font-size:150%;
+		color:#3fa5cf;
+	} 
+	.s-text .s-h1:hover{
+		cursor:pointer;
+		color:#0081b7;
+	} 
+	.s-inp-base{
+		padding:10px 0 80px 40px;
+	}
+	
+	.s-inp-base .w2-inp-f{
+		margin:10px 10px 10px 0px;
+	}
+	
+	.s-inp-base .cust-btn{
+		height:40px;
+	}
+	
+	
+	.s-inp-base .cust-btn:active{
+		background:#69146a;
+		border-top:2px solid rgba(0,0,0,1);
+	}
+	
+	.s-inp-base .w2-inp-t{
+		margin:10px 10px 10px 0px;
+		padding-top:15px;
+		line-height:110%;
+		resize: none;
+		height:150px;
+	}
+	.droplistBase > div > div{
+		display:none;
+	}
