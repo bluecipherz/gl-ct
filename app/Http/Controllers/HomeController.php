@@ -221,6 +221,40 @@ class HomeController extends Controller {
 	public function hell() {
         $root = Category::whereIsRoot()->first();
 
+        $catset = []; // complete category set, ready to display
+
+        $counter = 0;
+        foreach ($root->children->all() as $cat) {
+            if($counter > 11) break;
+            $catset[$cat->name]['title'] = $cat->name;
+            $subcats = $cat->children->all();
+            $col = 0;
+            foreach ($subcats as $subcat) {
+                if($col > 2) break; // advanced checking to be implemented
+                $postcats = $subcat->children->all();
+                $scounter = 0;
+                $colarray['title'] = $subcat->name;
+                foreach ($postcats as $postcat) {
+                    if($scounter > 11) break;
+                    $colarray['children'][$scounter] = $postcat->name;
+                    $scounter++;
+                }
+                $catset[$cat->name]['children'][$col] = $colarray;
+                $col++;
+            }
+            $counter++;
+        }
+
+        foreach ($catset as $cat) {
+            echo $cat['title'] . 'count : ' . count($cat['children']) . '<br>';
+            foreach($cat['children'] as $col) {
+                echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $col['title'] . '<br>';
+                foreach ($col['children'] as $item) {
+                    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $item . '<br>';
+                }
+                echo '<br>';
+            }
+        }
 	}
 
 }
