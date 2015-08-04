@@ -17,7 +17,7 @@ class AdminPanelRepository {
         'categories' => ['title' => 'Categories', 'route' => 'admin.categories', 'request' => 'admin/categories'],
         'advertisements' => ['title' => 'Ads', 'route' => 'admin.advertisements', 'request' => 'admin/advertisements'],
         'messages' => ['title' => 'Messages', 'route' => 'admin.messages', 'request' => 'admin/messages'],
-        'report' => ['title' => 'Report', 'route' => 'admin.report', 'request' => 'admin/report'],
+        'reports' => ['title' => 'Report', 'route' => 'admin.reports', 'request' => 'admin/reports'],
         'orders' => ['title' => 'Orders', 'route' => 'admin.orders', 'request' => 'admin/orders'],
         'transactions' => ['title' => 'Transactions', 'route' => 'admin.transactions', 'request' => 'admin/transactions'],
         'customers' => ['title' => 'Customers', 'route' => 'admin.customers', 'request' => 'admin/customers'],
