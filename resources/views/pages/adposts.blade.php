@@ -1,5 +1,30 @@
+<?php
+	$cat = array(array("cat 1", 1),array("cat 2", 2),array("cat 3", 3));
+	$subCat = array(array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
+					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
+					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3))
+	);
+	
+	$postSubCat = array(array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
+						),
+						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
+						),
+						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
+						)
+	);
+	
+	
+	
+	
+	$superSubCat = array(array("cat 1", 1),array("cat 1", 2),array("cat 1", 3));
+?>
 @extends('layouts.core')
-
 @section('content')
 <div class="boxx">
 	<div class="row">
@@ -69,12 +94,40 @@
 						
 					</div>
 					<div class="w2-inp" >
-						<input type="text" class="cust-input w2-inp-f" placeholder="Ad Title"/>
-						<textarea type="text" class="cust-input w2-inp-t" placeholder="Description about your ad"></textarea>
-						<div btnId="2" class=" cust-input w2-inp-btn addCat" >Select a category</div> 
-						<input type="text" class="cust-input w2-inp-f" placeholder="price"/>
+						<input type="text" class="cust-input w2-inp-f in-larg" placeholder="Ad Title"/>
+						<textarea type="text" class="cust-input w2-inp-t in-larg" placeholder="Description about your ad"></textarea>
+						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div> 
+						<div class="selCat2sec">
+							<span class="seCat-cat"></span> 
+							<span class="seCat-subCat"></span> 
+							<span class="seCat-postSubCat"></span> 
+							<span class="seCat-superSubCat"></span> 
+							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div> 
+						</div> 
+						<input type="text" class="cust-input w2-inp-f in-larg" placeholder="price"/>
 						<div class="upPhoto">Upload photo</div>
 						<div class="b-fakeLink addPhoto">+</div>
+						
+						<div class="selCatOuter">
+							<div class="overlay selcat-obbtn"> </div>
+							<div class="selCatPop">
+								@for($i=0;$i <= 2 ; $i++)
+									<div class="setcat-cat">
+										{{ $cat[$i][0] }}
+										@for($j=0;$j <= 2 ; $j++)	
+											<div class="setcat-subCat">
+												{{ $subCat[$i][$j][0] }}
+												@for($k=0;$k <= 0 ; $k++)
+												<div class="setcat-subCat">
+													{{ $subCat[$i][$j][$k][0] }}
+												</div>
+												@endfor
+											</div>
+										@endfor	
+									</div>
+								@endfor
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="w2-sec2" >
