@@ -23,11 +23,11 @@
 				<h5>Price Range</h5>
 				<div>
 					<div class="priceList">
-						<span class="text-muted">From</span>
+						<div class="text-muted">From</div>
 						<input type="text" class="glob-control"/>
 					</div>
 					<div class="priceList">
-						<span class="text-muted">To</span>
+						<div class="text-muted">To</div>
 						<input type="text" class="glob-control"/>
 					</div>
 				</div>
@@ -54,11 +54,11 @@
 						<!-- <img src="" class="" /> -->
 						<span class="sampleThumb"></span>
 					</div>
-					<div class="product-description">
-						<h4>{{ $product->name }}</h4>
-						<div class="productPrice">{{ $product->cost . ' AED' }}</div>
+					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{$product->name}}">
+						<h4>{{ str_limit($product->name,22) }}</h4>
+						<div class="productPrice">{{ $product->price . ' AED' }}</div>
 						<div class="product-desc-small">
-							{{ $product->desc }}
+							{{ str_limit($product->description,60) }}
 						</div>
 					</div>
 				</div>

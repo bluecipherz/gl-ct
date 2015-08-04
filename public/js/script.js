@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
 
+
 	/*
 	 * Configure all ajax requests to use CSRF token
 	 * This applies to all pages.
@@ -77,7 +78,7 @@ jQuery(document).ready(function() {
 	that = "";
 	attrId =1;
 	
-	
+	login = 2;
 	if(login){
 		attrId =2;
 		tabCompleted = attrId;
@@ -298,4 +299,15 @@ jQuery(document).ready(function() {
 		}
 	});
 	
+	//select category button
+	
+	$(".addCat").click(function(){
+		console.log("asdasd");
+	});
+	
+	//add photo button
+	
+	$(".addPhoto").click(function(){
+		$(this).before($("<span>").addClass('upPhoto').text('Upload photo'));
+	});
 });

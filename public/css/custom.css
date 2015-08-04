@@ -783,7 +783,8 @@ label:hover:before {
 
 .productCont {
 	width : 236.3px;
-	min-height : 236.3px;
+	height : 265px;
+	overflow:hidden;
 	padding : 10px;
 	float : left;
 	border : 1px solid transparent;
@@ -1462,7 +1463,7 @@ label:hover:before {
 		color:#e0e0e0;
 		font-size:80%;
 	}
-	.upPhoto{
+	.upPhoto,.addPhoto{
 		display:inline_block;
 		float:left;
 		width:90px;
@@ -1472,8 +1473,23 @@ label:hover:before {
 		background:#8a6798;
 		color:#fff;
 		text-align:center;
+		font-family:Dosis;
+		font-weight:300;
 	}
-
+	.addPhoto{
+		background:rgba(0,0,0,0.2);
+		font-weight:500;
+		font-size:300%;
+		color:#9a59b5;
+		padding-top:10px;
+	}
+	.addPhoto:hover{
+		background:rgba(0,0,0,0.3);
+		font-size:400%;
+		color:#504056;
+		padding-top:0px;
+	}
+	
 	.upPhoto:hover{
 		cursor:pointer;
 		background:#820990;

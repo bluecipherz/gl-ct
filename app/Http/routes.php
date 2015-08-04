@@ -46,7 +46,7 @@ Route::get('register', function() {
 });
 
 Route::get('adpost', function() {
-	return view('pages.adpost');
+	return view('pages.adposts');
 });
 
 Route::get('help', function() { return view('pages.static.help'); });
