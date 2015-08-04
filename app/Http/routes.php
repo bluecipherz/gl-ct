@@ -72,6 +72,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('statistics', ['uses' => 'AdminPanelController@statistics', 'as' => 'admin.statistics']);
 });
 
+Route::post('/support/contact-us', 'HomeController@contactUs');
+Route::post('/feedback/report-image', 'HomeController@reportImage');
+
 
 Route::get('test', function() {
     $root = App\Category::whereIsRoot()->first();

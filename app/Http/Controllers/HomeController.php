@@ -1,6 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Category;
+use Cache;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller {
 
@@ -32,251 +35,37 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-        $root = Category::whereIsRoot()->first();
-
-        $vlimit = 11; // vertical limit
-        $hlimit = 2; // horizontal limit
-
-        $catarray = [];
-
-        $counter = 0; // vertical limit counter
-        echo 'point1';
-        foreach($root->children->all() as $cat) {
-            echo 'point2';
-            if($counter > $vlimit) break;
-            $catarray[$counter] = function($cat) {
-                echo 'point3';
-                $subcatarray = [];
-                $subcatarray['name'] = ['title' => $cat->name]; // the main category
-                $subcatarray['children'] = function($cat, $hlimit) { // get three columns
-                    echo 'point4';
-                    $postcatarray = [];
-                    $subcats = $cat->children->all();
-                    for($i = 0; $i < $hlimit; $i++) { // the three loops
-                        echo 'point5';
-                        $postcatarray[$i] = function($subcats) { // get column
-                            echo 'point6';
-                            return $subcats->children->all();
-                        };
-                    }
-                    return $postcatarray;
-                };
-                return $subcatarray;
-            };
-            $counter++;
-        }
-
-
-
-
-		$navItemName = Category::all();
-		//$navItems = DB::table('subcategories')->get();
-							
-		$navItems = array(
-			array(
-				"Used Cars for Sale",
-				"Boats",
-				"Heavy Vehicles",
-				"Motorcycles"
-			),
-								
-			array(
-				"Apparel , Merchandise & Accessories",
-				"Automotive Tools"
-			),
-				
-			array(
-				"Boat parts",
-				"Car Parts",
-				"Motorcycle Parts"
-			),
-				
-			array(
-				"Cat 5 - 1",
-				"Cat 5 - 2",
-				"Cat 5 - 3"
-			),
-				
-			array(
-				"Cat 6 - 1",
-				"Cat 6 - 2",
-				"Cat 6 - 3"
-			),
-				
-			array(
-				"Cat 7 - 1",
-				"Cat 7 - 2",
-				"Cat 7 - 3"
-			),
-				
-			array(
-				"Cat 8 - 1",
-				"Cat 8 - 2",
-				"Cat 8 - 3"
-			),
-				
-			array(
-				"Cat 9 - 1",
-				"Cat 9 - 2",
-				"Cat 9 - 3"
-			),
-				
-			array(
-				"Cat 10 - 1",
-				"Cat 10 - 2",
-				"Cat 10 - 3"
-			),
-				
-			array(
-				"Cat 11 - 1",
-				"Cat 11 - 2",
-				"Cat 11 - 3"
-			),
-				
-			array(
-				"Cat 12 - 1",
-				"Cat 12 - 2",
-				"Cat 12 - 3"
-			),	
-			
-			array(
-				"shbi",
-				"Rinoy",
-				"shaaji 1 - 3",
-				"Rinoy",
-				"Rinoy",
-				"Rinoy"
-			)
-		);
-
-		$navItemsCont = array(
-			array(
-				array("AUDI", "BMW", "Ford","Land Rover", "Mercedes-Benz","Land Rover", "Mercedes-Benz" ),
-				array("MotorBoats", "Row/Paddle Boats", "Sail Boats"),
-				array("Buses", "Cranes", "Forklifts","Trailers", "Trucks", "Tankers", "Parts & Engine"),
-				array("Cruiser/Chopper", "Mo-Ped", "Off-Road/Dual Purpose","Scooter", "Sport Bike", "Standard Motorcycle","Touring", "Trike")
-			),
-			array(
-				array("Apparel", "Boat Accessories", "Car / 4x4 Accessories","Merchandise", "Motorcycle Accessories"),
-				array("Tool Accessories", "Tool sets", "Tools")
-			),
-			array(
-				array("Body parts & Accessories", "Engine Parts", "Plumbing & Ventilation" ),
-				array("A/C & Heating Parts", "Batteries", "Brakes","Engine & Computer Parts", "Exhaust/Air Intake","Exterior Parts","Interior Parts","Lighting","Suspension","Wheels/Tires"),
-				array("Accessories", "Body & Frames", "Engines & Components","Lighting",  "Wheels/Tires","Number Plates")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5"),
-				array("item1", "item2", "item3","item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5")
-			),
-			array(
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5"),
-				array("item1", "item2", "item3", "item4", "item5")
-			)
-		);
-		$data = array('navItemName' => $navItemName, 'navItems' => $navItems, 'navItemsCont' => $navItemsCont);
-		return view('home', $data);
+		return view('home');
+//        $catset = $this->getCatSet();
+//        foreach ($catset as $cat) {
+//            echo $cat['title'] . '<br>';
+//            foreach ($cat['children'] as $col) {
+//                foreach($col as $item){
+//                    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $item['title'] . '<br>';
+//                }
+//                echo '<br>';
+//            }
+//        }
 	}
-	
-	public function hell() {
-        $root = Category::whereIsRoot()->first();
 
-        $catset = []; // complete category set, ready to display
-
-        $counter = 0;
-        foreach ($root->children->all() as $cat) {
-            if($counter > 11) break;
-            $catset[$cat->name]['title'] = $cat->name;
-            echo $cat->name . '<br>';
-            $subcats = $cat->children->all();
-            $subcatcounter = 0;
-            $subcatcount = count($subcats);
-            for ($col = 0; $col < 3; $col++) {
-                echo 'col ' . $col . '<br>';
-                $rowcounter = 0;
-                $fillmore = true;
-                $postcatcounter = 0;
-                $postcats = [];
-                $postcatcount = 0;
-                $fillhead = true;
-                while($fillmore) {
-                    echo 'filling row ' . $rowcounter;
-                    if($fillhead) {
-                        echo ' subcat ' . $subcats[$subcatcounter]->name . '<br>';
-                        $colarray[$rowcounter]['title'] = $subcats[$subcatcounter]->name;
-                        $colarray[$rowcounter]['type'] = 'subcat';
-                        $postcats = $subcats[$subcatcounter]->children->all();
-                        $postcatcount = count($postcats) - 1;
-                        $subcatcounter++;
-                        $fillhead = false;
-                    } else {
-                        echo ' postcat ' . $postcats[$postcatcounter]->name . '<br>';
-                        $colarray[$rowcounter]['title'] = $postcats[$postcatcounter]->name;
-                        $colarray[$rowcounter]['type'] = 'postcat';
-                        $postcatcounter++;
-                        if($postcatcounter > $postcatcount) {
-                            $postcatcounter = 0;
-                            break;
-                        }
-                    }
-                    $rowcounter++;
-                    if($rowcounter > 11) $fillmore = false;
-                }
-                $catset[$cat->name]['children'][$col] = $colarray;
-            }
-            $counter++;
+    public function contactUs(Request $request)
+    {
+        $rules = [
+            'email' => 'required|email',
+            'subject' => 'required|min:10',
+            'contact' => 'required',
+            'description' => 'required|min:50'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+//            echo $validator->messages();
+            return redirect()->back()->with('errors', $validator->messages());
         }
+    }
 
-        foreach ($catset as $cat) {
-            echo $cat['title'] . '<br>';
-            foreach($cat['children'] as $col) {
-                echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $col['title'] . '<br>';
-                foreach ($col['children'] as $item) {
-                    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $item . '<br>';
-                }
-                echo '<br>';
-            }
-        }
-	}
+    public function reportImage(Request $request)
+    {
+
+    }
 
 }

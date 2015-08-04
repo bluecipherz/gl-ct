@@ -15,10 +15,11 @@ class CreateCustomerTables extends Migration {
         Schema::create('customers', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->boolean('active')->default(true);
+            $table->unsignedInteger('profile_id')->nullable();
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
