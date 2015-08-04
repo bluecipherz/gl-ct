@@ -109,4 +109,6 @@ Route::get('test', function() {
 //    }
 });
 
-Route::get('hell', 'HomeController@hell');
+Route::get('hell', function () {
+    print_r($this->app['config']['auth']);
+});

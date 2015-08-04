@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'driver' => 'eloquent',
+//	'driver' => 'eloquent',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'App\User',
+//	'model' => 'App\User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
 	|
 	*/
 
-	'table' => 'users',
+//	'table' => 'users',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -58,10 +58,33 @@ return [
 	|
 	*/
 
-	'password' => [
-		'email' => 'emails.password',
-		'table' => 'password_resets',
-		'expire' => 60,
-	],
+//	'password' => [
+//		'email' => 'emails.password',
+//		'table' => 'password_resets',
+//		'expire' => 60,
+//	],
+
+
+    'multi' => array(
+        'admin' => array(
+            'driver' => 'eloquent',
+            'model' => 'Admin'
+        ),
+        'customer' => array(
+            'driver' => 'eloquent',
+            'model' => 'Customer'
+        )
+    ),
+
+    'reminder' => array(
+
+        'email' => 'emails.auth.reminder',
+
+        'table' => 'password_reminders',
+
+        'expire' => 60,
+
+    ),
+
 
 ];

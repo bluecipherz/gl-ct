@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\User;
+use App\Customer;
+use Ollieread\Multiauth\Guard;
 use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
 use App\Exceptions\LoginException;
 
 use Illuminate\Http\Request;
@@ -26,8 +26,10 @@ class AuthController extends Controller {
 		'password' => 'required'
 	];
 
-    public function __construct() {
-		
+    protected $guard;
+
+    public function __construct(Guard $guard) {
+		$this->guard = $guard;
     }
 	
 	public function registerUser(Request $request) {
@@ -38,12 +40,12 @@ class AuthController extends Controller {
 			);
 		}
 		
-		$user = User::create([
+		$user = Customer::create([
 			'email' => $request->get('email'),
 			'password' => bcrypt($request->get('password')),
 		]);
 		
-		Auth::login($user);
+		$this->guard->login($user);
 		
 		return view('auth.partials.logged');
 	}
@@ -54,7 +56,7 @@ class AuthController extends Controller {
 			'password' => $request->get('password'),
             'active' => true
 		];
-		if(Auth::attempt($credentials)) {
+		if($this->guard->attempt($credentials)) {
 			// return redirect()->intended('/home');
 			return view('auth.partials.logged');
 		} else {
@@ -67,7 +69,7 @@ class AuthController extends Controller {
     }
 	
 	public function logoutUser() {
-		Auth::logout();
+		$this->guard->logout();
 		return redirect()->intended('/home');
 	}
 
