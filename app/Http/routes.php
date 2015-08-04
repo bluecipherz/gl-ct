@@ -70,6 +70,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('preferences', ['uses' => 'AdminPanelController@preferences', 'as' => 'admin.preferences']);
     Route::get('administration', ['uses' => 'AdminPanelController@administration', 'as' => 'admin.administration']);
     Route::get('statistics', ['uses' => 'AdminPanelController@statistics', 'as' => 'admin.statistics']);
+    Route::get('messages', ['uses' => 'AdminPanelController@messages', 'as' => 'admin.messages']);
+    Route::get('reports', ['uses' => 'AdminPanelController@reports', 'as' => 'admin.reports']);
 });
 
 Route::post('/support/contact-us', 'HomeController@contactUs');

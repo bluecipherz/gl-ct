@@ -111,4 +111,14 @@ class AdminPanelController extends Controller {
         return view('admin.statistics');
     }
 
+    public function messages()
+    {
+        return view('admin.messages');
+    }
+
+    public function reports()
+    {
+        return view('admin.reports');
+    }
+
 }

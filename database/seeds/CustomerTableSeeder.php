@@ -18,7 +18,7 @@ class CustomerTableSeeder extends DatabaseSeeder {
 			$password = Hash::make("password");
 			
 			App\Customer::create([
-                'name' => $name,
+//                'name' => $name, // moved to profile
 				'email' => $email,
 				'password' => $password
 			]);

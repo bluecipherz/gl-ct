@@ -4,7 +4,7 @@
 @section('Scontent')
 	<div class="s-inp-base">
         @forelse($errors->all() as $error)
-            {{ $error }}
+            <div class="alert alert-danger"><span class="close">&times;</span>{{ $error }}</div>
         @empty
         @endforelse
         {!! Form::open(['url' => '/support/contact-us', 'method' => 'POST']) !!}

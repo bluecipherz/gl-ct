@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Message;
 use Illuminate\Http\Request;
 use App\Category;
 use Cache;
@@ -52,15 +53,17 @@ class HomeController extends Controller {
     {
         $rules = [
             'email' => 'required|email',
-            'subject' => 'required|min:10',
+            'subject' => 'required',
             'contact' => 'required',
-            'description' => 'required|min:50'
+            'description' => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
 //            echo $validator->messages();
             return redirect()->back()->with('errors', $validator->messages());
         }
+        Message::create(array_except($request->all, ['_token']));
+        return redirect()->url('/contact-us')->withMessage('Message Sent.');
     }
 
     public function reportImage(Request $request)
