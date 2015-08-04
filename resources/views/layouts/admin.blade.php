@@ -46,16 +46,17 @@
 
     <div class="adm-container">
         <div class="row">
-            @if(isset($message))
-                <div class="col-lg-12 col-md-12">
-                    <div class="alert alert-danger">{{ $message }}<span class="close"></span></div>
-                </div>
-            @endif
             @include('admin.sidebar')
             <div class="adm-sidebar-r">
 
             </div>
             <div class="adm-cont" >
+                @forelse($errors->all as $error)
+                    <div class="col-lg-12 col-md-12">
+                        <div class="alert alert-danger">{{ $error }}<span class="close"></span></div>
+                    </div>
+                @empty
+                @endforelse
                 @yield('content')
             </div>
         </div>

@@ -55,15 +55,16 @@ class HomeController extends Controller {
             'email' => 'required|email',
             'subject' => 'required',
             'contact' => 'required',
-            'description' => 'required'
+            'message' => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
 //            echo $validator->messages();
             return redirect()->back()->with('errors', $validator->messages());
         }
-        Message::create(array_except($request->all, ['_token']));
-        return redirect()->url('/contact-us')->withMessage('Message Sent.');
+        $message = Message::create(array_except($request->all(), ['_token']));
+        print_r($message);
+//        return redirect('/contact-us')->withMessage('Message Sent.');
     }
 
     public function reportImage(Request $request)

@@ -7,6 +7,8 @@ use App\Customer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Message;
+use App\Report;
 use App\Role;
 use App\Order;
 use App\OrderItem;
@@ -113,12 +115,12 @@ class AdminPanelController extends Controller {
 
     public function messages()
     {
-        return view('admin.messages');
+        return view('admin.messages')->with('messages', Message::all());
     }
 
     public function reports()
     {
-        return view('admin.reports');
+        return view('admin.reports')->with('reports', Report::all());
     }
 
 }
