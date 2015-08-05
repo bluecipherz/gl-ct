@@ -312,6 +312,7 @@ jQuery(document).ready(function() {
 	
 	$(".selcat-obbtn").click(function(){
 		$(".selCatOuter").css({"display":"none"});
+		$("body").css("overflow", "auto");
 	});
 	
 	function selCatPopup(){
@@ -325,6 +326,21 @@ jQuery(document).ready(function() {
 		$(".selCat2sec").css({"display":"block"});
 		$(".selCat1sec").css({"display":"none"});
 	}
+	
+	//popup - select 
+
+	
+		$(".setcat-cat").click(function(){
+			$(".selCatPop > div").css({"display":"none"});
+			$(this).css({"display":"block"});
+			$(this).find(".setcat-subCat").css({"display":"block"});
+		});
+		
+		$(".setcat-subCat").click(function(){
+			$(".setcat-subCat> div").css({"display":"none"});
+			$(this).css({"display":"block"});
+			$(this).find("div").css({"display":"block"});
+		});
 	
 	//add photo button
 	

@@ -1,28 +1,27 @@
 <?php
-	$cat = array(array("cat 1", 1),array("cat 2", 2),array("cat 3", 3));
-	$subCat = array(array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
-					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
-					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3))
-	);
+	$cat =[["cat 1", 1],["cat 2", 2],["cat 3", 3]];
+	$subCat = [[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]],
+					[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]],
+					[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]]
+	];
 	
-	$postSubCat = array(array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
-						),
-						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
-						),
-						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
-						)
-	);
-	
-	
+	$postSubCat = [[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
+						],
+						[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
+						],
+						[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
+						]
+	];
 	
 	
-	$superSubCat = array(array("cat 1", 1),array("cat 1", 2),array("cat 1", 3));
+	
+	$superSubCat = [["cat 1", 1],["cat 1", 2],["cat 1", 3]];
 ?>
 @extends('layouts.core')
 @section('content')
@@ -117,9 +116,9 @@
 										@for($j=0;$j <= 2 ; $j++)	
 											<div class="setcat-subCat">
 												{{ $subCat[$i][$j][0] }}
-												@for($k=0;$k <= 0 ; $k++)
-												<div class="setcat-subCat">
-													{{ $subCat[$i][$j][$k][0] }}
+												@for($k=0;$k <= 2 ; $k++)
+												<div class="setcat-postSubCat">
+													{{ $postSubCat[$i][$j][$k][0] }}
 												</div>
 												@endfor
 											</div>

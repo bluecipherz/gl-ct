@@ -1352,10 +1352,12 @@ label:hover:before {
 				top:200px;
 				width:600px;
 				height:400px;
-				overflow:scroll;
+				overflow-y:scroll;
 				background:#fff;
 				box-shadow:0 0 20px rgba(0,0,0,0.5);
 				z-index:10010;
+				padding:0px;
+				
 			}
 
 			.selCatOuter{
@@ -1363,9 +1365,29 @@ label:hover:before {
 			}
 			
 			.selCat2sec > div,.selCat2sec > span{
-				display:inline_block;
+				display:block;
 				float:left;
 			}
+			.setcat-cat{
+				display:block;
+				float:left;
+				margin:5px;
+				background:red;
+			}
+			.setcat-cat > div{
+				display:none;
+			}
+			.setcat-subCat{
+				
+				display:block;
+				float:left;
+				margin:5px;
+				background:blue;
+			}
+			.setcat-subCat > div{
+				display:none;
+			}
+			
 		.w2-inp-label{
 			display:inline_block;
 			height:50px;
