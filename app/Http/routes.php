@@ -16,26 +16,21 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 // Route::controllers([
-	// 'auth' => 'Auth\AuthController',
+//	 'auth' => 'Auth\AuthController',
 	// 'password' => 'Auth\PasswordController',
 // ]);
 
-Route::post('/auth/register', 'AuthController@registerUser');
-Route::post('/auth/login', 'AuthController@loginUser');
-Route::get('/auth/logout', 'AuthController@logoutUser');
-
-Route::get('login', function() {
-	return view('pages.login');
-});
+Route::post('/auth/register', 'AuthController@registerCustomer');
+Route::post('/auth/login', 'AuthController@loginCustomer');
+Route::get('/auth/logout', 'AuthController@logoutCustomer');
 
 Route::get('products/all-products', 'ProductController@allProducts');
+
 Route::get('search', 'ProductController@search');
-// these route functions are temporarily placed in ProductController
-Route::get('category/sub-categories', 'ProductController@subCats');
-Route::get('category/post-sub-cats', 'ProductController@postSubCats');
-Route::post('category', ['uses' => 'ProductController@createCat', 'as' => 'category.store']);
-Route::post('sub-category', ['uses' => 'ProductController@createSubCat', 'as' => 'subcat.store']);
-Route::post('post-sub-cat', ['uses' => 'ProductController@createPostSubCat', 'as' => 'postsubcat.store']);
+
+Route::get('login', function() {
+    return view('pages.login');
+});
 
 Route::get('cart', function() {
 	return view('pages.cart');
@@ -45,9 +40,7 @@ Route::get('register', function() {
 	return view('pages.register');
 });
 
-Route::get('adpost', function() {
-	return view('pages.adposts');
-});
+Route::resource('advertisements', 'AdvertisementController');
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });
@@ -77,21 +70,20 @@ Route::group(['prefix' => 'admin'], function () {
 Route::post('/support/contact-us', 'HomeController@contactUs');
 Route::post('/feedback/report-image', 'HomeController@reportImage');
 
-
-Route::get('test', function() {
+Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
     $root = App\Category::whereIsRoot()->first();
-    $cats = $root->children->all();
-    foreach($cats as $cat) {
-        echo $cat . '<br>';
-        $subcats = $cat->children->all();
-        foreach($subcats as $subcat) {
-            echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $subcat . '<br>';
-            $postsubcats = $subcat->children->all();
-            foreach ($postsubcats as $postsubcat) {
-                echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $postsubcat . '<br>';
-            }
-        }
-    }
+//    $cats = $root->children->all();
+//    foreach($cats as $cat) {
+//        echo $cat . '<br>';
+//        $subcats = $cat->children->all();
+//        foreach($subcats as $subcat) {
+//            echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $subcat . '<br>';
+//            $postsubcats = $subcat->children->all();
+//            foreach ($postsubcats as $postsubcat) {
+//                echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $postsubcat . '<br>';
+//            }
+//        }
+//    }
 
 //    $root = App\Category::reversed()->get();
 //    echo $root;
@@ -107,8 +99,53 @@ Route::get('test', function() {
 //            echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $n->name . '<br>';
 //        }
 //    }
+    $cattree = $repository->getTree();
+
+//    foreach ($cattree as $catkey => $cat) {
+//        echo $catkey . '<br>';
+//        foreach($cat as $subcatkey => $subcat) {
+//            echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $subcatkey . '<br>';
+//            foreach($subcat as $postcatkey => $postcat) {
+//                echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $postcat . '<br>';
+//            }
+//        }
+//    }
+
+    $name = 'Category';
+    $selected = null;
+    $options = ['class' => 'cust-input w2-inp-btn addCat'];
+
+    $list = array(
+        'Cats' => array('leopard' => 'Leopard'),
+        'Dogs' => array('spaniel' => 'Spaniel'),
+    );
+
+    $html = [];
+
+    foreach ($cattree as $catkey => $cat) {
+//        $html .= '<optgroup label="' . $catkey . '"></optgroup>';
+
+        foreach($cat as $subcatkey => $subcat) {
+//            $html .= '<optgroup label="' . $subcatkey . '"></optgroup>';
+            $html[] = Form::getSelectOption($subcat, $subcatkey, $selected);
+//            foreach($subcat as $postcatkey => $postcat) {
+//                $html .= '<option value="' . $postcatkey . '">' . $postcat . '</option>';
+//                $html[] = Form::getSelectOption($postcat, $postcatkey, $selected);
+//            }
+        }
+    }
+//    foreach ($list as $value => $display)
+//    {
+//        $html[] = Form::getSelectOption($display, $value, $selected);
+//    }
+
+    $list = implode('', $html);
+
+    $options = HTML::attributes($options);
+
+    return "<select{$options}>{$list}</select>";
 });
 
 Route::get('hell', function () {
-    print_r($this->app['config']['auth']);
+    $this->app['auth']->admin()->setUser(\App\Customer::find(1));
 });

@@ -301,50 +301,126 @@ jQuery(document).ready(function() {
 	
 	//select category button
 	
-	$categorized = false;
-	$selCat2 = true;
 	
 	$(".addCat").click(function(){
-		selCatPopupReset();
-		selCatPopup();
-		if($categorized && $selCat2) { selCatChangeButton(); $selCat2 = false; }
+		catselReset();
+		selCatPopContup();
 	});
 	
 	$(".selcat-obbtn").click(function(){
-		$(".selCatOuter").css({"display":"none"});
-		$("body").css("overflow", "auto");
+		selcatPopClose();
 	});
 	
-	function selCatPopup(){
+	function selcatPopClose(){
+		$(".selCatOuter").css({"display":"none"});
+		$("body").css("overflow", "auto");
+	}
+	function selCatPopContup(){
 		$("body").css("overflow", "hidden");
 		$(".selCatOuter").css({"display":"block"});
-	}
-	function selCatPopupReset(){
-		
 	}
 	function selCatChangeButton(){
 		$(".selCat2sec").css({"display":"block"});
 		$(".selCat1sec").css({"display":"none"});
 	}
 	
-	//popup - select 
-
+	//popup - select
+	var clickBase = "";
+	var catLevel = 1;
+	var catidText;
+	var subcatidText;
+	var postcatidText;
 	
-		$(".setcat-cat").click(function(){
-			$(".selCatPop > div").css({"display":"none"});
-			$(this).css({"display":"block"});
-			$(this).find(".setcat-subCat").css({"display":"block"});
+	
+		$(".selCatPopCont  .setcat-cat").click(function(){
+			if(catLevel==1){
+				catselForward($(this));
+				catidText = $(this).text();
+				$(".selCatPopTitle").html(catidText);
+				catLevel = 2;
+			}
+		});
+		$(".selCatPopCont  .setcat-subCat").click(function(){
+			if(catLevel==2){
+				catselForward($(this));
+				subcatidText = $(this).text();
+				$(".selCatPopTitle").html(subcatidText);
+				catLevel = 3;
+			}
+		});
+		$(".selCatPopCont  .setcat-postCat").click(function(){
+			if(catLevel==3){
+				var catid = $(this).attr('catid');
+				var subcatid = $(this).attr('subcatid');
+				var postcatid = $(this).attr('postcatid');
+				
+				postcatidText = $(this).text();
+				var catPath = catidText +" > "+ subcatidText +" > "+ postcatidText;
+				$(".selcatPath").html("<span class='selpathText'>" + catidText + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + subcatidText + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + postcatidText + " </span> ");
+				selCatChangeButton();
+				selcatPopClose();
+				catLevel = 1;
+				selpathDummyH = $(".selcatPath").outerHeight();
+				$(".selcatPathDummy").css({"height": selpathDummyH ,"margin" : "5px"});
+			}
+		});
+		$(".selCatPopBackBtn").click(function(){
+			catselBackward();
 		});
 		
-		$(".setcat-subCat").click(function(){
-			$(".setcat-subCat> div").css({"display":"none"});
-			$(this).css({"display":"block"});
-			$(this).find("div").css({"display":"block"});
-		});
-	
+		function catselForward(that){
+		
+			$(".sc-post-frame").css({"display":"none"});
+			$(".sc-sub-frame").css({"display":"none"});
+			$(".sc-frame").css({"display":"none"});	
+			$("." + that.attr('idbase')).css({"display":"block"});
+			that.parent().css({"display":"none"});
+			$(".selCatPopBackBtn").removeClass('selCatPopBackBtn-inact');
+		}
+		
+		function catselReset(){
+			catLevel =1;
+			$(".sc-sub-frame").css({"display":"none"});
+			$(".sc-post-frame").css({"display":"none"});
+			$(".sc-frame").css({"display":"block"});
+			$(".selCatPopBackBtn").addClass('selCatPopBackBtn-inact');
+			$(".selCatPopTitle").html("Select a Category");
+		}
+		
+		function catselBackward(){
+			if(catLevel == 3){
+				$(".sc-post-frame").css({"display":"none"});
+				$(".sc-sub-frame").css({"display":"block"});
+				$(".sc-frame").css({"display":"none"});	
+				$(".selCatPopTitle").html(catidText);
+				catLevel = 2;
+			}else 
+			if(catLevel == 2){
+				$(".sc-post-frame").css({"display":"none"});
+				$(".sc-sub-frame").css({"display":"none"});
+				$(".sc-frame").css({"display":"block"});		
+				$(".selCatPopBackBtn").addClass('selCatPopBackBtn-inact');
+				$(".selCatPopTitle").html("Select a Category");
+				catLevel = 1;
+			}else 
+			if(catLevel == 1){
+				
+			}
+		}
+
 	//add photo button
-	
+
+    var uploadAction = function() {
+        $(this).parent().find(':file').click();
+    }
+
 	$(".addPhoto").click(function(){
-		$(this).before($("<span>").addClass('upPhoto').text('Upload photo'));
+        var parent = $('<div/>');
+        var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'}).appendTo(parent);
+        $('<input type="file" name="image[]">').appendTo(wrapper); // ad post filechooser
+        $("<div/>").addClass('upPhoto').text('Upload photo').click(uploadAction).show().appendTo(parent);
+		$(this).before(parent);
 	});
+
+    $('.upPhoto').click(uploadAction).show();
 });

@@ -21,6 +21,7 @@ class CreateProfileTable extends Migration {
             $table->unsignedInteger('image_id')->nullable();
             $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
 	}
 
@@ -31,7 +32,7 @@ class CreateProfileTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('profiles');
+        Schema::dropIfExists('profiles');
 	}
 
 }

@@ -77,7 +77,6 @@
 						You are already logged in. want to login </br>from different account ?
 					</div> 
 					<div class="lgin-sec-3">
-						<div class="backbtn cust-btn -btn-back" btnId="1" >back to cart</div>
 						<div class="loginbtn cust-btn -btn-back" btnId="1" >Login from another account</div>
 						<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
 					</div> 
@@ -89,44 +88,73 @@
 						<div class="w2-inp-label" >Title</div>
 						<div class="w2-inp-label w2-inp-label-t" >Description </div>
 						<div class="w2-inp-label " >Category</div>
+						<div class="selcatPathDummy" ></div>
 						<div class="w2-inp-label" >price</div>
 						
 					</div>
 					<div class="w2-inp" >
-						<input type="text" class="cust-input w2-inp-f in-larg" placeholder="Ad Title"/>
-						<textarea type="text" class="cust-input w2-inp-t in-larg" placeholder="Description about your ad"></textarea>
-						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div> 
+                        {!! Form::open(['url' => '/adpost', 'method' => 'POST', 'files' => 'true']) !!}
+                        {!! Form::text('adtitle', '', ['placeholder' => 'Ad Title', 'class' => 'cust-input w2-inp-f in-larg']) !!}
+                        {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t in-larg']) !!}
+						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
 						<div class="selCat2sec">
-							<span class="seCat-cat"></span> 
-							<span class="seCat-subCat"></span> 
-							<span class="seCat-postSubCat"></span> 
-							<span class="seCat-superSubCat"></span> 
-							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div> 
-						</div> 
-						<input type="text" class="cust-input w2-inp-f in-larg" placeholder="price"/>
-						<div class="upPhoto">Upload photo</div>
-						<div class="b-fakeLink addPhoto">+</div>
-						
+							<div class="selcatPath w2-inp-f in-larg"></div>
+							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
+						</div>
+                        {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f in-larg']) !!}
+                        <div>
+                            <div class="upPhoto">Upload Photo</div>
+                            <div style="height:0;width:0;overflow:hidden;"><input type="file" name="image[]"/></div>
+                        </div>
+                        <div class="b-fakeLink addPhoto">+</div>
+                        {!! Form::close() !!}
+
 						<div class="selCatOuter">
 							<div class="overlay selcat-obbtn"> </div>
 							<div class="selCatPop">
-								@for($i=0;$i <= 2 ; $i++)
-									<div class="setcat-cat">
-										{{ $cat[$i][0] }}
-										@for($j=0;$j <= 2 ; $j++)	
-											<div class="setcat-subCat">
-												{{ $subCat[$i][$j][0] }}
-												@for($k=0;$k <= 2 ; $k++)
-												<div class="setcat-postSubCat">
-													{{ $postSubCat[$i][$j][$k][0] }}
-												</div>
-												@endfor
+								<div class="selCatPopHead">
+									<div class="selCatPopTitle"> Select a Category </div>
+									<div class="selCatPopBackBtn selCatPopBackBtn-inact"> Back </div>
+								</div>
+								<div class="selCatPopCont">
+									<?php $i = 1; ?>
+									<div class="sc-frame ">
+										@foreach($categories as $catkey => $cat)
+											<div class="setcat-cat" idbase="scf{{ $i }}">
+												{{ $catkey }} 
+												<?php $i++; ?>
 											</div>
-										@endfor	
+										@endforeach
 									</div>
-								@endfor
-							</div>
+									<?php $i = 1; $j = 1; ?>
+									@foreach($categories as $catkey => $cat)
+										<div class="sc-sub-frame scf{{ $i }}">
+											@foreach($cat as $subcatkey => $subcat)
+												<div class="setcat-subCat" idbase="scf{{ $i }}sub{{ $j }}">
+													{{ $subcatkey }}
+												</div>
+												<?php $j++; ?>
+											@endforeach
+										</div>	
+										<?php $i++; $j = 1; ?>
+									@endforeach
+									<?php $i = 1; $j = 1; $k = 1;?>
+									@foreach($categories as $catkey => $cat)
+										@foreach($cat as $subcatkey => $subcat)
+											<div class="sc-post-frame scf{{ $i }}sub{{ $j }}">
+												@foreach($subcat as $postcatkey => $postcat)
+													<div class="setcat-postCat" catid="{{$i}}" subcatid="{{$j}}" postcatid="{{$k}}">{{ $postcat }}</div>
+													<?php $k++; ?>
+												@endforeach
+											</div>	
+											<?php $j++; $k = 1; ?>
+										@endforeach
+										<?php $i++; $j = 1;  ?>
+									@endforeach
+								</div>
+                            </div>
 						</div>
+						
 					</div>
 				</div>
 				<div class="w2-sec2" >

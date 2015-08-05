@@ -16,8 +16,11 @@ class CreateImagesTable extends Migration {
 		{
 			$table->increments('id');
             $table->unsignedInteger('customer_id')->nullable();
+            $table->unsignedInteger('post_id')->nullable();
+            $table->tinyInteger('type'); // 1 - product, 2 - reseller
             $table->text('thumb');
 			$table->timestamps();
+            $table->softDeletes();
 		});
 	}
 
@@ -28,7 +31,7 @@ class CreateImagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('images');
+		Schema::dropIfExists('images');
 	}
 
 }

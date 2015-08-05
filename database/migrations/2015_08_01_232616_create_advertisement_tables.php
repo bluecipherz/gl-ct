@@ -20,6 +20,7 @@ class CreateAdvertisementTables extends Migration {
             $table->string('title');
             $table->text('description');
             $table->integer('quantity')->default(1);
+            $table->integer('price');
             $table->timestamps();
             $table->softDeletes();
         });

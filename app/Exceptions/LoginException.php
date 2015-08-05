@@ -11,13 +11,18 @@ use Illuminate\Http\Response;
 
 class LoginException extends RuntimeException {
 
-    protected $response;
+    protected $request;
 
-    public function __construct(Response $response) {
-        $this->response = $response;
+    public function __construct($request)
+    {
+        $this->request = $request;
     }
 
     public function getResponse() {
-        return $this->response;
+//        if ($this->request->ajax()) {
+            return response('Login Incorrect', 422);
+//        } else {
+//            return 'Login Incorrect';
+//        }
     }
 }

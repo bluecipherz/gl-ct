@@ -1,76 +1,89 @@
 <?php namespace App\Http\Controllers;
 
 use App\Customer;
-use Ollieread\Multiauth\Guard;
+use App\Services\AdminRegistrar;
+use App\Services\CustomerRegistrar;
+use App\Services\Registrar;
 use Validator;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Auth;
 use App\Exceptions\LoginException;
-
 use Illuminate\Http\Request;
 
 class AuthController extends Controller {
 
-	protected $user_register_rules = [
-		'email' => 'required|email|max:255|unique:users',
-		'password' => 'required|confirmed|min:6'
-	];
-	
-	protected $admin_register_rules = [
-		'email' => 'required|email|max:255|unique:admins',
-		'password' => 'required|confirmed|min:8'
-	];
-	
 	protected $login_rules = [
 		'email' => 'required|email',
 		'password' => 'required'
 	];
 
-    protected $guard;
+    protected $admin;
 
-    public function __construct(Guard $guard) {
-		$this->guard = $guard;
+    protected $customer;
+
+    public function __construct(AdminRegistrar $admin, CustomerRegistrar $customer) {
+        $this->admin = $admin;
+        $this->customer = $customer;
     }
 	
-	public function registerUser(Request $request) {
-		$validator =  Validator::make($request->all(), $this->user_register_rules);
+	public function registerCustomer(Request $request) {
+		$validator =  $this->customer->validator($request->all());
 		if($validator->fails()) {
 			$this->throwValidationException(
 				$request, $validator
 			);
 		}
+
+        $user = $this->customer->create([
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('password')),
+        ]);
 		
-		$user = Customer::create([
-			'email' => $request->get('email'),
-			'password' => bcrypt($request->get('password')),
-		]);
-		
-		$this->guard->login($user);
-		
-		return view('auth.partials.logged');
+		Auth::customer()->login($user);
+
+        if ($request->ajax()) {
+            return view('auth.partials.logged');
+        } else {
+            return redirect()->back()->withMessage('Account Created');
+        }
 	}
 
-	public function loginUser(Request $request) {
+	public function loginCustomer(Request $request) {
 		$credentials = [
 			'email' => $request->get('email'),
 			'password' => $request->get('password'),
             'active' => true
 		];
-		if($this->guard->attempt($credentials)) {
+		if(Auth::customer()->attempt($credentials)) {
 			// return redirect()->intended('/home');
 			return view('auth.partials.logged');
 		} else {
-            throw new LoginException(response('Login incorrect', 422));
+            throw new LoginException($request);
         }
 	}
 
     public function loginAdmin(Request $request) {
-
+        $credentials = [
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'active' => true
+        ];
+        if(Auth::admin()->attempt($credentials)) {
+            return response('/admin/dashboard');
+        } else {
+            throw new LoginException($request);
+        }
     }
 	
-	public function logoutUser() {
-		$this->guard->logout();
+	public function logoutCustomer() {
+        Auth::customer()->logout();
 		return redirect()->intended('/home');
 	}
+
+    public function logoutAdmin()
+    {
+        Auth::admin()->logout();
+        return redirect()->intended('/home');
+    }
 
 }
