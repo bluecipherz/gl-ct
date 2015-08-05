@@ -149,3 +149,7 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
 Route::get('hell', function () {
     $this->app['auth']->admin()->setUser(\App\Customer::find(1));
 });
+
+Route::get('ajax', function () {
+    return 'ookay';
+});

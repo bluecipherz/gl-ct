@@ -15,6 +15,7 @@ class CreateAddressesTables extends Migration {
         Schema::create('addresses', function(Blueprint $table)
         {
             $table->increments('id');
+            $table->unsignedInteger('advertisement_id');
             $table->foreign('advertisement_id')->references('id')->on('advertisements')->onDelete('cascade');
             $table->text('name');
             $table->integer('pin');
