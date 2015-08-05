@@ -330,6 +330,7 @@ jQuery(document).ready(function() {
 
     var uploadAction = function() {
         $(this).parent().find(':file').click();
+
     }
 
 	$(".addPhoto").click(function(){

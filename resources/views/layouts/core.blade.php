@@ -51,7 +51,7 @@
 					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
 				</div>
 				<div class="userBarOuter pull-right b-untouchable">
-					<a class="userBtn"  href="help">
+					<a class="userBtn"  href="{{ url('/help') }}">
 						<img src="{{ asset('img/nav/help.png') }}">
 						<div>Help</div>
 					</a>
@@ -105,8 +105,8 @@
 				<div class="col-md-12">
 					<div class="col-md-3 fbox">
 						<div><span class="fbh">Support</span></div>
-						<div><a href="help" class="fbd">Help</a></div>
-						<div><a href="contact-us" class="fbd">Contact us</a></div>
+						<div><a href="{{ url('/help') }}" class="fbd">Help</a></div>
+						<div><a href="{{ url('/contact-us') }}" class="fbd">Contact us</a></div>
 					</div>
 					<div class="col-md-3 fbox">
 						<div><span class="fbh">Get social</span></div>
@@ -127,9 +127,9 @@
 					</div>
 					<div class="col-md-3 fbox">
 						<div><span class="fbh">Company</span></div>
-						<div><a href="about-us" class="fbd">About Us</a></div>
-						<div><a href="terms-of-use" class="fbd">Terms of Use</a></div>
-						<div><a href="privacy-policy" class="fbd">Privacy Policy</a></div>
+						<div><a href="{{ url('/about-us') }}" class="fbd">About Us</a></div>
+						<div><a href="{{ url('/terms-of-use') }}" class="fbd">Terms of Use</a></div>
+						<div><a href="{{ url('/privacy-policy') }}" class="fbd">Privacy Policy</a></div>
 					</div>
 				</div>
 			</div>
