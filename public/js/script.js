@@ -78,7 +78,6 @@ jQuery(document).ready(function() {
 	that = "";
 	attrId =1;
 	
-	login = 2;
 	if(login){
 		attrId =2;
 		tabCompleted = attrId;
