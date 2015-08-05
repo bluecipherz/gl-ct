@@ -68,11 +68,11 @@ return [
     'multi' => array(
         'admin' => array(
             'driver' => 'eloquent',
-            'model' => 'Admin'
+            'model' => 'App\Admin'
         ),
         'customer' => array(
             'driver' => 'eloquent',
-            'model' => 'Customer'
+            'model' => 'App\Customer'
         )
     ),
 

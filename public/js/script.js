@@ -306,8 +306,18 @@ jQuery(document).ready(function() {
 	});
 	
 	//add photo button
-	
+
+    var uploadAction = function() {
+        $(this).parent().find(':file').click();
+    }
+
 	$(".addPhoto").click(function(){
-		$(this).before($("<span>").addClass('upPhoto').text('Upload photo'));
+        var parent = $('<div/>');
+        var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'}).appendTo(parent);
+        $('<input type="file" name="image[]">').appendTo(wrapper); // ad post filechooser
+        $("<div/>").addClass('upPhoto').text('Upload photo').click(uploadAction).show().appendTo(parent);
+		$(this).before(parent);
 	});
+
+    $('.upPhoto').click(uploadAction).show();
 });

@@ -37,16 +37,6 @@ class HomeController extends Controller {
 	public function index()
 	{
 		return view('home');
-//        $catset = $this->getCatSet();
-//        foreach ($catset as $cat) {
-//            echo $cat['title'] . '<br>';
-//            foreach ($cat['children'] as $col) {
-//                foreach($col as $item){
-//                    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $item['title'] . '<br>';
-//                }
-//                echo '<br>';
-//            }
-//        }
 	}
 
     public function contactUs(Request $request)
@@ -63,13 +53,8 @@ class HomeController extends Controller {
             return redirect()->back()->with('errors', $validator->messages());
         }
         $message = Message::create(array_except($request->all(), ['_token']));
-        print_r($message);
-//        return redirect('/contact-us')->withMessage('Message Sent.');
-    }
-
-    public function reportImage(Request $request)
-    {
-
+//        print_r($message);
+        return redirect('/contact-us')->withMessage('Message Sent.');
     }
 
 }

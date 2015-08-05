@@ -17,7 +17,7 @@
 	<link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}"/>
 	
 	<script>
-        @if(Auth::check())
+        @if(Auth::customer()->check())
             {{ 'var login = true;' }}
         @else
             {{ 'var login = false;' }}
@@ -59,7 +59,7 @@
 						<img src="{{ asset('img/nav/account.png') }}">
 						<div>Account</div>
 					</div>
-					<a class="userBtn"  href="adpost">
+					<a class="userBtn"  href="{{ route('advertisements.create') }}">
 						<img src="{{ asset('img/nav/more.png') }}">
 						<div>Post ad</div>
 					</a>
@@ -72,7 +72,7 @@
 	<div class="overlay col-md-12 mainReg">
 		<div class="overlay-backbtn"></div>
 		<div class="login-box login-box-main col-md-4 col-md-offset-4">
-			@if(Auth::user())
+			@if(Auth::customer()->check())
 				@include('/auth/partials/logged')
 			@else
 			<div class="loginMB">

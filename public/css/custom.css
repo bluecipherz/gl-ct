@@ -1489,7 +1489,9 @@ label:hover:before {
 		color:#504056;
 		padding-top:0px;
 	}
-	
+	.upPhoto{
+        display:none;
+    }
 	.upPhoto:hover{
 		cursor:pointer;
 		background:#820990;
@@ -1627,3 +1629,4 @@ label:hover:before {
 	.droplistBase > div > div{
 		display:none;
 	}
+

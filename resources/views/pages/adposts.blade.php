@@ -53,7 +53,6 @@
 						You are already logged in. want to login </br>from different account ?
 					</div> 
 					<div class="lgin-sec-3">
-						<div class="backbtn cust-btn -btn-back" btnId="1" >back to cart</div>
 						<div class="loginbtn cust-btn -btn-back" btnId="1" >Login from another account</div>
 						<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
 					</div> 
@@ -69,12 +68,19 @@
 						
 					</div>
 					<div class="w2-inp" >
-						<input type="text" class="cust-input w2-inp-f" placeholder="Ad Title"/>
-						<textarea type="text" class="cust-input w2-inp-t" placeholder="Description about your ad"></textarea>
-						<div btnId="2" class=" cust-input w2-inp-btn addCat" >Select a category</div> 
-						<input type="text" class="cust-input w2-inp-f" placeholder="price"/>
-						<div class="upPhoto">Upload photo</div>
+                        {!! Form::open(['url' => '/adpost', 'method' => 'POST', 'files' => 'true']) !!}
+                        {!! Form::text('adtitle', '', ['placeholder' => 'Ad Title', 'class' => 'cust-input w2-inp-f']) !!}
+                        {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t']) !!}
+                        {!! Form::category('category', $categories, null, ['class' => 'cust-input w2-inp-btn addCat']) !!}
+                        {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f']) !!}
+						{{--<div class="upPhoto" name="photo[]">Upload photo</div>--}}
+                        {{--<div class="upPhoto">{!! Form::file('image[]') !!}</div>--}}
+                        <div>
+                            <div class="upPhoto">Upload Photo</div>
+                            <div style="height:0;width:0;overflow:hidden;"><input type="file" name="image[]"/></div>
+                        </div>
 						<div class="b-fakeLink addPhoto">+</div>
+                        {!! Form::close() !!}
 					</div>
 				</div>
 				<div class="w2-sec2" >

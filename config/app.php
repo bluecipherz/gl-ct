@@ -115,6 +115,7 @@ return [
 		 */
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 //		'Illuminate\Auth\AuthServiceProvider',
+        'Ollieread\Multiauth\MultiauthServiceProvider',
 		'Illuminate\Bus\BusServiceProvider',
         'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
@@ -146,7 +147,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ComposerServiceProvider',
-        'App\Providers\MultiauthServiceProvider',
+		'App\Providers\CustomFormControlProvider',
 
 	],
 
