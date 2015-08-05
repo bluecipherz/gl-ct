@@ -1,28 +1,27 @@
 <?php
-	$cat = array(array("cat 1", 1),array("cat 2", 2),array("cat 3", 3));
-	$subCat = array(array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
-					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
-					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3))
-	);
-
-	$postSubCat = array(array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
-						),
-						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
-						),
-						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
-							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
-						)
-	);
-
-
-
-
-	$superSubCat = array(array("cat 1", 1),array("cat 1", 2),array("cat 1", 3));
+	$cat =[["cat 1", 1],["cat 2", 2],["cat 3", 3]];
+	$subCat = [[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]],
+					[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]],
+					[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]]
+	];
+	
+	$postSubCat = [[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
+						],
+						[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
+						],
+						[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
+							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
+						]
+	];
+	
+	
+	
+	$superSubCat = [["cat 1", 1],["cat 1", 2],["cat 1", 3]];
 ?>
 @extends('layouts.core')
 @section('content')
@@ -89,6 +88,7 @@
 						<div class="w2-inp-label" >Title</div>
 						<div class="w2-inp-label w2-inp-label-t" >Description </div>
 						<div class="w2-inp-label " >Category</div>
+						<div class="selcatPathDummy" ></div>
 						<div class="w2-inp-label" >price</div>
 						
 					</div>
@@ -98,10 +98,7 @@
                         {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t in-larg']) !!}
 						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
 						<div class="selCat2sec">
-							<span class="seCat-cat"></span>
-							<span class="seCat-subCat"></span>
-							<span class="seCat-postSubCat"></span>
-							<span class="seCat-superSubCat"></span>
+							<div class="selcatPath w2-inp-f in-larg"></div>
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
                         {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f in-larg']) !!}
@@ -115,21 +112,49 @@
 						<div class="selCatOuter">
 							<div class="overlay selcat-obbtn"> </div>
 							<div class="selCatPop">
-                                @foreach($categories as $catkey => $cat)
-                                    <div class="setcat-cat">
-                                        {{ $catkey }}
-                                        @foreach($cat as $subcatkey => $subcat)
-                                            <div class="setcat-subCat">
-                                                {{ $subcatkey }}
-                                                @foreach($subcat as $postcatkey => $postcat)
-                                                    <div class="setcat-postCat">{{ $postcat }}</div>
-                                                @endforeach
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endforeach
+								<div class="selCatPopHead">
+									<div class="selCatPopTitle"> Select a Category </div>
+									<div class="selCatPopBackBtn selCatPopBackBtn-inact"> Back </div>
+								</div>
+								<div class="selCatPopCont">
+									<?php $i = 1; ?>
+									<div class="sc-frame ">
+										@foreach($categories as $catkey => $cat)
+											<div class="setcat-cat" idbase="scf{{ $i }}">
+												{{ $catkey }} 
+												<?php $i++; ?>
+											</div>
+										@endforeach
+									</div>
+									<?php $i = 1; $j = 1; ?>
+									@foreach($categories as $catkey => $cat)
+										<div class="sc-sub-frame scf{{ $i }}">
+											@foreach($cat as $subcatkey => $subcat)
+												<div class="setcat-subCat" idbase="scf{{ $i }}sub{{ $j }}">
+													{{ $subcatkey }}
+												</div>
+												<?php $j++; ?>
+											@endforeach
+										</div>	
+										<?php $i++; $j = 1; ?>
+									@endforeach
+									<?php $i = 1; $j = 1; $k = 1;?>
+									@foreach($categories as $catkey => $cat)
+										@foreach($cat as $subcatkey => $subcat)
+											<div class="sc-post-frame scf{{ $i }}sub{{ $j }}">
+												@foreach($subcat as $postcatkey => $postcat)
+													<div class="setcat-postCat" catid="{{$i}}" subcatid="{{$j}}" postcatid="{{$k}}">{{ $postcat }}</div>
+													<?php $k++; ?>
+												@endforeach
+											</div>	
+											<?php $j++; $k = 1; ?>
+										@endforeach
+										<?php $i++; $j = 1;  ?>
+									@endforeach
+								</div>
                             </div>
 						</div>
+						
 					</div>
 				</div>
 				<div class="w2-sec2" >

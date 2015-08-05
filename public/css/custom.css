@@ -1309,7 +1309,7 @@ label:hover:before {
 				background:#820990;
 			}
 			.w2-inp .w2-inp-t{
-				margin:5px 10px 5px 0px;
+				margin:5px 10px 0px 0px;
 				padding-top:15px;
 				line-height:110%;
 				resize: none;
@@ -1319,8 +1319,6 @@ label:hover:before {
 				min-width:80px;
 				width:80px;
 				max-width:80px;
-				
-				
 			}
 			.in-small{
 				min-width:180px;
@@ -1337,7 +1335,6 @@ label:hover:before {
 				width:500px;
 				max-width:500px;
 			}
-		
 			
 			.selCat2sec{
 				display:none;
@@ -1352,19 +1349,136 @@ label:hover:before {
 				top:200px;
 				width:600px;
 				height:400px;
-				overflow:scroll;
 				background:#fff;
 				box-shadow:0 0 20px rgba(0,0,0,0.5);
 				z-index:10010;
+				padding:0px;
 			}
-
+			.selCatPopHead{
+				height:70px;
+				weight:100%;
+			}
+			.selCatPopCont{
+				height:330px;
+				weight:100%;
+				overflow-y:scroll;
+			}
 			.selCatOuter{
 				display:none;
 			}
-			
 			.selCat2sec > div,.selCat2sec > span{
+				display:block;
+				float:left;
+			}
+			.setcat-cat{
+				display:block;
+				float:left;
+				margin:5px 10px 5px 10px;
+				background:rgba(0,0,0,0.2);
+				width:calc( 50% - 20px );
+				height:40px;
+				padding:10px;
+				
+				font-family:Dosis;
+				font-weight:300;
+				font-size:110%;
+			}
+			.setcat-cat > span {
+				display:block;
+				float:left;
+			}
+			.setcat-cat:hover,.setcat-postCat:hover,.setcat-subCat:hover{
+				cursor:pointer;
+				background:#504056;
+				color:#fff;
+			}
+			.setcat-subCat , .setcat-postCat{
+				display:block;
+				float:left;
+				margin:5px 10px 5px 10px;
+				background:rgba(0,0,0,0.2);
+				width:calc( 100% - 20px );
+				height:40px;
+				padding:10px;
+				
+				font-family:Dosis;
+				font-weight:300;
+				font-size:110%;
+			}
+			.sc-sub-frame{
+				display:none;
+			}
+			.sc-post-frame{
+				display:none;
+			}
+			
+			.selcatPathDummy{
+				display:block;
+				float:left;
+				width:100%;
+			}
+			.selcatPath{
+				padding:10px;
+				background:#eaeaea;
+				min-height:50px;
+				margin:5px;
+				border:none;
+				font-family:Dosis;
+				font-weight:200;
+				font-size:120%;
+				padding-left:10px;
+			}
+			.selpathText{
 				display:inline_block;
 				float:left;
+				padding:5px 10px 5px 10px;
+				background:rgba(0,0,0,0.6);
+				border-radius:10px;
+				color:#fff;
+				margin-bottom:5px;
+				margin-top:5px;
+			}
+			.selpathArrow{
+				display:inline_block;
+				float:left;
+				padding:5px;
+				font-weight:500;
+				font-family:Dosis;
+				font-weight:130%;
+				border-radius:10px;
+				min-width:30px;
+				text-align:center;
+				margin: 5px;
+			}
+			.selCatPopTitle, .selCatPopBackBtn{
+				display:inline_block;
+				float:left;
+				padding:5px;
+				width:calc( 100% - 100px );
+				text-align:center;
+				font-family:Dosis;
+				font-weight:500;
+				font-size:150%;
+				margin-top:10px;
+			}
+			.selCatPopBackBtn{
+				width:70px;
+				background:rgba(0,0,0,0.1);
+				margin: 10px 30px 0 0;
+				font-weight:300;
+			}
+			.selCatPopBackBtn:hover{
+				background:#9a59b5;
+				color:#fff;
+				cursor:pointer;
+			}
+			.selCatPopBackBtn-inact{
+				color:rgba(0,0,0,0.2);
+			}
+			.selCatPopBackBtn-inact:hover{
+				background:rgba(0,0,0,0.1);
+				color:rgba(0,0,0,0.2);
+				cursor:default;
 			}
 		.w2-inp-label{
 			display:inline_block;
