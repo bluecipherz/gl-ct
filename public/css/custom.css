@@ -521,7 +521,7 @@ body{
 	left : 0;
 	width : 100%;
 	height : 102%;
-	z-index: 10;
+	z-index: 10000;
 	background-color : rgba(0,0,0,0.5); /* dim the background */
 }
 
@@ -1302,19 +1302,70 @@ label:hover:before {
 				color:#fff;
 				padding-top:12px;
 				text-align:center;
+				padding-left:0px;
 			}
 			.w2-inp .w2-inp-btn:hover{
 				cursor:pointer;
 				background:#820990;
 			}
 			.w2-inp .w2-inp-t{
-				margin:5px 10px 0px 0px;
+				margin:5px 10px 5px 0px;
 				padding-top:15px;
 				line-height:110%;
 				resize: none;
 				height:150px;
 			}
+			.in-exsmall{
+				min-width:80px;
+				width:80px;
+				max-width:80px;
+				
+				
+			}
+			.in-small{
+				min-width:180px;
+				width:180px;
+				max-width:180px;
+			}
+			.in-medium{
+				min-width:320px;
+				width:320px;
+				max-width:320px;
+			}
+			.in-larg{
+				min-width:500px;
+				width:500px;
+				max-width:500px;
+			}
 		
+			
+			.selCat2sec{
+				display:none;
+			}
+			
+			.selCatPop{
+				display:block;
+				float:left;
+				position:fixed;
+				left:clac( 50% - 300px );
+				top:clac( 50% - 200px );
+				top:200px;
+				width:600px;
+				height:400px;
+				overflow:scroll;
+				background:#fff;
+				box-shadow:0 0 20px rgba(0,0,0,0.5);
+				z-index:10010;
+			}
+
+			.selCatOuter{
+				display:none;
+			}
+			
+			.selCat2sec > div,.selCat2sec > span{
+				display:inline_block;
+				float:left;
+			}
 		.w2-inp-label{
 			display:inline_block;
 			height:50px;

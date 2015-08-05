@@ -1,5 +1,30 @@
-@extends('layouts.core')
+<?php
+	$cat = array(array("cat 1", 1),array("cat 2", 2),array("cat 3", 3));
+	$subCat = array(array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
+					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3)),
+					array(array("subcat 1", 1),array("subcat 2", 2),array("subcat 3", 3))
+	);
 
+	$postSubCat = array(array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
+						),
+						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
+						),
+						array(array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3)),
+							array(array("postsubcat 2", 1),array("postsubcat 2", 2),array("postsubcat 2", 3))
+						)
+	);
+
+
+
+
+	$superSubCat = array(array("cat 1", 1),array("cat 1", 2),array("cat 1", 3));
+?>
+@extends('layouts.core')
 @section('content')
 <div class="boxx">
 	<div class="row">
@@ -69,18 +94,42 @@
 					</div>
 					<div class="w2-inp" >
                         {!! Form::open(['url' => '/adpost', 'method' => 'POST', 'files' => 'true']) !!}
-                        {!! Form::text('adtitle', '', ['placeholder' => 'Ad Title', 'class' => 'cust-input w2-inp-f']) !!}
-                        {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t']) !!}
-                        {!! Form::category('category', $categories, null, ['class' => 'cust-input w2-inp-btn addCat']) !!}
-                        {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f']) !!}
-						{{--<div class="upPhoto" name="photo[]">Upload photo</div>--}}
-                        {{--<div class="upPhoto">{!! Form::file('image[]') !!}</div>--}}
+                        {!! Form::text('adtitle', '', ['placeholder' => 'Ad Title', 'class' => 'cust-input w2-inp-f in-larg']) !!}
+                        {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t in-larg']) !!}
+						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
+						<div class="selCat2sec">
+							<span class="seCat-cat"></span>
+							<span class="seCat-subCat"></span>
+							<span class="seCat-postSubCat"></span>
+							<span class="seCat-superSubCat"></span>
+							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
+						</div>
+                        {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f in-larg']) !!}
                         <div>
                             <div class="upPhoto">Upload Photo</div>
                             <div style="height:0;width:0;overflow:hidden;"><input type="file" name="image[]"/></div>
                         </div>
-						<div class="b-fakeLink addPhoto">+</div>
+                        <div class="b-fakeLink addPhoto">+</div>
                         {!! Form::close() !!}
+
+						<div class="selCatOuter">
+							<div class="overlay selcat-obbtn"> </div>
+							<div class="selCatPop">
+                                @foreach($categories as $catkey => $cat)
+                                    <div class="setcat-cat">
+                                        {{ $catkey }}
+                                        @foreach($cat as $subcatkey => $subcat)
+                                            <div class="setcat-subCat">
+                                                {{ $subcatkey }}
+                                                @foreach($subcat as $postcatkey => $postcat)
+                                                    <div class="setcat-postCat">{{ $postcat }}</div>
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
+						</div>
 					</div>
 				</div>
 				<div class="w2-sec2" >

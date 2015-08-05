@@ -301,9 +301,30 @@ jQuery(document).ready(function() {
 	
 	//select category button
 	
+	$categorized = false;
+	$selCat2 = true;
+	
 	$(".addCat").click(function(){
-		console.log("asdasd");
+		selCatPopupReset();
+		selCatPopup();
+		if($categorized && $selCat2) { selCatChangeButton(); $selCat2 = false; }
 	});
+	
+	$(".selcat-obbtn").click(function(){
+		$(".selCatOuter").css({"display":"none"});
+	});
+	
+	function selCatPopup(){
+		$("body").css("overflow", "hidden");
+		$(".selCatOuter").css({"display":"block"});
+	}
+	function selCatPopupReset(){
+		
+	}
+	function selCatChangeButton(){
+		$(".selCat2sec").css({"display":"block"});
+		$(".selCat1sec").css({"display":"none"});
+	}
 	
 	//add photo button
 
