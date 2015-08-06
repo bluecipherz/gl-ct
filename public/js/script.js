@@ -374,11 +374,16 @@ jQuery(document).ready(function() {
 	var subcatidText;
 	var postcatidText;
 	
+	var catidBase;
+	var subcatidBase;
+	var postcatidBase;
+	
 	
 		$(".selCatPopCont  .setcat-cat").click(function(){
 			if(catLevel==1){
 				catselForward($(this));
 				catidText = $(this).text();
+				catidBase =  $(this).attr('idbase');
 				$(".selCatPopTitle").html(catidText);
 				catLevel = 2;
 			}
@@ -387,6 +392,7 @@ jQuery(document).ready(function() {
 			if(catLevel==2){
 				catselForward($(this));
 				subcatidText = $(this).text();
+				subcatidBase =  $(this).attr('idbase');
 				$(".selCatPopTitle").html(subcatidText);
 				catLevel = 3;
 			}
@@ -396,10 +402,11 @@ jQuery(document).ready(function() {
 				var catid = $(this).attr('catid');
 				var subcatid = $(this).attr('subcatid');
 				var postcatid = $(this).attr('postcatid');
-				
+				postcatidBase =  $(this).attr('idbase');
 				postcatidText = $(this).text();
 				var catPath = catidText +" > "+ subcatidText +" > "+ postcatidText;
 				$(".selcatPath").html("<span class='selpathText'>" + catidText + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + subcatidText + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + postcatidText + " </span> ");
+				
 				selCatChangeButton();
 				selcatPopClose();
 				catLevel = 1;
@@ -433,7 +440,7 @@ jQuery(document).ready(function() {
 		function catselBackward(){
 			if(catLevel == 3){
 				$(".sc-post-frame").css({"display":"none"});
-				$(".sc-sub-frame").css({"display":"block"});
+				$("."+catidBase).css({"display":"block"});
 				$(".sc-frame").css({"display":"none"});	
 				$(".selCatPopTitle").html(catidText);
 				catLevel = 2;
