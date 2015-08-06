@@ -22,16 +22,17 @@ class ImageRequest extends Request {
 	public function rules()
 	{
 		return [
-			'image' => 'required|mimes:jpeg,bmp,png',
-            'customer_id' => 'required|integer',
+			'images' => 'required',
+//			'thumb' => 'required|mimes:jpeg,bmp,png',
+            'type' => 'required|integer',
 		];
 	}
 
     public function messages()
     {
         return [
-            'image.required' => 'Pick a file to upload.',
-            'image.mimes' => 'Not a valid file type. Valid types include jpeg, bmp, png.',
+            'images.required' => 'Pick a file to upload.',
+            'thumb.mimes' => 'Not a valid file type. Valid types include jpeg, bmp, png.',
         ];
     }
 

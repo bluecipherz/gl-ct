@@ -7,6 +7,7 @@ use App\Http\Requests\ImageRequest;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ImageController extends Controller {
 
@@ -18,84 +19,35 @@ class ImageController extends Controller {
     }
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store(ImageRequest $request)
 	{
-		// Merge the name of the file being uploaded into the Input array so it can be saved to the database.
-        Input::merge(array('name' => Input::file('image')->getClientOriginalName()));
+        $images = Input::file('images');
+
+        $test = [];
+
+        foreach ($images as $image) {
+            $test[] = $image->getClientOriginalName();
+        }
+
+        return JsonResponse::create($test);
+	}
+
+
+    public function dev() {
+        $image = Input::file('image');
+        // Merge the name of the file being uploaded into the Input array so it can be saved to the database.{}{}
+        Input::merge(array('name' => $image->getClientOriginalName()));
         // Use the repository method "processPost" to populate and create a new instance of the model
-        if ($this->imageRepository->processUpload(null, Input::all())) {
+        if ($this->imageRepository->processUpload(Input::all())) {
             // Fire an event to move the uploaded file to permanent storage
             Event::fire(new Upload($this->imageRepository));
             return response()->json(['status' => 'true', 'message' => 'Successfully uploaded']);
         }
-	}
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 
 }

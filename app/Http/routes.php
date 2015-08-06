@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -49,6 +51,7 @@ Route::get('terms-of-use', function() { return view('pages.static.terms-of-use')
 Route::get('privacy-policy', function() { return view('pages.static.privacy-policy'); });
 
 Route::resource('products', 'ProductController');
+Route::resource('images', 'ImageController', ['only' => ['store']]);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('dashboard', ['uses' => 'AdminPanelController@dashboard', 'as' => 'admin.dashboard']);
@@ -146,8 +149,15 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
     return "<select{$options}>{$list}</select>";
 });
 
-Route::get('hell', function () {
-    $this->app['auth']->admin()->setUser(\App\Customer::find(1));
+Route::get('hell', function (Request $request) {
+//    $this->app['auth']->admin()->setUser(\App\Customer::find(1));
+//    throw new \App\Exceptions\LoginException($request);
+    $credentials = [
+        'email' => 'basith@gmail.com',
+        'password' => 'asd123.'
+    ];
+    $re = Auth::customer()->attempt($credentials);
+    echo 'ok ' . $re;
 });
 
 Route::get('ajax', function () {

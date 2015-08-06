@@ -1,7 +1,7 @@
 <?php namespace App\Exceptions;
 
 use RuntimeException;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 /**
  * Created by PhpStorm.
  * User: RAMU
@@ -11,18 +11,14 @@ use Illuminate\Http\Response;
 
 class LoginException extends RuntimeException {
 
-    protected $request;
+    protected $response;
 
-    public function __construct($request)
+    public function __construct(Response $response)
     {
-        $this->request = $request;
+        $this->response = $response;
     }
 
     public function getResponse() {
-//        if ($this->request->ajax()) {
-            return response('Login Incorrect', 422);
-//        } else {
-//            return 'Login Incorrect';
-//        }
+        return $this->response;
     }
 }

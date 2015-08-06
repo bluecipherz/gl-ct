@@ -4,6 +4,7 @@ use App\Customer;
 use App\Services\AdminRegistrar;
 use App\Services\CustomerRegistrar;
 use App\Services\Registrar;
+//use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Requests;
 use Auth;
@@ -52,13 +53,19 @@ class AuthController extends Controller {
 		$credentials = [
 			'email' => $request->get('email'),
 			'password' => $request->get('password'),
-            'active' => true
+//            'active' => 1
 		];
-		if(Auth::customer()->attempt($credentials)) {
-			// return redirect()->intended('/home');
-			return view('auth.partials.logged');
-		} else {
-            throw new LoginException($request);
+        $customer = Customer::whereEmail($request->get('email'))->first();
+        if ($customer) {
+//            echo 'Logging in ' . $customer->email . '<br>';
+            Auth::customer()->login($customer);
+            if($request->ajax()) {
+                return view('auth.partials.logged');
+            } else {
+                return redirect()->intended('/home');
+            }
+        } else {
+            $this->throwLoginException($request);
         }
 	}
 

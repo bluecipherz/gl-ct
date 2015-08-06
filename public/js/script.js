@@ -89,20 +89,59 @@ jQuery(document).ready(function() {
 		$("#wizardT-1 > .login").css({"display":"block"});
 	}
 	
-	
 	$("#tab-content .nextbtn").click(function() {
-		attrId =$(this).attr('btnId');
-		attrId++;
-		tabCompleted = attrId;
-		if(attrId <= 4){
-			findAttr(attrId);
-			tabAttr(parent,tabID,that,WizTabN); 
-		}else{
-			/* 
-			 *	Code that switch this page to payment result page
-			 */
-		}
+        var btnid = $(this).attr('btnId');
+        proceedTab(btnid);
 	});
+
+    $("#wizardT-1 #register-btn").click(function() {
+        var btnid = $(this).attr('btnId');
+
+        var email = $("#wizardT-1 #register-email").val();
+        var pass = $("#wizardT-1 #register-password").val();
+        var pass_conf = $("#wizardT-1 #register-password-confirm").val();
+
+        $.post('/auth/register', {'email': email, 'password': pass, 'password_confirmation': pass_conf})
+            .success(function (response) {
+                console.log('success : ' + response);
+                afterLogin(response);
+                proceedTab(btnid);
+            })
+            .fail(function(response) {
+                console.log('fail : ' + response.responseText);
+            });
+    });
+
+    $("#wizardT-1 #login-btn").click(function() {
+        var btnid = $(this).attr('btnId');
+
+        var email = $("#wizardT-1 #auth-email").val();
+        var pass = $("#wizardT-1 #auth-password").val();
+
+        $.post('/auth/login', {'email': email, 'password': pass})
+            .success(function (response) {
+                console.log('success : ' + response);
+                afterLogin(response);
+                proceedTab(btnid);
+            })
+            .fail(function(response) {
+                console.log('fail : ' + response.responseText);
+            });
+    });
+
+    function proceedTab(btnid) {
+        attrId = btnid;
+        attrId++;
+        tabCompleted = attrId;
+        if(attrId <= 4){
+            findAttr(attrId);
+            tabAttr(parent,tabID,that,WizTabN);
+        }else{
+            /*
+             *	Code that switch this page to payment result page
+             */
+        }
+    }
 	
 	$("#tab-content .backbtn").click(function() {
 		attrId =$(this).attr('btnId');
@@ -287,16 +326,21 @@ jQuery(document).ready(function() {
 				.success(function(response) {
 					console.log('success : ' + response);
 					hideOverlay();
-					//$('.loginMB').hide();
-					//$('.regMB').hide();
-					$('.login-box')
-						.html(response);
+                    afterLogin(response);
 				})
 				.fail(function(response) {
 					console.log('fail : ' + response.responseText);
 				});
 		}
 	});
+
+    function afterLogin(response) {;
+        $('.login-box').html(response); // for login box
+        $("#wizardT-1 > .login").hide();
+        $("#wizardT-1 > .loggedin").show();
+    }
+
+    //$("wizardT-1")
 	
 	//select category button
 	
@@ -410,17 +454,53 @@ jQuery(document).ready(function() {
 	//add photo button
 
     var uploadAction = function() {
+        //console.log('file path ' + $(this).parent().find(':file').val());
         $(this).parent().find(':file').click();
-
     }
+
+    var changeAction = function() {
+        $this = $(this);
+        $this.parent().parent().find('.upPhoto').text($this.val());
+    };
 
 	$(".addPhoto").click(function(){
         var parent = $('<div/>');
         var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'}).appendTo(parent);
-        $('<input type="file" name="image[]">').appendTo(wrapper); // ad post filechooser
+        $('<input type="file" name="image[]">').change(changeAction).appendTo(wrapper); // ad post filechooser
         $("<div/>").addClass('upPhoto').text('Upload photo').click(uploadAction).show().appendTo(parent);
 		$(this).before(parent);
 	});
 
+    $(':file').change(changeAction);
+
     $('.upPhoto').click(uploadAction).show();
+
+    //console.log($(':file').val()); // file chooser debug
+
+    $('#adpost').fileupload({
+        url: '/images',
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+        },
+        done: function (e, data) {
+            //$.each(data.result.files, function (index, file) {
+                //$('<p/>').text(file.name).appendTo('.upPhoto');
+                //console.log('file name ' + file.name);
+            //});
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            //console.log(progress);
+            //$('#progress .progress-bar').css(
+            //    'width',
+            //    progress + '%'
+            //);
+        },
+        error: function($e, data) {
+            console.log('error ' + $e.responseText);
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled')
+    ;
 });

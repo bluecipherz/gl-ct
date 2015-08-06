@@ -8,7 +8,6 @@
 
 namespace App\Repositories;
 
-
 use App\Repositories\Eloquent\Repository;
 
 class ImageRepository extends Repository{
@@ -20,5 +19,10 @@ class ImageRepository extends Repository{
     public function model()
     {
         return 'App\Image';
+    }
+
+    public function processUpload($input)
+    {
+
     }
 }

@@ -44,13 +44,13 @@
 							<span class="hard-logo" >GLOBEXCART</span>
 						</div>
 						<div class="w-log-sec-2" >
-							<input type="text" class="cust-input-block" placeholder="Your email"/>
-							<input type="password" class="cust-input-block" placeholder="Password"/>
+							<input type="text" class="cust-input-block" placeholder="Your email" id="auth-email"/>
+							<input type="password" class="cust-input-block" placeholder="Password" id="auth-password"/>
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
 						</div>
 						<div class="w-log-sec-3" >
 							<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
-							<div class="nextbtn cust-btn -btn-next" btnId="1" >Login</div>
+							<div class="cust-btn -btn-next" id="login-btn" btnId="1" >Login</div>
 						</div>
 					</div>
 					<div class="w-reg">
@@ -58,14 +58,14 @@
 							<span  class="w-reg-head" >Register with </span><span class="w-reg-headL" >GLOBEXCART</span>
 						</div>
 						<div class="w-reg-sec-2" >
-							<input type="text" class="cust-input-block" placeholder="Your email"/>
-							<input type="password" class="cust-input-block" placeholder="Password"/>
-							<input type="password" class="cust-input-block" placeholder="Confirm Password"/>
+							<input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>
+							<input type="password" class="cust-input-block" placeholder="Password" id="register-password"/>
+							<input type="password" class="cust-input-block" placeholder="Confirm Password" id="register-password-confirm"/>
 							<div class="w-reg-sec2-text">Already have an account? <span class="b-fakeLink logbtn" > Login </span></div>
 						</div>
 						<div class="w-reg-sec-3" >
 							<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
-							<div class="nextbtn cust-btn -btn-next" btnId="1" >Register</div>
+							<div class="cust-btn -btn-next" id="register-btn" btnId="1" >Register</div>
 						</div>	
 					</div>
 				</div> 
@@ -93,7 +93,7 @@
 						
 					</div>
 					<div class="w2-inp" >
-                        {!! Form::open(['url' => '/adpost', 'method' => 'POST', 'files' => 'true']) !!}
+                        {!! Form::open(['id' => 'adpost', 'url' => '/adpost', 'method' => 'POST', 'files' => 'true']) !!}
                         {!! Form::text('adtitle', '', ['placeholder' => 'Ad Title', 'class' => 'cust-input w2-inp-f in-larg']) !!}
                         {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t in-larg']) !!}
 						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
@@ -102,9 +102,10 @@
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
                         {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f in-larg']) !!}
+                        {!! Form::hidden('type', 2) !!}
                         <div>
                             <div class="upPhoto">Upload Photo</div>
-                            <div style="height:0;width:0;overflow:hidden;"><input type="file" name="image[]"/></div>
+                            <div style="height:0;width:0;overflow:hidden;"><input type="file" name="images[]" multiple/></div>
                         </div>
                         <div class="b-fakeLink addPhoto">+</div>
                         {!! Form::close() !!}

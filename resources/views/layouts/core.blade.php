@@ -146,6 +146,7 @@
 	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
 	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
 	<script src="{{ asset('/js/script.js') }}"></script>
 	<script src="{{ asset('/js/static-page.js') }}"></script>
 	
