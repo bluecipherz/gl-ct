@@ -118,7 +118,7 @@
 								</div>
 								<div class="selCatPopCont">
 									<?php $i = 1; ?>
-									<div class="sc-frame ">
+									<div class=" ">
 										@foreach($categories as $catkey => $cat)
 											<div class="setcat-cat" idbase="scf{{ $i }}">
 												{{ $catkey }} 
