@@ -42,7 +42,7 @@ Route::get('register', function() {
 	return view('pages.register');
 });
 
-Route::resource('advertisements', 'AdvertisementController');
+Route::resource('advertisements', 'AdvertisementController', ['only' => ['create', 'store']]);
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });

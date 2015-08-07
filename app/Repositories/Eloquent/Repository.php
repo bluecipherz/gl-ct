@@ -140,6 +140,13 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
         return $this->model = $model;
     }
 
+    /**
+     * @return Model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 
     /**
      * @return $this

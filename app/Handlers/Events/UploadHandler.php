@@ -15,10 +15,12 @@ class UploadHandler {
 
     public function handle(Upload $event)
     {
-        Input::file('image')
-            ->move(
-                public_path(). '/assets/' .$event->imageRepository->model() .'/' . $event->imageRepository->makeModel()->id, $event->imageRepository->makeModel()->name
-            );
+        Input::file('image')->move(
+//            $destinationPath, $fileName
+//            public_path() . '/assets/' . $event->imageRepository->model() . '/' . $event->imageRepository->makeModel()->id,
+            public_path() . '/uploads/' . $event->imageRepository->getModel()->id,
+            $event->imageRepository->getModel()->name
+        );
     }
 
 }

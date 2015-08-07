@@ -16,4 +16,9 @@ class Advertisement extends Model {
         return $this->belongsTo('App\Customer');
     }
 
+    public function images()
+    {
+        return $this->hasMany('App\Image');
+    }
+
 }

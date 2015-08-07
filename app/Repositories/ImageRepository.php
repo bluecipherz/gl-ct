@@ -21,8 +21,19 @@ class ImageRepository extends Repository{
         return 'App\Image';
     }
 
-    public function processUpload($input)
+    public function processUpload($data, Advertisement $ad)
     {
+        $adtitle = $data['adtitle'];
+        $descripton = $data['description'];
+        $image = $data['image'];
+        $price = $data['price'];
+        $type = $data['type'];
 
+        $this->create([
+            'customer_id' => Auth::customer()->id,
+            'post_id' => $ad->id,
+            'type' => $type,
+            'thumb' => $image->getClientOriginalName()
+        ]);
     }
 }

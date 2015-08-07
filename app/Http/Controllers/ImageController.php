@@ -27,13 +27,18 @@ class ImageController extends Controller {
 	{
         $images = Input::file('images');
 
-        $test = [];
+//        $filename = $image->getClientOriginalName();
+//        $extension = $image->getClientOriginalExtension();
 
         foreach ($images as $image) {
-            $test[] = $image->getClientOriginalName();
+            $data = ['type' => Input::get('type'), 'image' => $image];
+//            if($this->imageRepository->processUpload($data)) {
+//
+//            }
         }
 
-        return JsonResponse::create($test);
+//        return JsonResponse::create($test);
+        return JsonResponse::create(Input::all());
 	}
 
 

@@ -492,12 +492,12 @@ jQuery(document).ready(function() {
         },
         done: function (e, data) {
             //$.each(data.result.files, function (index, file) {
-                //$('<p/>').text(file.name).appendTo('.upPhoto');
-                //console.log('file name ' + file.name);
+            //    $('<p/>').text(file.name).appendTo('.upPhoto');
+            //    console.log('file name ' + file.name);
             //});
         },
         progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
+            //var progress = parseInt(data.loaded / data.total * 100, 10);
             //console.log(progress);
             //$('#progress .progress-bar').css(
             //    'width',
@@ -510,4 +510,26 @@ jQuery(document).ready(function() {
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled')
     ;
+
+    $('#adPost').click(function() {
+        var attributes = {
+            'adtitle' : $('#adTitle').val(),
+            //'category_id' : $('#adCatId').val(),
+            'description' : $('#adDesc').val(),
+            'price' : $('#adPrice').val(),
+            'images' : $('#adPics').val(),
+            'customername' : $('#customerName').val(),
+            'customerpin' : $('#customerPin').val(),
+            'customeraddress' : $('#customerAddress').val(),
+            'customerstate' : $('#customerState').val(),
+            'customercity' : $('#customerCity').val(),
+            'customerphone' : $('#customerPhone').val()
+        };
+        console.log(attributes);
+        $.post('/advertisements', attributes).success(function(data) {
+            console.log('success ' + data);
+        }).fail(function(data) {
+            console.log(data.responseText)
+        });
+    });
 });

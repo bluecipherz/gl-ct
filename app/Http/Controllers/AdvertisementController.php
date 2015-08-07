@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Advertisement;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\AdRequest;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
@@ -34,11 +36,26 @@ class AdvertisementController extends Controller {
      * @param Request $request
      * @return Response
      */
-	public function store(Request $request)
+	public function store(AdRequest $request)
 	{
-		$rules = [
-            'adtitle' => 'required',
+		$attributes = [
+            'customer_id' => Auth::customer()->id,
+            'category_id' => $request->get('category_id'),
+            'title' => $request->get('adtitle'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
         ];
+        $ad = Advertisement::create($attributes);
+        $images = $request->file('images');
+        foreach ($images as $image) {
+            $ad->images()->create([
+                'customer_id' => Auth::customer()->id,
+                'post_id' => $ad->id,
+                'type' => 2, // 2 for reseller ad
+                'thumb' => $image->getClientOriginalName()
+            ]);
+        }
+        return 'ookey';
 	}
 
 	/**

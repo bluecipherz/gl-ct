@@ -17,6 +17,8 @@ class CreateAdvertisementTables extends Migration {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->unsignedInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('customers')->onDelete('cascade');
             $table->string('title');
             $table->text('description');
             $table->integer('quantity')->default(1);

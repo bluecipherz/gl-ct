@@ -32,7 +32,7 @@ class ImageRequest extends Request {
     {
         return [
             'images.required' => 'Pick a file to upload.',
-            'thumb.mimes' => 'Not a valid file type. Valid types include jpeg, bmp, png.',
+//            'image.mimes' => 'Not a valid file type. Valid types include jpeg, bmp, png.',
         ];
     }
 

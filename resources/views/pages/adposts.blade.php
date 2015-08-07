@@ -81,7 +81,7 @@
 						<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
 					</div> 
 				</div>
-			</div> 
+			</div>
 			<div id="wizardT-2">
 				<div class="w2-sec1" >
 					<div class="w2-labOuter" >
@@ -93,22 +93,22 @@
 						
 					</div>
 					<div class="w2-inp" >
-                        {!! Form::open(['id' => 'adpost', 'url' => '/adpost', 'method' => 'POST', 'files' => 'true']) !!}
-                        {!! Form::text('adtitle', '', ['placeholder' => 'Ad Title', 'class' => 'cust-input w2-inp-f in-larg']) !!}
-                        {!! Form::textarea('description', '', ['placeholder' => 'Description about your ad', 'class' => 'cust-input w2-inp-t in-larg']) !!}
-						<div class="selCat1sec"><div id="selCat1" class=" cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
+                        <input type="text" name="adtitle" placeholder="Ad Title" class="cust-input w2-inp-f in-larg" id="adTitle" />
+                        <textarea name="description" placeholder="Description about your ad" class="cust-input w2-inp-t in-larg" id="adDesc"></textarea>
+						<div class="selCat1sec"><div id="selCat1" class="cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
 						<div class="selCat2sec">
 							<div class="selcatPath w2-inp-f in-larg"></div>
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
-                        {!! Form::text('price', '', ['placeholder' => 'Price', 'class' => 'cust-input w2-inp-f in-larg']) !!}
-                        {!! Form::hidden('type', 2) !!}
-                        <div>
-                            <div class="upPhoto">Upload Photo</div>
-                            <div style="height:0;width:0;overflow:hidden;"><input type="file" name="images[]" multiple/></div>
-                        </div>
-                        <div class="b-fakeLink addPhoto">+</div>
+                        <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
+                        {!! Form::open(['route' => 'images.store', 'method' => 'post', 'files' => 'true']) }
+                            <input type="hidden" type="2" id="adType"/>
+                            <div>
+                                <div class="upPhoto">Upload Photo</div>
+                                <div style="height:0;width:0;overflow:hidden;"><input type="file" name="images[]" id="adPics" multiple/></div>
+                            </div>
                         {!! Form::close() !!}
+                        <div class="b-fakeLink addPhoto">+</div>
 
 						<div class="selCatOuter">
 							<div class="overlay selcat-obbtn"> </div>
@@ -179,12 +179,12 @@
 						<div class="w2-inp-label" >Phone</div>
 					</div>
 					<div class="w2-inp" >
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your name"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="PIN"/>
-						<textarea type="text" class="cust-input w2-inp-t" placeholder="Your address"></textarea>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your state"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your city"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your phone number"/>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your name" name="customername" id="customerName" />
+						<input type="text" class="cust-input w2-inp-f" placeholder="PIN" name="customerpin" id="customerPin"/>
+						<textarea type="text" class="cust-input w2-inp-t" placeholder="Your address" name="customeraddress" id="customerAddress"></textarea>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your state" name="customerstate" id="customerState"/>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your city" name="customercity" id="customerCity"/>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your phone number" name="customerphone" id="customerPhone"/>
 					</div>
 				</div>
 				<div class="w2-sec2" >
@@ -193,7 +193,7 @@
 					</div>
 					<div class="w2-sec1-2" >
 						<button class=" backbtn cust-btn -btn-back" btnId="3" >Back</button>
-						<button class=" nextbtn cust-btn -btn-next"  btnId="3" >Next</button>
+						<button class=" nextbtn cust-btn -btn-next"  btnId="3" id="adPost" >Next</button>
 					</div>
 				</div>
 			</div>
