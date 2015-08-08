@@ -18,8 +18,8 @@ class CreateProfileTable extends Migration {
             $table->string('last_name', 50);
             $table->char('gender')->default('U');
             $table->date('dob');
-            $table->unsignedInteger('image_id')->nullable();
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
+            // $table->unsignedInteger('image_id')->nullable();
+            // $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

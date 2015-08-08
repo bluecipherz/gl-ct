@@ -16,8 +16,10 @@ class CreateReportsTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('type');
+            $table->unsignedInteger('customer_id')->nullable();
+            $table->foreign('customer_id')->references('id')->on('reseller_images')->onDelete('cascade');
             $table->unsignedInteger('image_id');
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
+            $table->foreign('image_id')->references('id')->on('reseller_images')->onDelete('cascade');
             $table->text('description');
 			$table->timestamps();
 		});

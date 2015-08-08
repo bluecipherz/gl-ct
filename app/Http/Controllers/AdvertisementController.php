@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+use App\Category;
 use App\Advertisement;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -25,9 +27,9 @@ class AdvertisementController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create(CategoryRepository $categories)
+	public function create()
 	{
-        return view('pages.adposts')->with('categories', $categories->getTree());
+        return view('pages.adposts')->with('categories', Category::whereIsRoot()->first()->children->all());
 	}
 
     /**
@@ -39,7 +41,7 @@ class AdvertisementController extends Controller {
 	public function store(AdRequest $request)
 	{
 		$attributes = [
-            'customer_id' => Auth::customer()->id,
+            'customer_id' => Auth::customer()->get()->id,
             'category_id' => $request->get('category_id'),
             'title' => $request->get('adtitle'),
             'description' => $request->get('description'),
@@ -49,7 +51,7 @@ class AdvertisementController extends Controller {
         $images = $request->file('images');
         foreach ($images as $image) {
             $ad->images()->create([
-                'customer_id' => Auth::customer()->id,
+                'customer_id' => Auth::customer()->get()->id,
                 'post_id' => $ad->id,
                 'type' => 2, // 2 for reseller ad
                 'thumb' => $image->getClientOriginalName()

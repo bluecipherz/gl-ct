@@ -3,11 +3,11 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Advertisement extends Model {
+class Image extends Model {
 
 	use SoftDeletes;
-
-    protected $table = 'advertisements';
+	
+    protected $table = 'reseller_images';
 
     protected $guarded = ['id'];
 
@@ -16,9 +16,10 @@ class Advertisement extends Model {
         return $this->belongsTo('App\Customer');
     }
 
-    public function images()
+    public function advertisement()
     {
-        return $this->hasMany('App\ResellerImage');
+		return $this->belongsTo('App\Advertisement');
     }
+
 
 }

@@ -7,16 +7,10 @@ use App\Http\Requests\ImageRequest;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Session;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class ImageController extends Controller {
-
-    protected $imageRepository;
-
-    public function __construct(ImageRepository $imageRepository)
-    {
-        $this->imageRepository = $imageRepository;
-    }
+class ResellerImageController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
@@ -27,18 +21,16 @@ class ImageController extends Controller {
 	{
         $images = Input::file('images');
 
-//        $filename = $image->getClientOriginalName();
 //        $extension = $image->getClientOriginalExtension();
+		$destination = public_path() . '/temp/';
 
         foreach ($images as $image) {
-            $data = ['type' => Input::get('type'), 'image' => $image];
-//            if($this->imageRepository->processUpload($data)) {
-//
-//            }
+			$filename = $image->getClientOriginalName();
+			
+            $image->move($destination, $filename);
         }
-
-//        return JsonResponse::create($test);
-        return JsonResponse::create(Input::all());
+        // return JsonResponse::create(Input::all());
+        return response($filename);
 	}
 
 

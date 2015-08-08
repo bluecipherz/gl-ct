@@ -406,7 +406,7 @@ jQuery(document).ready(function() {
 				postcatidText = $(this).text();
 				var catPath = catidText +" > "+ subcatidText +" > "+ postcatidText;
 				$(".selcatPath").html("<span class='selpathText'>" + catidText + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + subcatidText + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + postcatidText + " </span> ");
-				
+				$("#adCatId").val( $(this).attr('databaseid') );
 				selCatChangeButton();
 				selcatPopClose();
 				catLevel = 1;
@@ -419,7 +419,6 @@ jQuery(document).ready(function() {
 		});
 		
 		function catselForward(that){
-		
 			$(".sc-post-frame").css({"display":"none"});
 			$(".sc-sub-frame").css({"display":"none"});
 			$(".sc-frame").css({"display":"none"});	
@@ -485,7 +484,7 @@ jQuery(document).ready(function() {
     //console.log($(':file').val()); // file chooser debug
 
     $('#adpost').fileupload({
-        url: '/images',
+        url: '/resellerimages',
         dataType: 'json',
         success: function(data) {
             console.log(data);
@@ -514,16 +513,16 @@ jQuery(document).ready(function() {
     $('#adPost').click(function() {
         var attributes = {
             'adtitle' : $('#adTitle').val(),
-            //'category_id' : $('#adCatId').val(),
+            'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
             'price' : $('#adPrice').val(),
             'images' : $('#adPics').val(),
-            'customername' : $('#customerName').val(),
-            'customerpin' : $('#customerPin').val(),
-            'customeraddress' : $('#customerAddress').val(),
-            'customerstate' : $('#customerState').val(),
-            'customercity' : $('#customerCity').val(),
-            'customerphone' : $('#customerPhone').val()
+            'name' : $('#customerName').val(),
+            'pin' : $('#customerPin').val(),
+            'address' : $('#customerAddress').val(),
+            'state' : $('#customerState').val(),
+            'city' : $('#customerCity').val(),
+            'phone' : $('#customerPhone').val()
         };
         console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {

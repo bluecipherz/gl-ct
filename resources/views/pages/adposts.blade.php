@@ -1,28 +1,3 @@
-<?php
-	$cat =[["cat 1", 1],["cat 2", 2],["cat 3", 3]];
-	$subCat = [[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]],
-					[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]],
-					[["subcat 1", 1],["subcat 2", 2],["subcat 3", 3]]
-	];
-	
-	$postSubCat = [[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
-							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
-							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
-						],
-						[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
-							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
-							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
-						],
-						[[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
-							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]],
-							[["postsubcat 2", 1],["postsubcat 2", 2],["postsubcat 2", 3]]
-						]
-	];
-	
-	
-	
-	$superSubCat = [["cat 1", 1],["cat 1", 2],["cat 1", 3]];
-?>
 @extends('layouts.core')
 @section('content')
 <div class="boxx">
@@ -101,8 +76,8 @@
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
                         <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
-                        {!! Form::open(['route' => 'images.store', 'method' => 'post', 'files' => 'true']) }
-                            <input type="hidden" type="2" id="adType"/>
+                        {!! Form::open(['route' => 'resellerimages.store', 'method' => 'post', 'files' => 'true', 'id' => 'adpost']) !!}
+                            <input type="hidden" name="type" value="2" id="adType"/>
                             <div>
                                 <div class="upPhoto">Upload Photo</div>
                                 <div style="height:0;width:0;overflow:hidden;"><input type="file" name="images[]" id="adPics" multiple/></div>
@@ -119,20 +94,20 @@
 								</div>
 								<div class="selCatPopCont">
 									<?php $i = 1; ?>
-									<div class=" ">
-										@foreach($categories as $catkey => $cat)
+									<div class="sc-frame ">
+										@foreach($categories as $cat)
 											<div class="setcat-cat" idbase="scf{{ $i }}">
-												{{ $catkey }} 
+												{{ $cat->name }} 
 												<?php $i++; ?>
 											</div>
 										@endforeach
 									</div>
 									<?php $i = 1; $j = 1; ?>
-									@foreach($categories as $catkey => $cat)
+									@foreach($categories as $cat)
 										<div class="sc-sub-frame scf{{ $i }}">
-											@foreach($cat as $subcatkey => $subcat)
+											@foreach($cat->children->all() as $subcat)
 												<div class="setcat-subCat" idbase="scf{{ $i }}sub{{ $j }}">
-													{{ $subcatkey }}
+													{{ $subcat->name }}
 												</div>
 												<?php $j++; ?>
 											@endforeach
@@ -140,11 +115,11 @@
 										<?php $i++; $j = 1; ?>
 									@endforeach
 									<?php $i = 1; $j = 1; $k = 1;?>
-									@foreach($categories as $catkey => $cat)
-										@foreach($cat as $subcatkey => $subcat)
+									@foreach($categories as $cat)
+										@foreach($cat->children->all() as $subcat)
 											<div class="sc-post-frame scf{{ $i }}sub{{ $j }}">
-												@foreach($subcat as $postcatkey => $postcat)
-													<div class="setcat-postCat" catid="{{$i}}" subcatid="{{$j}}" postcatid="{{$k}}">{{ $postcat }}</div>
+												@foreach($subcat->children->all() as $postcat)
+													<div class="setcat-postCat" catid="{{$i}}" subcatid="{{$j}}" postcatid="{{$k}}" databaseid="{{ $postcat->id }}">{{ $postcat->name }}</div>
 													<?php $k++; ?>
 												@endforeach
 											</div>	
@@ -152,6 +127,7 @@
 										@endforeach
 										<?php $i++; $j = 1;  ?>
 									@endforeach
+									<input type="hidden" id="adCatId" valeu="" name="category_id"/>
 								</div>
                             </div>
 						</div>
@@ -179,12 +155,12 @@
 						<div class="w2-inp-label" >Phone</div>
 					</div>
 					<div class="w2-inp" >
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your name" name="customername" id="customerName" />
-						<input type="text" class="cust-input w2-inp-f" placeholder="PIN" name="customerpin" id="customerPin"/>
-						<textarea type="text" class="cust-input w2-inp-t" placeholder="Your address" name="customeraddress" id="customerAddress"></textarea>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your state" name="customerstate" id="customerState"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your city" name="customercity" id="customerCity"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your phone number" name="customerphone" id="customerPhone"/>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your name" name="name" id="customerName" />
+						<input type="text" class="cust-input w2-inp-f" placeholder="PIN" name="pin" id="customerPin"/>
+						<textarea type="text" class="cust-input w2-inp-t" placeholder="Your address" name="address" id="customerAddress"></textarea>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your state" name="state" id="customerState"/>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your city" name="city" id="customerCity"/>
+						<input type="text" class="cust-input w2-inp-f" placeholder="Your phone number" name="phone" id="customerPhone"/>
 					</div>
 				</div>
 				<div class="w2-sec2" >

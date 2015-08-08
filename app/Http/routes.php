@@ -51,7 +51,7 @@ Route::get('terms-of-use', function() { return view('pages.static.terms-of-use')
 Route::get('privacy-policy', function() { return view('pages.static.privacy-policy'); });
 
 Route::resource('products', 'ProductController');
-Route::resource('images', 'ImageController', ['only' => ['store']]);
+Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store']]);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('dashboard', ['uses' => 'AdminPanelController@dashboard', 'as' => 'admin.dashboard']);

@@ -26,13 +26,13 @@ class AdRequest extends Request {
 			'category_id' => 'required',
             'description' => 'required',
             'price' => 'required',
-            'images' => 'required',
-            'customername' => 'required',
-            'customerpin' => 'required',
-            'customeraddress' => 'required',
-            'customerstate' => 'required',
-            'customercity' => 'required',
-            'customerphone' => 'required'
+            // 'images' => 'required',
+            'name' => 'required',
+            'pin' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'phone' => 'required'
 		];
 	}
 

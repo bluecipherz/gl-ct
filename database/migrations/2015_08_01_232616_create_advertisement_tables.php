@@ -23,6 +23,12 @@ class CreateAdvertisementTables extends Migration {
             $table->text('description');
             $table->integer('quantity')->default(1);
             $table->integer('price');
+            $table->text('name');
+            $table->integer('pin');
+            $table->text('address');
+            $table->string('state');
+            $table->string('city');
+            $table->string('phone');
             $table->timestamps();
             $table->softDeletes();
         });
