@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageRequest;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use Session;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -17,11 +20,34 @@ class ResellerImageController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(ImageRequest $request)
+	public function store()
 	{
-        $images = Input::file('images');
+        $file = Input::file('file');
+        $rules = array(
+//            'file' => 'image|max:3000',
+            'file' => 'max:3000',
+        );
+        $validation = Validator::make([
+            'file' => $file
+        ], $rules);
+        if ($validation->fails()) {
+            return Response::make($validation->errors->first(), 400);
+        }
+        $extension = $file->getClientOriginalExtension();
+        $directory = public_path() . '/uploads/temp/' . Session::getId();
+        $filename = sha1(time() . time()) . ".{$extension}";
+        $upload_success = $file->move($directory, $filename);
+        if ($upload_success) {
+            return response()->json('success', 200);
+        } else {
+            return response()->json('error', 400);
+        }
+	}
 
-		$destination = public_path() . '/uploads/temp/' . Session::getId();
+    public function last()
+    {
+
+        $destination = public_path() . '/uploads/temp/' . Session::getId();
         if(!file_exists($destination)) {
             mkdir($destination, 0777, true);
         }
@@ -35,7 +61,7 @@ class ResellerImageController extends Controller {
         }
         // return JsonResponse::create(Input::all());
         return response(Session::getId());
-	}
+    }
 
 
     public function dev() {
