@@ -48,16 +48,27 @@ class AdvertisementController extends Controller {
             'price' => $request->get('price'),
         ];
         $ad = Advertisement::create($attributes);
-        $images = $request->file('images');
-        foreach ($images as $image) {
-            $ad->images()->create([
-                'customer_id' => Auth::customer()->get()->id,
-                'post_id' => $ad->id,
-                'type' => 2, // 2 for reseller ad
-                'thumb' => $image->getClientOriginalName()
-            ]);
+//        $images = $request->file('images');
+//        foreach ($images as $image) {
+//            $ad->images()->create([
+//                'customer_id' => Auth::customer()->get()->id,
+//                'post_id' => $ad->id,
+//                'type' => 2, // 2 for reseller ad
+//                'thumb' => $image->getClientOriginalName()
+//            ]);
+//        }
+        $source = public_path() . '/uploads/temp/' . Session::getId() . '/';
+        $destination = public_path() . '/uploads/ads/' . $ad->id . '/';
+        $files = scandir($destination);
+        foreach ($files as $file) {
+            if(in_array($file, ['.', '..'])) continue;
+            if (copy($source . $file, $destination . $file)) {
+                $delete[] = $source . $file;
+            }
         }
-        return 'ookey';
+        foreach ($delete as $file) {
+            unlink($file);
+        }
 	}
 
 	/**

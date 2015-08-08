@@ -472,7 +472,7 @@ jQuery(document).ready(function() {
 	$(".addPhoto").click(function(){
         var parent = $('<div/>');
         var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'}).appendTo(parent);
-        $('<input type="file" name="image[]">').change(changeAction).appendTo(wrapper); // ad post filechooser
+        $('<input type="file" name="images[]">').change(changeAction).appendTo(wrapper); // ad post filechooser
         $("<div/>").addClass('upPhoto').text('Upload photo').click(uploadAction).show().appendTo(parent);
 		$(this).before(parent);
 	});
@@ -504,7 +504,7 @@ jQuery(document).ready(function() {
             //);
         },
         error: function($e, data) {
-            console.log('error ' + $e.responseText);
+            console.log('error ' + $e.status + ' : ' + $e.responseText);
         }
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled')
@@ -526,7 +526,7 @@ jQuery(document).ready(function() {
         };
         console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {
-            console.log('success ' + data);
+            console.log('success ' + data.responseText);
         }).fail(function(data) {
             console.log(data.responseText)
         });

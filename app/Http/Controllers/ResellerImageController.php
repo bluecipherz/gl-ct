@@ -21,16 +21,20 @@ class ResellerImageController extends Controller {
 	{
         $images = Input::file('images');
 
-//        $extension = $image->getClientOriginalExtension();
-		$destination = public_path() . '/temp/';
-
+		$destination = public_path() . '/uploads/temp/' . Session::getId();
+        if(!file_exists($destination)) {
+            mkdir($destination, 0777, true);
+        }
+        Session::put('files', 0);
         foreach ($images as $image) {
-			$filename = $image->getClientOriginalName();
-			
-            $image->move($destination, $filename);
+//			$filename = $image->getClientOriginalName();
+            $extension = $image->getClientOriginalExtension();
+            $filename = Session::get('files') + 1;
+            $image->move($destination, $filename. '.' .$extension);
+            Session::put('files', $filename);
         }
         // return JsonResponse::create(Input::all());
-        return response($filename);
+        return response(Session::getId());
 	}
 
 

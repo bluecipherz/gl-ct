@@ -82,8 +82,8 @@
                                 <div class="upPhoto">Upload Photo</div>
                                 <div style="height:0;width:0;overflow:hidden;"><input type="file" name="images[]" id="adPics" multiple/></div>
                             </div>
+                            <div class="b-fakeLink addPhoto">+</div>
                         {!! Form::close() !!}
-                        <div class="b-fakeLink addPhoto">+</div>
 
 						<div class="selCatOuter">
 							<div class="overlay selcat-obbtn"> </div>
