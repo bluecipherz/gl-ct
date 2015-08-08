@@ -34,8 +34,8 @@
 			</div>
 		</div>
 		<div class="hnExtra">
-			<span>Deals of the day</span>
-			<span>Super deal</span>
+			<a href="dealsoftheday">Deals of the day</a>
+			<a href="superdeals">Super deals</a>
 		</div>	
 	</div>
 </div>

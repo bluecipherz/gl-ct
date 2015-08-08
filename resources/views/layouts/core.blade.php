@@ -10,10 +10,10 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/jquery-ui.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/BCZ-Boxes.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/admin-panel.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
-	
+	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
 	<link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}"/>
 	
 	<script>
@@ -75,22 +75,7 @@
 			@if(Auth::customer()->check())
 				@include('/auth/partials/logged')
 			@else
-			<div class="loginMB">
-				<h2>Login</h2>
-				<div class="logoBarOuter">GLOBEX<span>CART</span></div>
-				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control" id="auth-login-email"/></div>
-				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-login-pass"/></div>
-				<div class="form-group"><button class="glob-control" id="auth-login-btn">Login</button></div>
-				<div class="form-group">Don't have an account ? <span class="b-fakeLink-text loginMBLbtn">Register Now</span></div>
-			</div>
-			<div class="regMB">
-				<div class="logoBarOuter"><h2>Register with</h2> GLOBEX<span>CART</span></div>
-				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control" id="auth-register-email" name="email"/></div>
-				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-register-pass" name="password"/></div>
-				<div class="form-group"><input type="text" placeholder="Confirm Password" class="glob-control" id="auth-register-pass-again" name="password_confirmation"/></div>
-				<div class="form-group"><button class="glob-control" id="auth-register-btn">Register</button></div>
-				<div class="form-group">Already have an account ? <span class="b-fakeLink-text regMBLbtn">Login</span></div>
-			</div>
+				@include('partials.login-register')
 			@endif
 		</div>
 	</div>

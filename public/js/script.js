@@ -68,7 +68,7 @@ jQuery(document).ready(function() {
 	
 	$(".loginMBLbtn").click(function(){
 		console.log("heelll");
-		$(".loginMB").css({"margin-top":"-400px"}); 
+		$(".loginMB").css({"margin-top":"-460px"}); 
 	});
 	$(".regMBLbtn").click(function(){
 		$(".loginMB").css({"margin-top":"0"}); 
@@ -473,6 +473,7 @@ jQuery(document).ready(function() {
     };
 
 	$(".addPhoto").click(function(){
+		Dropzone.autoFind = false;
         $dropzone = $("<div/>").addClass('upPhoto').dropzone(dropAction).show();
         $("<div/>").text("Upload photo").addClass('dz-message').appendTo($dropzone);
 		$(this).before($dropzone);
