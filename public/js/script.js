@@ -459,56 +459,26 @@ jQuery(document).ready(function() {
 
 	//add photo button
 
-    var uploadAction = function() {
-        //console.log('file path ' + $(this).parent().find(':file').val());
-        $(this).parent().find(':file').click();
-    }
-
-    var changeAction = function() {
-        $this = $(this);
-        $this.parent().parent().find('.upPhoto').text($this.val());
+    var dropAction = {
+        url : '/resellerimages',
+        thumbnailHeight: 90,
+        thumbnailWidth: 90,
+        accept : function(file, data) {
+            $(this.element).css('padding', 0);
+            $(this.element).find('.dz-message').hide();
+        },
+        headers : {
+            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+        }
     };
 
 	$(".addPhoto").click(function(){
-        var parent = $('<div/>');
-        var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'}).appendTo(parent);
-        $('<input type="file" name="images[]">').change(changeAction).appendTo(wrapper); // ad post filechooser
-        $("<div/>").addClass('upPhoto').text('Upload photo').click(uploadAction).show().appendTo(parent);
-		$(this).before(parent);
+        $dropzone = $("<div/>").addClass('upPhoto').dropzone(dropAction).show();
+        $("<div/>").text("Upload photo").addClass('dz-message').appendTo($dropzone);
+		$(this).before($dropzone);
 	});
 
-    $(':file').change(changeAction);
-
-    $('.upPhoto').click(uploadAction).show();
-
-    //console.log($(':file').val()); // file chooser debug
-
-    $('#adpost').fileupload({
-        url: '/resellerimages',
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-        },
-        done: function (e, data) {
-            //$.each(data.result.files, function (index, file) {
-            //    $('<p/>').text(file.name).appendTo('.upPhoto');
-            //    console.log('file name ' + file.name);
-            //});
-        },
-        progressall: function (e, data) {
-            //var progress = parseInt(data.loaded / data.total * 100, 10);
-            //console.log(progress);
-            //$('#progress .progress-bar').css(
-            //    'width',
-            //    progress + '%'
-            //);
-        },
-        error: function($e, data) {
-            console.log('error ' + $e.status + ' : ' + $e.responseText);
-        }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled')
-    ;
+    $('.upPhoto').dropzone(dropAction).show();
 
     $('#adPost').click(function() {
         var attributes = {
@@ -524,11 +494,15 @@ jQuery(document).ready(function() {
             'city' : $('#customerCity').val(),
             'phone' : $('#customerPhone').val()
         };
-        console.log(attributes);
+        //console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {
             console.log('success ' + data.responseText);
         }).fail(function(data) {
             console.log(data.responseText)
         });
+    });
+
+    $("#post_ad").click(function() {
+        window.location.replace('/home');
     });
 });

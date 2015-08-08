@@ -76,14 +76,10 @@
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
                         <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
-                        {!! Form::open(['route' => 'resellerimages.store', 'method' => 'post', 'files' => 'true', 'id' => 'adpost']) !!}
-                            <input type="hidden" name="type" value="2" id="adType"/>
-                            <div>
-                                <div class="upPhoto">Upload Photo</div>
-                                <div style="height:0;width:0;overflow:hidden;"><input type="file" name="images[]" id="adPics" multiple/></div>
-                            </div>
+                        <div>
+                            <div class="upPhoto"><div class="dz-message">Upload Photo</div></div>
                             <div class="b-fakeLink addPhoto">+</div>
-                        {!! Form::close() !!}
+                        </div>
 
 						<div class="selCatOuter">
 							<div class="overlay selcat-obbtn"> </div>
@@ -200,7 +196,7 @@
 				</div>
 					</div>
 					<div class="w4-c-sec-3"> 
-						<div btnId="4" class="nextbtn cust-btn -btn-next" >Post ad</div> 
+						<div btnId="4" class="cust-btn -btn-next" id="post_ad">Post ad</div>
 						<div class="backbtn cust-btn -btn-back" btnId="4" >Back</div>
 						<span>By posting the ad i have read and agreed to Globexcart.com Terms of use and Temrs od Sale</span>
 					</div>
