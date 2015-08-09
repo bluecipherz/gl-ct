@@ -99,6 +99,20 @@
 			</div>
 		</div>
 	</div>
+	<div class="message">
+		<div class="boxx">
+			<div class="mIcon">
+				<div class="mSuccessIcon b-hide"></div>
+				<div class="mFailIcon b-hide"></div>
+				<div class="mInfoIcon b-hide"></div>
+			</div>
+			<div class="mCont">
+				<span class="mc-head"></span>
+				<span class="mc-mes"></span>
+			</div>
+			<div class="mAction"><div class="mCloseIcon-s"></div></div>
+		</div>
+	</div>
 
 	@yield('content')
 
@@ -151,10 +165,12 @@
 	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
 	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
+	<script src="{{ asset('/js/pushNotification.js') }}"></script>
     {{--{!! HTML::script('js/jquery.fileupload.js') !!}--}}
     {!! HTML::script('js/dropzone.js') !!}
 	<script src="{{ asset('/js/script.js') }}"></script>
 	<script src="{{ asset('/js/static-page.js') }}"></script>
+	
 	
 </body>
 </html>
