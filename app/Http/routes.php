@@ -39,6 +39,18 @@ Route::get('register', function() {
 	return view('pages.register');
 });
 
+Route::get('dealsoftheday', function() {
+	return view('pages.static.dealsoftheday');
+});
+
+Route::get('superdeals', function() {
+	return view('pages.static.superdeals');
+});
+
+Route::get('proview', function() {
+	return view('pages.proview');
+});
+
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });
