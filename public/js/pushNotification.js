@@ -6,8 +6,11 @@ jQuery(document).ready(function() {
 	// type has 3 values - succes , fail , info or 1 , 2 , 3 respectively
 	// third argument Time is used for duration of the message / auto hide
 	// sensitive hide lets you to activate autohide message only if the user is not pointer the mouse on the message
+	// you can also set the time after the mouse  out - the last argument
 	
-	pushNotification("This is just a test message to show this message is working",3 , "This is the head" ,4000 ,true, 1000);
+	message = "This is just a test message to show this message is working, tons of features inside...!!! check it out. you can find everything in pushNotifications.js";
+	
+	pushNotification(message,3 , "Push Notifications" ,4000 ,true, 1000);
 	
 	function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTime){
 		if($.isNumeric(type)){
