@@ -20,7 +20,7 @@
 									Add Categories
 								</div>
 								<div class="panel-body">
-									{!! Form::open(['route' => 'category.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+									{!! Form::open(['route' => 'categories.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
 										<div class="form-group">
 											{!! Form::label('name', 'Name', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
 											<div class="col-lg-6 col-md-6">	

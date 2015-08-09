@@ -13,7 +13,8 @@
 	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/admin-panel.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
-	
+    {!! HTML::style('css/dropzone.css') !!}
+
 	<link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}"/>
 	
 	<script>
@@ -72,9 +73,14 @@
 	<div class="overlay col-md-12 mainReg">
 		<div class="overlay-backbtn"></div>
 		<div class="login-box login-box-main col-md-4 col-md-offset-4">
-			@if(Auth::customer()->check())
-				@include('/auth/partials/logged')
-			@else
+            @if(Auth::customer()->check())
+            <div class="loggedMB">
+                @include('/auth/partials/logged')
+            </div>
+            @else
+            <div class="loggedMB" style="display:none;">
+            </div>
+            @endif
 			<div class="loginMB">
 				<h2>Login</h2>
 				<div class="logoBarOuter">GLOBEX<span>CART</span></div>
@@ -91,7 +97,6 @@
 				<div class="form-group"><button class="glob-control" id="auth-register-btn">Register</button></div>
 				<div class="form-group">Already have an account ? <span class="b-fakeLink-text regMBLbtn">Login</span></div>
 			</div>
-			@endif
 		</div>
 	</div>
 

@@ -10,16 +10,18 @@
             <table class="table">
                 <tr>
                     <th>Email</th>
+                    <th>Advertisements</th>
                     <th>Active</th>
                 </tr>
                 @forelse($customers as $customer)
                     <tr>
                         <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->advertisements()->count() }}</td>
                         <td>{{ $customer->active }}</td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="2">No Customers</td>
+                        <td colspan="3">No Customers</td>
                     </tr>
                 @endforelse
             </table>

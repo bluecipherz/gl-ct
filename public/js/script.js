@@ -45,7 +45,6 @@ jQuery(document).ready(function() {
 	/* Home reg/login functions */
 	if($mainlrpheight > 100){$(".login-box-main").css({"marginTop": $mainlrpheight });}
 	
-	
 	$(".acctBtn").click(function(){
         console.log('clicked' + login);
 		if($pageName != "login"){
@@ -227,14 +226,15 @@ jQuery(document).ready(function() {
 	
 	$("#search_q").keydown(function(e) {
 		if(e.keyCode == 13) { // search
-			console.log(window.location);
+			//console.log(window.location);
+            var path = '/products/search';
 			var input = $(this).val();
 			var terms = input.trim().replace(/\s+/g, '+');
-			var url = '/search?q=' + terms;
-			if(!window.location.pathname.startsWith('/search')) {
-				window.location.replace('/search?q=' + terms);
+			var url = path + '?q=' + terms;
+			if(!window.location.pathname.startsWith(path)) {
+				window.location.replace(path + '?q=' + terms);
 			}
-			$.get('/search?q=' + input).success(function(rsp) {
+			$.get(path + '?q=' + input).success(function(rsp) {
 				$(".productsCont").html($(rsp).find(".productsCont").html());
 				/* HISTORY API */
 				if(url != window.location) {
@@ -257,7 +257,7 @@ jQuery(document).ready(function() {
 
     if(window.location.pathname.startsWith('/admin')) {
 
-        $.get('/products/all-products').success(function(response) {
+        $.post('/products/all-products').success(function(response) {
             $("#search_q").autocomplete({
                 source : response
             });
@@ -306,8 +306,7 @@ jQuery(document).ready(function() {
 				.success(function(response) {
 					console.log('success : ' + response.responseText);
 					hideOverlay();
-					$('.login-box')
-						.html(response);
+                    afterLogin(response);
 				})
 				.fail(function(response) {
 					console.log('fail : ' + response.responseText);
@@ -334,10 +333,24 @@ jQuery(document).ready(function() {
 		}
 	});
 
-    function afterLogin(response) {;
-        $('.login-box').html(response); // for login box
+    function afterLogin(response) {
+        $('.login-box .loggedMB').html(response).show(); // for login box
+        $('.login-box .loginMB').hide();
+        $('#auth-login-email').val('');
+        $('#auth-login-pass').val('');
+        $('#auth-email').val('');
+        $('#auth-pass').val('');
+        $('.login-box .regMB').hide();
         $("#wizardT-1 > .login").hide();
         $("#wizardT-1 > .loggedin").show();
+    }
+
+    function afterLogout() {
+        $('.login-box .loggedMB').hide(); // for login box
+        $('.login-box .loginMB').show();
+        $('.login-box .regMB').show();
+        $("#wizardT-1 > .login").show();
+        $("#wizardT-1 > .loggedin").hide();
     }
 
     //$("wizardT-1")
@@ -463,9 +476,23 @@ jQuery(document).ready(function() {
         url : '/resellerimages',
         thumbnailHeight: 90,
         thumbnailWidth: 90,
+        //previewTemplate :
+        //'<div class="dz-preview dz-file-preview">' +
+            //'<div class="dz-image">' +
+                //'<img data-dz-thumbnail />' +
+            //'</div>' +
+            //'<div class="dz-details">' +
+            //    '<div class="dz-filename"><span data-dz-name></span></div>' +
+            //    '<div class="dz-size" data-dz-size></div>' +
+            //'</div>' +
+            //'<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>' +
+            //'<div class="dz-success-mark"><span>✔</span></div>' +
+        //    '<div class="dz-error-mark"><span>✘</span></div>' +
+        //    '<div class="dz-error-message"><span data-dz-errormessage></span></div>' +
+        //'</div>',
         accept : function(file, data) {
-            $(this.element).css('padding', 0);
-            $(this.element).find('.dz-message').hide();
+            //$(this.element).css('padding', 0);
+            //$(this.element).find('.dz-message').hide();
         },
         headers : {
             'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
@@ -480,7 +507,7 @@ jQuery(document).ready(function() {
 
     $('.upPhoto').dropzone(dropAction).show();
 
-    $('#adPost').click(function() {
+    $('#post_ad').click(function() {
         var attributes = {
             'adtitle' : $('#adTitle').val(),
             'category_id' : $('#adCatId').val(),
@@ -497,12 +524,38 @@ jQuery(document).ready(function() {
         //console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {
             console.log('success ' + data.responseText);
+            window.location.replace('/home');
         }).fail(function(data) {
             console.log(data.responseText)
         });
     });
 
-    $("#post_ad").click(function() {
-        window.location.replace('/home');
+    $('#logoutBtn').click(function() {
+        $.get('/auth/logout')
+            .success(function(data) {
+                afterLogout();
+            })
+            .fail(function(data) {
+                console.log(data);
+            });
     });
+
+    $('#category-filter').change(function() {
+        var id = $(this).val();
+        $.post('/categories/' + id + '/children')
+            .success(function(data) {
+                console.log(data);
+                var catlist = $('#category-list').empty();
+                $.each(data, function(key, value) {
+                    var parent = $("<p/>");
+                    parent.append($('<input/>').attr('type', 'checkbox').addClass('glob-control'));
+                    parent.append($('<label/>').text(value.name));
+                    catlist.append(parent);
+                });
+            })
+            .fail(function(data) {
+                console.log('fail');
+            })
+    })
+
 });

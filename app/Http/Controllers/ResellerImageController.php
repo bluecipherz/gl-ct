@@ -1,17 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-use App\Http\Requests\ImageRequest;
-use App\Repositories\ImageRepository;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
+use Request;
+use Response;
+use Input;
 use Session;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Validator;
 
 class ResellerImageController extends Controller {
 
@@ -34,7 +29,10 @@ class ResellerImageController extends Controller {
             return Response::make($validation->errors->first(), 400);
         }
         $extension = $file->getClientOriginalExtension();
-        $directory = public_path() . '/uploads/temp/' . Session::getId();
+        $directory = public_path() . '/uploads/temp/' . Session::getId() . '/';
+        if (!file_exists($directory)) {
+            mkdir($directory, 0777, true);
+        }
         $filename = sha1(time() . time()) . ".{$extension}";
         $upload_success = $file->move($directory, $filename);
         if ($upload_success) {

@@ -5,18 +5,18 @@
 	<div class="row">
 		<div class="filter-sidebar">
 			<h4>Search filter</h4>
-			<select class="glob-control">
-				<option>Select a Category</option>
-				<option>Awesome</option>
-				<option>Kidilam</option>
+			<select class="glob-control" id="category-filter">
+                @foreach($categories as $cat)
+                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                @endforeach
 			</select>
-			<div class="category-list"><!-- CHECKBOXES -->
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
+			<div class="category-list" id="category-list"><!-- CHECKBOXES -->
+				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
+				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
 			</div>
 			<div class="rulerCont"><hr></div>
 			<div class="priceCont">
@@ -65,7 +65,6 @@
 				@endforeach
 			</div>
 			<div class="resellAdFullCont">
-				@for($i=1;$i < 10; $i++)
 				<div class="resellAdFull b-fakeLink">
 					<div class="product-thumbnail">
 						<span class="sampleThumb"></span>
@@ -85,7 +84,6 @@
 						</div>
 					</div>
 				</div>
-				@endfor
 			</div>
 		</div>
 	</div>

@@ -52,7 +52,7 @@
 						You are already logged in. want to login </br>from different account ?
 					</div> 
 					<div class="lgin-sec-3">
-						<div class="loginbtn cust-btn -btn-back" btnId="1" >Login from another account</div>
+						<div class="loginbtn cust-btn -btn-back" btnId="1" id="logoutBtn">Login from another account</div>
 						<div class="nextbtn cust-btn -btn-next" btnId="1" >Proceed</div>
 					</div> 
 				</div>
@@ -64,7 +64,7 @@
 						<div class="w2-inp-label w2-inp-label-t" >Description </div>
 						<div class="w2-inp-label " >Category</div>
 						<div class="selcatPathDummy" ></div>
-						<div class="w2-inp-label" >price</div>
+						<div class="w2-inp-label" >Price</div>
 						
 					</div>
 					<div class="w2-inp" >
@@ -76,9 +76,12 @@
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
                         <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
-                        <div>
-                            <div class="upPhoto"><div class="dz-message">Upload Photo</div></div>
-                            <div class="b-fakeLink addPhoto">+</div>
+                        <div id="dropView">
+                            {!! Form::open(['route' => 'resellerimages.store', 'class' => 'dropzone']) !!}
+                                <div class="dz-message">
+                                    Drop images here to upload
+                                </div>
+                            {!! Form::close() !!}
                         </div>
 
 						<div class="selCatOuter">
@@ -165,7 +168,7 @@
 					</div>
 					<div class="w2-sec1-2" >
 						<button class=" backbtn cust-btn -btn-back" btnId="3" >Back</button>
-						<button class=" nextbtn cust-btn -btn-next"  btnId="3" id="adPost" >Next</button>
+						<button class=" nextbtn cust-btn -btn-next"  btnId="3">Next</button>
 					</div>
 				</div>
 			</div>

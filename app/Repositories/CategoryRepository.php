@@ -42,4 +42,9 @@ class CategoryRepository extends Repository {
         return $cattree;
     }
 
+    public function getCats()
+    {
+        return Category::whereIsRoot()->first()->children->all();
+    }
+
 }

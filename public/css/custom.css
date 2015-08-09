@@ -556,8 +556,7 @@ body{
 }
 
 .loggedMB {
-	
-	
+	height: 100%;
 }
 
 .loginMB {
@@ -1798,3 +1797,8 @@ label:hover:before {
 		display:none;
 	}
 
+#dropView {
+    /*background:#eaeaea;*/
+    width:500px;
+    min-height:150px;
+}

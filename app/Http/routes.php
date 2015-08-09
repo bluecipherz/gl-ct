@@ -26,9 +26,6 @@ Route::post('/auth/register', 'AuthController@registerCustomer');
 Route::post('/auth/login', 'AuthController@loginCustomer');
 Route::get('/auth/logout', 'AuthController@logoutCustomer');
 
-Route::get('products/all-products', 'ProductController@allProducts');
-
-Route::get('search', 'ProductController@search');
 
 Route::get('login', function() {
     return view('pages.login');
@@ -42,7 +39,6 @@ Route::get('register', function() {
 	return view('pages.register');
 });
 
-Route::resource('advertisements', 'AdvertisementController', ['only' => ['create', 'store']]);
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });
@@ -50,8 +46,14 @@ Route::get('about-us', function() { return view('pages.static.about-us'); });
 Route::get('terms-of-use', function() { return view('pages.static.terms-of-use'); });
 Route::get('privacy-policy', function() { return view('pages.static.privacy-policy'); });
 
+Route::post('categories/{category}/children', 'CategoryController@children');
+Route::resource('categories', 'CategoryController');
+Route::resource('advertisements', 'AdvertisementController', ['only' => ['create', 'store']]);
+Route::post('products/all-products', 'ProductController@allProducts');
+Route::get('products/search', 'ProductController@search');
 Route::resource('products', 'ProductController');
 Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store']]);
+Route::resource('categories', 'CategoryController');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('dashboard', ['uses' => 'AdminPanelController@dashboard', 'as' => 'admin.dashboard']);
@@ -146,7 +148,14 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
 
     $options = HTML::attributes($options);
 
-    return "<select{$options}>{$list}</select>";
+    $categories = $root->children->all();
+
+    $category = $categories[rand(0, 11)];
+
+//    return "<select{$options}>{$list}</select>";
+    $descendents = $category->descendents()->get();
+    $count = count($descendents);
+    return $descendents[rand(0, $count)]->name;
 });
 
 Route::get('hell', function (Request $request) {

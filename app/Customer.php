@@ -22,4 +22,9 @@ class Customer extends Model implements AuthenticatableContract, CanResetPasswor
         return $this->hasMany('App\Order');
     }
 
+    public function advertisements()
+    {
+        return $this->hasMany('App\Advertisement');
+    }
+
 }

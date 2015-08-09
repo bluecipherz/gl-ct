@@ -29,9 +29,9 @@ class AdvertisementController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(CategoryRepository $categoryRepository)
 	{
-        return view('pages.adposts')->with('categories', Category::whereIsRoot()->first()->children->all());
+        return view('pages.adposts')->with('categories', $categoryRepository->getCats());
 	}
 
     /**
@@ -44,18 +44,14 @@ class AdvertisementController extends Controller {
 	{
 		$attributes = [
             'customer_id' => Auth::customer()->get()->id,
-            'category_id' => $request->get('category_id'),
-            'title' => $request->get('adtitle'),
-            'description' => $request->get('description'),
-            'price' => $request->get('price'),
         ];
-        $ad = Advertisement::create($attributes);
+        $ad = Advertisement::create(array_merge($attributes, $request->except('_token')));
         $source = public_path() . '/uploads/temp/' . Session::getId() . '/';
         $destination = public_path() . '/uploads/ads/' . $ad->id . '/';
         if(!file_exists($destination)) {
             mkdir($destination, 0777, true);
         }
-        $files = scandir($destination);
+        $files = scandir($source);
         $delete = [];
         foreach ($files as $file) {
             if(in_array($file, ['.', '..'])) continue;
@@ -71,7 +67,7 @@ class AdvertisementController extends Controller {
         foreach ($delete as $file) {
             unlink($file);
         }
-        return response()->json(Input::all());
+        return response()->json('success');
 	}
 
 	/**

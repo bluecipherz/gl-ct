@@ -4,8 +4,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryController extends Controller {
+
+    public function children($id)
+    {
+        $category = Category::find($id);
+        if($category) {
+            return response()->json($category->children->all());
+        }
+    }
 
 	/**
 	 * Display a listing of the resource.

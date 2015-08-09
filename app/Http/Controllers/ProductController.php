@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Category;
+use App\Repositories\CategoryRepository;
 use DB;
 use App\Product;
 use App\Http\Requests;
@@ -9,60 +11,16 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller {
 
-
-	public function placeOrder(Product $product, $qty) {
-		$product->stock = $product->stock - 1;
-		Order::create();
-	}
-
-	public function createPostSubCat(Request $request)
+	public function allProducts(Request $request)
 	{
-		DB::table('post_sub_cats')->insert(
-			['name' => $request->get('name'), 'sub_category_id' => $request->get('sub_category')]
-		);
-		return redirect()->back();
+        if ($request->ajax()) {
+            return response()->json(Product::all()->lists('name'));
+        } else {
+            abort(404);
+        }
 	}
 
-	public function createSubCat(Request $request)
-	{
-		DB::table('sub_categories')->insert(
-			['name' => $request->get('name'), 'category_id' => $request->get('category')]
-		);
-		return redirect()->back();
-	}
-
-	public function createCat(Request $request)
-	{
-		DB::table('categories')->insert(
-			['name' => $request->get('name')]
-		);
-		return redirect()->back();
-	}
-
-	public function postSubCats(Request $request)
-	{
-		$subcategory = $request->get('sub_category');
-		$data = DB::table('post_sub_cats')->where('sub_category_id', $subcategory)->lists('name');
-		array_unshift($data, null);
-		unset($data[0]);
-		return response()->json($data);
-	}
-
-	public function subCats(Request $request)
-	{
-		$category = $request->get('category');
-		$data = DB::table('sub_categories')->where('category_id', $category)->lists('name');
-		array_unshift($data, null);
-		unset($data[0]);
-		return response()->json($data);
-	}
-
-	public function allProducts()
-	{
-		return response()->json(Product::all()->lists('name'));
-	}
-
-	public function search(Request $request)
+	public function search(Request $request, CategoryRepository $categoryRepository)
 	{
 		$q = $request->get('q');
 		if($q) {
@@ -73,10 +31,10 @@ class ProductController extends Controller {
 				$query->where('name', 'LIKE', '%' . $term . '%');
 			}
 			$results = $query->get();
-			return view('pages.search', ['products' => $results]);
+			return view('pages.search', ['products' => $results, 'categories' => $categoryRepository->getCats()]);
 		} else {
 			$products = Product::all();
-			return view('pages.search', compact('products'));
+			return view('pages.search',  ['products' => $products, 'categories' => $categoryRepository->getCats()]);
 		}
 	}
 

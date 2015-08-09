@@ -21,6 +21,7 @@
                     <th>State</th>
                     <th>City</th>
                     <th>Phone</th>
+                    <th>Images</th>
                 </tr>
                 @forelse($advertisements as $ad)
                     <tr>
@@ -36,10 +37,11 @@
                         <td>{{ $ad->state }}</td>
                         <td>{{ $ad->city }}</td>
                         <td>{{ $ad->phone }}</td>
+                        <td>{{ $ad->images()->count() }}</td>
                     </tr>
                 @empty
                 <tr>
-                    <td colspan="12">No advertisements</td>
+                    <td colspan="13">No advertisements</td>
                 </tr>
                 @endforelse
             </table>
