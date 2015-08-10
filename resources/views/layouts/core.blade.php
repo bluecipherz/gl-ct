@@ -93,7 +93,7 @@
 				<div class="form-group">Don't have an account ? <span class="b-fakeLink-text loginMBLbtn">Register Now</span></div>
 			</div>
 			<div class="regMB">
-				<h2>Register with</h2>
+				<h2 >Register with</h2>
 				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control" id="auth-register-email" name="email"/></div>
 				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-register-pass" name="password"/></div>
@@ -176,6 +176,7 @@
     {!! HTML::script('js/dropzone.js') !!}
 	<script src="{{ asset('/js/script.js') }}"></script>
 	<script src="{{ asset('/js/static-page.js') }}"></script>
+	<script src="{{ asset('/js/imageHandler.js') }}"></script>
 	
 	
 </body>

@@ -55,6 +55,10 @@ Route::get('editprofile', function() {
 	return view('pages.editprofile');
 });
 
+Route::get('categories', function() {
+	return view('pages.categories');
+});
+
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });

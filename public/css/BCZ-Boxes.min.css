@@ -377,6 +377,16 @@ a:hover {
 	height:60px;
 	width:60px;
 }
+.imgNotAvail{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/imgnot.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:100%;
+	width:100%;
+}
 .mCloseIcon-s{
 	display:block;
 	float:left;

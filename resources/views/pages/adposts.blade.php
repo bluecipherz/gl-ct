@@ -19,8 +19,10 @@
 							<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 						</div>
 						<div class="w-log-sec-2" >
-							<input type="text" class="cust-input-block" placeholder="Your email" id="auth-email"/>
-							<input type="password" class="cust-input-block" placeholder="Password" id="auth-password"/>
+							<input type="text" class="cust-input-block" pop-ref="1"  placeholder="Your email" id="auth-email"/>
+							<div class="pn-popup" pop-id="1" ><div></div></div>
+							<input type="password"class="cust-input-block" placeholder="Password" id="auth-password"/>
+							<div class="pn-popup"  ><div></div></div>
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
 						</div>
 						<div class="w-log-sec-3" >
@@ -31,7 +33,7 @@
 					<div class="w-reg">
 						<div class="w-reg-1">
 							<div class="w-reg-sec-1" >
-								<span  class="w-reg-head" >Register with </span><div ><span class="g-logo-contain gl-contain-60" ></span></div>
+								<span  class="w-reg-head"  >Register with </span><div ><span class="g-logo-contain gl-contain-60" ></span></div>
 							</div>
 							<div class="w-reg-sec-2" >
 								<input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>

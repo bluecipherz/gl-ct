@@ -325,6 +325,11 @@ body{
 	background:#fff;
 	box-shadow:0px 0px 5px rgba(0,0,0,0.2);
 }
+.catList a{
+	display:block;
+	float:left;
+	color:rgba(0,0,0,0.6);
+}
 .catList > .catItem {
 	display:inline_block;
 	float:left;
@@ -334,6 +339,7 @@ body{
 	border-bottom:1px solid rgba(0,0,0,0.1);
 	border-right:1px solid rgba(0,0,0,0.1);
 	text-align:center;
+	
 }
 .catList > .catItem:hover{
 	
@@ -513,6 +519,9 @@ body{
  .adcont-4 > a{ width:calc( 25% - 4px);	height:220px; }
  .adcont-5 > a{ width:calc( 20% - 4px); 	height:250px; }
 
+ .adimg{ width:100%; height:calc( 100% - 60px);  }
+
+ 
  .adcont-1 > a > .adtitle,
  .adcont-2 > a > .adtitle,
  .adcont-3 > a > .adtitle,
@@ -594,8 +603,15 @@ body{
 	font-size:25px;
 	color:rgba(255,255,255,0.8); 
 	font-family:Dosis;
-}
-
+ }
+ .adimg{
+	overflow:hidden;
+ }
+ .adcont-1 .adimg > img{ min-width:100%; max-width:100%; height:auto; }
+ .adcont-2 .adimg > img{ min-height:100%; max-height:100%; width:auto; }
+ .adcont-3 .adimg > img{ min-width:100%; max-width:100%; height:auto; }
+ .adcont-4 .adimg > img{ min-width:100%; max-width:100%; height:auto; }
+ .adcont-5 .adimg > img{ min-width:100%; max-width:100%; height:auto; }
  { { = CountDown Timer = } }
  
  
@@ -603,7 +619,7 @@ body{
 	width: 10px;
 	height: 540px;
 	margin: 80px auto 0 auto;
-	font-size: 60px;
+	font-size: 27px;
 	font-weight: normal;
 	line-height: 45px;
 	overflow: hidden;
