@@ -231,7 +231,7 @@ jQuery(document).ready(function() {
 			var input = $(this).val();
 			var terms = input.trim().replace(/\s+/g, '+');
 			var url = path + '?q=' + terms;
-			if(!window.location.pathname.startsWith(path)) {
+			if(!window.location.pathname.indexOf(path)) {
 				window.location.replace(path + '?q=' + terms);
 			}
 			$.get(path + '?q=' + input).success(function(rsp) {
@@ -252,17 +252,15 @@ jQuery(document).ready(function() {
 	});
 	
 	// END HISTORY API
-
-
-
-    if(window.location.pathname.startsWith('/admin')) {
-
+	
+	var path = window.location.pathname;
+	
+    if(path.indexOf('/admin')) {
         $.post('/products/all-products').success(function(response) {
             $("#search_q").autocomplete({
                 source : response
             });
         });
-
     }
 
 	$("#category").change(function() {
@@ -510,7 +508,7 @@ jQuery(document).ready(function() {
 
     $('#post_ad').click(function() {
         var attributes = {
-            'adtitle' : $('#adTitle').val(),
+            'title' : $('#adTitle').val(),
             'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
             'price' : $('#adPrice').val(),

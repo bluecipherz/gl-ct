@@ -22,7 +22,7 @@ class AdRequest extends Request {
 	public function rules()
 	{
 		return [
-			'adtitle' => 'required',
+			'title' => 'required',
 			'category_id' => 'required',
             'description' => 'required',
             'price' => 'required',

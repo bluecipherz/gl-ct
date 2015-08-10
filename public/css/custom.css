@@ -650,6 +650,91 @@ body{
 	width : 100%;
 }
 
+.account{
+	font-family:Dosis;
+	font-weight:300;
+}
+.account > .ac-head{
+	position:relative;
+	display:block;
+	float:left;
+	width:100%;
+	height:60px;
+	background: #313131;
+}
+.account > .ac-head > .ac-logout{
+	position:absolute;
+	top:15px;
+	right:15px;
+	display:block;
+	float:left;
+	padding: 5px 10px 5px 10px;
+	color:#fff;
+	background: #5e3c5f;
+}
+.account > .ac-head > .ac-logout:hover {
+	color:#fff;
+	background: #88348a;
+}
+.account > .ac-head > .ac-name{
+	display:block;
+	float:left;
+	padding: 15px 0 0 15px;
+	color:#ebebeb;
+	font-size:150%;
+	font-weight:200;
+}
+.account > .ac-head > .ac-name > span{
+	font-weight:400;
+}
+.account > .ac-cont {
+	display:block;
+	float:left;
+	width:90%;
+	height:auto;
+	margin:0 5% 0 5%;
+	font-weight:300;
+}
+
+.account > .ac-cont > .ac-profile{
+	display:block;
+	float:left;
+	width:100%;
+	height:300px;
+	overflow-y:scroll;
+}
+.account > .ac-cont > .ac-profile > .ac-c-head > div{
+	float:left;
+	background:red;
+}
+.account > .ac-cont > .ac-profile > .ac-c-head{
+	display:block;
+	float:left;
+	width:100%;
+	padding:10px;
+	border-bottom:rgba(0,0,0,0.1) 2px solid;
+	font-Size:150%;
+	font-weight:500;
+}
+.account > .ac-cont > .ac-profile > input{
+	display:block;
+	float:left;
+	height:auto;
+}
+
+.account > .ac-cont > .ac-myads{
+	display:block;
+	float:left;
+	height:auto;
+	background:#5e3c5f;
+	color:#fff;
+	padding:8px 0 8px 0;
+}
+.account > .ac-cont > .ac-myads:hover{
+	cursor:pointer;
+	background:#88348a;
+}
+
 .glob-control {
 	padding: 15px;
 	border : 0;

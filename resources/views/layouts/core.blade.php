@@ -48,7 +48,7 @@
 					<a href="{{ url('/home') }}"><span class="logoimg"> <img draggable="false"  src="{{ asset('img/logo/LOGO-60.png') }}"> </span></a>
 				</div>
 				<div class="searchBarOuter" >
-					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon"></span></div></div>
+					<div class="serachBar" ><input type="text" id="search_q" class="serachField" placeholder="Search here"/><div class="serachBtn"> <span class="searchIcon2"></span></div></div>
 				</div>
 				<div class="userBarOuter pull-right b-untouchable">
 					<a class="userBtn"  href="{{ url('/help') }}">
@@ -78,6 +78,7 @@
             </div>
             @else
             <div class="loggedMB" style="display:none;">
+				
             </div>
             @endif
 			<div class="loginMB">

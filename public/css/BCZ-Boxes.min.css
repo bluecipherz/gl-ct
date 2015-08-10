@@ -335,7 +335,18 @@ a:hover {
 =============================================== EXTTRAS & SUPER EXTRAS =============================================
 ====================================================================================================================}
 
-
+.searchIcon2{
+	display:block;
+	float:left;
+	
+	background-image:  url(BCZ-Boxes/png/searchIcon.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:90%;
+	margin-top:5%;
+	width:100%;
+}
 
 
 .searchIcon{

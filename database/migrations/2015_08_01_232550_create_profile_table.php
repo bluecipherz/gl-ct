@@ -16,6 +16,11 @@ class CreateProfileTable extends Migration {
             $table->increments('id');
             $table->string('first_name', 50);
             $table->string('last_name', 50);
+            $table->integer('pin');
+            $table->text('address');
+            $table->string('state');
+            $table->string('city');
+            $table->string('phone');
             $table->char('gender')->default('U');
             $table->date('dob');
             // $table->unsignedInteger('image_id')->nullable();

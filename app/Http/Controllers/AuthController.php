@@ -55,17 +55,21 @@ class AuthController extends Controller {
 			'password' => $request->get('password'),
 //            'active' => 1
 		];
-        $customer = Customer::whereEmail($request->get('email'))->first();
-        if ($customer) {
-//            echo 'Logging in ' . $customer->email . '<br>';
-            Auth::customer()->login($customer);
+		$customer = Customer::whereEmail($credentials['email'])->first();
+		$creds = [
+			$request->get('email'), bcrypt($request->get('password')), $customer->email, $customer->password
+		];
+		Auth::customer()->attempt($credentials);
+        if (Auth::customer()->check()) {
+           // echo 'Logging in ' . $credentials['email'] . '<br>';
             if($request->ajax()) {
                 return view('auth.partials.logged');
             } else {
                 return redirect()->intended('/home');
             }
         } else {
-            $this->throwLoginException($request);
+            // $this->throwLoginException($request);
+			return response()->json($creds);
         }
 	}
 

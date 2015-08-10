@@ -23,7 +23,7 @@ Route::get('home', 'HomeController@index');
 // ]);
 
 Route::post('/auth/register', 'AuthController@registerCustomer');
-Route::post('/auth/login', 'AuthController@loginCustomer');
+Route::get('/auth/login', 'AuthController@loginCustomer');
 Route::get('/auth/logout', 'AuthController@logoutCustomer');
 
 
