@@ -21,6 +21,7 @@ class HomeRepository {
         foreach ($root->children->all() as $cat) {
             if($counter > 11) break;
             $catset[$cat->name]['title'] = $cat->name;
+            $catset[$cat->name]['id'] = $cat->id;
 //            echo '<br>' . $cat->name . '<br>';
             $subcats = $cat->children->all();
             $subcatcounter = 0;
@@ -41,6 +42,7 @@ class HomeRepository {
 //                        echo ' subcat ' . $subcats[$subcatcounter]->name . '<br>';
                         $colarray[$rowcounter]['title'] = $subcats[$subcatcounter]->name;
                         $colarray[$rowcounter]['type'] = 'subcat';
+                        $colarray[$rowcounter]['id'] = $subcats[$subcatcounter]->id;
                         $postcats = $subcats[$subcatcounter]->children->all();
                         $postcatcount = count($postcats) - 1;
                         if($postcatcount == -1) {
@@ -52,6 +54,7 @@ class HomeRepository {
 //                        echo ' postcat ' . $postcats[$postcatcounter]->name . '<br>';
                         $colarray[$rowcounter]['title'] = $postcats[$postcatcounter]->name;
                         $colarray[$rowcounter]['type'] = 'postcat';
+                        $colarray[$rowcounter]['id'] = $postcats[$postcatcounter]->id;
                         $postcatcounter++;
                         if($postcatcounter > $postcatcount) {
                             $postcatcounter = 0;

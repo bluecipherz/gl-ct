@@ -33,10 +33,10 @@ class ResellerImageController extends Controller {
         }
         $extension = $file->getClientOriginalExtension();
         $directory = public_path() . '/uploads/temp/' . Session::getId() . '/';
-        if (!file_exists($directory)) {
+        if (!File::exists($directory)) {
             mkdir($directory, 0777, true);
         }
-        $filename = sha1(time() . time()) . ".{$extension}";
+        $filename = sha1($file->getClientOriginalName() . time()) . ".{$extension}";
         $upload_success = $file->move($directory, $filename);
         if ($upload_success) {
             return response()->json($filename, 200);
@@ -52,6 +52,11 @@ class ResellerImageController extends Controller {
         return response()->json('deleted');
     }
 
+    /**
+     * Get all temporary images in session
+     *
+     * @return array
+     */
     public function all()
     {
         $dir = public_path() . '/uploads/temp/' . Session::getId() . '/';
@@ -70,26 +75,6 @@ class ResellerImageController extends Controller {
             return $data;
         }
     }
-
-    public function last()
-    {
-        $images = Input::file('images');
-        $destination = public_path() . '/uploads/temp/' . Session::getId();
-        if(!file_exists($destination)) {
-            mkdir($destination, 0777, true);
-        }
-        Session::put('files', 0);
-        foreach ($images as $image) {
-//			$filename = $image->getClientOriginalName();
-            $extension = $image->getClientOriginalExtension();
-            $filename = Session::get('files') + 1;
-            $image->move($destination, $filename. '.' .$extension);
-            Session::put('files', $filename);
-        }
-        // return JsonResponse::create(Input::all());
-        return response(Session::getId());
-    }
-
 
     public function dev() {
         $image = Input::file('image');

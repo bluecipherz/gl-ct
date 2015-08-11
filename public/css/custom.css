@@ -100,7 +100,8 @@ body{
 .message > div > .mCont > .mc-mes{ 
 	display:block;
 	float:left;
-	padding-bottom:20px;
+	/*padding-top:10px;*/
+	/*padding-bottom:10px;*/
 }
 .message > div > .mAction{ 
 	display:inline_block;

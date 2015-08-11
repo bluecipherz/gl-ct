@@ -37,11 +37,11 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 	$('.message .mCont > .mc-head').html(title);
 	$('.message .mCont > .mc-mes').html(message);
 	$('.message').show();
+    //if (typeof time === 'undefined') time = 0;
 	if(time >= 1){
 		var autoHideIntervel = setTimeout( function(){ $('.message').hide(); } , time);
 	}
 	if(sensitiveHide){
-        if(sensitiveHideTime == undefined) sensitiveHideTime = 3000;
 		$('.message').mouseover(function(){
 			clearTimeout(autoHideIntervel);
 		});

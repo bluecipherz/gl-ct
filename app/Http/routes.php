@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::post('search', 'HomeController@search');
+
 // Route::controllers([
 //	 'auth' => 'Auth\AuthController',
 	// 'password' => 'Auth\PasswordController',
@@ -54,10 +56,6 @@ Route::get('proview', function() {
 
 Route::get('editprofile', function() {
 	return view('pages.editprofile');
-});
-
-Route::get('cat', function() {
-	return view('pages.categories');
 });
 
 Route::get('admin-x965', function() {

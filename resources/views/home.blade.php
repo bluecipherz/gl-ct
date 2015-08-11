@@ -65,18 +65,18 @@ function randImg($type){
 			<div class="catList">
 				@foreach($catset as $cat)
 				<div class="catItem BendLineBase">
-					<a href="categories" class="catLi cItem"> {{ $cat['title'] }}</a>
+					<a href="{{ route('categories.show', $cat['id']) }}" class="catLi cItem"> {{ $cat['title'] }}</a>
 					<div class="catCont">
                         <?php $col = 1; ?>
                         @foreach($cat['children'] as $column)
 						<div class="catSec-{{ $col }} col-md-4">
                             @foreach($column as $item)
                                 @if($item['type'] == 'subcat')
-                                    <a href="categories"  class="catContHead cItem">
+                                    <a href="{{ route('categories.show', $item['id']) }}"  class="catContHead cItem">
                                         {{ $item['title'] }} <span class="catPointer"> < </span>
                                     </a>
                                 @else
-									<a href="categories"  class="catContHeadItems cItem">
+									<a href="{{ route('categories.show', $item['id']) }}"  class="catContHeadItems cItem">
                                         {{ $item['title'] }} <span class="catPointer"> < </span>
                                     </a>
                                 @endif

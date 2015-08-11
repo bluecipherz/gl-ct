@@ -1,10 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\Message;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use App\Category;
 use Cache;
 use Illuminate\Support\Facades\Validator;
+use Input;
+use DB;
 
 class HomeController extends Controller {
 
@@ -55,6 +58,21 @@ class HomeController extends Controller {
         $message = Message::create(array_except($request->all(), ['_token']));
 //        print_r($message);
         return redirect('/contact-us')->withMessage('Message Sent.');
+    }
+
+    public function search()
+    {
+        $q = Input::get('q');
+        if ($q) {
+            $searchTerms = explode(' ', $q);
+            $productQuery = DB::table('products')->select('id', 'title', 'description');
+            $adQuery = DB::table('advertisements')->select('id', 'title', 'description');
+            foreach ($searchTerms as $term) {
+                $productQuery->where('title', 'LIKE', '%' . $term . '%')->union($adQuery);
+            }
+            $results = $productQuery->get();
+            return response()->json($results);
+        }
     }
 
 }

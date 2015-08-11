@@ -18,7 +18,7 @@ class ProductTableSeeder extends DatabaseSeeder {
             $descendants = $categories[rand(0, 11)]->descendants()->get();
             $count = count($descendants);
 			App\Product::create([
-				'name' => $faker->sentence(rand(1, 3)),
+				'title' => $faker->sentence(rand(1, 3)),
 				'price' => rand(5, 50000),
                 'stock' => rand(0, 100),
                 'description' => $faker->sentence(),

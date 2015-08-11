@@ -137,7 +137,7 @@ jQuery(document).ready(function() {
                 })
                 .fail(function (response) {
                     //console.log('fail : ' + response.responseText);
-                    pushNotification("Login Incorrect", "Fail", "Error");
+                    pushNotification("Login Incorrect", "fail", "Error", null);
                 });
         }
     });
@@ -576,31 +576,24 @@ jQuery(document).ready(function() {
             $.post('/resellerimages/all')
                 .success(function(data) {
                     if(data)
-                        $.each(data, function(key, value) {
-                            //console.log(value);
-                            var mockFile = {
-                                name: value.name,
-                                type : value.type,
-                                url : value.url,
-                                size : value.size,
-                                status: Dropzone.ADDED,
-                                accepted: true // doesnt seem to remove progressbar if refreshed
-                            };
+                        $.each(data, function(key, file) {
 
                             // Call the default addedfile event handler
-                            myDropzone.emit("addedfile", mockFile);
+                            myDropzone.emit("addedfile", file);
 
                             // And optionally show the thumbnail of the file:
-                            myDropzone.emit("thumbnail", mockFile, value.url);
+                            myDropzone.emit("thumbnail", file, file.url);
 
-                            mockFile.tempfile = value.name;
+                            file.tempfile = file.name;
 
-                            myDropzone.files.push(mockFile);
+                            myDropzone.emit("complete", file);
+                            console.log(file.url);
                         });
                 });
         },
         success : function(file, response) {
             file.tempfile = response;
+            console.log(response);
         },
         removedfile : function(file) {
             $.post('/resellerimages/delete', {file : file.tempfile, _method : 'DELETE'})
