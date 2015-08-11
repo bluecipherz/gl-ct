@@ -858,6 +858,12 @@ body{
 	background:#88348a;
 }
 
+.ac-s-btn{
+	min-width:120px;
+	width:120px;
+	max-width:120px;
+}
+
 .glob-control {
 	padding: 15px;
 	border : 0;

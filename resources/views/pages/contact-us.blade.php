@@ -1,4 +1,4 @@
-@section('title','Help')
+@section('title','Contact u')
 @extends('layouts.static')
 @section('name','Contact us')
 @section('Scontent')
