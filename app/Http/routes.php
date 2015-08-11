@@ -193,12 +193,15 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
 Route::get('hell', function (Request $request) {
 //    $this->app['auth']->admin()->setUser(\App\Customer::find(1));
 //    throw new \App\Exceptions\LoginException($request);
-    $credentials = [
-        'email' => 'basith@gmail.com',
-        'password' => 'asd123.'
-    ];
-    $re = Auth::customer()->attempt($credentials);
-    echo 'ok ' . $re;
+//    $credentials = [
+//        'email' => 'basith@gmail.com',
+//        'password' => 'asd123.'
+//    ];
+//    $re = Auth::customer()->attempt($credentials);
+//    echo 'ok ' . $re;
+    $cat = App\Category::find(2);
+    $cats = [];
+    echo response()->json(App\Category::hasChildren()->get());
 });
 
 Route::get('ajax', function () {

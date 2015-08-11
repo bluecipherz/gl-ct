@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
 		$('.message').hide();
 	});
 	
-	// type has 3 values - succes , fail , info or 1 , 2 , 3 respectively
+	// type has 3 values - success , fail , info or 1 , 2 , 3 respectively
 	// third argument Time is used for duration of the message / auto hide
 	// sensitive hide lets you to activate autohide message only if the user is not pointer the mouse on the message
 	// you can also set the time after the mouse  out - the last argument
@@ -29,9 +29,9 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 		else if(type== 3 ){ $('.message .mInfoIcon').show(); }
 		else { $('.message .mInfoIcon').show(); }
 	}else{
-		if(type.indexOf('success') || type.indexOf('Success')){ $('.message .mSuccessIcon').show(); }
-		else if(type.indexOf('fail') || type.indexOf('Fail')){ $('.message .mFailIcon').show(); }
-		else if(type.indexOf('Info') || type.indexOf('Info')){ $('.message .mInfoIcon').show(); }
+		if(type.match('[Ss]uccess')) $('.message .mSuccessIcon').show();
+		else if(type.match('[Ff]ail')) $('.message .mFailIcon').show();
+		else if(type.match('[Ii]nfo')) $('.message .mInfoIcon').show();
 		else { $('.message .mInfoIcon').show(); }
 	}
 	$('.message .mCont > .mc-head').html(title);
@@ -41,6 +41,7 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 		var autoHideIntervel = setTimeout( function(){ $('.message').hide(); } , time);
 	}
 	if(sensitiveHide){
+        if(sensitiveHideTime == undefined) sensitiveHideTime = 3000;
 		$('.message').mouseover(function(){
 			clearTimeout(autoHideIntervel);
 		});

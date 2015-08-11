@@ -20,9 +20,9 @@
 						</div>
 						<div class="w-log-sec-2" >
 							<input type="text" class="cust-input-block" pop-ref="1"  placeholder="Your email" id="auth-email"/>
-							<div class="pn-popup" pop-id="1" ><div></div></div>
-							<input type="password"class="cust-input-block" placeholder="Password" id="auth-password"/>
-							<div class="pn-popup"  ><div></div></div>
+							<div class="pn-popup" pop-id="1"><div></div></div>
+							<input type="password"class="cust-input-block" pop-ref="2" placeholder="Password" id="auth-password"/>
+							<div class="pn-popup" pop-id="2"><div></div></div>
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
 						</div>
 						<div class="w-log-sec-3" >
