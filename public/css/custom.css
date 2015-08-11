@@ -2090,3 +2090,109 @@ label:hover:before {
     width:500px;
     min-height:150px;
 }
+
+/* ADMIN */
+
+.adm-pag-bg{
+	display:block;
+	float:left;
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	background:#000;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+.adm-login-box{
+	display:block;
+	float:left;
+	position:absolute;
+	width:300px;
+	min-height:300px;
+	top:calc( ( 100% - 300px ) / 2);
+	left:calc( ( 100% - 300px ) / 2);
+	padding-top:40px;
+	background:rgba(255,255,255,0.1);
+}
+.adm-login-box > input{
+	display:block;
+	float:left;
+	background:rgba(0,0,0,0.4);
+	width:200px;
+	margin:10px 50px 10px 50px;
+	height:40px;
+	border:1px solid #2678a1;
+	padding-left:10px;
+	color:#55b0de;
+	font-family:Dosis;
+	font-weight:400;
+}
+.adm-login-box > button{
+	display:block;
+	float:left;
+	background:rgba(0,0,0,0.8);
+	width:100px;
+	margin:10px 100px 10px 100px;
+	height:40px;
+	border:none;
+	color:#fff;
+	font-family:Dosis;
+	font-weight:400;
+	font-size:130%;
+	
+	background:#2c8fc0;
+	color:#fff;
+}
+.adm-login-box > button:focus{
+	outline:none;
+}
+.adm-login-box > button:hover{
+	background:#12b0ff;
+	color:#fff;
+}
+#adm-login-emsg{
+	display:block;
+	float:left;
+	width:100%;
+	padding:20px;
+	background:rgba(0,0,0,0.8);
+	color:#a6a6a6;
+	font-family:Dosis;
+	font-weight:300;
+	font-size:100%;
+	text-align:center;
+}
+#adm-login-emsg > span{
+	color:#09adff;
+	font-weight:500;
+	font-size:110%;
+}
+@keyframes adm-bg {
+    0% {transform: translate3d(0px, 0px, 0px);}
+    50% {transform: translate3d(-600px, 0px, 0px);}
+    100% {transform: translate3d(0px, 0px, 0px);}
+}
+
+/* The element to apply the animation to */
+
+.adm-bg-img-1 > img{
+	display:block;
+	float:left;
+	position:absolute;
+	top:0px;
+	left:0px;
+	
+	width:auto;
+	height:100%;
+	
+	animation-name: adm-bg;
+    animation-duration: 60s;
+	-webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-iteration-count: infinite;
+	
+	
+}

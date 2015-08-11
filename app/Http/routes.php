@@ -60,6 +60,9 @@ Route::get('cat', function() {
 	return view('pages.categories');
 });
 
+Route::get('admin-x965', function() {
+	return view('admin.login');
+});
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });

@@ -6,13 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>GlobexCart - @yield('title') </title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/jquery-ui.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/BCZ-Boxes.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/admin-panel.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
-
+	@include('layouts.csslinks')
 	<!-- Fonts 
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	-->
@@ -65,11 +59,7 @@
 
     <!-- Scripts -->
 	
-	<script src="{{ asset('/js/jquery-2.1.4.js') }}"></script>
-	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
-	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
-	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
-	<script src="{{ asset('/js/script.js') }}"></script>
+	@include('layouts.jslinks')
 	
 </body>
 </html>

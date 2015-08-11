@@ -7,15 +7,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>GlobexCart - @yield('title') </title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/jquery-ui.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/BCZ-Boxes.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/admin-panel.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/pushNotification.css') }}" rel="stylesheet">
-	<link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}"/>
+	@include('layouts.csslinks')
 	
 	<script>
         @if(Auth::customer()->check())
@@ -167,17 +159,7 @@
 		</div>
 	</footer>
 	
-	<script src="{{ asset('/js/jquery-2.1.4.js') }}"></script>
-	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
-	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
-	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
-	<script src="{{ asset('/js/imageHandler.js') }}"></script>
-	<script src="{{ asset('/js/pushNotification.js') }}"></script>
-    {{--{!! HTML::script('js/jquery.fileupload.js') !!}--}}
-    {!! HTML::script('js/dropzone.js') !!}
-	<script src="{{ asset('/js/script.js') }}"></script>
-	<script src="{{ asset('/js/static-page.js') }}"></script>
-	
+	@include('layouts.jslinks')
 	
 </body>
 </html>
