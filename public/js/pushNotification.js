@@ -16,7 +16,8 @@ jQuery(document).ready(function() {
 	// PN- Popup
 	// second argument reference is the class name of the element / input which is set to be the close button of the popup
 	
-	//pnPopup(1,'cust-input-block','This is just for testing..everything is in pushNotification.js - bottom section');
+	pnPopup(1,'This is just for testing..everything is in pushNotification.js - bottom section');
+	pnPopup(2,'This is just for testing..everything is in pushNotification.js - bottom section');
 	
 	
 });
@@ -52,9 +53,9 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 }
 
 
-function pnPopup(popid,reference,message){
-	h = $('.'+reference).outerHeight();
-	w = $('.'+reference).outerWidth();
+function pnPopup(popid,message){
+	h = $('[pop-ref="'+popid+'"]').outerHeight();
+	w = $('[pop-ref="'+popid+'"]').outerWidth();
 	$('[pop-id="'+popid+'"]').find('div').css({"margin-top": -h   , "margin-left" : w});
 	$('[pop-id="'+popid+'"]').find('div').html(message);
 	$('[pop-id="'+popid+'"]').fadeIn();
