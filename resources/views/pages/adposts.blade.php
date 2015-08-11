@@ -77,7 +77,7 @@
 						</div>
                         <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
                         <div id="dropView">
-                            {!! Form::open(['route' => 'resellerimages.store', 'class' => 'dropzone']) !!}
+                            {!! Form::open(['route' => 'resellerimages.store', 'class' => 'dropzone', 'id' => 'globex-drop-view']) !!}
                                 <div class="dz-message">
                                     Drop images here to upload
                                 </div>

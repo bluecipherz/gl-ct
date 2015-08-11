@@ -13,7 +13,7 @@ class Customer extends Model implements AuthenticatableContract, CanResetPasswor
 
     protected $table = 'customers';
 
-    protected $hidden = 'password';
+    protected $hidden = ['password', 'remember_token'];
 
     protected $guarded = ['id'];
 

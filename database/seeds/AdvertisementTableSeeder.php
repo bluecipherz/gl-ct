@@ -15,7 +15,6 @@ class AdvertisementTableSeeder extends DatabaseSeeder {
 
 		for($i = 0; $i < 100; $i++)
 		{
-            Category
 			App\Advertisement::create([
 				'customer_id' => rand(1, 100),
                 'category_id' => $categories[rand(0, 11)]->

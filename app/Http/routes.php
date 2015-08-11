@@ -23,7 +23,7 @@ Route::get('home', 'HomeController@index');
 // ]);
 
 Route::post('/auth/register', 'AuthController@registerCustomer');
-Route::get('/auth/login', 'AuthController@loginCustomer');
+Route::post('/auth/login', 'AuthController@loginCustomer');
 Route::get('/auth/logout', 'AuthController@logoutCustomer');
 
 
@@ -48,7 +48,8 @@ Route::get('superdeals', function() {
 });
 
 Route::get('proview', function() {
-	return view('pages.proview');
+    $products = App\Product::all();
+	return view('pages.proview', compact('products'));
 });
 
 
@@ -64,7 +65,8 @@ Route::resource('advertisements', 'AdvertisementController', ['only' => ['create
 Route::post('products/all-products', 'ProductController@allProducts');
 Route::get('products/search', 'ProductController@search');
 Route::resource('products', 'ProductController');
-Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store']]);
+Route::post('resellerimages/all', 'ResellerImageController@all');
+Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store', 'destroy']]);
 Route::resource('categories', 'CategoryController');
 
 Route::group(['prefix' => 'admin'], function () {
@@ -165,9 +167,16 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
     $category = $categories[rand(0, 11)];
 
 //    return "<select{$options}>{$list}</select>";
-    $descendents = $category->descendents()->get();
+    $descendents = $category->descendants()->get();
     $count = count($descendents);
-    return $descendents[rand(0, $count)]->name;
+    foreach($categories as $cat) {
+        echo $cat->id . ' : ' . $cat->name . '<br/>';
+    }
+    echo 'descendants of root : ' . App\Category::descendantsOf(1)->count() . '<br/>';
+    echo 'total cats :' . App\Category::all()->count() . '<br/>';
+    echo 'category : ' . $category->name . ', ' . $category->id . '<br/>';
+    echo 'descendents : ' . $count . '<br/>';
+    return $descendents[rand(0, $count - 1)]->name;
 });
 
 Route::get('hell', function (Request $request) {

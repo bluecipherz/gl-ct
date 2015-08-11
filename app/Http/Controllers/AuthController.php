@@ -5,6 +5,7 @@ use App\Services\AdminRegistrar;
 use App\Services\CustomerRegistrar;
 use App\Services\Registrar;
 //use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Guard;
 use Validator;
 use App\Http\Requests;
 use Auth;
@@ -37,7 +38,7 @@ class AuthController extends Controller {
 
         $user = $this->customer->create([
             'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
+            'password' => $request->get('password'),
         ]);
 		
 		Auth::customer()->login($user);
@@ -55,12 +56,7 @@ class AuthController extends Controller {
 			'password' => $request->get('password'),
 //            'active' => 1
 		];
-		$customer = Customer::whereEmail($credentials['email'])->first();
-		$creds = [
-			$request->get('email'), bcrypt($request->get('password')), $customer->email, $customer->password
-		];
-		Auth::customer()->attempt($credentials);
-        if (Auth::customer()->check()) {
+        if (Auth::customer()->attempt($credentials)) {
            // echo 'Logging in ' . $credentials['email'] . '<br>';
             if($request->ajax()) {
                 return view('auth.partials.logged');
@@ -68,8 +64,8 @@ class AuthController extends Controller {
                 return redirect()->intended('/home');
             }
         } else {
-            // $this->throwLoginException($request);
-			return response()->json($creds);
+             $this->throwLoginException($request);
+//			return response()->json('fail', 400);
         }
 	}
 

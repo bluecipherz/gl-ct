@@ -2,11 +2,14 @@
 
 use App\Http\Requests;
 
+use League\Flysystem\Util\MimeType;
 use Request;
 use Response;
 use Input;
 use Session;
+use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 use Validator;
+use File;
 
 class ResellerImageController extends Controller {
 
@@ -36,15 +39,39 @@ class ResellerImageController extends Controller {
         $filename = sha1(time() . time()) . ".{$extension}";
         $upload_success = $file->move($directory, $filename);
         if ($upload_success) {
-            return response()->json('success', 200);
+            return response()->json($filename, 200);
         } else {
             return response()->json('error', 400);
         }
 	}
 
+    public function destroy() {
+        $filename = Input::get('file');
+        $dir = public_path() . '/uploads/temp/' . Session::getId() . '/';
+        unlink($dir . $filename);
+        return response()->json('deleted');
+    }
+
+    public function all()
+    {
+        $dir = public_path() . '/uploads/temp/' . Session::getId() . '/';
+        $data = [];
+        $mimetypes = new Mimetype;
+        foreach(scandir($dir) as $file) {
+            if(in_array($file, ['.', '..'])) continue;
+            $filedata = [];
+            $filedata['name'] = $file;
+            $filedata['url'] = url('/uploads/temp/' .Session::getId() . '/' .$file);
+            $filedata['size'] = File::size($dir . $file);
+            $filedata['type'] = $mimetypes->detectByFileExtension(File::extension($file));
+            $data[] = $filedata;
+        }
+        return $data;
+    }
+
     public function last()
     {
-
+        $images = Input::file('images');
         $destination = public_path() . '/uploads/temp/' . Session::getId();
         if(!file_exists($destination)) {
             mkdir($destination, 0777, true);
@@ -73,6 +100,5 @@ class ResellerImageController extends Controller {
             return response()->json(['status' => 'true', 'message' => 'Successfully uploaded']);
         }
     }
-
 
 }

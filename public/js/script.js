@@ -231,7 +231,7 @@ jQuery(document).ready(function() {
 			var input = $(this).val();
 			var terms = input.trim().replace(/\s+/g, '+');
 			var url = path + '?q=' + terms;
-			if(!window.location.pathname.indexOf(path)) {
+			if(!window.location.pathname.startsWith(path)) {
 				window.location.replace(path + '?q=' + terms);
 			}
 			$.get(path + '?q=' + input).success(function(rsp) {
@@ -253,15 +253,13 @@ jQuery(document).ready(function() {
 	
 	// END HISTORY API
 	
-	var path = window.location.pathname;
-	
-    if(path.indexOf('/admin')) {
+    //if(window.location.pathname.startsWith('/admin')) {
         $.post('/products/all-products').success(function(response) {
             $("#search_q").autocomplete({
                 source : response
             });
         });
-    }
+    //}
 
 	$("#category").change(function() {
 		var category_id = $(this).val();
@@ -351,11 +349,8 @@ jQuery(document).ready(function() {
         $("#wizardT-1 > .loggedin").hide();
     }
 
-    //$("wizardT-1")
-	
 	//select category button
-	
-	
+
 	$(".addCat").click(function(){
 		catselReset();
 		selCatPopContup();
@@ -555,6 +550,51 @@ jQuery(document).ready(function() {
             .fail(function(data) {
                 console.log('fail');
             })
-    })
+    });
+
+    Dropzone.options.globexDropView = {
+        init : function() {
+            var myDropzone = this;
+            // if page is refreshed, get all files from temp and display it.
+            $.post('/resellerimages/all')
+                .success(function(data) {
+                    $.each(data, function(key, value) {
+                        //console.log(value);
+                        var mockFile = {
+                            name: value.name,
+                            type : value.type,
+                            url : value.url,
+                            size : value.size,
+                            status: Dropzone.ADDED,
+                            accepted: true // doesnt seem to remove progressbar if refreshed
+                        };
+
+                        // Call the default addedfile event handler
+                        myDropzone.emit("addedfile", mockFile);
+
+                        // And optionally show the thumbnail of the file:
+                        myDropzone.emit("thumbnail", mockFile, value.url);
+
+                        mockFile.tempfile = value.name;
+
+                        myDropzone.files.push(mockFile);
+                    });
+                });
+        },
+        success : function(file, response) {
+            file.tempfile = response;
+        },
+        removedfile : function(file) {
+            $.post('/resellerimages/delete', {file : file.tempfile, _method : 'DELETE'})
+                .success(function() {
+                    console.log('success deleting temp image file');
+                    var _ref;
+                    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+                })
+                .fail(function() {
+                    console.log('failure deleting temp image file');
+                })
+        }
+    };
 
 });
