@@ -51,6 +51,10 @@ Route::get('proview', function() {
 	return view('pages.proview');
 });
 
+Route::get('editprofile', function() {
+	return view('pages.editprofile');
+});
+
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });

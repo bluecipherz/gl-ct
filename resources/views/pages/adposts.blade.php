@@ -15,8 +15,8 @@
 				<div class="login">
 					<div class="w-log">
 						<div class="w-log-sec-1" >
-							<span class="wlg-sub1-sec1" >Login</span>
-							<span class="hard-logo" >GLOBEXCART</span>
+							<div class="wlg-sub1-sec1" >Login</div>
+							<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 						</div>
 						<div class="w-log-sec-2" >
 							<input type="text" class="cust-input-block" placeholder="Your email" id="auth-email"/>
@@ -29,19 +29,25 @@
 						</div>
 					</div>
 					<div class="w-reg">
-						<div class="w-reg-sec-1" >
-							<span  class="w-reg-head" >Register with </span><span class="w-reg-headL" >GLOBEXCART</span>
-						</div>
-						<div class="w-reg-sec-2" >
-							<input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>
-							<input type="password" class="cust-input-block" placeholder="Password" id="register-password"/>
-							<input type="password" class="cust-input-block" placeholder="Confirm Password" id="register-password-confirm"/>
-							<div class="w-reg-sec2-text">Already have an account? <span class="b-fakeLink logbtn" > Login </span></div>
-						</div>
-						<div class="w-reg-sec-3" >
-							<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
-							<div class="cust-btn -btn-next" id="register-btn" btnId="1" >Register</div>
+						<div class="w-reg-1">
+							<div class="w-reg-sec-1" >
+								<span  class="w-reg-head" >Register with </span><div ><span class="g-logo-contain gl-contain-60" ></span></div>
+							</div>
+							<div class="w-reg-sec-2" >
+								<input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>
+								<input type="password" class="cust-input-block" placeholder="Password" id="register-password"/>
+								<input type="password" class="cust-input-block" placeholder="Confirm Password" id="register-password-confirm"/>
+								<div class="w-reg-sec2-text">Already have an account? <span class="b-fakeLink logbtn" > Login </span></div>
+							</div>
+							<div class="w-reg-sec-3" >
+								<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
+								<div class="cust-btn -btn-next" id="register-btn" btnId="1" >Register</div>
+							</div>	
 						</div>	
+						<div class="w-reg-2">
+							<img src="{{ asset('img/extras/mail.png') }}"/>
+							<div>Register with Email and Recieve latest Offers from GlobexKart.com</div>
+						</div>
 					</div>
 				</div> 
 				<div class="loggedin">

@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
 	
 	message = "This is just a test message to show this message is working, tons of features inside...!!! check it out. you can find everything in pushNotifications.js";
 	
-	pushNotification(message,3 , "Push Notifications" ,4000 ,true, 1000);
+	pushNotification(message,1 , "Push Notifications" ,7000 ,true, 1000);
 	
 	function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTime){
 		if($.isNumeric(type)){
