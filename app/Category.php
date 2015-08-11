@@ -24,4 +24,15 @@ class Category extends Node {
         return Product::whereIn('category_id', $categories)->get();
     }
 
+    public function endNodes()
+    {
+        $endnodes = [];
+        $nodes = $this->descendants()->get();
+        foreach($nodes as $node) {
+
+        }
+//        return $nodes;
+        return $endnodes;
+    }
+
 }

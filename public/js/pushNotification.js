@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
 		$('.message').hide();
 	});
 	
-	// type has 3 values - succes , fail , info or 1 , 2 , 3 respectively
+	// type has 3 values - success , fail , info or 1 , 2 , 3 respectively
 	// third argument Time is used for duration of the message / auto hide
 	// sensitive hide lets you to activate autohide message only if the user is not pointer the mouse on the message
 	// you can also set the time after the mouse  out - the last argument
@@ -16,8 +16,8 @@ jQuery(document).ready(function() {
 	// PN- Popup
 	// second argument reference is the class name of the element / input which is set to be the close button of the popup
 	
-	pnPopup(1,'This is just for testing..everything is in pushNotification.js - bottom section');
-	pnPopup(2,'This is just for testing..everything is in pushNotification.js - bottom section');
+	pnPopup('pop3','This is just for testing..everything is in pushNotification.js - bottom section');
+	pnPopup('pop4','This is just for testing..everything is in pushNotification.js - bottom section');
 	
 	
 });
@@ -30,9 +30,9 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 		else if(type== 3 ){ $('.message .mInfoIcon').show(); }
 		else { $('.message .mInfoIcon').show(); }
 	}else{
-		if(type.indexOf('success') || type.indexOf('Success')){ $('.message .mSuccessIcon').show(); }
-		else if(type.indexOf('fail') || type.indexOf('Fail')){ $('.message .mFailIcon').show(); }
-		else if(type.indexOf('Info') || type.indexOf('Info')){ $('.message .mInfoIcon').show(); }
+		if(type.match('[Ss]uccess')) $('.message .mSuccessIcon').show();
+		else if(type.match('[Ff]ail')) $('.message .mFailIcon').show();
+		else if(type.match('[Ii]nfo')) $('.message .mInfoIcon').show();
 		else { $('.message .mInfoIcon').show(); }
 	}
 	$('.message .mCont > .mc-head').html(title);
@@ -42,6 +42,7 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 		var autoHideIntervel = setTimeout( function(){ $('.message').hide(); } , time);
 	}
 	if(sensitiveHide){
+        if(sensitiveHideTime == undefined) sensitiveHideTime = 3000;
 		$('.message').mouseover(function(){
 			clearTimeout(autoHideIntervel);
 		});
@@ -54,13 +55,15 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 
 
 function pnPopup(popid,message){
-	h = $('[pop-ref="'+popid+'"]').outerHeight();
-	w = $('[pop-ref="'+popid+'"]').outerWidth();
-	$('[pop-id="'+popid+'"]').find('div').css({"margin-top": -h   , "margin-left" : w});
-	$('[pop-id="'+popid+'"]').find('div').html(message);
-	$('[pop-id="'+popid+'"]').fadeIn();
-	
-	$('[pop-ref="'+popid+'"]').click(function(){
-		$('[pop-id="'+popid+'"]').fadeOut();
+	var popup = $('#'+popid);
+	var input = popup.parent().find('input');
+	h = input.outerHeight();
+	w = input.outerWidth();
+	console.log(w);
+	popup.find('div').css({"margin-top": -h , "margin-left" : w});
+	popup.find('div').html(message);
+	popup.fadeIn();
+	input.click(function(){
+		popup.fadeOut();
 	})
 }

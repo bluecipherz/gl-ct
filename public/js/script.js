@@ -100,15 +100,23 @@ jQuery(document).ready(function() {
         var pass = $("#wizardT-1 #register-password").val();
         var pass_conf = $("#wizardT-1 #register-password-confirm").val();
 
-        $.post('/auth/register', {'email': email, 'password': pass, 'password_confirmation': pass_conf})
-            .success(function (response) {
-                console.log('success : ' + response);
-                afterLogin(response);
-                proceedTab(btnid);
-            })
-            .fail(function(response) {
-                console.log('fail : ' + response.responseText);
-            });
+        if(email == '' || pass == '') {
+            if(email == '') pnPopup(1, 'cust-input-block', 'Email cannot be left blank');
+            if(pass == '') pnPopup(2, 'cust-input-block', 'Password cannot be left blank');
+            if(pass_conf == '') pnPopup(3, 'cust-input-block', 'Password Confirmation cannot be left blank');
+        } else {
+            $.post('/auth/register', {'email': email, 'password': pass, 'password_confirmation': pass_conf})
+                .success(function (response) {
+                    console.log('success : ' + response);
+                    afterLogin(response);
+                    proceedTab(btnid);
+                })
+                .fail(function (response) {
+                    //console.log('fail : ' + response.responseText);
+                    if(response.responseText.email) pnPopup(1, 'cust-input-block', response.responseText.email);
+                    if(response.responseText.password) pnPopup(1, 'cust-input-block', response.responseText.password);
+                });
+        }
     });
 
     $("#wizardT-1 #login-btn").click(function() {
@@ -117,15 +125,21 @@ jQuery(document).ready(function() {
         var email = $("#wizardT-1 #auth-email").val();
         var pass = $("#wizardT-1 #auth-password").val();
 
-        $.post('/auth/login', {'email': email, 'password': pass})
-            .success(function (response) {
-                console.log('success : ' + response);
-                afterLogin(response);
-                proceedTab(btnid);
-            })
-            .fail(function(response) {
-                console.log('fail : ' + response.responseText);
-            });
+        if(email == '' || pass == '') {
+            if(email == '') pnPopup(1, 'cust-input-block', 'Email cannot be left blank');
+            if(pass == '') pnPopup(2, 'cust-input-block', 'Password cannot be left blank');
+        } else {
+            $.post('/auth/login', {'email': email, 'password': pass})
+                .success(function (response) {
+                    console.log('success : ' + response);
+                    afterLogin(response);
+                    proceedTab(btnid);
+                })
+                .fail(function (response) {
+                    //console.log('fail : ' + response.responseText);
+                    pushNotification("Login Incorrect", "Fail", "Error");
+                });
+        }
     });
 
     function proceedTab(btnid) {
@@ -315,7 +329,8 @@ jQuery(document).ready(function() {
 		var pass = $("#auth-login-pass").val();
 		
 		if(email == '' || pass == '') {
-			alert('Login incorrect');
+			if(email == '') pnPopup(1, 'glob-control', 'Email cannot be left blank');
+            if(pass == '') pnPopup(2, 'glob-control', 'Password cannot be left blank');
 		} else {
 			$.post('/auth/login', {email:email, password:pass})
 				.success(function(response) {
@@ -324,7 +339,8 @@ jQuery(document).ready(function() {
                     afterLogin(response);
 				})
 				.fail(function(response) {
-					console.log('fail : ' + response.responseText);
+					//console.log('fail : ' + response.responseText);
+                    pushNotification("Login Incorrect!", 2);
 				});
 		}
 	});
