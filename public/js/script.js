@@ -558,27 +558,28 @@ jQuery(document).ready(function() {
             // if page is refreshed, get all files from temp and display it.
             $.post('/resellerimages/all')
                 .success(function(data) {
-                    $.each(data, function(key, value) {
-                        //console.log(value);
-                        var mockFile = {
-                            name: value.name,
-                            type : value.type,
-                            url : value.url,
-                            size : value.size,
-                            status: Dropzone.ADDED,
-                            accepted: true // doesnt seem to remove progressbar if refreshed
-                        };
+                    if(data)
+                        $.each(data, function(key, value) {
+                            //console.log(value);
+                            var mockFile = {
+                                name: value.name,
+                                type : value.type,
+                                url : value.url,
+                                size : value.size,
+                                status: Dropzone.ADDED,
+                                accepted: true // doesnt seem to remove progressbar if refreshed
+                            };
 
-                        // Call the default addedfile event handler
-                        myDropzone.emit("addedfile", mockFile);
+                            // Call the default addedfile event handler
+                            myDropzone.emit("addedfile", mockFile);
 
-                        // And optionally show the thumbnail of the file:
-                        myDropzone.emit("thumbnail", mockFile, value.url);
+                            // And optionally show the thumbnail of the file:
+                            myDropzone.emit("thumbnail", mockFile, value.url);
 
-                        mockFile.tempfile = value.name;
+                            mockFile.tempfile = value.name;
 
-                        myDropzone.files.push(mockFile);
-                    });
+                            myDropzone.files.push(mockFile);
+                        });
                 });
         },
         success : function(file, response) {

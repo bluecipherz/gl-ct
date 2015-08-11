@@ -57,16 +57,18 @@ class ResellerImageController extends Controller {
         $dir = public_path() . '/uploads/temp/' . Session::getId() . '/';
         $data = [];
         $mimetypes = new Mimetype;
-        foreach(scandir($dir) as $file) {
-            if(in_array($file, ['.', '..'])) continue;
-            $filedata = [];
-            $filedata['name'] = $file;
-            $filedata['url'] = url('/uploads/temp/' .Session::getId() . '/' .$file);
-            $filedata['size'] = File::size($dir . $file);
-            $filedata['type'] = $mimetypes->detectByFileExtension(File::extension($file));
-            $data[] = $filedata;
+        if(file_exists($dir)) {
+            foreach(scandir($dir) as $file) {
+                if(in_array($file, ['.', '..'])) continue;
+                $filedata = [];
+                $filedata['name'] = $file;
+                $filedata['url'] = url('/uploads/temp/' .Session::getId() . '/' .$file);
+                $filedata['size'] = File::size($dir . $file);
+                $filedata['type'] = $mimetypes->detectByFileExtension(File::extension($file));
+                $data[] = $filedata;
+            }
+            return $data;
         }
-        return $data;
     }
 
     public function last()
