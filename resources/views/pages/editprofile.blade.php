@@ -79,8 +79,8 @@
 		 
 			</div>	
 			<div class="bnt-bag">
-				<a class="cust-btn in-small ac-myads -btn-back">My Ads</a>
-				<a class="cust-btn in-small ac-myads  -btn-next" href="{{ url('editprofile') }}">Edit My Profile</a>
+				<a class="cust-btn in-small ac-myads -btn-back">back</a>
+				<a class="cust-btn in-small ac-myads  -btn-next" href="{{ url('editprofile') }}">Done Editing</a>
 			</div>	
 		</div>
 	</div>

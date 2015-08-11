@@ -56,7 +56,7 @@ Route::get('editprofile', function() {
 	return view('pages.editprofile');
 });
 
-Route::get('categories', function() {
+Route::get('cat', function() {
 	return view('pages.categories');
 });
 

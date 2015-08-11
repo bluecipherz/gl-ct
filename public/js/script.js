@@ -520,7 +520,8 @@ jQuery(document).ready(function() {
             console.log('success ' + data.responseText);
             window.location.replace('/home');
         }).fail(function(data) {
-            console.log(data.responseText)
+            console.log(data.responseText);
+			pushNotification(data.responseText['title'],2 , "Field Required" ,7000 ,true, 1000);
         });
     });
 
