@@ -215,6 +215,8 @@ a:hover {
 } 
 .b-display{display:block;}
 
+
+
 /*
  * EXTRAS
  */
@@ -335,6 +337,67 @@ a:hover {
 =============================================== EXTTRAS & SUPER EXTRAS =============================================
 ====================================================================================================================}
 
+.mSuccessIcon{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/success.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:60px;
+	width:60px;
+}
+.mFailIcon{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/fail.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:60px;
+	width:60px;
+}
+.mInfoIcon{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/inform.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:60px;
+	width:60px;
+}
+.mCloseIcon{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/close.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:60px;
+	width:60px;
+}
+.imgNotAvail{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/imgnot.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:100%;
+	width:100%;
+}
+.mCloseIcon-s{
+	display:block;
+	float:left;
+	background-image:  url(BCZ-Boxes/png/close.png);
+	background-size:   contain;                      /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center;            /* optionally, center the image */
+	height:30px;
+	width:30px;
+}
+
 .searchIcon2{
 	display:block;
 	float:left;
@@ -438,4 +501,4 @@ a:hover {
 
 }
 
-
+.b-hide{display:none;}

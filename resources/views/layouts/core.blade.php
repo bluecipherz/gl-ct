@@ -14,6 +14,7 @@
 	<link href="{{ asset('/css/admin-panel.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/Boxes-updated.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/pushNotification.css') }}" rel="stylesheet">
 	<link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}"/>
 	
 	<script>
@@ -83,20 +84,39 @@
             @endif
 			<div class="loginMB">
 				<h2>Login</h2>
-				<div class="logoBarOuter">GLOBEX<span>CART</span></div>
-				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control" id="auth-login-email"/></div>
+				disable TAB button
+				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
+				
+				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control " id="auth-login-email"/></div>
 				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-login-pass"/></div>
 				<div class="form-group"><button class="glob-control" id="auth-login-btn">Login</button></div>
 				<div class="form-group">Don't have an account ? <span class="b-fakeLink-text loginMBLbtn">Register Now</span></div>
 			</div>
 			<div class="regMB">
-				<div class="logoBarOuter"><h2>Register with</h2> GLOBEX<span>CART</span></div>
+				<h2 >Register with</h2>
+				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control" id="auth-register-email" name="email"/></div>
 				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-register-pass" name="password"/></div>
 				<div class="form-group"><input type="text" placeholder="Confirm Password" class="glob-control" id="auth-register-pass-again" name="password_confirmation"/></div>
 				<div class="form-group"><button class="glob-control" id="auth-register-btn">Register</button></div>
 				<div class="form-group">Already have an account ? <span class="b-fakeLink-text regMBLbtn">Login</span></div>
 			</div>
+		</div>
+	</div>
+	<!-- Push notification [ Powered by BCZ Boxes ] -->
+	
+	<div class="message">
+		<div class="boxx">
+			<div class="mIcon">
+				<div class="mSuccessIcon b-hide"></div>
+				<div class="mFailIcon b-hide"></div>
+				<div class="mInfoIcon b-hide"></div>
+			</div>
+			<div class="mCont">
+				<span class="mc-head"></span>
+				<span class="mc-mes"></span>
+			</div>
+			<div class="mAction"><div class="mCloseIcon-s"></div></div>
 		</div>
 	</div>
 
@@ -151,10 +171,13 @@
 	<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 	<script src="{{ asset('/js/jquery.countdown.js') }}"></script>
 	<script src="{{ asset('/js/BCZ-Boxes.min.js') }}"></script>
+	<script src="{{ asset('/js/pushNotification.js') }}"></script>
     {{--{!! HTML::script('js/jquery.fileupload.js') !!}--}}
     {!! HTML::script('js/dropzone.js') !!}
 	<script src="{{ asset('/js/script.js') }}"></script>
 	<script src="{{ asset('/js/static-page.js') }}"></script>
+	<script src="{{ asset('/js/imageHandler.js') }}"></script>
+	
 	
 </body>
 </html>
