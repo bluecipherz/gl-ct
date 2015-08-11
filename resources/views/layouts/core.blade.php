@@ -79,10 +79,16 @@
 				disable TAB button
 				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				
-				<div class="form-group"><input type="text" placeholder="Your Email" popref="1" class="glob-control " id="auth-login-email"/></div>
-                <div class="pn-popup" pop-id="1"><div></div></div>
-				<div class="form-group"><input type="text" placeholder="Your Password" popref="2" class="glob-control" id="auth-login-pass"/></div>
-                <div class="pn-popup" pop-id="2"><div></div></div>
+				<div>
+					<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control " id="auth-login-email"/></div>
+					<div class="pn-popup" id="pop1"><div></div></div>
+				</div>
+				<div>
+					<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-login-pass"/></div>
+					<div class="pn-popup" id="pop2"><div></div></div>
+				</div>
+				
+				<div class="lbox-errorM">Thanks for being a part of globexkart</div>
 				<div class="form-group"><button class="glob-control" id="auth-login-btn">Login</button></div>
 				<div class="form-group">Don't have an account ? <span class="b-fakeLink-text loginMBLbtn">Register Now</span></div>
 			</div>
@@ -92,6 +98,7 @@
 				<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control" id="auth-register-email" name="email"/></div>
 				<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-register-pass" name="password"/></div>
 				<div class="form-group"><input type="text" placeholder="Confirm Password" class="glob-control" id="auth-register-pass-again" name="password_confirmation"/></div>
+				<div class="lbox-errorM">Thanks for being a part of globexkart</div>
 				<div class="form-group"><button class="glob-control" id="auth-register-btn">Register</button></div>
 				<div class="form-group">Already have an account ? <span class="b-fakeLink-text regMBLbtn">Login</span></div>
 			</div>

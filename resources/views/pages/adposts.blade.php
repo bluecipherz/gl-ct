@@ -19,10 +19,14 @@
 							<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 						</div>
 						<div class="w-log-sec-2" >
-							<input type="text" class="cust-input-block" pop-ref="1"  placeholder="Your email" id="auth-email"/>
-							<div class="pn-popup" pop-id="1"><div></div></div>
-							<input type="password"class="cust-input-block" pop-ref="2" placeholder="Password" id="auth-password"/>
-							<div class="pn-popup" pop-id="2"><div></div></div>
+							<div>
+								<input type="text" class="cust-input-block" pop-ref="1"  placeholder="Your email" id="auth-email"/>
+								<div class="pn-popup" id="pop3"><div></div></div>
+							</div>
+							<div>
+								<input type="password"class="cust-input-block" pop-ref="2" placeholder="Password" id="auth-password"/>
+								<div class="pn-popup" id="pop4"><div></div></div>
+							</div>
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
 						</div>
 						<div class="w-log-sec-3" >
