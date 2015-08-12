@@ -20,12 +20,12 @@
 						</div>
 						<div class="w-log-sec-2" >
 							<div>
-								<input type="text" class="cust-input-block" pop-ref="1"  placeholder="Your email" id="auth-email"/>
-								<div class="pn-popup" id="pop3"><div></div></div>
+								<input type="text" class="cust-input-block" placeholder="Your email" id="auth-email"/>
+								<div class="pn-popup"></div>
 							</div>
 							<div>
-								<input type="password"class="cust-input-block" pop-ref="2" placeholder="Password" id="auth-password"/>
-								<div class="pn-popup" id="pop4"><div></div></div>
+								<input type="password" class="cust-input-block" placeholder="Password" id="auth-password" />
+								<div class="pn-popup"></div>
 							</div>
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
 						</div>
@@ -40,9 +40,18 @@
 								<span  class="w-reg-head"  >Register with </span><div ><span class="g-logo-contain gl-contain-60" ></span></div>
 							</div>
 							<div class="w-reg-sec-2" >
-								<input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>
-								<input type="password" class="cust-input-block" placeholder="Password" id="register-password"/>
-								<input type="password" class="cust-input-block" placeholder="Confirm Password" id="register-password-confirm"/>
+                                <div>
+								    <input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>
+                                    <div class="pn-popup"></div>
+                                </div>
+                                <div>
+								    <input type="password" class="cust-input-block" placeholder="Password" id="register-password"/>
+                                    <div class="pn-popup"></div>
+                                </div>
+                                <div>
+                                    <input type="password" class="cust-input-block" placeholder="Confirm Password" id="register-password-confirm"/>
+                                    <div class="pn-popup"></div>
+                                </div>
 								<div class="w-reg-sec2-text">Already have an account? <span class="b-fakeLink logbtn" > Login </span></div>
 							</div>
 							<div class="w-reg-sec-3" >

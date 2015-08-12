@@ -46,9 +46,9 @@ jQuery(document).ready(function() {
 	if($mainlrpheight > 100){$(".login-box-main").css({"marginTop": $mainlrpheight });}
 	
 	$(".acctBtn").click(function(){
-        console.log('clicked' + login);
+        //console.log('clicked' + login);
 		if($pageName != "login"){
-            console.log('clicked2');
+            //console.log('clicked2');
 			$(".mainReg").css({"display":"block"});
 			$("body").css("overflow", "hidden");
 			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
@@ -101,9 +101,9 @@ jQuery(document).ready(function() {
         var pass_conf = $("#wizardT-1 #register-password-confirm").val();
 
         if(email == '' || pass == '') {
-            if(email == '') pnPopup(1, 'cust-input-block', 'Email cannot be left blank');
-            if(pass == '') pnPopup(2, 'cust-input-block', 'Password cannot be left blank');
-            if(pass_conf == '') pnPopup(3, 'cust-input-block', 'Password Confirmation cannot be left blank');
+            if(email == '') pnPopup('register-email', 'Email cannot be left blank');
+            if(pass == '') pnPopup('register-password', 'Password cannot be left blank');
+            if(pass_conf == '') pnPopup('register-password-confirm', 'Password Confirmation cannot be left blank');
         } else {
             $.post('/auth/register', {'email': email, 'password': pass, 'password_confirmation': pass_conf})
                 .success(function (response) {
@@ -126,8 +126,8 @@ jQuery(document).ready(function() {
         var pass = $("#wizardT-1 #auth-password").val();
 
         if(email == '' || pass == '') {
-            if(email == '') pnPopup(1, 'cust-input-block', 'Email cannot be left blank');
-            if(pass == '') pnPopup(2, 'cust-input-block', 'Password cannot be left blank');
+            if(email == '') pnPopup('auth-email', 'Email cannot be left blank');
+            if(pass == '') pnPopup('auth-password', 'Password cannot be left blank');
         } else {
             $.post('/auth/login', {'email': email, 'password': pass})
                 .success(function (response) {
@@ -241,7 +241,7 @@ jQuery(document).ready(function() {
 	$("#search_q").keydown(function(e) {
 		if(e.keyCode == 13) { // search
 			//console.log(window.location);
-            var path = '/products/search';
+            var path = '/search';
 			var input = $(this).val();
 			var terms = input.trim().replace(/\s+/g, '+');
 			var url = path + '?q=' + terms;
@@ -310,7 +310,9 @@ jQuery(document).ready(function() {
 		var passAgain = $("#auth-register-pass-again").val();
 		
 		if(email == '' || pass == '' || pass != passAgain) {
-			alert('Somethings wrong');
+            if(email == '') pnPopup('auth-register-email', "Email cannot be left blank");
+			if(pass == '') pnPopup('auth-register-pass', "Password cannot be left blank");
+			if(pass != passAgain) pnPopup('auth-register-pass-again', "Password could not be matched");
 		} else {
 			$.post('/auth/register', {email:email, password:pass, password_confirmation:passAgain})
 				.success(function(response) {
@@ -329,8 +331,8 @@ jQuery(document).ready(function() {
 		var pass = $("#auth-login-pass").val();
 		
 		if(email == '' || pass == '') {
-			if(email == '') pnPopup(1, 'glob-control', 'Email cannot be left blank');
-            if(pass == '') pnPopup(2, 'glob-control', 'Password cannot be left blank');
+			if(email == '') pnPopup('auth-login-email', 'Email cannot be left blank');
+            if(pass == '') pnPopup('auth-login-pass', 'Password cannot be left blank');
 		} else {
 			$.post('/auth/login', {email:email, password:pass})
 				.success(function(response) {
