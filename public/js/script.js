@@ -239,25 +239,28 @@ jQuery(document).ready(function() {
 	 */
 	
 	$("#search_q").keydown(function(e) {
-		if(e.keyCode == 13) { // search
-			//console.log(window.location);
-            var path = '/search';
-			var input = $(this).val();
-			var terms = input.trim().replace(/\s+/g, '+');
-			var url = path + '?q=' + terms;
-			if(!window.location.pathname.startsWith(path)) {
-				window.location.replace(path + '?q=' + terms);
-			}
-			$.get(path + '?q=' + input).success(function(rsp) {
-				$(".productsCont").html($(rsp).find(".productsCont").html());
-				/* HISTORY API */
-				if(url != window.location) {
-					window.history.pushState({path : url}, '', url);
-				}
-			});
+		if(e.keyCode == 13 ) {
+			searchq();
 		}
 	});
-	
+	$("#serachBtn").click(function(){searchq();});
+	function searchq(){
+		// search
+		var path = '/search';
+		var input = $("#search_q").val();
+		var terms = input.trim().replace(/\s+/g, '+');
+		var url = path + '?q=' + terms;
+		if(!window.location.pathname.startsWith(path)) {
+			window.location.replace(path + '?q=' + terms);
+		}
+		$.get(path + '?q=' + input).success(function(rsp) {
+			$(".productsCont").html($(rsp).find(".productsCont").html());
+			/* HISTORY API */
+			if(url != window.location) {
+				window.history.pushState({path : url}, '', url);
+			}
+		});
+	}
 	/**
      * Go back action
      */

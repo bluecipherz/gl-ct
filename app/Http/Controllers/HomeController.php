@@ -60,18 +60,19 @@ class HomeController extends Controller {
         return redirect('/contact-us')->withMessage('Message Sent.');
     }
 
-    public function search()
+    public function search(CategoryRepository $categories )
     {
         $q = Input::get('q');
         if ($q) {
             $searchTerms = explode(' ', $q);
-            $productQuery = DB::table('products')->select('id', 'title', 'description');
-            $adQuery = DB::table('advertisements')->select('id', 'title', 'description');
+            $productQuery = DB::table('products')->select('id', 'title', 'description','price', DB::raw('1 as type'));
+            $adQuery = DB::table('advertisements')->select('id', 'title', 'description','price', DB::raw('0 as type'));
             foreach ($searchTerms as $term) {
-                $productQuery->where('title', 'LIKE', '%' . $term . '%')->union($adQuery);
+				$adQuery->where('title', 'LIKE', '%' . $term . '%');
+                $productQuery->where('title', 'LIKE', '%' . $term . '%');
             }
-            $results = $productQuery->get();
-            return response()->json($results);
+            $results = $productQuery->union($adQuery)->get();
+            return view('pages.search', ['products' => $results , 'categories' => $categories->getCats()]);
         }
     }
 

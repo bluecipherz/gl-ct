@@ -1,5 +1,5 @@
+@include('layouts.randImg')
 @extends('layouts.core')
-
 @section('content')
 <div class="boxx">
 	<div class="row">
@@ -52,10 +52,11 @@
 				<div class="productCont b-fakeLink">
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
-						<span class="sampleThumb"></span>
+						
+						<span class="sampleThumb"><img src=" <?php  echo randImg(1); ?> "></span>
 					</div>
-					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{$product->name}}">
-						<h4>{{ str_limit($product->name,22) }}</h4>
+					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{$product->title}}">
+						<h4>{{ str_limit($product->title,22) }}</h4>
 						<div class="productPrice">{{ $product->price . ' AED' }}</div>
 						<div class="product-desc-small">
 							{{ str_limit($product->description,60) }}
@@ -64,10 +65,11 @@
 				</div>
 				@endforeach
 			</div>
+			<!--
 			<div class="resellAdFullCont">
 				<div class="resellAdFull b-fakeLink">
 					<div class="product-thumbnail">
-						<span class="sampleThumb"></span>
+						<span class="sampleThumb"><img src=" <?php  echo randImg(3); ?> "></span>
 					</div>
 					<div class="resellDescription">
 						<h4>I need to sell My Old Guitar ... !!!</h4>
@@ -85,6 +87,8 @@
 					</div>
 				</div>
 			</div>
+			
+			-->
 		</div>
 	</div>
 </div>

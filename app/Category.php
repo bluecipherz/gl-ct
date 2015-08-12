@@ -18,7 +18,7 @@ class Category extends Node {
         $categories = $this->descendants()->lists('id');
 
         // Include the id of category itself
-        $categories[] = $categories->getKey();
+        // $categories[] = $categories->getKey();
 
         // Get Products
         return Product::whereIn('category_id', $categories)->get();
