@@ -79,13 +79,13 @@
 				disable TAB button
 				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				
-				<div>
-					<div class="form-group"><input type="text" placeholder="Your Email" class="glob-control " id="auth-login-email"/></div>
-					<div class="pn-popup" id="pop1"><div></div></div>
+				<div class="form-group">
+					<input type="text" placeholder="Your Email" class="glob-control " id="auth-login-email"/>
+					<div class="pn-popup"></div>
 				</div>
-				<div>
-					<div class="form-group"><input type="text" placeholder="Your Password" class="glob-control" id="auth-login-pass"/></div>
-					<div class="pn-popup" id="pop2"><div></div></div>
+				<div class="form-group">
+                    <input type="text" placeholder="Your Password" class="glob-control" id="auth-login-pass"/>
+					<div class="pn-popup"></div>
 				</div>
 				
 				<div class="lbox-errorM">Thanks for being a part of globexkart</div>

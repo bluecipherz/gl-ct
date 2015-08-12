@@ -28,7 +28,7 @@ class ProductController extends Controller {
 			$query = DB::table('products');
 			foreach($searchTerms as $term)
 			{
-				$query->where('name', 'LIKE', '%' . $term . '%');
+				$query->where('title', 'LIKE', '%' . $term . '%');
 			}
 			$results = $query->get();
 			return view('pages.search', ['products' => $results, 'categories' => $categoryRepository->getCats()]);

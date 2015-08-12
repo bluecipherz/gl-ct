@@ -46,9 +46,9 @@ jQuery(document).ready(function() {
 	if($mainlrpheight > 100){$(".login-box-main").css({"marginTop": $mainlrpheight });}
 	
 	$(".acctBtn").click(function(){
-        console.log('clicked' + login);
+        //console.log('clicked' + login);
 		if($pageName != "login"){
-            console.log('clicked2');
+            //console.log('clicked2');
 			$(".mainReg").css({"display":"block"});
 			$("body").css("overflow", "hidden");
 			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
@@ -310,7 +310,7 @@ jQuery(document).ready(function() {
 		var passAgain = $("#auth-register-pass-again").val();
 		
 		if(email == '' || pass == '' || pass != passAgain) {
-			alert('Somethings wrong');
+            console.log('register error!i!');
 		} else {
 			$.post('/auth/register', {email:email, password:pass, password_confirmation:passAgain})
 				.success(function(response) {
@@ -329,8 +329,8 @@ jQuery(document).ready(function() {
 		var pass = $("#auth-login-pass").val();
 		
 		if(email == '' || pass == '') {
-			if(email == '') pnPopup(1, 'glob-control', 'Email cannot be left blank');
-            if(pass == '') pnPopup(2, 'glob-control', 'Password cannot be left blank');
+			if(email == '') pnPopup(email, 'Email cannot be left blank');
+            if(pass == '') pnPopup(pass, 'Password cannot be left blank');
 		} else {
 			$.post('/auth/login', {email:email, password:pass})
 				.success(function(response) {
