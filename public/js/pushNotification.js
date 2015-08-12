@@ -53,13 +53,12 @@ function pushNotification(message,type,title,time,sensitiveHide,sensitiveHideTim
 	}
 }
 
-
 function pnPopup(inputid,message){
 	var input = $("#" + inputid);
     var popup = input.parent().find('.pn-popup');
     var h = input.outerHeight();
 	var w = input.outerWidth();
-	console.log(w);
+	// console.log(w);
     $('<div/>').css({"margin-top": -h , "margin-left" : w}).html(message).appendTo(popup);
 	popup.fadeIn();
 	input.click(function(){
