@@ -9,9 +9,7 @@ class CategoryTableSeeder extends Seeder {
        // Uncomment the below to wipe the table clean before populating
         DB::table('categories')->delete();
 
-        $node = App\Category::create([
-            'name' => 'Categories',
-            'children' => [
+        $categories = [
                 [
                     'name' => 'Motors',
                     'children' => [
@@ -482,10 +480,10 @@ class CategoryTableSeeder extends Seeder {
                         ],
                     ],
                 ],
-            ],
-        ]);
-
-//        DB::table('categories')->insert($cats);
+		];
+		
+		App\Category::buildTree($categories);
+		
     }
  
 }

@@ -202,6 +202,33 @@ Route::get('hell', function (Request $request) {
     echo response()->json(App\Category::hasChildren()->get());
 });
 
+Route::get('slurp', function(App\Repositories\HomeRepository $c) {
+
+    return response()->json($c->getCatSet());
+});
+
+Route::get('recursive', function () {
+    $cats = App\Category::roots()->get();
+
+    $supercatset = [];
+    foreach($cats as $cat) {
+        $catset = [];
+        echo $cat->name . '<br>';
+        foreach($cat->children()->get() as $sub) {
+            $subcatset = [];
+            echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $sub->name . '<br>';
+            foreach($sub->children()->get() as $post) {
+                echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $post->name . '<br>';
+                $subcatset[strtolower($post->name)]['title'] = $post->name;
+            }
+            $catset[strtolower($sub->name)]['title'] = $sub->name;
+            $catset[strtolower($sub->name)]['children'] = $subcatset;
+        }
+        $supercatset[strtolower($cat->name)]['title'] = $cat->name;
+        $supercatset[strtolower($cat->name)]['children'] = $catset;
+    }
+});
+
 Route::get('ajax', function () {
     return 'ookay';
 });

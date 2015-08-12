@@ -16,7 +16,12 @@ class CreateCategoriesTables extends Migration {
         Schema::create('categories', function(BluePrint $table) {
             $table->increments('id');
             $table->string('name');
-            \Kalnoy\Nestedset\NestedSet::columns($table);
+            
+			$table->integer('parent_id')->nullable();
+			$table->integer('lft')->nullable();
+			$table->integer('rgt')->nullable();
+			$table->integer('depth')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -540,6 +540,7 @@ jQuery(document).ready(function() {
         $.post('/advertisements', attributes).success(function(data) {
             console.log('success ' + data.responseText);
             window.location.replace('/home');
+            pushNotification('Advertisement posted', 'success', 'Success');
         }).fail(function(data) {
             console.log(data.responseText);
 			pushNotification(data.responseText['title'],2 , "Field Required" ,7000 ,true, 1000);

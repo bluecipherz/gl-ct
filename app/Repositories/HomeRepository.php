@@ -13,17 +13,18 @@ use App\Category;
 class HomeRepository {
 
     public function getCatSet() {
-        $root = Category::whereIsRoot()->first();
+        $roots = Category::roots()->get();
 
         $catset = []; // complete category set, ready to display
 
         $counter = 0;
-        foreach ($root->children->all() as $cat) {
+        foreach ($roots as $cat) {
             if($counter > 11) break;
             $catset[$cat->name]['title'] = $cat->name;
             $catset[$cat->name]['id'] = $cat->id;
+//            $catset[$cat->name]['type'] = 'cat'; // not the solution
 //            echo '<br>' . $cat->name . '<br>';
-            $subcats = $cat->children->all();
+            $subcats = $cat->children()->get();
             $subcatcounter = 0;
             $subcatcount = count($subcats);
             for ($col = 0; $col < 3; $col++) {
@@ -41,9 +42,9 @@ class HomeRepository {
                     if($fillhead) {
 //                        echo ' subcat ' . $subcats[$subcatcounter]->name . '<br>';
                         $colarray[$rowcounter]['title'] = $subcats[$subcatcounter]->name;
-                        $colarray[$rowcounter]['type'] = 'subcat';
+                        $colarray[$rowcounter]['type'] = "subcat";
                         $colarray[$rowcounter]['id'] = $subcats[$subcatcounter]->id;
-                        $postcats = $subcats[$subcatcounter]->children->all();
+                        $postcats = $subcats[$subcatcounter]->children()->get();
                         $postcatcount = count($postcats) - 1;
                         if($postcatcount == -1) {
                             $fillmore = false;

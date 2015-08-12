@@ -58,7 +58,9 @@ function pnPopup(inputid,message){
     var popup = input.parent().find('.pn-popup');
     var h = input.outerHeight();
 	var w = input.outerWidth();
-	// console.log(w);
+	if(input.hasClass('glob-control')){
+		h = 0;
+	}
     $('<div/>').css({"margin-top": -h , "margin-left" : w}).html(message).appendTo(popup);
 	popup.fadeIn();
 	input.click(function(){

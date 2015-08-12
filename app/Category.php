@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
-use Kalnoy\Nestedset\Node;
+use Baum\Node;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Node {
@@ -23,16 +23,5 @@ class Category extends Node {
         // Get Products
         return Product::whereIn('category_id', $categories)->get();
     }
-
-    public function endNodes()
-    {
-        $endnodes = [];
-        $nodes = $this->descendants()->get();
-        foreach($nodes as $node) {
-
-        }
-//        return $nodes;
-        return $endnodes;
-    }
-
+	
 }

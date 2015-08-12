@@ -27,8 +27,8 @@ class CategoryRepository extends Repository {
     {
         $cattree = [];
 
-        $root = Category::whereIsRoot()->first();
-        foreach ($root->children->all() as $key => $cat) {
+        $cats = Category::roots()->get();
+        foreach ($cats as $key => $cat) {
             $subcatarray = [];
             foreach ($cat->children->all() as $subcat) {
                 $postcatarray = [];
@@ -44,7 +44,7 @@ class CategoryRepository extends Repository {
 
     public function getCats()
     {
-        return Category::whereIsRoot()->first()->children->all();
+        return Category::roots()->get();
     }
 
 }
