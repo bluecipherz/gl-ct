@@ -2264,6 +2264,4 @@ label:hover:before {
     animation-duration: 60s;
 	-webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
     animation-iteration-count: infinite;
-	
-	
 }

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use File;
+use Input;
 
 class ProductController extends Controller {
 
@@ -65,13 +67,25 @@ class ProductController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$values = array_except($request->all(), ['_token', 'category', 'sub_category', 'post_sub_cat']);
-		// $values['category_id'] = $request->get('category');
-		// $values['sub_category_id'] = $request->get('sub_category');
-		$values['post_sub_cat_id'] = $request->get('post_sub_cat');
-		$values['reseller'] = false;
-		Product::create($values);
-		return redirect()->back()->with('message', 'Created');
+        $product = Product::create($request->except(['_token', 'images']));
+        $file = Input::file('images');
+//        $files = Input::file('images');
+        $dir = public_path() . '/uploads/products/' . $product->id . '/';
+        if(!File::exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
+//        foreach ($files as $file) {
+            $filename = sha1($file->getClientOriginalName() . time());
+            $extension = $file->getClientOriginalExtension();
+            echo $filename . '<br>';
+            $product->images()->create([
+                'product_id' => $product->id,
+                'url' => url('/uploads/products/' . $product->id . '/' . $filename . '.' . $extension)
+            ]);
+            $file->move($dir, $filename . '.' . $extension);
+//        }
+        echo 'ok' ;
+//		return redirect()->back()->with('message', 'Created');
 	}
 
 	/**
