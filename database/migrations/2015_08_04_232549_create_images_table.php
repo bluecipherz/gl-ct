@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration {
 			$table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->unsignedInteger('advertisement_id');
 			$table->foreign('advertisement_id')->references('id')->on('advertisements')->onDelete('cascade');
-            $table->text('filename');
+            $table->text('url');
 			$table->timestamps();
             $table->softDeletes();
 		});
@@ -28,7 +28,7 @@ class CreateImagesTable extends Migration {
 			$table->increments('id');
             $table->unsignedInteger('product_id');
 			$table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->text('filename');
+            $table->text('url');
 			$table->timestamps();
             $table->softDeletes();
 		});

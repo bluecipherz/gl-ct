@@ -13,7 +13,7 @@ class Category extends Node {
 
     protected $guarded = ['id'];
 
-    public function products() {
+    public function treeProducts() {
         // Get ids of descendants
         $categories = $this->descendants()->lists('id');
 
@@ -22,6 +22,11 @@ class Category extends Node {
 
         // Get Products
         return Product::whereIn('category_id', $categories)->get();
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
     }
 	
 }

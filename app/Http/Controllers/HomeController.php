@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Advertisement;
 use App\Message;
+use App\Product;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use App\Category;
@@ -60,15 +62,32 @@ class HomeController extends Controller {
         return redirect('/contact-us')->withMessage('Message Sent.');
     }
 
-    public function search(CategoryRepository $categories )
+    public function search(CategoryRepository $categories)
     {
+        $q = Input::get('q');
+        if ($q) {
+            $searchTerms = explode(' ', $q);
+            $productQuery = Product::with('images')->select('id', 'title', 'description', 'price', DB::raw('"product" as type'));
+            $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('"reselle" as type'));
+            foreach ($searchTerms as $term) {
+                $adQuery->where('title', 'LIKE', '%' . $term . '%');
+                $productQuery->where('title', 'LIKE', '%' . $term . '%');
+            }
+            $results = array_merge($productQuery->get()->toArray(), $adQuery->get()->toArray());
+            return view('pages.search', ['products' => $results, 'categories' => $categories]);
+        }
+    }
+
+    public function search_2(CategoryRepository $categories)
+    {
+
         $q = Input::get('q');
         if ($q) {
             $searchTerms = explode(' ', $q);
             $productQuery = DB::table('products')->select('id', 'title', 'description','price', DB::raw('1 as type'));
             $adQuery = DB::table('advertisements')->select('id', 'title', 'description','price', DB::raw('0 as type'));
             foreach ($searchTerms as $term) {
-				$adQuery->where('title', 'LIKE', '%' . $term . '%');
+                $adQuery->where('title', 'LIKE', '%' . $term . '%');
                 $productQuery->where('title', 'LIKE', '%' . $term . '%');
             }
             $results = $productQuery->union($adQuery)->get();

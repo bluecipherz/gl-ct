@@ -60,7 +60,7 @@ class AdvertisementController extends Controller {
                 $ad->images()->create([
                     'customer_id' => Auth::customer()->get()->id,
                     'advertisement_id' => $ad->id,
-                    'filename' => url('/uploads/ads/' . $ad->id . '/' . $file)
+                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
                 ]);
             }
         }

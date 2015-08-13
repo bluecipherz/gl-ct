@@ -204,7 +204,6 @@ Route::get('hell', function (Request $request) {
 
 Route::get('slurp', function(App\Repositories\HomeRepository $c) {
 
-    return response()->json($c->getCatSet());
 });
 
 Route::get('recursive', function () {

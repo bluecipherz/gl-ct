@@ -11,19 +11,18 @@ class ProductTableSeeder extends DatabaseSeeder {
  
         $faker = $this->getFaker();
 
-        $categories = App\Category::whereIsRoot()->first()->children->all();
+        $categories = App\Category::allLeaves()->get();
+        $category_count = count($categories);
 
 		for($i = 0; $i < 1000; $i++)
 		{
-            $descendants = $categories[rand(0, 11)]->descendants()->get();
-            $count = count($descendants);
 			App\Product::create([
 				'title' => $faker->sentence(rand(1, 3)),
 				'price' => rand(5, 50000),
                 'stock' => rand(0, 100),
                 'description' => $faker->sentence(),
                 'brand' => $faker->company,
-                'category_id' => $descendants[rand(0, $count - 1)]->id,
+                'category_id' => $categories[rand(0, $category_count - 1)]->id,
                 'price_rule_id' => rand(1, 10)
 			]);
 		}

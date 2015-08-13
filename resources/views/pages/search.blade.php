@@ -52,14 +52,18 @@
 				<div class="productCont b-fakeLink">
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
-						
-						<span class="sampleThumb"><img src=" <?php  echo randImg(1); ?> "></span>
+
+                        @if(!empty($product['images']))
+						<span class="sampleThumb"><img src="{{ $product['images'][0] }}"></span>
+                        @else
+                        <span class="sampleThumb"><img src="{{ randImg(1) }}"></span>
+                        @endif
 					</div>
-					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{$product->title}}">
-						<h4>{{ str_limit($product->title,22) }}</h4>
-						<div class="productPrice">{{ $product->price . ' AED' }}</div>
+					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{ $product['title'] }}">
+						<h4>{{ str_limit($product['title'],22) }}</h4>
+						<div class="productPrice">{{ $product['price'] . ' AED' }}</div>
 						<div class="product-desc-small">
-							{{ str_limit($product->description,60) }}
+							{{ str_limit($product['description'],60) }}
 						</div>
 					</div>
 				</div>
