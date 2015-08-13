@@ -103,6 +103,7 @@ class AdvertisementController extends Controller {
 		//
 	}
 
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -113,5 +114,17 @@ class AdvertisementController extends Controller {
 	{
 		//
 	}
+
+
+    public function step1()
+    {
+        $address = Input::get('address');
+        Session::put('address', $address);
+    }
+
+    public function step2($id)
+    {
+        //
+    }
 
 }

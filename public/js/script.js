@@ -90,7 +90,15 @@ jQuery(document).ready(function() {
 	
 	$("#tab-content .nextbtn").click(function() {
         var btnid = $(this).attr('btnId');
-        proceedTab(btnid);
+        if(btnid == 2){
+            if(wStep2()) { proceedTab(btnid); }
+        }else if(btnid == 3){
+            console.log("Tab 3");
+            proceedTab(btnid);
+        }else{
+            proceedTab(btnid);
+        }
+
 	});
 
     $("#wizardT-1 #register-btn").click(function() {
@@ -161,7 +169,7 @@ jQuery(document).ready(function() {
 		attrId--;
 		if(attrId >= 1){
 			findAttr(attrId);
-			tabAttr(parent,tabID,that,WizTabN); 
+			tabAttr(parent,tabID,that,WizTabN);
 		}else{
 			/* 
 			 *	Code that switch this page to cart
@@ -261,6 +269,35 @@ jQuery(document).ready(function() {
 			}
 		});
 	}
+
+    // Wizard tab 2 input triggers
+    $('#adTitle').keyup(function(){ wStep2(); });
+    $('#adDesc').keyup(function(){ wStep2(); });
+    $('#adPrice').keyup(function(){ wStep2(); });
+
+    var w2nBtn = false;
+    function wStep2(){
+        var title = $('#adTitle').val();
+        var description = $('#adDesc').val();
+
+        var cid1 = catidText;
+        var cid2 = subcatidText;
+        var cid3 = postcatidText;
+        var cid = postcatid;
+        var price = $('#adPrice').val();
+
+       // console.log("Title : " + title + " Desc : " + description + " category : " + cid1 + " > " + cid2 + " > " + cid3 + " | price : " + price + " cat id " + cid);
+        if(title!="" && description!="" && cid1!="" && cid2!="" && cid3!="" && cid!="" && price!=""){
+            if(!w2nBtn){$('#w2nBtn').removeClass('-btnDis'); w2nBtn = true;}
+            return true;
+        }else{
+            if(w2nBtn){$('#w2nBtn').addClass('-btnDis'); w2nBtn = false; }
+            tabCompleted = 2;
+            return false
+        }
+
+    }
+
 	/**
      * Go back action
      */
@@ -368,6 +405,7 @@ jQuery(document).ready(function() {
         $('.login-box .regMB').show();
         $("#wizardT-1 > .login").show();
         $("#wizardT-1 > .loggedin").hide();
+        tabCompleted = 1;
     }
 
 	//select category button
@@ -404,7 +442,8 @@ jQuery(document).ready(function() {
 	var catidBase;
 	var subcatidBase;
 	var postcatidBase;
-	
+	var postcatid;
+
 	
 		$(".selCatPopCont  .setcat-cat").click(function(){
 			if(catLevel==1){
@@ -428,23 +467,35 @@ jQuery(document).ready(function() {
 			if(catLevel==3){
 				var catid = $(this).attr('catid');
 				var subcatid = $(this).attr('subcatid');
-				var postcatid = $(this).attr('postcatid');
+				postcatid = $(this).attr('postcatid');
 				postcatidBase =  $(this).attr('idbase');
 				postcatidText = $(this).text();
-				var catPath = catidText +" > "+ subcatidText +" > "+ postcatidText;
-				$(".selcatPath").html("<span class='selpathText'>" + catidText + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + subcatidText + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + postcatidText + " </span> ");
-				$("#adCatId").val( $(this).attr('databaseid') );
+                setCatGUI(catidText,subcatidText,postcatidText);
+                $("#adCatId").val( $(this).attr('databaseid') );
 				selCatChangeButton();
 				selcatPopClose();
-				catLevel = 1;
-				selpathDummyH = $(".selcatPath").outerHeight();
-				$(".selcatPathDummy").css({"height": selpathDummyH ,"margin" : "5px"});
+
 			}
 		});
+
+        setCatGUI("gibaskd","asdlkasd","ansdnklasnd");
+
+        function setCatGUI(t1,t2,t3){
+            $(".selcatPath").html("<span class='selpathText'>" + t1 + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + t2 + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + t3 + " </span> ");
+            catLevel = 1;
+            setTimeout(function(){setCatPadding()},1);
+            selCatChangeButton();
+            wStep2();
+        }
+
 		$(".selCatPopBackBtn").click(function(){
 			catselBackward();
 		});
-		
+
+        function setCatPadding(){
+            selpathDummyH = $(".selcatPath").outerHeight();
+            $(".selcatPathDummy").css({"height": selpathDummyH ,"margin" : "5px"});
+        }
 		function catselForward(that){
 			$(".sc-post-frame").css({"display":"none"});
 			$(".sc-sub-frame").css({"display":"none"});
@@ -613,5 +664,7 @@ jQuery(document).ready(function() {
                 })
         }
     };
+
+
 
 });

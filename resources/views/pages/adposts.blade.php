@@ -89,14 +89,65 @@
 						
 					</div>
 					<div class="w2-inp" >
+
                         <input type="text" name="adtitle" placeholder="Ad Title" class="cust-input w2-inp-f in-larg" id="adTitle" />
+
                         <textarea name="description" placeholder="Description about your ad" class="cust-input w2-inp-t in-larg" id="adDesc"></textarea>
+
 						<div class="selCat1sec"><div id="selCat1" class="cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
 						<div class="selCat2sec">
 							<div class="selcatPath w2-inp-f in-larg"></div>
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
 						</div>
+                        <div class="selCatOuter">
+                            <div class="overlay selcat-obbtn"> </div>
+                            <div class="selCatPop">
+                                <div class="selCatPopHead">
+                                    <div class="selCatPopTitle"> Select a Category </div>
+                                    <div class="selCatPopBackBtn selCatPopBackBtn-inact"> Back </div>
+                                </div>
+                                <div class="selCatPopCont">
+                                    <?php $i = 1; ?>
+                                    <div class="sc-frame ">
+                                        @foreach($categories as $cat)
+                                            <div class="setcat-cat" idbase="scf{{ $i }}">
+                                                {{ $cat->name }}
+                                                <?php $i++; ?>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <?php $i = 1; $j = 1; ?>
+                                    @foreach($categories as $cat)
+                                        <div class="sc-sub-frame scf{{ $i }}">
+                                            @foreach($cat->children->all() as $subcat)
+                                                <div class="setcat-subCat" idbase="scf{{ $i }}sub{{ $j }}">
+                                                    {{ $subcat->name }}
+                                                </div>
+                                                <?php $j++; ?>
+                                            @endforeach
+                                        </div>
+                                        <?php $i++; $j = 1; ?>
+                                    @endforeach
+                                    <?php $i = 1; $j = 1; $k = 1;?>
+                                    @foreach($categories as $cat)
+                                        @foreach($cat->children->all() as $subcat)
+                                            <div class="sc-post-frame scf{{ $i }}sub{{ $j }}">
+                                                @foreach($subcat->children->all() as $postcat)
+                                                    <div class="setcat-postCat" catid="{{$i}}" subcatid="{{$j}}" postcatid="{{$k}}" databaseid="{{ $postcat->id }}">{{ $postcat->name }}</div>
+                                                    <?php $k++; ?>
+                                                @endforeach
+                                            </div>
+                                            <?php $j++; $k = 1; ?>
+                                        @endforeach
+                                        <?php $i++; $j = 1;  ?>
+                                    @endforeach
+                                    <input type="hidden" id="adCatId" valeu="" name="category_id"/>
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
+
                         <div id="dropView">
                             {!! Form::open(['route' => 'resellerimages.store', 'class' => 'dropzone', 'id' => 'globex-drop-view']) !!}
                                 <div class="dz-message">
@@ -105,54 +156,8 @@
                             {!! Form::close() !!}
                         </div>
 
-						<div class="selCatOuter">
-							<div class="overlay selcat-obbtn"> </div>
-							<div class="selCatPop">
-								<div class="selCatPopHead">
-									<div class="selCatPopTitle"> Select a Category </div>
-									<div class="selCatPopBackBtn selCatPopBackBtn-inact"> Back </div>
-								</div>
-								<div class="selCatPopCont">
-									<?php $i = 1; ?>
-									<div class="sc-frame ">
-										@foreach($categories as $cat)
-											<div class="setcat-cat" idbase="scf{{ $i }}">
-												{{ $cat->name }} 
-												<?php $i++; ?>
-											</div>
-										@endforeach
-									</div>
-									<?php $i = 1; $j = 1; ?>
-									@foreach($categories as $cat)
-										<div class="sc-sub-frame scf{{ $i }}">
-											@foreach($cat->children->all() as $subcat)
-												<div class="setcat-subCat" idbase="scf{{ $i }}sub{{ $j }}">
-													{{ $subcat->name }}
-												</div>
-												<?php $j++; ?>
-											@endforeach
-										</div>	
-										<?php $i++; $j = 1; ?>
-									@endforeach
-									<?php $i = 1; $j = 1; $k = 1;?>
-									@foreach($categories as $cat)
-										@foreach($cat->children->all() as $subcat)
-											<div class="sc-post-frame scf{{ $i }}sub{{ $j }}">
-												@foreach($subcat->children->all() as $postcat)
-													<div class="setcat-postCat" catid="{{$i}}" subcatid="{{$j}}" postcatid="{{$k}}" databaseid="{{ $postcat->id }}">{{ $postcat->name }}</div>
-													<?php $k++; ?>
-												@endforeach
-											</div>	
-											<?php $j++; $k = 1; ?>
-										@endforeach
-										<?php $i++; $j = 1;  ?>
-									@endforeach
-									<input type="hidden" id="adCatId" valeu="" name="category_id"/>
-								</div>
-                            </div>
-						</div>
-						
 					</div>
+
 				</div>
 				<div class="w2-sec2" >
 					<div class="w2-sec1-1" >
@@ -160,7 +165,7 @@
 					</div>
 				</div>
 				<div class="w2-sec3" >
-					<div btnId="2" class="nextbtn cust-btn -btn-next" >Next</div> 
+					<div btnId="2" id="w2nBtn" class="nextbtn cust-btn -btn-next -btnDis" >Next</div>
 					<div class="backbtn cust-btn -btn-back" btnId="2" >Back</div>
 				</div>
 			</div>

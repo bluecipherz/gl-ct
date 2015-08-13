@@ -1587,7 +1587,8 @@ label:hover:before {
 			float:left;
 			width:45%;
 			min-height:400px;
-		}	
+		}
+
 			.w2-labOuter{
 				display:inline_block;
 				float:left;
@@ -1742,7 +1743,7 @@ label:hover:before {
 				padding:10px;
 				background:#eaeaea;
 				min-height:50px;
-				margin:5px;
+				margin:5px 0 5px 0;
 				border:none;
 				font-family:Dosis;
 				font-weight:200;
@@ -1985,7 +1986,12 @@ label:hover:before {
 		cursor:pointer;
 		background:#820990;
 	}
-	
+
+    .-btnDis,.-btnDis:hover{
+        cursor:default;
+        background:rgba(0,0,0,0.2);
+        color:rgba(0,0,0,0.6);
+    }
 	/* footer */
 	
 	footer{
