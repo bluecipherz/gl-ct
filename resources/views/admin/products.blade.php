@@ -18,7 +18,7 @@
 								</tr>
 								@forelse($products as $product)
 								<tr>
-									<td>{{ $product->name }}</td>
+									<td>{{ $product->title }}</td>
 									<td>{{ $product->brand }}</td>
 									<td><span class="glyphicon glyphicon-usd"></span> {{ $product->price }}</td>
 									<td>{{ str_limit($product->description, 50) }}</td>

@@ -16,6 +16,11 @@ class CategoryController extends Controller {
         }
     }
 
+    public function all()
+    {
+        return 'ok';
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *

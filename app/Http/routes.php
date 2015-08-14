@@ -69,19 +69,19 @@ Route::get('terms-of-use', function() { return view('pages.static.terms-of-use')
 Route::get('privacy-policy', function() { return view('pages.static.privacy-policy'); });
 
 Route::post('categories/{category}/children', 'CategoryController@children');
+Route::get('categories/all', 'CategoryController@all');
 Route::resource('categories', 'CategoryController');
 Route::resource('advertisements', 'AdvertisementController', ['only' => ['create', 'store']]);
-Route::post('products/all-products', 'ProductController@allProducts');
+Route::post('products/all', 'ProductController@all');
 Route::get('products/search', 'ProductController@search');
 Route::resource('products', 'ProductController');
 Route::post('resellerimages/all', 'ResellerImageController@all');
 Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store', 'destroy']]);
-Route::resource('categories', 'CategoryController');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('dashboard', ['uses' => 'AdminPanelController@dashboard', 'as' => 'admin.dashboard']);
     Route::get('products', ['uses' => 'AdminPanelController@products', 'as' => 'admin.products']);
-    Route::get('categories', ['uses' => 'AdminPanelController@categories', 'as' => 'admin.categories']);
+    Route::get('categories/{category?}', ['uses' => 'AdminPanelController@categories', 'as' => 'admin.categories']);
     Route::get('advertisements', ['uses' => 'AdminPanelController@advertisements', 'as' => 'admin.advertisements']);
     Route::get('orders', ['uses' => 'AdminPanelController@orders', 'as' => 'admin.orders']);
     Route::get('transactions', ['uses' => 'AdminPanelController@transactions', 'as' => 'admin.transactions']);
@@ -99,7 +99,6 @@ Route::post('/support/contact-us', 'HomeController@contactUs');
 Route::post('/feedback/report-image', 'HomeController@reportImage');
 
 Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
-    $root = App\Category::whereIsRoot()->first();
 //    $cats = $root->children->all();
 //    foreach($cats as $cat) {
 //        echo $cat . '<br>';
@@ -110,21 +109,6 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
 //            foreach ($postsubcats as $postsubcat) {
 //                echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' . $postsubcat . '<br>';
 //            }
-//        }
-//    }
-
-//    $root = App\Category::reversed()->get();
-//    echo $root;
-//    if($root->hasChildren()) {
-//        return 'woo';
-//    }
-
-//    $node = App\Category::find(122);
-//    echo $node->name . '<br>';
-//    if($node->children->count()) {
-//        echo 'shitzu<br>';
-//        foreach ($node->children->all() as $n) {
-//            echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $n->name . '<br>';
 //        }
 //    }
     $cattree = $repository->getTree();
@@ -170,22 +154,7 @@ Route::get('test', function(\App\Repositories\CategoryRepository $repository) {
     $list = implode('', $html);
 
     $options = HTML::attributes($options);
-
-    $categories = $root->children->all();
-
-    $category = $categories[rand(0, 11)];
-
-//    return "<select{$options}>{$list}</select>";
-    $descendents = $category->descendants()->get();
-    $count = count($descendents);
-    foreach($categories as $cat) {
-        echo $cat->id . ' : ' . $cat->name . '<br/>';
-    }
-    echo 'descendants of root : ' . App\Category::descendantsOf(1)->count() . '<br/>';
-    echo 'total cats :' . App\Category::all()->count() . '<br/>';
-    echo 'category : ' . $category->name . ', ' . $category->id . '<br/>';
-    echo 'descendents : ' . $count . '<br/>';
-    return $descendents[rand(0, $count - 1)]->name;
+    return "<select{$options}>{$list}</select>";
 });
 
 Route::get('hell', function (Request $request) {
@@ -218,28 +187,6 @@ Route::get('slurp', function(App\Repositories\HomeRepository $c) {
     ;
 
     return response()->json($items->union($products->getQuery())->get());
-});
-
-Route::get('recursive', function () {
-    $cats = App\Category::roots()->get();
-
-    $supercatset = [];
-    foreach($cats as $cat) {
-        $catset = [];
-        echo $cat->name . '<br>';
-        foreach($cat->children()->get() as $sub) {
-            $subcatset = [];
-            echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $sub->name . '<br>';
-            foreach($sub->children()->get() as $post) {
-                echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $post->name . '<br>';
-                $subcatset[strtolower($post->name)]['title'] = $post->name;
-            }
-            $catset[strtolower($sub->name)]['title'] = $sub->name;
-            $catset[strtolower($sub->name)]['children'] = $subcatset;
-        }
-        $supercatset[strtolower($cat->name)]['title'] = $cat->name;
-        $supercatset[strtolower($cat->name)]['children'] = $catset;
-    }
 });
 
 Route::get('ajax', function () {

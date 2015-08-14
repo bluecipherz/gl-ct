@@ -53,10 +53,20 @@ class AdminPanelController extends Controller {
             ->with('cats', $categories->all(['name']));
     }
 
-    public function categories(CategoryRepository $categories)
+    public function categories($category = null)
     {
+        $levels = ['Main Category', 'Subcategory', 'Postsub Category'];
+        $_category = Category::find($category);
+        if(isset($category)) {
+            $cats = Category::find($category)->children()->get();
+        } else {
+            $cats = Category::roots()->get();
+        }
         return view('admin.categories')
-            ->with('cats', $categories->all(['name']));
+            ->with('category', $_category)
+            ->with('cats', $cats)
+            ->with('allcats', Category::with('parent'))
+            ->with('levels', $levels);
     }
 
     public function advertisements(AdvertisementRepository $advertisements)

@@ -58,7 +58,9 @@
 
 
     <!-- Scripts -->
-	
+
+    {!! HTML::script('js/jquery-2.1.4.js') !!}
+    {!! HTML::script('js/dashboard.js') !!}
 	@include('layouts.jslinks')
 	
 </body>

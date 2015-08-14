@@ -13,7 +13,7 @@ use Input;
 
 class ProductController extends Controller {
 
-	public function allProducts(Request $request)
+	public function all(Request $request)
 	{
         if ($request->ajax()) {
             return response()->json(Product::all()->lists('name'));
