@@ -62,25 +62,24 @@ class HomeController extends Controller {
         return redirect('/contact-us')->withMessage('Message Sent.');
     }
 
-    public function search(CategoryRepository $categories)
+    public function eloquentSearch(CategoryRepository $categories)
     {
         $q = Input::get('q');
         if ($q) {
             $searchTerms = explode(' ', $q);
-            $productQuery = Product::with('images')->select('id', 'title', 'description', 'price', DB::raw('"product" as type'));
-            $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('"reselle" as type'));
+            $productQuery = Product::with('images')->select('id', 'title', 'description', 'price', DB::raw('1 as type'));
+            $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('0 as type'));
             foreach ($searchTerms as $term) {
                 $adQuery->where('title', 'LIKE', '%' . $term . '%');
                 $productQuery->where('title', 'LIKE', '%' . $term . '%');
             }
-            $results = array_merge($productQuery->get()->toArray(), $adQuery->get()->toArray());
+            $results = $adQuery->get()->merge($productQuery->get());
             return view('pages.search', ['products' => $results, 'categories' => $categories]);
         }
     }
 
-    public function search_2(CategoryRepository $categories)
+    public function dbSearch(CategoryRepository $categories)
     {
-
         $q = Input::get('q');
         if ($q) {
             $searchTerms = explode(' ', $q);

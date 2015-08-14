@@ -53,17 +53,18 @@
 					<div class="product-thumbnail">
 						<!-- <img src="" class="" /> -->
 
-                        @if(!empty($product['images']))
-						<span class="sampleThumb"><img src="{{ $product['images'][0] }}"></span>
+                        {{--{{ 'type:' . $product->type . ',img:' . $product->images->count() }}--}}
+                        @if($product->images->count())
+						<span class="sampleThumb"><img src="{{ $product->images->first()->url }}"></span>
                         @else
                         <span class="sampleThumb"><img src="{{ randImg(1) }}"></span>
                         @endif
 					</div>
-					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{ $product['title'] }}">
-						<h4>{{ str_limit($product['title'],22) }}</h4>
-						<div class="productPrice">{{ $product['price'] . ' AED' }}</div>
+					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{ $product->title }}">
+						<h4>{{ str_limit($product->title, 22) }}</h4>
+						<div class="productPrice">{{ $product->price . ' AED' }}</div>
 						<div class="product-desc-small">
-							{{ str_limit($product['description'],60) }}
+							{{ str_limit($product->description, 60) }}
 						</div>
 					</div>
 				</div>

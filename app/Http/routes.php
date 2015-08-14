@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('search', 'HomeController@search');
+Route::get('search', 'HomeController@eloquentSearch');
 
 // Route::controllers([
 //	 'auth' => 'Auth\AuthController',
@@ -203,7 +203,21 @@ Route::get('hell', function (Request $request) {
 });
 
 Route::get('slurp', function(App\Repositories\HomeRepository $c) {
+    $items =
+//        DB::table('advertisements')->
+//        join('reseller_images', 'advertisements.id', '=', 'reseller_images.advertisement_id')
+        App\Advertisement::
+            with('images')
+            ->where('id', '>', 100)
+            ->select('id', 'title', 'description', 'price', DB::raw('0 as type'))
+        ;
+    $products = App\Product::
+        with('images')
+        ->where('id', '>', 998)
+        ->select('id', 'title', 'description', 'price', DB::raw('1 as type'))
+    ;
 
+    return response()->json($items->union($products->getQuery())->get());
 });
 
 Route::get('recursive', function () {

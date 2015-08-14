@@ -112,9 +112,9 @@ jQuery(document).ready(function() {
                     proceedTab(btnid);
                 })
                 .fail(function (response) {
-                    //console.log('fail : ' + response.responseText);
-                    if(response.responseText.email) pnPopup(1, 'cust-input-block', response.responseText.email);
-                    if(response.responseText.password) pnPopup(1, 'cust-input-block', response.responseText.password);
+                    console.log('fail : ' + response.responseText);
+                    if(response.responseText.email) pnPopup('register-email', response.responseText.email);
+                    if(response.responseText.password) pnPopup('register-password', response.responseText.password);
                 });
         }
     });
