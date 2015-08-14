@@ -378,7 +378,7 @@ jQuery(document).ready(function() {
         var AdEChassis = $('#adChassis').val();
         var AdEColor = $('#adColor').val();
         var AdEDoors = $('#adDoors').val();
-        
+
         $('.AdTitle-S').html(title);
         $('.AdDesc-S').html(description);
         $('.AdCat-S').html(cat);

@@ -88,6 +88,12 @@ class AdminPanelController extends Controller {
         return view('admin.advertisements')
             ->with('advertisements', $advertisements->all());
     }
+    public function homePage(ProductRepository $products, CategoryRepository $categories)
+    {
+        return view('admin.homepage')
+            ->with('products', $products->paginate())
+            ->with('cats', $categories->all(['name']));
+    }
 
     public function orders(OrderRepository $orders, OrderItemRepository $orderItems)
     {

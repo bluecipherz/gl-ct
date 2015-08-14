@@ -69,7 +69,7 @@
 			
 			<div>
 				<span class="adhead">Motors</span>
-				<div class="adcont-3">
+				<div class="adcont-3 ">
 					<a href="link"> 
 						<div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
 						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>

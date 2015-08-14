@@ -165,3 +165,130 @@
 .cust-list-group > li > .adm-act{
 	background:#60536e;	
 }
+
+
+
+/* home page management   */
+
+/* this settings is only for admin */
+
+
+.adContBB > a{
+    border:1px solid #cbcbcb;
+}
+/*===========*/
+
+.adm-h-toppanel{
+    position:absolute;
+    top:0px;
+    left:0px;
+    height:50px;
+    width:100%;
+    background:#2f2f2f;
+}
+.adm-nav-btns , .adm-box-gen{
+    display:block;
+    float:left;
+    min-width:100px;
+    background:#047db5;
+    color:#fff;
+    height:30px;
+    margin:10px;
+    padding:5px 10px 5px 10px;
+    border:none;
+    border-radius:5px;
+    text-align:center;
+}
+.adm-nav-btns:hover ,.adm-box-gen:hover{
+    background:#00b3ee;
+    color:#fff;
+    cursor:pointer;
+}
+.adm-nav-btns:active ,.adm-box-gen:active{
+    cursor:pointer;
+    border-top:#125a7c 2px solid;
+}
+.adm-box-gen{
+    padding:20px;
+    font-size:150%;
+    height:70px;
+    width:200px;
+    margin-left:calc( (100% - 200px ) / 2);
+}
+
+.adm-homeOuter {
+    display:block;
+    float:left;
+    width:100%;
+    margin-top:50px;
+}
+.adm-homeInner {
+    display:block;
+    float:left;
+    width:100%;
+}
+
+
+.GridOuter{
+    display:block;
+    float:left;
+    width:calc( 100% - 40px);
+    max-width:930px;
+    margin:20px;
+    background:#fff;
+    min-height:100px;
+}
+.Gridhead{
+    display:block;
+    float:left;
+    width:100%;
+    min-height:60px;
+    background:#504056;
+}
+.GridCont{
+    display:block;
+    float:left;
+    width:100%;
+    min-height:60px;
+}
+
+.GridHName,.GridHSettings{
+    display:inline-block;
+    float:left;
+    width:calc(100% - 220px);
+    height:50px;
+    color:#fff;
+    margin:10px 0 10px 0;
+    font-family:Dosis;
+    font-weight: 100;
+}
+.GridHName{
+    font-size:140%;
+    padding:10px;
+}
+.GridHSettings{
+    width:200px;
+}
+.adm-inp-set{
+    display:inline-block;
+    float:left;
+    width:100px;
+    height:50px;
+}
+.adm-subhead , .adm-inp-numb{
+    display:inline-block;
+    float:left;
+    width:50px;
+    height:50px;
+    font-family:Dosis;
+    font-size:120%;
+}
+.adm-subhead {
+    padding:12px 0 0 7px;
+}
+.adm-inp-numb{
+    padding-left:10px;
+    color:#000;
+    height:40px;
+    margin:5px 0 5px 0;
+}

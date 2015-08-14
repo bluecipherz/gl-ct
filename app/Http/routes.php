@@ -85,6 +85,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('products', ['uses' => 'AdminPanelController@products', 'as' => 'admin.products']);
     Route::get('categories', ['uses' => 'AdminPanelController@categories', 'as' => 'admin.categories']);
     Route::get('advertisements', ['uses' => 'AdminPanelController@advertisements', 'as' => 'admin.advertisements']);
+    Route::get('homepage', ['uses' => 'AdminPanelController@homePage', 'as' => 'admin.homepage']);
     Route::get('orders', ['uses' => 'AdminPanelController@orders', 'as' => 'admin.orders']);
     Route::get('transactions', ['uses' => 'AdminPanelController@transactions', 'as' => 'admin.transactions']);
     Route::get('customers', ['uses' => 'AdminPanelController@customers', 'as' => 'admin.customers']);
