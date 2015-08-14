@@ -1,6 +1,5 @@
 
 
-
 	{ === BASE Settings
 	
 		old theme color - #881a8c 
@@ -1833,6 +1832,51 @@ label:hover:before {
 			float:right;
 			margin:0 10px 0 10px;
 		}
+
+        .w2Extra{
+            display:none;
+        }
+
+        .w2table{
+            display:block;
+            float:left;
+            width:100%;
+        }
+        .w2row{
+            display:block;
+            float:left;
+            width:100%;
+        }
+        .w2cell1{
+            display:block;
+            float:left;
+            width:35%;
+        }.w2cell1 > div{
+             display:block;
+             float: right;
+             padding: 15px;
+             margin: 5px 0px 5px 0px;
+             color: #777777;
+             font-family: Dosis;
+             font-weight: 200;
+             font-size: 120%;
+             background:#f6f6f6;
+            width:120px;
+            height:50px;
+         }
+        .w2cell2{
+            display:block;
+            float:left;
+            width:65%;
+        }
+        #globex-drop-view{
+            background:#fff;
+            font-family:Dosis;
+            font-size:200%;
+            font-weight:100;
+            color:rgba(0,0,0,0.3);
+            border:#eaeaea solid 2px;
+        }
 	{ review }
 	
 	#wizardT-3 {
@@ -1895,6 +1939,8 @@ label:hover:before {
         margin:0 0 0 5%;
         width: 90%;
     }
+    .AdSummery table{width:100%; }
+    .AdSummery td{ align-content:  }
 
     .AdSummery .tdSName{
         min-height:30px;

@@ -158,13 +158,48 @@
                         <div id="dropView">
                             {!! Form::open(['route' => 'resellerimages.store', 'class' => 'dropzone', 'id' => 'globex-drop-view']) !!}
                                 <div class="dz-message">
-                                    Drop images here to upload
+                                    Click here to upload image
                                 </div>
                             {!! Form::close() !!}
                         </div>
 
 					</div>
-
+                    <div class="w2Extra">
+                        <div class=" w2table ">
+                            <div class="w2row">
+                                <div class="w2cell1">
+                                    <div> Model </div>
+                                </div>
+                                <div class="w2cell2">
+                                    <input type="text" name="model" placeholder="Model" class="cust-input w2-inp-f in-larg " id="adModel"/>
+                                </div>
+                            </div>
+                            <div class="w2row">
+                                <div class="w2cell1">
+                                    <div> Chassis no: </div>
+                                </div>
+                                <div class="w2cell2">
+                                    <input type="text" name="chassisNumber" placeholder="Chassis number" class="cust-input w2-inp-f in-larg" id="adChassis"/>
+                                </div>
+                            </div>
+                            <div class="w2row">
+                                <div class="w2cell1">
+                                    <div> Color </div>
+                                </div>
+                                <div class="w2cell2">
+                                    <input type="text" name="color" placeholder="Color" class="cust-input w2-inp-f in-larg" id="adColor"/>
+                                </div>
+                            </div>
+                            <div class="w2row">
+                                <div class="w2cell1">
+                                    <div> Doors </div>
+                                </div>
+                                <div class="w2cell2">
+                                    <input type="text" name="doors" placeholder="Doors" class="cust-input w2-inp-f in-larg" id="adDoors"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<div class="w2-sec2" >
 					<div class="w2-sec1-1" >
@@ -244,7 +279,7 @@
                                         <td class="tdS1">
                                             Description
                                         </td>
-                                        <td class="AdDesc-S tdS2">
+                                        <td class="AdDesc-S tdS2 b-fullText">
                                             Description
                                         </td>
                                     </tr>
@@ -264,6 +299,50 @@
                                             Price
                                         </td>
                                     </tr>
+
+                                    <!-- The Extra table -->
+
+                                    <tr class="w2Extra">
+                                        <th class="tdSName" colspan="2" >
+                                            Extra Motor Details
+                                        </th>
+                                    </tr>
+                                    <tr class="w2Extra">
+                                        <td class="tdS1">
+                                            Model
+                                        </td>
+                                        <td class="AdEModel-S tdS2">
+                                            Model
+                                        </td>
+                                    </tr>
+                                    <tr class="w2Extra">
+                                        <td class="tdS1">
+                                            Chassis Number
+                                        </td>
+                                        <td class="AdEChassis-S tdS2">
+                                            Chassis number
+                                        </td>
+                                    </tr>
+                                    <tr class="w2Extra">
+                                        <td class="tdS1">
+                                            Color
+                                        </td>
+                                        <td class="AdEColor-S tdS2">
+                                            Color
+                                        </td>
+                                    </tr>
+                                    <tr class="w2Extra">
+                                        <td class="tdS1">
+                                            Doors
+                                        </td>
+                                        <td class="AdEDoors-S tdS2">
+                                            Doors
+                                        </td>
+                                    </tr>
+
+
+                                    <!-- The Extra table  Ends -->
+
                                     <tr>
                                         <th class="tdSName" colspan="2" >
                                             Personal Details
@@ -289,7 +368,7 @@
                                         <td class="tdS1">
                                             Address
                                         </td>
-                                        <td class="AdAddress-S tdS2">
+                                        <td class="AdAddress-S tdS2 b-fullText">
                                             Address
                                         </td>
                                     </tr>

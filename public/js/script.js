@@ -91,14 +91,16 @@ jQuery(document).ready(function() {
 	$("#tab-content .nextbtn").click(function() {
         var btnid = $(this).attr('btnId');
         if(btnid == 2){
-            if(wStep2()) { proceedTab(btnid); }
+            if(wStep2()) { proceedTab(btnid); winScrollTop(); }
         }else if(btnid == 3){
-            if(wStep3()) { proceedTab(btnid); wStep4Update(); }
+            if(wStep3()) { proceedTab(btnid); wStep4Update();  winScrollTop(); }
         }else{
             proceedTab(btnid);
         }
 
 	});
+
+    function winScrollTop(){$("html, body").animate({ scrollTop: 0 }, 0);}
 
     $("#wizardT-1 #register-btn").click(function() {
         var btnid = $(this).attr('btnId');
@@ -180,6 +182,7 @@ jQuery(document).ready(function() {
 		attrId =$(this).attr('tabId');
 		findAttr(attrId);
 		if(tabID <= tabCompleted || tabReal == false){
+            if(attrId == 4){ wStep4Update(); }
 			tabAttr(parent,tabID,that,WizTabN);
 		}
 	});
@@ -276,7 +279,7 @@ jQuery(document).ready(function() {
 
 
 
-
+    var lastTab = false;
     var w2nBtn = false;
     function wStep2(){
         var title = $('#adTitle').val();
@@ -295,7 +298,11 @@ jQuery(document).ready(function() {
         ){
             if(!w2nBtn){$('#w2nBtn').removeClass('-btnDis'); w2nBtn = true;}
             $('#WT-3').addClass('tabCompleted');
-            tabCompleted = 3;
+            if(lastTab) {
+                tabCompleted = 4;
+            }else{
+                tabCompleted = 3;
+            }
             return true;
         }else{
             if(w2nBtn){$('#w2nBtn').addClass('-btnDis'); w2nBtn = false;}
@@ -310,19 +317,10 @@ jQuery(document).ready(function() {
 
     function wStep2Start(){
 
-        var title = $('#adTitle').val();
-        var description = $('#adDesc').val();
-
-        var cid1 = catidText;
-        var cid2 = subcatidText;
-        var cid3 = postcatidText;
-        var cid = postcatid;
-        var price = $('#adPrice').val();
-
-        if(title==""){  pnPopup("adTitle","Required",1); }
-        if(description==""){ pnPopup("adDesc","Required",1); }
-        if(cid1=="" && cid2=="" && cid3=="" && cid==""&& cid1==undefined && cid2==undefined && cid3==undefined && cid==undefined){  pnPopup("adCatSel","Required",1); }
-        if( price==""){  pnPopup("adPrice","Required",1); }
+        pnPopup("adTitle","Required",1);
+        pnPopup("adDesc","Required",1);
+        pnPopup("adCatSel","Required",1);
+        pnPopup("adPrice","Required",1);
     }
 
     $('#customerName').keyup(function(){ wStep3(); });
@@ -349,6 +347,7 @@ jQuery(document).ready(function() {
         }else{
             if(w3nBtn){$('#w3nBtn').addClass('-btnDis'); w3nBtn = false;}
             tabCompleted = 3;
+            lastTab = false;
             $('#WT-4').removeClass('tabCompleted');
             return false
         }
@@ -367,7 +366,7 @@ jQuery(document).ready(function() {
 
         var title = $('#adTitle').val();
         var description = $('#adDesc').val();
-        var cat = catidText + " > " + subcatidText + " > " + postcatidText;
+        var cat = "<span class='selpathText'>" + catidText + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + subcatidText + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + postcatidText + " </span> "
         var price = $('#adPrice').val();
         var customerName = $('#customerName').val();
         var customerPin = $('#customerPin').val();
@@ -375,30 +374,26 @@ jQuery(document).ready(function() {
         var customerCity = $('#customerCity').val();
         var customerPhone = $('#customerPhone').val();
 
-        echo(   "Title" + title + " | " +
-                "Desc" + description + " | " +
-                "Cat" + cat + " | " +
-                "price" + price + " | " +
-                "customerName" + customerName + " | " +
-                "customerPin" + customerPin + " | " +
-                "customerAddress" + customerAddress + " | " +
-                "customerCity" + customerCity + " | " +
-                "customerPhone" + customerPhone
-        );
+        var AdEModel = $('#adModel').val();
+        var AdEChassis = $('#adChassis').val();
+        var AdEColor = $('#adColor').val();
+        var AdEDoors = $('#adDoors').val();
+        
+        $('.AdTitle-S').html(title);
+        $('.AdDesc-S').html(description);
+        $('.AdCat-S').html(cat);
+        $('.AdPrice-S').html(price);
+        $('.AdName-S').html(customerName);
+        $('.AdPin-S').html(customerPin);
+        $('.AdAddress-S').html(customerAddress);
+        $('.AdCity-S').html(customerCity);
+        $('.AdPhNumber-S').html(customerPhone);
 
-        $('#AdTitle-s').html(title);
-        $('#AdDesc-s').html(description);
-        $('#AdCat-s').html(cat);
-        $('#AdPrice-s').html(price);
-        $('#AdName-s').html(customerName);
-        $('#AdPin-s').html(customerPin);
-        $('#AdAddress-s').html(customerAddress);
-        $('#AdCity-s').html(customerCity);
-        $('#AdPhNumber-s').html(customerPhone);
-
-
-
-
+        $('.AdEModel-S').html(AdEModel);
+        $('.AdEChassis-S').html(AdEChassis);
+        $('.AdEColor-S').html(AdEColor);
+        $('.AdEDoors-S').html(AdEDoors);
+        lastTab = true;
     }
 
 
@@ -571,6 +566,12 @@ jQuery(document).ready(function() {
 			if(catLevel==3){
 				var catid = $(this).attr('catid');
 				var subcatid = $(this).attr('subcatid');
+                if(catid == 1){
+                    $('.w2Extra').fadeIn();
+                }else{
+                    $('.w2Extra').fadeOut();
+                    $('.w2Extra').find('input').val('');
+                }
 				postcatid = $(this).attr('postcatid');
 				postcatidBase =  $(this).attr('idbase');
 				postcatidText = $(this).text();
