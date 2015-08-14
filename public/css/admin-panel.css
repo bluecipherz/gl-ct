@@ -19,10 +19,12 @@
 .adm-cont{
 	display:inline_block;
 	float:left;
-	width:calc( 100% - 400px );
-	margin-left:200px;
-	min-height:600px;
-	padding-top:20px;
+    position:fixed;
+	left:200px;
+    right:200px;
+    top:80px;
+    bottom:0px;
+    overflow:scroll;
 }
 
 /*Boxes*/

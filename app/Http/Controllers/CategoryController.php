@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Input;
 
 class CategoryController extends Controller {
 
@@ -14,6 +15,11 @@ class CategoryController extends Controller {
         if($category) {
             return response()->json($category->children->all());
         }
+    }
+
+    public function all()
+    {
+        return response()->json(Category::all());
     }
 
 	/**
@@ -43,7 +49,17 @@ class CategoryController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        $name = Input::get('name');
+        $level = Input::get('level');
+        $parent = Input::get('parent');
+
+        $node = Category::create(['name' => $name]);
+        if ($level > 0) {
+            $node->makeChildOf(Category::find($parent));
+        } else {
+            $node->makeRoot();
+        }
+        return redirect()->back();
 	}
 
 	/**
@@ -77,7 +93,10 @@ class CategoryController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        Category::find($id)->update([
+            'name' => Input::get('name')
+        ]);
+        return response()->json('success');
 	}
 
 	/**
@@ -88,7 +107,8 @@ class CategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        Category::find($id)->delete();
+        return redirect()->back();
 	}
 
 }

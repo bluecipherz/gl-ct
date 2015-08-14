@@ -31,6 +31,7 @@ class AdminTableSeeder extends DatabaseSeeder {
 		{
 			$admin = App\Admin::create([
 			    'name' => $faker->name,
+			    'username' => $faker->unique()->userName,
 				'email' => $faker->email,
 				'password' => Hash::make("password")
 			]);
