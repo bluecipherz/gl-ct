@@ -93,8 +93,7 @@ jQuery(document).ready(function() {
         if(btnid == 2){
             if(wStep2()) { proceedTab(btnid); }
         }else if(btnid == 3){
-            console.log("Tab 3");
-            proceedTab(btnid);
+            if(wStep3()) { proceedTab(btnid); wStep4Update(); }
         }else{
             proceedTab(btnid);
         }
@@ -275,6 +274,9 @@ jQuery(document).ready(function() {
     $('#adDesc').keyup(function(){ wStep2(); });
     $('#adPrice').keyup(function(){ wStep2(); });
 
+
+
+
     var w2nBtn = false;
     function wStep2(){
         var title = $('#adTitle').val();
@@ -287,16 +289,118 @@ jQuery(document).ready(function() {
         var price = $('#adPrice').val();
 
        // console.log("Title : " + title + " Desc : " + description + " category : " + cid1 + " > " + cid2 + " > " + cid3 + " | price : " + price + " cat id " + cid);
-        if(title!="" && description!="" && cid1!="" && cid2!="" && cid3!="" && cid!="" && price!=""){
+        if(
+            title!="" && description!="" && cid1!="" && cid2!="" && cid3!="" && cid!="" && price!=""
+            && cid1!=undefined && cid2!=undefined && cid3!=undefined && cid!=undefined
+        ){
             if(!w2nBtn){$('#w2nBtn').removeClass('-btnDis'); w2nBtn = true;}
+            $('#WT-3').addClass('tabCompleted');
+            tabCompleted = 3;
             return true;
         }else{
-            if(w2nBtn){$('#w2nBtn').addClass('-btnDis'); w2nBtn = false; }
+            if(w2nBtn){$('#w2nBtn').addClass('-btnDis'); w2nBtn = false;}
             tabCompleted = 2;
+            $('#WT-3').removeClass('tabCompleted');
+            $('#WT-4').removeClass('tabCompleted');
+            return false
+
+        }
+    }
+    wStep2Start();
+
+    function wStep2Start(){
+
+        var title = $('#adTitle').val();
+        var description = $('#adDesc').val();
+
+        var cid1 = catidText;
+        var cid2 = subcatidText;
+        var cid3 = postcatidText;
+        var cid = postcatid;
+        var price = $('#adPrice').val();
+
+        if(title==""){  pnPopup("adTitle","Required",1); }
+        if(description==""){ pnPopup("adDesc","Required",1); }
+        if(cid1=="" && cid2=="" && cid3=="" && cid==""&& cid1==undefined && cid2==undefined && cid3==undefined && cid==undefined){  pnPopup("adCatSel","Required",1); }
+        if( price==""){  pnPopup("adPrice","Required",1); }
+    }
+
+    $('#customerName').keyup(function(){ wStep3(); });
+    $('#customerPin').keyup(function(){ wStep3(); });
+    $('#customerAddress').keyup(function(){ wStep3(); });
+    $('#customerCity').keyup(function(){ wStep3(); });
+    $('#customerPhone').keyup(function(){ wStep3(); });
+
+
+    var w3nBtn = false;
+    function wStep3(){
+        var customerName = $('#customerName').val();
+        var customerPin = $('#customerPin').val();
+        var customerAddress = $('#customerAddress').val();
+        var customerCity = $('#customerCity').val();
+        var customerPhone = $('#customerPhone').val();
+
+
+        if(customerName!="" && customerPin!="" && customerAddress!="" && customerCity!="" && customerPhone!=""){
+            if(!w3nBtn){$('#w3nBtn').removeClass('-btnDis'); w3nBtn = true;}
+            $('#WT-4').addClass('tabCompleted');
+            tabCompleted = 4;
+            return true;
+        }else{
+            if(w3nBtn){$('#w3nBtn').addClass('-btnDis'); w3nBtn = false;}
+            tabCompleted = 3;
+            $('#WT-4').removeClass('tabCompleted');
             return false
         }
+    }
+
+    wStep3Start();
+    function wStep3Start(){
+        pnPopup("customerName","Required",1);
+        pnPopup("customerPin","Required",1);
+        pnPopup("customerAddress","Required",1);
+        pnPopup("customerCity","Required",1);
+        pnPopup("customerPhone","Required",1);
+    }
+
+    function wStep4Update(){
+
+        var title = $('#adTitle').val();
+        var description = $('#adDesc').val();
+        var cat = catidText + " > " + subcatidText + " > " + postcatidText;
+        var price = $('#adPrice').val();
+        var customerName = $('#customerName').val();
+        var customerPin = $('#customerPin').val();
+        var customerAddress = $('#customerAddress').val();
+        var customerCity = $('#customerCity').val();
+        var customerPhone = $('#customerPhone').val();
+
+        echo(   "Title" + title + " | " +
+                "Desc" + description + " | " +
+                "Cat" + cat + " | " +
+                "price" + price + " | " +
+                "customerName" + customerName + " | " +
+                "customerPin" + customerPin + " | " +
+                "customerAddress" + customerAddress + " | " +
+                "customerCity" + customerCity + " | " +
+                "customerPhone" + customerPhone
+        );
+
+        $('#AdTitle-s').html(title);
+        $('#AdDesc-s').html(description);
+        $('#AdCat-s').html(cat);
+        $('#AdPrice-s').html(price);
+        $('#AdName-s').html(customerName);
+        $('#AdPin-s').html(customerPin);
+        $('#AdAddress-s').html(customerAddress);
+        $('#AdCity-s').html(customerCity);
+        $('#AdPhNumber-s').html(customerPhone);
+
+
+
 
     }
+
 
 	/**
      * Go back action
@@ -478,7 +582,7 @@ jQuery(document).ready(function() {
 			}
 		});
 
-        setCatGUI("gibaskd","asdlkasd","ansdnklasnd");
+        //setCatGUI("gibaskd","asdlkasd","ansdnklasnd");
 
         function setCatGUI(t1,t2,t3){
             $(".selcatPath").html("<span class='selpathText'>" + t1 + " </span> <span class='selpathArrow'> > </span>	<span class='selpathText'>" + t2 + " </span> <span class='selpathArrow'>  > </span><span class='selpathText'>" + t3 + " </span> ");

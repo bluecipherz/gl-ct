@@ -20,11 +20,11 @@
 						</div>
 						<div class="w-log-sec-2" >
 							<div>
-								<input type="text" class="cust-input-block" placeholder="Your email" id="auth-email"/>
+								<input type="text" class="cust-input-block unTabUp" placeholder="Your email" id="auth-email"/>
 								<div class="pn-popup"></div>
 							</div>
 							<div>
-								<input type="password" class="cust-input-block" placeholder="Password" id="auth-password" />
+								<input type="password" class="cust-input-block unTab" placeholder="Password" id="auth-password" />
 								<div class="pn-popup"></div>
 							</div>
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
@@ -41,7 +41,7 @@
 							</div>
 							<div class="w-reg-sec-2" >
                                 <div>
-								    <input type="text" class="cust-input-block" placeholder="Your email" id="register-email"/>
+								    <input type="text" class="cust-input-block unTabUp" placeholder="Your email" id="register-email"/>
                                     <div class="pn-popup"></div>
                                 </div>
                                 <div>
@@ -49,7 +49,7 @@
                                     <div class="pn-popup"></div>
                                 </div>
                                 <div>
-                                    <input type="password" class="cust-input-block" placeholder="Confirm Password" id="register-password-confirm"/>
+                                    <input type="password" class="cust-input-block unTab" placeholder="Confirm Password" id="register-password-confirm"/>
                                     <div class="pn-popup"></div>
                                 </div>
 								<div class="w-reg-sec2-text">Already have an account? <span class="b-fakeLink logbtn" > Login </span></div>
@@ -89,12 +89,18 @@
 						
 					</div>
 					<div class="w2-inp" >
-
-                        <input type="text" name="adtitle" placeholder="Ad Title" class="cust-input w2-inp-f in-larg" id="adTitle" />
-
-                        <textarea name="description" placeholder="Description about your ad" class="cust-input w2-inp-t in-larg" id="adDesc"></textarea>
-
-						<div class="selCat1sec"><div id="selCat1" class="cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
+                        <div>
+                            <input type="text" name="adtitle" placeholder="Ad Title" class="cust-input w2-inp-f in-larg" id="adTitle" />
+                            <div class="pn-popup"></div>
+                        </div>
+                        <div>
+                            <textarea name="description" placeholder="Description about your ad" class="cust-input w2-inp-t in-larg" id="adDesc"></textarea>
+                            <div class="pn-popup"></div>
+                        </div>
+                        <div>
+                            <div class="selCat1sec" id="adCatSel"><div id="selCat1" class="cust-input w2-inp-btn addCat in-small" >Select a category</div></div>
+                            <div class="pn-popup"></div>
+                        </div>
 						<div class="selCat2sec">
 							<div class="selcatPath w2-inp-f in-larg"></div>
 							<div id="selCat2" class=" cust-input w2-inp-btn addCat in-exsmall" >change</div>
@@ -145,9 +151,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg" id="adPrice"/>
-
+                        <div>
+                            <input type="text" name="price" placeholder="Price" class="cust-input w2-inp-f in-larg pnNumber" id="adPrice"/>
+                            <div class="pn-popup"></div>
+                        </div>
                         <div id="dropView">
                             {!! Form::open(['route' => 'resellerimages.store', 'class' => 'dropzone', 'id' => 'globex-drop-view']) !!}
                                 <div class="dz-message">
@@ -175,17 +182,30 @@
 						<div class="w2-inp-label" >Name</div>
 						<div class="w2-inp-label" >PIN</div>
 						<div class="w2-inp-label w2-inp-label-t" >Address</div>
-						<div class="w2-inp-label" >State</div>
 						<div class="w2-inp-label" >City</div>
 						<div class="w2-inp-label" >Phone</div>
 					</div>
 					<div class="w2-inp" >
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your name" name="name" id="customerName" />
-						<input type="text" class="cust-input w2-inp-f" placeholder="PIN" name="pin" id="customerPin"/>
-						<textarea type="text" class="cust-input w2-inp-t" placeholder="Your address" name="address" id="customerAddress"></textarea>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your state" name="state" id="customerState"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your city" name="city" id="customerCity"/>
-						<input type="text" class="cust-input w2-inp-f" placeholder="Your phone number" name="phone" id="customerPhone"/>
+                        <div>
+                            <input type="text" class="cust-input w2-inp-f inp-type-inline" placeholder="Your name" name="name" id="customerName" />
+                            <div class="pn-popup"></div>
+                        </div>
+                        <div>
+						    <input type="text" class="cust-input w2-inp-f pnNumber inp-type-inline" placeholder="PIN" name="pin" id="customerPin"/>
+                            <div class="pn-popup "></div>
+                        </div>
+                        <div>
+						    <textarea type="text" class="cust-input w2-inp-t inp-type-inline" placeholder="Your address" name="address" id="customerAddress"></textarea>
+                            <div class="pn-popup"></div>
+                        </div>
+                        <div>
+                            <input type="text" class="cust-input w2-inp-f inp-type-inline" placeholder="Your city" name="city" id="customerCity"/>
+                            <div class="pn-popup"></div>
+                        </div>
+                        <div>
+                            <input type="text" class="cust-input w2-inp-f pnNumber inp-type-inline" placeholder="Your phone number" name="phone" id="customerPhone"/>
+                            <div class="pn-popup"></div>
+                        </div>
 					</div>
 				</div>
 				<div class="w2-sec2" >
@@ -194,7 +214,7 @@
 					</div>
 					<div class="w2-sec1-2" >
 						<button class=" backbtn cust-btn -btn-back" btnId="3" >Back</button>
-						<button class=" nextbtn cust-btn -btn-next"  btnId="3">Next</button>
+						<button class=" nextbtn cust-btn -btn-next  -btnDis" id="w3nBtn" btnId="3">Next</button>
 					</div>
 				</div>
 			</div>
@@ -203,26 +223,95 @@
 					<div class="w4-c-sec-1"> 
 					</div>
 					<div class="w4-c-sec-2"> 
-						<span class="w4-c-sec-4">Your ad will look like this</span>
-						<div class="resellAdFull b-fakeLink">
-					<div class="product-thumbnail">
-						<span class="sampleThumb"></span>
-					</div>
-					<div class="resellDescription">
-						<h4>I need to sell My Old Guitar ... !!!</h4>
-						<div class="product-desc-small">
-							Short description abouth the ad and the condition of th or something  like thath. which can full this sspace and the one who read this is a person which font have thee brain to think thath this short note is just for filling up this sblacnk space for the  demo what kind ogf people you are ?
-						</div>
-					</div>
-					<div class="productDetailBar">
-						<div class="productPrice">
-							<span>52300 AED</span>
-						</div>
-						<div class="productLocation">
-							<span>Ajman</span>
-						</div>
-					</div>
-				</div>
+						<span class="w4-c-sec-4">One step away from Posting the Ad...! </span>
+                        <div class="AdSummery">
+                            <div class="adSR">
+                                <table>
+                                    <tr>
+                                        <th class="tdSName" colspan="2" >
+                                            Ad Details
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Ad Title
+                                        </td>
+                                        <td class="AdTitle-S tdS2">
+                                            Ad Title
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Description
+                                        </td>
+                                        <td class="AdDesc-S tdS2">
+                                            Description
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Category
+                                        </td>
+                                        <td class="AdCat-S tdS2">
+                                            Category
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Price
+                                        </td>
+                                        <td class="AdPrice-S tdS2">
+                                            Price
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="tdSName" colspan="2" >
+                                            Personal Details
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Name
+                                        </td>
+                                        <td class="AdName-S tdS2">
+                                            name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            PIN
+                                        </td>
+                                        <td class="AdPin-S tdS2">
+                                            pin
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Address
+                                        </td>
+                                        <td class="AdAddress-S tdS2">
+                                            Address
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            City
+                                        </td>
+                                        <td class="AdCity-S tdS2">
+                                            City
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdS1">
+                                            Phone Number
+                                        </td>
+                                        <td class="AdPhNumber-S tdS2">
+                                            Phone Number
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
 					</div>
 					<div class="w4-c-sec-3"> 
 						<div btnId="4" class="cust-btn -btn-next" id="post_ad">Post ad</div>

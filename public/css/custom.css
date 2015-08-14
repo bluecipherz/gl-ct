@@ -1661,6 +1661,10 @@ label:hover:before {
 			.selCat2sec{
 				display:none;
 			}
+            #adCatSel{
+                height:55px;
+                width:190px;
+            }
 			
 			.selCatPop{
 				display:block;
@@ -1882,7 +1886,43 @@ label:hover:before {
 	#wizardT-4 > .w4-content > .w4-tab-c-act{
 		display:block;
 	}
-	
+	.AdSummery{
+        display:block;
+        float:left;
+        min-height:200px;
+        padding:20px;
+        margin:0 0 0 5%;
+        width: 90%;
+    }
+
+    .AdSummery .tdSName{
+        min-height:30px;
+        padding:7px;
+        width: 100%;
+        font-family: Dosis;
+        font-weight: 200;
+        font-size:170%;
+        color:#9a59b5;
+        text-align:left;
+    }
+    .AdSummery .tdS1,.AdSummery .tdS2{
+        min-height:20px;
+        padding:5px;
+        width: 30%;
+        font-size:110%;
+        color:rgba(0,0,0,0.5);
+    }
+    .AdSummery .tdS1{
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .AdSummery .tdS2{
+        width: 70%;
+        padding-left:20px;
+        color:rgba(0,0,0,0.6);
+    }
+    .AdSummery .tdS2:before{
+        content:":";
+    }
 	.btn-inactive{
 		background:#9f719e;
 		color:rgba(255,255,255,0.3);
@@ -1933,7 +1973,10 @@ label:hover:before {
 		font-weight:100;
 		font-size:300%;
 		color:#915e94;
-		padding:20px 60px 0px 60px;
+		padding:20px 0px 0px 0px;
+        margin:0px 0px 0px 5%;
+        border-bottom:solid 1px rgba(0,0,0,0.1);
+        width:90%;
 	}
 	.w4-c-sec-3{
 		display:block;
