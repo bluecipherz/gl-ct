@@ -114,12 +114,17 @@
                         <div class="GridHSettings">
                             <div class="adm-inp-set">
                                 <div class="adm-subhead">Rows</div>
-                                <input type="number" name="GridRows" placeholder="Rows" value="1" min="1" max="5" class="GridRows adm-inp-numb"/>
+                                <input type="number" name="GridRows" placeholder="Rows" value="1" min="1" max="2" class="GridRows adm-inp-numb"/>
                             </div>
                             <div class="adm-inp-set">
                                 <div class="adm-subhead">Cells</div>
                                 <input type="number" name="GridCells" placeholder="Cells" value="1" min="1" max="5"  class="GridCells adm-inp-numb"/>
                             </div>
+                            <button class="adm-nav-btns edit-ok" style="display:none;">Ok</button>
+                        </div>
+                        <div class="GridHAfter" style="display:none">
+                            <button class="adm-nav-btns edit-grid">Edit</button>
+                            <button class="adm-nav-btns save-grid">Save</button>
                         </div>
                     </div>
                     <div class="GridCont">

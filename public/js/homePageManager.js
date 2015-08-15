@@ -13,12 +13,43 @@ jQuery(document).ready(function() {
         gridID = gridId;
     }
 
-    $('#adm-homeInner .GenTemp').click(function(){
+    $("#adm-homeInner .GenTemp").click(function(){
         var rows = 1;
         var cells = 3;
         //generateTemplate($(this),rows,cells);
         generateTemplate($(this));
+        saveMode($(this));
     });
+
+    $('.GridHAfter .edit-grid').click(function() {
+        editMode($(this).parent().parent());
+    });
+
+    $('.GridHAfter .edit-ok').click(function() {
+        saveMode($(this).parent().parent());
+    });
+
+    /**
+     * shows the col, row controls on the head
+     * @param .GenTemp
+     */
+    function editMode(head) {
+        head.find('.GridHSettings').show();
+        head.find('.GridHAfter').hide();
+        head.find('.GridHSettings .edit-ok').show();
+    }
+
+    /**
+     * hides the col, row controls on the head
+     * @param .edit-grid
+     */
+    function saveMode(head) {
+        $(head).find('.GridHSettings').hide();
+        $(head).find('.GridHAfter').show();
+        //$(head).find('.GridHAfter .edit-grid').click(function() {
+        //    editMode(head);
+        //});
+    }
 
     $("input").bind('keyup mouseup', function () {
         if($(this).hasClass('GInp')){
@@ -32,6 +63,7 @@ jQuery(document).ready(function() {
             var cs = that.parent().parent().parent().find('.GridCells').val();
             that.parent().parent().parent().find('.GridRows').addClass('GInp');
             that.parent().parent().parent().find('.GridCells').addClass('GInp');
+        saveMode(that.parent().parent().parent());
         setTheGround(parent,cs);
         fillBoxes(parent,rs,cs);
     }
