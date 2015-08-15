@@ -2280,7 +2280,7 @@ label:hover:before {
 	padding-top:40px;
 	background:rgba(255,255,255,0.1);
 }
-.adm-login-box > input{
+.adm-login-box  input{
 	display:block;
 	float:left;
 	background:rgba(0,0,0,0.4);
@@ -2293,7 +2293,7 @@ label:hover:before {
 	font-family:Dosis;
 	font-weight:400;
 }
-.adm-login-box > button{
+.adm-login-box  button{
 	display:block;
 	float:left;
 	background:rgba(0,0,0,0.8);
