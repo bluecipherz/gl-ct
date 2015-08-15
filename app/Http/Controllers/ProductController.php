@@ -77,15 +77,15 @@ class ProductController extends Controller {
 //        foreach ($files as $file) {
             $filename = sha1($file->getClientOriginalName() . time());
             $extension = $file->getClientOriginalExtension();
-            echo $filename . '<br>';
+//            echo $filename . '<br>';
             $product->images()->create([
                 'product_id' => $product->id,
                 'url' => url('/uploads/products/' . $product->id . '/' . $filename . '.' . $extension)
             ]);
             $file->move($dir, $filename . '.' . $extension);
 //        }
-        echo 'ok' ;
-//		return redirect()->back()->with('message', 'Created');
+//        echo 'ok' ;
+		return redirect()->back()->with('message', 'Created');
 	}
 
 	/**

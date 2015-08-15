@@ -71,14 +71,15 @@ class AuthController extends Controller {
 
     public function loginAdmin(Request $request) {
         $credentials = [
+//            'username' => $request->get('username'),
             'email' => $request->get('email'),
             'password' => $request->get('password'),
-            'active' => true
+//            'active' => true
         ];
         if(Auth::admin()->attempt($credentials)) {
             return response('/admin/dashboard');
         } else {
-            throw new LoginException($request);
+            throw new LoginException(response()->json('fail', 422));
         }
     }
 	

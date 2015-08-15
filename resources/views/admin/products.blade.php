@@ -30,6 +30,7 @@
 								</tr>
 								@endforelse
 							</table>
+                            {!! $products->render() !!}
 						</div>
 					</div>
 				</div>

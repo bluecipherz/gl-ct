@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>GlobexCart - @yield('title') </title>
 
 	@include('layouts.csslinks')
@@ -59,9 +60,9 @@
 
     <!-- Scripts -->
 
+	{{--@include('layouts.jslinks')--}}
     {!! HTML::script('js/jquery-2.1.4.js') !!}
     {!! HTML::script('js/dashboard.js') !!}
-	@include('layouts.jslinks')
-	
+
 </body>
 </html>

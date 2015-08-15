@@ -10,7 +10,7 @@
     @if($category->getLevel() == 0)
         <!-- Main Category -->
 
-            @foreach($category->children->all() as $sub)
+            @foreach($category->children()->get() as $sub)
                 <div class="boxx">
                     <div class="b-untouchable s-title">
 
@@ -18,7 +18,7 @@
 
                     </div>
                     <div class="s-container">
-                        @foreach( $sub->children->all() as $post)
+                        @foreach( $sub->children()->get() as $post)
                             <span class="cat-post">
                                 <a href="{{ route('categories.show', $post->id) }}">{{ $post->name }} </a>
                             </span>

@@ -30,6 +30,7 @@ use App\Shipment;
 use App\Shipper;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Input;
 
 class AdminPanelController extends Controller {
 
@@ -53,20 +54,33 @@ class AdminPanelController extends Controller {
             ->with('cats', $categories->all(['name']));
     }
 
-    public function categories($category = null)
+    public function categories()
     {
-        $levels = ['Main Category', 'Subcategory', 'Postsub Category'];
-        $_category = Category::find($category);
-        if(isset($category)) {
-            $cats = Category::find($category)->children()->get();
-        } else {
-            $cats = Category::roots()->get();
+        $view = Input::get('view');
+        if ($view == null) {
+            return redirect('/admin/categories?view=hierarchy');
         }
+        $levels = ['Main Category', 'Subcategory', 'Post Sub Category'];
+        $types = ['main-categories', 'sub-categories', 'post-sub-categories'];
+        $views = ['Hierarchy', 'Type', 'All'];
+        $cats = Category::roots()->get();
+        $category = Input::get('category');
+        $_category = Category::find($category);
+        if($view == 'type') {
+            $type = Input::get('type');
+            if($type == null) $type = $types[0];
+            $cats = Category::whereDepth(array_keys($types, $type))->paginate(25)->appends(Input::except('page'));
+        } else if($view == 'all') {
+            $cats = Category::paginate(25)->appends(Input::except('page'));
+        }
+
         return view('admin.categories')
-            ->with('category', $_category)
-            ->with('cats', $cats)
-            ->with('allcats', Category::with('parent'))
-            ->with('levels', $levels);
+            ->with('category', $_category) // needed for 'hierarchy' view
+            ->with('cats', $cats) // needed for all views
+            ->with('levels', $levels) // needed for all views
+            ->with('view', $view) // needed for all views
+            ->with('views', $views) // no need
+            ->with('types', $types); // only for 'type' view
     }
 
     public function advertisements(AdvertisementRepository $advertisements)

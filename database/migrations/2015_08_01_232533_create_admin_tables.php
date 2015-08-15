@@ -17,7 +17,8 @@ class CreateAdminTables extends Migration {
         {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
+            $table->string('username')->unique();
             $table->string('password', 60);
             $table->boolean('active')->default(true);
             $table->rememberToken();
