@@ -179,7 +179,7 @@
                                     <div> Chassis no: </div>
                                 </div>
                                 <div class="w2cell2">
-                                    <input type="text" name="chassisNumber" placeholder="Chassis number" class="cust-input w2-inp-f in-larg" id="adChassis"/>
+                                    <input type="text" name="chassis_no" placeholder="Chassis number" class="cust-input w2-inp-f in-larg" id="adChassis"/>
                                 </div>
                             </div>
                             <div class="w2row">

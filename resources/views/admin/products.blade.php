@@ -1,6 +1,3 @@
-@extends('layouts.admin')
-
-@section('content')
 			<div>
 				<div class="col-lg-12 col-md-12">
 					<div class="panel panel-default">
@@ -68,7 +65,7 @@
                                 <div class="form-group">
                                     {!! Form::label('category_id', 'Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
-                                        {!! Form::select('category_id', $cats->lists('name'), null, ['class' => 'form-control']) !!}
+                                        {!! Form::select('category_id', $cats, null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -87,4 +84,3 @@
 					</div>
 				</div>
 			</div>
-@stop

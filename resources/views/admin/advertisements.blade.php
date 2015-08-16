@@ -1,6 +1,3 @@
-@extends('layouts.admin')
-
-@section('content')
 <div class="">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -45,7 +42,7 @@
                 </tr>
                 @endforelse
             </table>
+            {!! $advertisements->render() !!}
         </div>
     </div>
 </div>
-@stop

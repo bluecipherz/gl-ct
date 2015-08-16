@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>GlobexCart - @yield('title') </title>
+	<title>GlobexCart - {{ $pageTitle }} </title>
 
 	@include('layouts.csslinks')
 	<!-- Fonts 
@@ -46,12 +46,6 @@
 
             </div>
             <div class="adm-cont" >
-                @forelse($errors->all as $error)
-                    <div class="col-lg-12 col-md-12">
-                        <div class="alert alert-danger">{{ $error }}<span class="close"></span></div>
-                    </div>
-                @empty
-                @endforelse
                 @yield('content')
             </div>
         </div>
@@ -62,6 +56,8 @@
 
 	{{--@include('layouts.jslinks')--}}
     {!! HTML::script('js/jquery-2.1.4.js') !!}
+    {!! HTML::script('js/app.js') !!}
+    {{--{!! HTML::script('js/category.js') !!}--}}
     {!! HTML::script('js/dashboard.js') !!}
     {!! HTML::script('js/systemFunction.js') !!}
     {!! HTML::script('js/homePageManager.js') !!}

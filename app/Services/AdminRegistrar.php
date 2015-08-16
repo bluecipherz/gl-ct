@@ -9,6 +9,8 @@
 namespace App\Services;
 
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Validator;
+use App\Admin;
 
 class AdminRegistrar implements RegistrarContract {
 
@@ -21,8 +23,8 @@ class AdminRegistrar implements RegistrarContract {
     public function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => 'required|email|max:255|unique:customers',
-            'password' => 'required|confirmed|min:6',
+            'username' => 'required|max:255|unique:admins',
+            'password' => 'required|confirmed|min:8',
         ]);
     }
 
@@ -35,7 +37,7 @@ class AdminRegistrar implements RegistrarContract {
     public function create(array $data)
     {
         return Admin::create([
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }

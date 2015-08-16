@@ -28,8 +28,12 @@
                             <td>{{ $motor->color }}</td>
                         </tr>
                     @empty
+                        <tr>
+                            <td colspan="8">No motors</td>
+                        </tr>
                     @endforelse
                 </table>
+                <hr>
                 <div class="col-md-6 col-lg-6">
                     {!! Form::open(['url' => 'motors', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
                     <div class="form-group">
@@ -48,6 +52,12 @@
                         {!! Form::label('stock', 'Stock', ['class' => 'col-md-4 col-lg-4 control-label']) !!}
                         <div class="col-md-8 col-lg-8">
                             {!! Form::text('stock', '', ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('brand', 'Brand', ['class' => 'col-md-4 col-lg-4 control-label']) !!}
+                        <div class="col-md-8 col-lg-8">
+                            {!! Form::text('brand', '', ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">

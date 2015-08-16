@@ -30,7 +30,7 @@ class AdRequest extends Request {
             'name' => 'required',
             'pin' => 'required',
             'address' => 'required',
-            'state' => 'required',
+//            'state' => 'required',
             'city' => 'required',
             'phone' => 'required'
 		];

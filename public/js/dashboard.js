@@ -4,70 +4,26 @@
 jQuery(document).ready(function() {
     //if(window.location.pathname.startsWith('/admin/categories')) {
 
-    /*
-     * Configure all ajax requests to use CSRF token
-     * This applies to all pages.
-     */
-    $.ajaxSetup({
-        headers : {
-            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-    var cats;
+    //$.loadScript('/js/category.js', function() {
+    //    console.log('success');
+    //});
 
-    var Categories = function(cats) {
-        this.cats = cats;
-        this.getCats = function(level) {
-            if(level != undefined) {
-                if(level == -1) {
-                    return [{id: -1,name: 'No parent'}];
-                }
-                return this.cats.filter(function(cat) {
-                    return cat.depth == level;
-                });
-            }
-            return cats;
-        };
-        this.find = function(i) {
-            this.cat = this.cats.filter(function(cat) {
-                return cat.id == i;
-            })[0];
-            return this;
-        };
-        this.parent = function() {
-            if(this.cat.depth > 0) {
-                var cat_id = this.cat.id;
-                this.cat = this.cats.filter(function (cat) {
-                    return cat.id == cat_id;
-                })[0];
-                return this;
-            }
-        };
-        this.children = function() {
-            if(this.cat.depth < 2) {
-                var cat_id = this.cat.id;
-                return this.cats.filter(function(cat) {
-                    return cat.parent_id == cat_id;
-                });
-            }
-        };
-        this.get = function() {
-            return this.cat;
-        };
-    };
 
-    console.log('ready sir');
+    console.log('[dashboard.js] ready sir');
         $.get('/categories/all')
             .success(function(data) {
                 //console.log('fetching categories : ' + data)
-                cats = new Categories(data);
+                cats = data;
                 var level = $("#category_level").val();
-                var level_cats = cats.getCats(level - 1);
+                var level_cats = getCats(level - 1);
+                setCats(data);
+                var cat = new Category(1);
+                console.log('[dashboard.js] ' + cat);
                 setupParentList(level_cats);
             })
             .fail(function(data) {
-                console.log('error fetching categories')
+                console.log('[dashboard.js] error fetching categories')
             });
     //}
 
@@ -80,7 +36,7 @@ jQuery(document).ready(function() {
 
     $("#category_level").change(function() {
         var level = $(this).val();
-        var level_cats = cats.getCats(level - 1);
+        var level_cats = getCats(level - 1);
         setupParentList(level_cats);
     });
 
@@ -93,10 +49,10 @@ jQuery(document).ready(function() {
             .success(function() {
                 td.empty();
                 $('<a/>').attr('href', url).text(input.val()).appendTo(td);
-                console.log('updated cat');
+                console.log('[dashboard.js] updated cat');
             })
             .fail(function(data) {
-                console.log(data.responseText);
+                console.log('[dashboard.js] ' + data.responseText);
                 //console.log('error updating cat');
             })
     };

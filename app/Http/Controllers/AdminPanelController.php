@@ -44,14 +44,15 @@ class AdminPanelController extends Controller {
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.main');
     }
 
     public function products(ProductRepository $products, CategoryRepository $categories)
     {
-        return view('admin.products')
+        // array_flip() = exchange keys and values in an array
+        return view('admin.main')
             ->with('products', $products->paginate())
-            ->with('cats', $categories->all(['name']));
+            ->with('cats', Category::whereDepth(2)->lists('name', 'id'));
     }
 
     public function categories()
@@ -69,12 +70,14 @@ class AdminPanelController extends Controller {
         if($view == 'type') {
             $type = Input::get('type');
             if($type == null) $type = $types[0];
+            // array_keys() = get keys from value
+            // appends() = add 'get' variables (to url)
             $cats = Category::whereDepth(array_keys($types, $type))->paginate(25)->appends(Input::except('page'));
         } else if($view == 'all') {
             $cats = Category::paginate(25)->appends(Input::except('page'));
         }
 
-        return view('admin.categories')
+        return view('admin.main')
             ->with('category', $_category) // needed for 'hierarchy' view
             ->with('cats', $cats) // needed for all views
             ->with('levels', $levels) // needed for all views
@@ -85,72 +88,62 @@ class AdminPanelController extends Controller {
 
     public function advertisements(AdvertisementRepository $advertisements)
     {
-        return view('admin.advertisements')
-            ->with('advertisements', $advertisements->all());
+        return view('admin.main')
+            ->with('advertisements', $advertisements->paginate());
     }
     public function homePage(ProductRepository $products, CategoryRepository $categories)
     {
-        return view('admin.homepage')
+        return view('admin.main')
             ->with('products', $products->paginate())
             ->with('cats', $categories->all(['name']));
     }
 
     public function orders(OrderRepository $orders, OrderItemRepository $orderItems)
     {
-        return view('admin.orders')
+        return view('admin.main')
             ->with('orders', $orders->all());
     }
 
     public function transactions(TransactionRepository $transactions)
     {
-        return view('admin.transactions')
+        return view('admin.main')
             ->with('transactions', $transactions->all());
     }
 
     public function customers(CustomerRepository $customers)
     {
-        return view('admin.customers')
+        return view('admin.main')
             ->with('customers', $customers->all());
     }
 
     public function priceRules(PriceRuleRepository $priceRules)
     {
-        return view('admin.price_rules')
+        return view('admin.main')
             ->with('price_rules', $priceRules->all());
     }
 
     public function shipping(ShipperRepository $shippers, ShipmentRepository $shipments)
     {
-        return view('admin.shipping')
+        return view('admin.main')
             ->with('shipments', $shipments->all())
             ->with('shippers', $shippers->all());
     }
 
-    public function preferences()
-    {
-        return view('admin.statistics');
-    }
-
     public function administration(AdminRepository $admins)
     {
-        return view('admin.administration')
+        return view('admin.main')
             ->with('admins', $admins->all())
             ->with('roles', Role::all());
     }
 
-    public function statistics()
-    {
-        return view('admin.statistics');
-    }
-
     public function messages()
     {
-        return view('admin.messages')->with('messages', Message::all());
+        return view('admin.main')->with('messages', Message::all());
     }
 
     public function reports()
     {
-        return view('admin.reports')->with('reports', Report::all());
+        return view('admin.main')->with('reports', Report::all());
     }
 
 }

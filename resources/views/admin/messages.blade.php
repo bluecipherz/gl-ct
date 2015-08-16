@@ -1,6 +1,3 @@
-@extends('layouts.admin')
-
-@section('content')
     <div class="col-md-12 col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -30,4 +27,3 @@
             </div>
         </div>
     </div>
-@stop

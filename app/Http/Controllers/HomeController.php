@@ -2,6 +2,7 @@
 
 use App\Advertisement;
 use App\Message;
+use App\Motor;
 use App\Product;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
@@ -67,14 +68,16 @@ class HomeController extends Controller {
         $q = Input::get('q');
         if ($q) {
             $searchTerms = explode(' ', $q);
-            $productQuery = Product::with('images')->select('id', 'title', 'description', 'price', DB::raw('1 as type'));
-            $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('0 as type'));
+            $productQuery = Product::with('images')->select('id', 'title', 'description', 'price', DB::raw('0 as type'));
+            $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('1 as type'));
+            $motorQuery = Motor::with('images')->select('id', 'title', 'description','price', DB::raw('2 as type'));
             foreach ($searchTerms as $term) {
                 $adQuery->where('title', 'LIKE', '%' . $term . '%');
                 $productQuery->where('title', 'LIKE', '%' . $term . '%');
+                $motorQuery->where('title', 'LIKE', '%' . $term . '%');
             }
-            $results = $adQuery->get()->merge($productQuery->get());
-            return view('pages.search', ['products' => $results, 'categories' => $categories]);
+            $results = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
+            return view('pages.search', ['products' => $results, 'categories' => $categories->getCats()]);
         }
     }
 

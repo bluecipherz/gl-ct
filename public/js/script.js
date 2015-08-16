@@ -1,15 +1,4 @@
 jQuery(document).ready(function() {
-
-
-	/*
-	 * Configure all ajax requests to use CSRF token
-	 * This applies to all pages.
-	 */
-	$.ajaxSetup({
-		headers : {
-			'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-		}
-	});
 	
 	$(".catList > div").hover(
 		function(){
@@ -407,35 +396,13 @@ jQuery(document).ready(function() {
 	// END HISTORY API
 	
     //if(window.location.pathname.startsWith('/admin')) {
-        $.post('/products/all-products').success(function(response) {
-            $("#search_q").autocomplete({
-                source : response
-            });
+        $.post('/products/all').success(function(response) {
+            //$("#search_q").autocomplete({
+            //    source : response
+            //});
         });
     //}
 
-	$("#category").change(function() {
-		var category_id = $(this).val();
-		$.get('/category/sub-categories', {category : category_id}).success(function(response) {
-			var select = $("#sub_category");
-			select.empty();
-			$.each(response, function(key, value) {
-				select.append($("<option>").attr("value", key).text(value));
-			});
-		});
-	});
-	
-	$("#sub_category").change(function() {
-		var category_id = $(this).val();
-		$.get('/category/post-sub-cats', {sub_category : category_id}).success(function(response) {
-			var select = $("#post_sub_cat");
-			select.empty();
-			$.each(response, function(key, value) {
-				select.append($("<option>").attr("value", key).text(value));
-			});
-		});
-	});
-	
 	//ADMIN
 	
 	$(" .cust-list-group > li > a").click(function(){
@@ -692,6 +659,13 @@ jQuery(document).ready(function() {
             'city' : $('#customerCity').val(),
             'phone' : $('#customerPhone').val()
         };
+
+        var cat = new Category($('#adCatId').val());
+
+        if(cat.isDescendantOf(1)) { // motors
+            console.log('[script.js] motors post category detected');
+        }
+
         //console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {
             console.log('success ' + data.responseText);
@@ -770,6 +744,13 @@ jQuery(document).ready(function() {
         }
     };
 
-
+    $.get('/categories/all')
+        .success(function(data) {
+            //console.log('[script.js] fetching categories : ' + data)
+            setCats(data);
+        })
+        .fail(function(data) {
+            console.log('[script.js] error fetching categories')
+        });
 
 });

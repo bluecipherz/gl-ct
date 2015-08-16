@@ -14,4 +14,9 @@ class Motor extends Product {
 
     protected $guarded = ["id"];
 
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage', 'product_id');
+    }
+
 }

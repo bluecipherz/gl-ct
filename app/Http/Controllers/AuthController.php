@@ -27,28 +27,52 @@ class AuthController extends Controller {
         $this->admin = $admin;
         $this->customer = $customer;
     }
-	
-	public function registerCustomer(Request $request) {
-		$validator =  $this->customer->validator($request->all());
-		if($validator->fails()) {
-			$this->throwValidationException(
-				$request, $validator
-			);
-		}
+
+    public function registerCustomer(Request $request) {
+        $validator =  $this->customer->validator($request->all());
+        if($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
         $user = $this->customer->create([
             'email' => $request->get('email'),
             'password' => $request->get('password'),
         ]);
-		
-		Auth::customer()->login($user);
+
+        Auth::customer()->login($user);
 
         if ($request->ajax()) {
             return view('auth.partials.logged');
         } else {
             return redirect()->back()->withMessage('Account Created');
         }
-	}
+    }
+
+    public function registerAdmin(Request $request) {
+        $validator =  $this->admin->validator($request->all());
+        if($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $admin = $this->admin->create([
+            'username' => $request->get('username'),
+            'password' => $request->get('password'),
+        ]);
+        Auth::admin()->login($admin);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'result' => 'success',
+                'message' => 'Registered'
+            ]);
+        } else {
+            return redirect()->back()->withMessage('Account Created');
+        }
+    }
 
 	public function loginCustomer(Request $request) {
 		$credentials = [
@@ -71,15 +95,15 @@ class AuthController extends Controller {
 
     public function loginAdmin(Request $request) {
         $credentials = [
-//            'username' => $request->get('username'),
-            'email' => $request->get('email'),
+            'username' => $request->get('username'),
+//            'email' => $request->get('email'),
             'password' => $request->get('password'),
 //            'active' => true
         ];
         if(Auth::admin()->attempt($credentials)) {
-            return response('/admin/dashboard');
+            return redirect()->intended('/admin/dashboard');
         } else {
-            throw new LoginException(response()->json('fail', 422));
+            $this->throwLoginException($request);
         }
     }
 	

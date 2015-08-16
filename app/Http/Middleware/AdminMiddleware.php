@@ -15,11 +15,8 @@ class AdminMiddleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if(Auth::user()) {
-            $user = Auth::user();
-            if($user instanceof Admin) {
-                return $next($request);
-            }
+		if(Auth::admin()->check()) {
+            return $next($request);
         }
         abort(404);
 	}

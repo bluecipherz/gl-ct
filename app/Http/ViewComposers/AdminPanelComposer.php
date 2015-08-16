@@ -23,6 +23,9 @@ class AdminPanelComposer {
 
     public function compose(View $view)
     {
+        // array_column = get column as array from a set of arrays,
+        // the third parameter specifies the keys
+        // array_search() get key from value
         $title = array_search(Request::path(), array_column($this->pages, 'request', 'title'));
         $view->with('pageTitle', $title);
     }

@@ -11,6 +11,7 @@
 |
 */
 
+use App\Repositories\AdminPanelRepository;
 use Illuminate\Http\Request;
 
 Route::get('/', 'HomeController@index');
@@ -28,6 +29,15 @@ Route::post('/auth/register', 'AuthController@registerCustomer');
 Route::post('/auth/login', 'AuthController@loginCustomer');
 Route::get('/auth/logout', 'AuthController@logoutCustomer');
 
+Route::get('admin-x965', function() {
+    return view('admin.login');
+});
+
+Route::post(sha1('admin-login'), 'AuthController@loginAdmin');
+
+Route::post('admin', 'AuthController@registerAdmin');
+
+Route::post(sha1('admin-register'), 'AuthController@registerAdmin');
 
 Route::get('login', function() {
     return view('pages.login');
@@ -58,11 +68,6 @@ Route::get('editprofile', function() {
 	return view('pages.editprofile');
 });
 
-Route::get('admin-x965', function() {
-	return view('admin.login');
-});
-
-Route::post('admin-x965', 'AuthController@loginAdmin');
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });
@@ -206,6 +211,7 @@ Route::post('motors', function () {
         'title' => Input::get('title'),
         'price' => Input::get('price'),
         'stock' => Input::get('stock'),
+        'brand' => Input::get('brand'),
         'description' => Input::get('description'),
         'category_id' => Input::get('category_id'),
         'chassis_no' => Input::get('chassis_no'),
@@ -214,6 +220,8 @@ Route::post('motors', function () {
     ]);
     return redirect()->back();
 });
-Route::get('motors_', function () {
-
+Route::get('shitzu', function (AdminPanelRepository $repository) {
+//    return response()->json(array_search('admin/products', array_column($repository->getPages(), 'request', 'title')));
+//    return response()->json(array_keys(array_column($repository->getPages(), 'request', 'title'), 'admin/products'));
+    return action('AuthController@registerAdmin');
 });

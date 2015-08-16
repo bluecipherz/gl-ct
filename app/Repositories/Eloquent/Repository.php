@@ -120,14 +120,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
     }
 
     /**
-     * @return mixed
-     */
-    public function count()
-    {
-        return $this->model->count();
-    }
-
-    /**
      * @return Model
      * @throws RepositoryException
      */

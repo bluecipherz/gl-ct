@@ -45,15 +45,17 @@ class AdvertisementController extends Controller {
 		$attributes = [
             'customer_id' => Auth::customer()->get()->id,
         ];
+        // array_merge = add two arrays together
         $ad = Advertisement::create(array_merge($attributes, $request->except('_token')));
         $source = public_path() . '/uploads/temp/' . Session::getId() . '/';
         $destination = public_path() . '/uploads/ads/' . $ad->id . '/';
         if(!file_exists($destination)) {
-            mkdir($destination, 0777, true);
+            mkdir($destination, 0777, true); // create directory if doesn't exists
         }
-        $files = scandir($source);
+        $files = scandir($source); // list files in directory
         $delete = [];
         foreach ($files as $file) {
+            // in_array() = check for values in array
             if(in_array($file, ['.', '..'])) continue;
             if (copy($source . $file, $destination . $file)) {
                 $delete[] = $source . $file;
@@ -65,7 +67,7 @@ class AdvertisementController extends Controller {
             }
         }
         foreach ($delete as $file) {
-            unlink($file);
+            unlink($file); // delete file
         }
         return response()->json('success');
 	}
