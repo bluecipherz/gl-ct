@@ -27,7 +27,26 @@ class CreateProductTable extends Migration {
             $table->timestamps();
             $table->softDeletes();
         });
-	}
+
+        Schema::create('motors', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->string('title');
+            $table->integer('price');
+            $table->integer('stock');
+            $table->text('description');
+            $table->string('brand');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->integer('price_rule_id')->unsigned()->nullable();
+            $table->foreign('price_rule_id')->references('id')->on('price_rules')->onDelete('cascade');
+            $table->text('chassis_no');
+            $table->text('model');
+            $table->text('color');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
 
 	/**
 	 * Reverse the migrations.
@@ -37,6 +56,7 @@ class CreateProductTable extends Migration {
 	public function down()
 	{
         Schema::dropIfExists('products');
+        Schema::dropIfExists('motors');
 	}
 
 }

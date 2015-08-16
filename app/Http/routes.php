@@ -62,7 +62,7 @@ Route::get('admin-x965', function() {
 	return view('admin.login');
 });
 
-Route::post('admin-x965', 'AuthController@adminLogin');
+Route::post('admin-x965', 'AuthController@loginAdmin');
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });
@@ -192,4 +192,28 @@ Route::get('slurp', function(App\Repositories\HomeRepository $c) {
 
 Route::get('ajax', function () {
     return 'ookay';
+});
+
+Route::get('motors', function () {
+    $data = [
+        'cats' => App\Category::whereDepth(2)->lists('name', 'id'),
+        'motors' => App\Motor::all()
+    ];
+    return view('temp.motors', $data);
+});
+Route::post('motors', function () {
+    App\Motor::create([
+        'title' => Input::get('title'),
+        'price' => Input::get('price'),
+        'stock' => Input::get('stock'),
+        'description' => Input::get('description'),
+        'category_id' => Input::get('category_id'),
+        'chassis_no' => Input::get('chassis_no'),
+        'model' => Input::get('model'),
+        'color' => Input::get('color')
+    ]);
+    return redirect()->back();
+});
+Route::get('motors_', function () {
+
 });
