@@ -6,7 +6,7 @@ use View;
 use App\User;
 use App\Admin;
 use App\Category;
-use App\Product;
+use App\Globex;
 use App\Order;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

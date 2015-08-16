@@ -24,17 +24,17 @@
                     <tr>
                         <td>{{ $ad->id }}</td>
                         <td>{{ $ad->customer_id }}</td>
-                        <td>{{ $ad->category_id }}</td>
-                        <td>{{ $ad->title }}</td>
-                        <td>{{ str_limit($ad->description, 50) }}</td>
-                        <td>{{ $ad->price }}</td>
+                        <td>{{ $ad->product->category_id }}</td>
+                        <td>{{ $ad->product->title }}</td>
+                        <td>{{ str_limit($ad->product->description, 50) }}</td>
+                        <td>{{ $ad->product->price }}</td>
                         <td>{{ $ad->name }}</td>
                         <td>{{ $ad->pin }}</td>
                         <td>{{ $ad->address }}</td>
                         <td>{{ $ad->state }}</td>
                         <td>{{ $ad->city }}</td>
                         <td>{{ $ad->phone }}</td>
-                        <td>{{ $ad->images()->count() }}</td>
+                        <td>{{ $ad->product->images->count() }}</td>
                     </tr>
                 @empty
                 <tr>

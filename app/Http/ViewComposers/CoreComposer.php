@@ -8,8 +8,9 @@
 
 namespace App\Http\ViewComposers;
 
-use Illuminate\View\View;
 use App\Product;
+use Illuminate\View\View;
+use App\Globex;
 use App\Advertisement;
 use App\Motor;
 use DB;
@@ -20,10 +21,11 @@ class CoreComposer {
 
     public function __construct()
     {
-        $productQuery = Product::with('images')->select('id', 'title', 'description', 'price', DB::raw('0 as type'));
-        $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('1 as type'));
-        $motorQuery = Motor::with('images')->select('id', 'title', 'description','price', DB::raw('2 as type'));
-        $this->products = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
+//        $productQuery = Globex::with('images')->select('id', 'title', 'description', 'price', DB::raw('0 as type'));
+//        $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('1 as type'));
+//        $motorQuery = Motor::with('images')->select('id', 'title', 'description','price', DB::raw('2 as type'));
+//        $this->products = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
+        $this->products = Product::all();
     }
 
     public function compose(View $view)

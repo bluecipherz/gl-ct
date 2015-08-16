@@ -12,18 +12,20 @@
 									<th>Price</th>
 									<th>Description</th>
 									<th>Stock</th>
+									<th>Images</th>
 								</tr>
 								@forelse($products as $product)
 								<tr>
-									<td>{{ $product->title }}</td>
-									<td>{{ $product->brand }}</td>
-									<td><span class="glyphicon glyphicon-usd"></span> {{ $product->price }}</td>
-									<td>{{ str_limit($product->description, 50) }}</td>
+									<td>{{ $product->product->title }}</td>
+									<td>{{ $product->product->brand }}</td>
+									<td><span class="glyphicon glyphicon-usd"></span> {{ $product->product->price }}</td>
+									<td>{{ str_limit($product->product->description, 50) }}</td>
 									<td>{{ $product->stock }}</td>
+                                    <td>{{ $product->product->images->count() }}</td>
 								</tr>
 								@empty
 								<tr>
-									<td colspan="5">No products</td>
+									<td colspan="6">No products</td>
 								</tr>
 								@endforelse
 							</table>
@@ -67,6 +69,12 @@
                                     {!! Form::label('price', 'Price', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
                                         {!! Form::text('price', null, ['class' => 'form-control', 'required' => 'true']) !!}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('description', 'Description', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+                                    <div class="col-lg-6 col-md-6">
+                                        {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'true']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group">

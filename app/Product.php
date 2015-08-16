@@ -1,40 +1,37 @@
 <?php namespace App;
+/**
+ * Created by PhpStorm.
+ * User: BCz Workstation #01
+ * Date: 8/16/2015
+ * Time: 12:15 PM
+ */
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model {
+
+class Product extends Model
+{
 
     use SoftDeletes;
-    
-    protected $table = "products";
 
-	protected $guarded = ["id"];
+    protected $table = 'products';
 
+    protected $guarded = ['id'];
 
-    public function orders()
+    public function images()
     {
-        return $this->belongsToMany("Order", "order_item");
-    }
-
-    public function orderItems()
-    {
-        return $this->hasMany("OrderItem");
+        return $this->hasMany('App\Image');
     }
 
     public function category()
     {
-		return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category');
     }
-	
-	public function images()
-	{
-		return $this->hasMany('App\ProductImage');
-	}
 
-    public function priceRule()
+    public function producible()
     {
-        return $this->hasOne('App\PriceRule');
+        return $this->morphTo();
     }
 
 }

@@ -12,22 +12,13 @@ class CreateImagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('reseller_images', function(Blueprint $table)
-		{
-			$table->increments('id');
-            $table->unsignedInteger('customer_id');
-			$table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->unsignedInteger('advertisement_id');
-			$table->foreign('advertisement_id')->references('id')->on('advertisements')->onDelete('cascade');
-            $table->text('url');
-			$table->timestamps();
-            $table->softDeletes();
-		});
-		Schema::create('product_images', function(Blueprint $table)
+		Schema::create('images', function(Blueprint $table)
 		{
 			$table->increments('id');
             $table->unsignedInteger('product_id');
-//			$table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+//            $table->unsignedInteger('imageable_id');
+//            $table->string('imageable_type');
             $table->text('url');
 			$table->timestamps();
             $table->softDeletes();
@@ -41,8 +32,7 @@ class CreateImagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('reseller_images');
-		Schema::dropIfExists('product_images');
+		Schema::dropIfExists('images');
 	}
 
 }

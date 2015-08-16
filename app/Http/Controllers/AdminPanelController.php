@@ -13,7 +13,7 @@ use App\Role;
 use App\Order;
 use App\OrderItem;
 use App\PriceRule;
-use App\Product;
+use App\Globex;
 use App\Repositories\AdminPanelRepository;
 use App\Repositories\AdminRepository;
 use App\Repositories\AdvertisementRepository;
@@ -51,7 +51,7 @@ class AdminPanelController extends Controller {
     {
         // array_flip() = exchange keys and values in an array
         return view('admin.main')
-            ->with('products', $products->paginate())
+            ->with('products', Globex::paginate())
             ->with('cats', Category::whereDepth(2)->lists('name', 'id'));
     }
 
@@ -89,7 +89,7 @@ class AdminPanelController extends Controller {
     public function advertisements(AdvertisementRepository $advertisements)
     {
         return view('admin.main')
-            ->with('advertisements', $advertisements->paginate());
+            ->with('advertisements', Advertisement::paginate());
     }
     public function homePage(ProductRepository $products, CategoryRepository $categories)
     {

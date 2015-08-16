@@ -11,7 +11,7 @@ class OrderItemTableSeeder extends Seeder {
 		
 		for($i = 0; $i < 300; $i++)
 		{
-            $product = App\Product::find(rand(1, 1000));
+            $product = App\Globex::find(rand(1, 1000));
 
 			App\OrderItem::create([
 				'order_id' => rand(1, 100),
