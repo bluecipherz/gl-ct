@@ -105,8 +105,11 @@
 
                 <div class='GridOuter' id="baseGrid">
                     <div class="Gridhead">
-                        <div class="GridHName">
-                            Grid name
+                        <div class="GridheadInner">
+                            <div class="GridHName">
+                                <span>Grid name</span>
+                            </div>
+                            <div><input type="text" name="gridTitle" place holder="Title"/></div>
                         </div>
                         <div class="GridHSettings">
                             <div class="adm-inp-set">

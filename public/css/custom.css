@@ -1064,8 +1064,21 @@ label:hover:before {
 	padding : 15px;
 	float : left;
 	width : 100%;
+    min-height:500px;
 }
-
+.adm-inp-adder{
+     display:block;
+     float:left;
+     height:30px;
+     width:30px;
+     background:rgba(0,0,0,0.2);
+     border-radius:5px;
+     padding:5px 0 0 10px;
+ }
+.adm-inp-adder:hover{
+    cursor:pointer;
+    background:#4aa3df;
+}
 .productCont {
 	width : 236.3px;
 	height : 265px;
@@ -2254,7 +2267,9 @@ label:hover:before {
 }
 
 /* ADMIN */
-
+.adm-inp-padding{
+    margin-top:10px;
+}
 .adm-pag-bg{
 	display:block;
 	float:left;

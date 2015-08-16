@@ -80,7 +80,11 @@ class AdvertisementController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $data = [
+            'product' => Advertisement::find($id),
+            'type' => 0
+        ];
+        return view('pages.product.show', $data);
 	}
 
 	/**

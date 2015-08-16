@@ -6,7 +6,7 @@
 .pro-imgOuter,.pro-detailsOuter{
     display:inline-block;
     float:left;
-    min-height:400px;
+    min-height:200px;
     width:600px;
     background:#fff;
     box-shadow:0 0 5px rgba(0,0,0,0.2);
@@ -32,6 +32,10 @@
 .pro-imgSet{
     height:400px;
     overflow:hidden;
+    display:table-cell;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
 }
 .pro-img{
     display:none;
@@ -64,7 +68,7 @@
     border:1px solid #19a6f7;
 }
 .pro-imgThumb-act{
-    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    box-shadow: 0 0 3px rgba(0,0,0,0.7);
 }
 .pro-imgThumb > img{
     max-width:100%;
@@ -77,7 +81,24 @@
     min-height:50px;
     padding:10px;
 }
-
+.pro-addDetails  span ,.pro-seller-details span{
+    min-width:80px;
+    padding: 5px;
+    background:rgba(0,0,0,0.1);
+    border-radius:5px;
+    margin-right:10px;
+}
+.pro-addDetails  div ,.pro-seller-details > div{
+    width:100%;
+    padding: 5px;
+    margin:5px;
+    display:block;
+    float:left;
+}
+.pro-seller-details > div > div{
+    width:100%;
+    padding-top: 5px;
+}
 /* details section */
 
 .pro-details{
@@ -87,6 +108,12 @@
     padding:10px;
     margin:5px;
     border:1px solid rgba(0,0,0,0.1);
+}
+.pro-details .p-text{
+    display:block;
+    float:left;
+    padding:10px;
+    color:rgba(0,0,0,0.4);
 }
 .pro-details-price{
     background:#19a6f7;
@@ -103,4 +130,23 @@
     min-height:80px;
     border:1px solid rgba(0,0,0,0.1);
     background:#fff;
+}
+
+
+/* Extra stuff */
+
+.pro-heading{
+    margin:10px 10px 5px 10px;
+    padding-bottom:5px;
+    display:block;
+    float:left;
+    border-bottom:1px solid rgba(0,0,0,0.2);
+    width:calc(100% - 20px );
+    font-size:150%;
+    color:rgba(0,0,0,0.8);
+}
+.pro-relAdsOuter{
+    display:block;
+    float:left;
+    padding:10px;
 }

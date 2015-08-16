@@ -26,4 +26,20 @@ $.loadScript = function(url, callback) {
         success : callback,
         async : true
     });
+
 };
+
+$(document).ready(function(){
+
+    var div = $('<div/>').addClass('col-md-6 col-lg-6 col-md-offset-2 col-lg-offset-2').appendTo($('<div/>').addClass('form-group'));
+    $('<input/>').attr('type', 'file').attr('name', 'images[]').addClass('form-control').appendTo(div);
+
+    $('.adm-inp-adder').click(function(){
+        $('#product_add .form-group:last-child').before(div.parent().clone(true,true));
+    });
+
+    $('.adm-pro-sel-cat-Outer').click(function(){
+        $('.adm-selcat').show();
+    });
+
+});

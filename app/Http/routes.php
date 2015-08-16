@@ -78,7 +78,7 @@ Route::get('privacy-policy', function() { return view('pages.static.privacy-poli
 Route::post('categories/{category}/children', 'CategoryController@children');
 Route::get('categories/all', 'CategoryController@all');
 Route::resource('categories', 'CategoryController');
-Route::resource('advertisements', 'AdvertisementController', ['only' => ['create', 'store']]);
+Route::resource('advertisements', 'AdvertisementController', ['only' => ['create', 'store', 'show']]);
 Route::post('products/all', 'ProductController@all');
 Route::get('products/search', 'ProductController@search');
 Route::resource('products', 'ProductController');

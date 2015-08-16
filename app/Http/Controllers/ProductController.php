@@ -68,13 +68,13 @@ class ProductController extends Controller {
 	public function store(Request $request)
 	{
         $product = Product::create($request->except(['_token', 'images']));
-        $file = Input::file('images');
-//        $files = Input::file('images');
+//        $file = Input::file('images');
+        $files = Input::file('images');
         $dir = public_path() . '/uploads/products/' . $product->id . '/';
         if(!File::exists($dir)) {
             mkdir($dir, 0777, true);
         }
-//        foreach ($files as $file) {
+        foreach ($files as $file) {
             $filename = sha1($file->getClientOriginalName() . time());
             $extension = $file->getClientOriginalExtension();
 //            echo $filename . '<br>';
@@ -83,7 +83,7 @@ class ProductController extends Controller {
                 'url' => url('/uploads/products/' . $product->id . '/' . $filename . '.' . $extension)
             ]);
             $file->move($dir, $filename . '.' . $extension);
-//        }
+        }
 //        echo 'ok' ;
 		return redirect()->back()->with('message', 'Created');
 	}
@@ -96,8 +96,11 @@ class ProductController extends Controller {
 	 */
 	public function show($id)
 	{
-		$product = Product::find($id);
-        return view('pages.product.show',compact('product'));
+        $data = [
+            'product' => Product::find($id),
+            'type' => 1
+        ];
+        return view('pages.product.show', $data);
 	}
 
 	/**

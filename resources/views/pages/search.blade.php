@@ -33,14 +33,14 @@
 				</div>
 			</div>
 			<div class="rulerCont"><hr></div>
-			<div class="category-list"><!-- CHECKBOXES -->
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>
-			</div>
+			{{--<div class="category-list"><!-- CHECKBOXES -->--}}
+				{{--<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>--}}
+				{{--<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>--}}
+				{{--<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>--}}
+				{{--<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>--}}
+				{{--<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>--}}
+				{{--<p><input type="checkbox" class="glob-control" /><label>Category</label>  </p>--}}
+			{{--</div>--}}
 		</div>
 		
 		<div class="content">
@@ -48,27 +48,31 @@
 				<a href="#">Price</a> | <a href="#">Relevance</a> | <a href="#">Discount</a> | <a href="#">Popular</a>
 			</div>
 			<div class="productsCont">
-				@foreach($products as $product)
-				<div class="productCont b-fakeLink">
-					<div class="product-thumbnail">
-						<!-- <img src="" class="" /> -->
+                @if($products->count() < 1)
+                    <span > No results for the search " Keyword " </span>
+                @else
+                    @foreach($products as $product)
+                    <a href="{{ $product->type== 0 ? 'products'.'/'.$product->id : 'advertisements' .'/'.$product->id }}" class="productCont b-fakeLink">
+                        <div class="product-thumbnail">
+                            <!-- <img src="" class="" /> -->
 
-                        {{--{{ 'type:' . $product->type . ',img:' . $product->images->count() }}--}}
-                        @if($product->images->count())
-						<span class="sampleThumb"><img src="{{ $product->images->first()->url }}"></span>
-                        @else
-                        <span class="sampleThumb"><img src="{{ randImg(1) }}"></span>
-                        @endif
-					</div>
-					<div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{ $product->title }}">
-						<h4>{{ str_limit($product->title, 22) }}</h4>
-						<div class="productPrice">{{ $product->price . ' AED' }}</div>
-						<div class="product-desc-small">
-							{{ str_limit($product->description, 60) }}
-						</div>
-					</div>
-				</div>
-				@endforeach
+                            {{--{{ 'type:' . $product->type . ',img:' . $product->images->count() }}--}}
+                            @if($product->images->count())
+                                <span class="sampleThumb"><img src="{{ $product->images->first()->url }}"></span>
+                            @else
+                                <span class="sampleThumb"><img src="{{ asset('img/noImage.jpg') }}"></span>
+                            @endif
+                        </div>
+                        <div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{ $product->title }}">
+                            <h4>{{ str_limit($product->title, 22) }}</h4>
+                            <div class="productPrice">{{ $product->price . ' AED' }}</div>
+                            <div class="product-desc-small">
+                                {{ str_limit($product->description, 60) }}
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                @endif
 			</div>
 			<!--
 			<div class="resellAdFullCont">
