@@ -7,5 +7,6 @@
 <script src="{{ asset('/js/pushNotification.js') }}"></script>
 {!! HTML::script('js/dropzone.js') !!}
 <script src="{{ asset('/js/script.js') }}"></script>
+<script src="{{ asset('/js/app-products.js') }}"></script>
 <script src="{{ asset('/js/static-page.js') }}"></script>
 <script src="{{ asset('/js/awesomplete.min.js') }}"></script>
