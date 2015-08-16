@@ -21,7 +21,7 @@ class Category extends Node {
         // $categories[] = $categories->getKey();
 
         // Get Products
-        return Product::whereIn('category_id', $categories)->get();
+        return Globex::whereIn('category_id', $categories)->get();
     }
 
     public function products()

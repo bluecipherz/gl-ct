@@ -663,7 +663,13 @@ jQuery(document).ready(function() {
         var cat = new Category($('#adCatId').val());
 
         if(cat.isDescendantOf(1)) { // motors
-            console.log('[script.js] motors post category detected');
+            //console.log('[script.js] motors post category detected');
+            attributes.push({
+                'chassis_no' : $("#adChassis").val(),
+                'model' : $("#adModel").val(),
+                'color' : $("#adColor").val(),
+                'doors' : $("#adDoors").val()
+            });
         }
 
         //console.log(attributes);

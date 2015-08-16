@@ -6,17 +6,23 @@
  * Time: 12:50
  */
 
+use Illuminate\Database\Eloquent\Model;
 
+class Motor extends Model {
 
-class Motor extends Product {
-
-    protected $table = "motors";
+    protected $table = "products_motors";
 
     protected $guarded = ["id"];
 
-    public function images()
+    public function advertisments()
     {
-        return $this->hasMany('App\ProductImage', 'product_id');
+        return $this->morphedByMany('App\Advertisement', 'advertisable');
     }
+
+    public function globexs()
+    {
+        return $this->morphedByMany('App\Globex', 'globexable');
+    }
+
 
 }

@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Motor;
+use App\Product;
 use Auth;
 use Session;
 use App\Category;
@@ -45,8 +47,16 @@ class AdvertisementController extends Controller {
 		$attributes = [
             'customer_id' => Auth::customer()->get()->id,
         ];
+        $category = Category::find($request->get('category_id'));
+        if ($category->isDescendantOf(Category::find(1))) { // motors
+            $motor = Motor::create($request->only('chassis_no', 'model', 'color', 'doors'));
+            $ad = $motor->globexs();
+        } else {
+            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'state', 'city', 'phone', 'quantity'])));
+        }
         // array_merge = add two arrays together
-        $ad = Advertisement::create(array_merge($attributes, $request->except('_token')));
+        $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'images']));
+        $ad->product()->save($product);
         $source = public_path() . '/uploads/temp/' . Session::getId() . '/';
         $destination = public_path() . '/uploads/ads/' . $ad->id . '/';
         if(!file_exists($destination)) {
@@ -59,9 +69,13 @@ class AdvertisementController extends Controller {
             if(in_array($file, ['.', '..'])) continue;
             if (copy($source . $file, $destination . $file)) {
                 $delete[] = $source . $file;
+//                $ad->images()->create([
+//                    'customer_id' => Auth::customer()->get()->id,
+//                    'advertisement_id' => $ad->id,
+//                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
+//                ]);
                 $ad->images()->create([
-                    'customer_id' => Auth::customer()->get()->id,
-                    'advertisement_id' => $ad->id,
+                    'product_id' => $product->id,
                     'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
                 ]);
             }

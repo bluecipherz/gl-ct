@@ -60,7 +60,7 @@ Route::get('superdeals', function() {
 });
 
 Route::get('proview', function() {
-    $products = App\Product::all();
+    $products = App\Globex::all();
 	return view('pages.proview', compact('products'));
 });
 
@@ -82,6 +82,7 @@ Route::resource('advertisements', 'AdvertisementController', ['only' => ['create
 Route::post('products/all', 'ProductController@all');
 Route::get('products/search', 'ProductController@search');
 Route::resource('products', 'ProductController');
+//Route::resource('motors', 'MotorController');
 Route::post('resellerimages/all', 'ResellerImageController@all');
 Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store', 'destroy']]);
 
@@ -186,7 +187,7 @@ Route::get('slurp', function(App\Repositories\HomeRepository $c) {
             ->where('id', '>', 100)
             ->select('id', 'title', 'description', 'price', DB::raw('0 as type'))
         ;
-    $products = App\Product::
+    $products = App\Globex::
         with('images')
         ->where('id', '>', 998)
         ->select('id', 'title', 'description', 'price', DB::raw('1 as type'))
@@ -223,5 +224,6 @@ Route::post('motors', function () {
 Route::get('shitzu', function (AdminPanelRepository $repository) {
 //    return response()->json(array_search('admin/products', array_column($repository->getPages(), 'request', 'title')));
 //    return response()->json(array_keys(array_column($repository->getPages(), 'request', 'title'), 'admin/products'));
-    return action('AuthController@registerAdmin');
+//    return action('AuthController@registerAdmin');
+    return response()->json(App\Product::all());
 });

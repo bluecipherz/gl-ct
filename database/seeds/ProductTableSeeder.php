@@ -16,10 +16,10 @@ class ProductTableSeeder extends DatabaseSeeder {
 
 		for($i = 0; $i < 1000; $i++)
 		{
-			App\Product::create([
+			App\Globex::create([
 				'title' => $faker->sentence(rand(1, 3)),
 				'price' => rand(5, 50000),
-                'stock' => rand(0, 100),
+//                'stock' => rand(0, 100),
                 'description' => $faker->sentence(),
                 'brand' => $faker->company,
                 'category_id' => $categories[rand(0, $category_count - 1)]->id,
