@@ -1,3 +1,4 @@
+@include('layouts.randImg')
 @extends('layouts.admin')
 
 @section('content')
@@ -137,7 +138,34 @@
                 <!-- This part is the adbox grid -->
 
                 <a id="gridBox">
-                    Just a Box
+                    <div class="gridSelPro ">
+                        <div class="adm-proText" >Add Product</div>
+                        <div class="adm-proSearch" >
+                            <div class="adm-searchhead">
+                                <input type="text" class="adm-search" placeholder="Search Products " />
+                                <!--<div class="adm-searchClose"> X </div>-->
+                            </div>
+                            <div class="adm-searchSec productsCont">
+
+                                <!-- YOU CAN ADD PRODUCTS TO THIS DIV -->
+
+                                <div class="productCont b-fakeLink">
+                                    <div class="product-thumbnail">
+                                        <span class="sampleThumb"><img src="{{ randImg(1) }}"></span>
+                                    </div>
+                                    <div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="title">
+                                        <h4>Title</h4>
+                                        <div class="productPrice">Price</div>
+                                        <div class="product-desc-small">
+                                            Description
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </a>
 
             </div>

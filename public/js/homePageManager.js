@@ -81,7 +81,7 @@ jQuery(document).ready(function() {
         parent.html('')
         var count = r * c;
         for(i=1; i <= count; i++){
-            parent.append($("#gridBox").clone());
+            parent.append($("#gridBox").clone(true, true));
         }
     }
     function setTheGround(parent,cells){
@@ -98,4 +98,36 @@ jQuery(document).ready(function() {
         e.preventDefault();
     });
 
+
+    // SELECT PRODUCT
+
+    var currentSelector ;
+
+    $('#adm-homeInner .gridSelPro').click(function(){
+        currentSelector = $(this);
+        productAdView(currentSelector);
+    });
+
+    $(window).keydown(function(e){
+        if(e.keyCode == 27) {
+            restorToProductView(currentSelector);
+            echo(currentSelector);
+        }
+    });
+        $('#adm-homeInner .adm-searchClose').click(function(){
+            restorToProductView(currentSelector);
+        });
+
+
+    function productAdView(that){
+        that.addClass('admSelFulView');
+        that.find('.adm-proText').hide();
+        that.find('.adm-proSearch').show();
+    }
+
+    function restorToProductView(that){
+        that.removeClass('admSelFulView');
+          that.find('.adm-proText').show();
+          that.find('.adm-proSearch').hide();
+    }
 });

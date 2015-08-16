@@ -2305,10 +2305,10 @@ label:hover:before {
 	font-family:Dosis;
 	font-weight:400;
 	font-size:130%;
-	
 	background:#2c8fc0;
 	color:#fff;
 }
+
 .adm-login-box > button:focus{
 	outline:none;
 }
