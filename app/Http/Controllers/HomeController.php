@@ -4,6 +4,7 @@ use App\Advertisement;
 use App\Message;
 use App\Motor;
 use App\Globex;
+use App\Product;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use App\Category;
@@ -61,6 +62,19 @@ class HomeController extends Controller {
         $message = Message::create(array_except($request->all(), ['_token']));
 //        print_r($message);
         return redirect('/contact-us')->withMessage('Message Sent.');
+    }
+
+    public function search(CategoryRepository $categories)
+    {
+        $q = Input::get('q');
+        if ($q) {
+            $searchTerms = explode(' ', $q);
+            $products = Product::with('images');
+            foreach($searchTerms as $term) {
+                $products->where('title', 'LIKE', '%' . $term . '#');
+            }
+            return view('pages.search', ['products' => $products->get(), 'categories' => $categories->getCats()]);
+        }
     }
 
     public function eloquentSearch(CategoryRepository $categories)

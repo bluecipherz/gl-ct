@@ -646,7 +646,7 @@ jQuery(document).ready(function() {
     $('.upPhoto').dropzone(dropAction).show();
 
     $('#post_ad').click(function() {
-        var attributes = {
+        var attributes = [{
             'title' : $('#adTitle').val(),
             'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
@@ -658,18 +658,16 @@ jQuery(document).ready(function() {
             'state' : $('#customerState').val(),
             'city' : $('#customerCity').val(),
             'phone' : $('#customerPhone').val()
-        };
+        }];
 
         var cat = new Category($('#adCatId').val());
 
         if(cat.isDescendantOf(1)) { // motors
             //console.log('[script.js] motors post category detected');
-            attributes.push({
-                'chassis_no' : $("#adChassis").val(),
-                'model' : $("#adModel").val(),
-                'color' : $("#adColor").val(),
-                'doors' : $("#adDoors").val()
-            });
+            attributes.chassis_no = $("#adChassis").val();
+            attributes.model = $("#adModel").val();
+            attributes.color = $("#adColor").val();
+            attributes.doors = $("#adDoors").val();
         }
 
         //console.log(attributes);
