@@ -8,4 +8,5 @@
 {{--{!! HTML::script('js/jquery.fileupload.js') !!}--}}
 {!! HTML::script('js/dropzone.js') !!}
 <script src="{{ asset('/js/script.js') }}"></script>
+<script src="{{ asset('/js/app-products.js') }}"></script>
 <script src="{{ asset('/js/static-page.js') }}"></script>
