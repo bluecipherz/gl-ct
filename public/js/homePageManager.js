@@ -109,9 +109,8 @@ jQuery(document).ready(function() {
     });
 
     $(window).keydown(function(e){
-        if(e.keyCode == 27) {
+        if(e.keyCode == 27 && window.location.pathname.startsWith('/admin/homepage')) {
             restorToProductView(currentSelector);
-            echo(currentSelector);
         }
     });
         $('#adm-homeInner .adm-searchClose').click(function(){

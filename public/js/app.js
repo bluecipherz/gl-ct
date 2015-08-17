@@ -41,5 +41,9 @@ $(document).ready(function(){
     $('.adm-pro-sel-cat-Outer').click(function(){
         $('.adm-selcat').show();
     });
-
+    $(window).keydown(function(e){
+        if(e.keyCode == 27 && window.location.pathname.startsWith('/admin/products')) {
+            $('.adm-selcat').hide();
+        }
+    });
 });

@@ -84,7 +84,9 @@
                                         <div class="adm-pro-sel-cat-Outer">
                                             <span class="def">Select a Category</span>
                                             <span class="adm-selcat">
-
+                                                @foreach($categoreies as $cats )
+                                                    <div class="adm-mainCat">$cats->name</div>
+                                                @endforeach
                                             </span>
                                         </div>
                                     </div>
