@@ -28,13 +28,17 @@ class ProductController extends Controller {
 		$q = $request->get('q');
 		if($q) {
 			$searchTerms = explode(' ', $q);
-			$query = Product::with('producible');
+			$query = Product::with('producible', 'images');
 			foreach($searchTerms as $term)
 			{
 				$query->where('title', 'LIKE', '%' . $term . '%');
 			}
 			$results = $query->get();
-			return view('pages.search', ['products' => $results, 'categories' => $categoryRepository->getCats()]);
+            if ($request->ajax()) {
+                return response()->json($results);
+            } else {
+                return view('pages.search', ['products' => $results, 'categories' => $categoryRepository->getCats()]);
+            }
 		} else {
 			$products = Globex::all();
 			return view('pages.search',  ['products' => $products, 'categories' => $categoryRepository->getCats()]);

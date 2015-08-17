@@ -130,7 +130,36 @@ jQuery(document).ready(function() {
           that.find('.adm-proSearch').hide();
     }
 
-    $("#searchProducts").click(function() {
-        $()
+    var productCont = $("<div/>").addClass('productCont b-fakeLink');
+    $("<div/>").addClass("product-thumbnail").append($("<span/>").addClass('sampleThumb').append($('<img/>'))).appendTo(productCont);
+    var desc = $("<div/>").addClass("product-description").attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').appendTo(productCont);
+    desc.append($("<h4/>"));
+    desc.append($("<div/>").addClass("productPrice"));
+    desc.append($("<div/>").addClass('product-desc-small'));
+
+    $("#searchProducts").keydown(function($e) {
+        if($e.keyCode == 13) {
+            var input = $(this).val();
+            var terms = input.trim().replace(/\s+/g, '+');
+            $.get('/products/search?q=' + terms)
+                .success(function(data) {
+                    //console.log(data);
+                    $(".adm-searchSec").empty();
+                    $.each(data, function(key, value) {
+                        var prodiv = productCont.clone();
+                        if(value.images[0] == undefined) {
+                            prodiv.find('img').attr('src', '/img/noImage.jpg');
+                        } else {
+                            prodiv.find('img').attr('src', value.images[0].url);
+                        }
+                        prodiv.find('h4').text(value.title);
+                        prodiv.find('.productPrice').text(value.price);
+                        prodiv.find('.product-desc-small').text(value.description)
+                        $(".adm-searchSec").append(prodiv);
+                    });
+                }).fail(function(data) {
+                    console.log(data.responseText);
+                });
+        }
     })
 });
