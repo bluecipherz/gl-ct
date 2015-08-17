@@ -3,6 +3,14 @@ jQuery(document).ready(function() {
     var gridID = 1;
     createGrid(gridID);
 
+    var gridBox = $("<a/>").addClass('grid-box').attr('id', 'gridBox');
+    $("<input/>").attr('type', 'hidden').attr('name', 'product_id').appendTo(gridBox);
+    var gridSel = $("<div/>").addClass('gridSelPro').appendTo(gridBox);
+    $("<div/>").addClass('adm-proText').text('Add Product').appendTo(gridSel);
+    var proSearch = $("<div/>").addClass('adm-proSearch').appendTo(gridSel);
+    $("<div/>").addClass('adm-searchhead').append($("<input/>").attr('type', 'text').addClass('adm-search').attr('placeholder', 'Search Products').attr('id', 'searchProducts')).appendTo(proSearch);
+    $("<div/>").addClass("adm-searchSec productsCont").appendTo(proSearch);
+
     $('#AddGrid').click(function(){
         createGrid(gridID);
     });
@@ -81,7 +89,10 @@ jQuery(document).ready(function() {
         parent.html('');
         var count = r * c;
         for(var i=1; i <= count; i++){
-            parent.append($("#gridBox").clone(true, true));
+            var gridbox = gridBox.clone(true, true).click(addProd);
+            gridbox.find('#searchProducts').keydown(searchFunc);
+            currentSelector = gridbox.find('.gridSelPro');
+            parent.append(gridbox);
         }
     }
     function setTheGround(parent,cells) {
@@ -103,10 +114,9 @@ jQuery(document).ready(function() {
 
     var currentSelector ;
 
-    $('#adm-homeInner .gridSelPro').click(function() {
-        currentSelector = $(this);
-        productAdView(currentSelector);
-    });
+    var addProd = function($e) {
+        productAdView($($e.target).find('.gridSelPro'));
+    }
 
     $(window).keydown(function(e) {
         if(e.keyCode == 27 && window.location.pathname.startsWith('/admin/homepage')) {
@@ -137,16 +147,22 @@ jQuery(document).ready(function() {
     desc.append($("<div/>").addClass("productPrice"));
     desc.append($("<div/>").addClass('product-desc-small'));
 
-    $("#searchProducts").keydown(function($e) {
+    var searchFunc = function($e) {
         if($e.keyCode == 13) {
-            var input = $(this).val();
+            var input = $($e.target).val();
             var terms = input.trim().replace(/\s+/g, '+');
             $.get('/products/search?q=' + terms)
                 .success(function(data) {
-                    //console.log(data);
+                    console.log(data);
                     $(".adm-searchSec").empty();
                     $.each(data, function(key, value) {
-                        var prodiv = productCont.clone();
+                        var prodiv = productCont.clone().click(function() {
+                            //console.log(value.id);
+                            var $this = $(this);
+                            $this.parent().parent().parent().parent().find('input[type="hidden"]').prop('value', value.id);
+                            $this.parent().parent().parent().find('.adm-proText').text(value.title);
+                            restorToProductView(currentSelector);
+                        });
                         if(value.images[0] == undefined) {
                             prodiv.find('img').attr('src', '/img/noImage.jpg');
                         } else {
@@ -154,12 +170,28 @@ jQuery(document).ready(function() {
                         }
                         prodiv.find('h4').text(value.title);
                         prodiv.find('.productPrice').text(value.price);
-                        prodiv.find('.product-desc-small').text(value.description)
+                        prodiv.find('.product-desc-small').text(value.description);
+                        console.log(prodiv);
                         $(".adm-searchSec").append(prodiv);
                     });
                 }).fail(function(data) {
                     console.log(data.responseText);
                 });
         }
-    })
+    };
+    $("#save-grid").click(function() {
+        var gridboxes = $("#adm-homeInner .grid-boxez");
+        var data;
+        $(gridboxes).each(function(index) {
+            data[index].name = $(this).find('.GridheadInner input').val();
+            data[index].rows = $(this).find('.GridHSettings input[name="GridRows"]').val();
+            data[index].cols = $(this).find('.GridHSettings input[name="GridCells"]').val();
+            var slots;
+            $(this).find('.grid-box').each(function(index) {
+                slots[index].product_id = $(this).find('input[type="hidden"]').val();
+            });
+            data.slots = slots;
+        });
+        console.log(data);
+    });
 });

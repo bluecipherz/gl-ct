@@ -315,7 +315,7 @@
     margin-top:10px;
 }
 
-#gridBox .gridSelPro{
+.grid-box .gridSelPro{
 
     position:absolute;
     width: 100%;
@@ -326,7 +326,7 @@
 
     transition:background 1s;
 }
-#gridBox .admSelFulView{
+.grid-box .admSelFulView{
     position:fixed;
     top:0px;
     bottom:0px;
@@ -334,7 +334,7 @@
     left:0px;
     z-index:9100;
 }
-#gridBox .admSelFulView:hover{
+.grid-box .admSelFulView:hover{
     pointer:default;
 }
 .adm-proText{
@@ -400,16 +400,20 @@
 .adm-searchSec{
     display:block;
     float:left;
-    min-height:180px;
+    min-height:80px;
     border:none;
     margin:10px 0 10px 0;
     width:calc( 100% - 400px );
+    max-width:calc( 100% - 400px );
     margin-left:200px;
     font-size:150%;
     color:rgba(0,0,0,0.5);
     font-weight:100;
     padding-left:30px;
     padding-top:-20px;
+    overflow:scroll;
+    max-height:calc(100% - 250px);
+
 }
 
 .adm-pro-sel-cat-Outer{

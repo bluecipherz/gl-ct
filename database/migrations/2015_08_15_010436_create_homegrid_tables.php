@@ -16,6 +16,8 @@ class CreateHomegridTables extends Migration {
         {
             $table->increments('id');
             $table->string('name');
+            $table->tinyInteger('rows');
+            $table->tinyInteger('cols');
             $table->timestamps();
         });
         Schema::create('gridslots', function(Blueprint $table)
@@ -25,6 +27,8 @@ class CreateHomegridTables extends Migration {
             $table->foreign('homegrid_id')->references('id')->on('homegrids')->onDelete('cascade');
             $table->unsignedInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->tinyInteger('col');
+            $table->tinyInteger('row');
             $table->timestamps();
         });
 	}
