@@ -11,12 +11,12 @@ class OrderItemTableSeeder extends Seeder {
 		
 		for($i = 0; $i < 300; $i++)
 		{
-            $product = App\Globex::find(rand(1, 1000));
+            $globex = App\Globex::find(rand(1, 200));
 
 			App\OrderItem::create([
 				'order_id' => rand(1, 100),
-				'product_id' => $product->id,
-                'price' => $product->price
+				'product_id' => $globex->product->id,
+                'price' => $globex->product->price
 			]);
 		}
     }

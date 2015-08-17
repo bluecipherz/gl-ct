@@ -141,7 +141,7 @@
                         <div class="adm-proText" >Add Product</div>
                         <div class="adm-proSearch" >
                             <div class="adm-searchhead">
-                                <input type="text" class="adm-search" placeholder="Search Products " />
+                                <input type="text" class="adm-search" placeholder="Search Products " id="searchProducts"/>
                                 <!--<div class="adm-searchClose"> X </div>-->
                             </div>
                             <div class="adm-searchSec productsCont">

@@ -47,9 +47,9 @@
 									</div>
 								</div>
                                 <div class="form-group">
-                                    {!! Form::label('Description', 'description', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+                                    {!! Form::label('description', 'Description', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
-                                        {!! Form::textarea('title', null, ['style'=>'resize:none','class' => 'form-control', 'required' => 'true']) !!}
+                                        {!! Form::textarea('description', null, ['style'=>'resize:none','class' => 'form-control', 'required' => 'true']) !!}
                                     </div>
                                 </div>
 
@@ -72,46 +72,40 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('description', 'Description', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
-                                    <div class="col-lg-6 col-md-6">
-                                        {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'true']) !!}
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     {!! Form::label('category_id', 'Category', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
-                                        {{--{!! Form::select('category_id', $cats, null, ['class' => 'form-control']) !!}--}}
-                                        <div class="adm-pro-sel-cat-Outer">
-                                            <span class="def">Select a Category</span>
-                                            <span class="adm-selcat">
-                                                @foreach($categoreies as $cats )
-                                                    <div class="adm-mainCat">$cats->name</div>
-                                                @endforeach
-                                            </span>
-                                        </div>
+                                        {!! Form::select('category_id', $cats, null, ['class' => 'form-control']) !!}
+                                        {{--<div class="adm-pro-sel-cat-Outer">--}}
+                                            {{--<span class="def">Select a Category</span>--}}
+                                            {{--<span class="adm-selcat">--}}
+                                                {{--@foreach($categories as $cats )--}}
+                                                    {{--<div class="adm-mainCat">$cats->name</div>--}}
+                                                {{--@endforeach--}}
+                                            {{--</span>--}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    {!! Form::label('Model', 'Model', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+                                    {!! Form::label('model', 'Model', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
                                         {!! Form::text('model', null, ['class' => 'form-control', 'required' => 'true']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('Chassis', 'Chassis', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+                                    {!! Form::label('chassis_no', 'Chassis', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
-                                        {!! Form::text('chassis', null, ['class' => 'form-control', 'required' => 'true']) !!}
+                                        {!! Form::text('chassis_no', null, ['class' => 'form-control', 'required' => 'true']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('Color', 'Color', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+                                    {!! Form::label('color', 'Color', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
                                         {!! Form::text('color', null, ['class' => 'form-control', 'required' => 'true']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('Doors', 'Doors', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+                                    {!! Form::label('doors', 'Doors', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6">
                                         {!! Form::text('doors', null, ['class' => 'form-control', 'required' => 'true']) !!}
                                     </div>

@@ -54,26 +54,38 @@
                 </div>
                 @endif
 
-                <!-- if condition for motors -->
-                @if($product->model != "")
-                <div>
-                    <span>Model </span> {{ $product->model }}
-                </div>
-                @endif
-                @if($product->chassis != "")
-                <div>
-                    <span>Chassis  </span> {{ $product->chassis }}
-                </div>
-                @endif
-                @if($product->color != "")
-                <div>
-                    <span>Color  </span> {{ $product->color }}
-                </div>
-                @endif
-                @if($product->doors != "")
-                <div>
-                    <span>Doors  </span> {{ $product->doors }}
-                </div>
+                @if($product->producible_type == 'App\Globex')
+                    <!-- if condition for motors -->
+                    @if($product->producible->globexable_type == 'App\Motor')
+                        <div>
+                            <span>Model </span> {{ $product->producible->globexable->model }}
+                        </div>
+                        <div>
+                            <span>Chassis  </span> {{ $product->producible->globexable->chassis_no }}
+                        </div>
+                        <div>
+                            <span>Color  </span> {{ $product->producible->globexable->color }}
+                        </div>
+                        <div>
+                            <span>Doors  </span> {{ $product->producible->globexable->doors }}
+                        </div>
+                    @endif
+                @elseif($product->producible_type == 'App\Advertisement')
+                    <!-- if condition for motors -->
+                    @if($product->producible->advertisable_type == 'App\Motor')
+                        <div>
+                            <span>Model </span> {{ $product->producible->advertisable->model }}
+                        </div>
+                        <div>
+                            <span>Chassis  </span> {{ $product->producible->advertisable->chassis_no }}
+                        </div>
+                        <div>
+                            <span>Color  </span> {{ $product->producible->advertisable->color }}
+                        </div>
+                        <div>
+                            <span>Doors  </span> {{ $product->producible->advertisable->doors }}
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>
@@ -85,35 +97,26 @@
                 <div class="pro-heading">
                     Seller Details
                 </div>
-                @if($type == 0)
+                @if($product->producible_type == 'App\Advertisement')
                     <div class="pro-seller-details">
-                        @if($product->name != "")
                             <div>
-                                <span>Seller Name </span> {{ $product->name }}
+                                <span>Seller Name </span> {{ $product->producible->advertisable->name }}
                             </div>
-                        @endif
-                        @if($product->address != "")
                             <div>
                                 <div>
                                     <span>Address </span>
                                 </div>
                                 <div>
-                                    {{ $product->address }}
+                                    {{ $product->producible->advertisable->address }}
                                 </div>
                             </div>
-                        @endif
-                        @if($product->city != "")
                             <div>
-                                <span>City </span> {{ $product->city }}
+                                <span>City </span> {{ $product->producible->advertisable->city }}
                             </div>
-                        @endif
-                        @if($product->phone != "")
-                            <div>
-                                <span>Phone no:  </span> {{ $product->phone }}
+                                <span>Phone no:  </span> {{ $product->producible->advertisable->phone }}
                             </div>
-                        @endif
                     </div>
-                @elseif($type == 1)
+                @elseif($product->producible_type == 'App\Globex')
                     <div class="g-logo-cover  gl-cover-180" style="margin-left:30px;" ></div>
                     <div class="p-text">
                         Buy from Globexkart.com and make your life much easier. Globexkart is one of the best reseller in UAE

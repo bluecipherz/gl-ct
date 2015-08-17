@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
         editMode($(this).parent().parent());
     });
 
-    $('.GridHAfter .edit-ok').click(function() {
+    $('.GridHSettings .edit-ok').click(function() {
         saveMode($(this).parent().parent());
     });
 
@@ -52,7 +52,7 @@ jQuery(document).ready(function() {
     }
 
     $("input").bind('keyup mouseup', function () {
-        if($(this).hasClass('GInp')){
+        if($(this).hasClass('GInp')) {
             createTemplate($(this));
         }
     });
@@ -78,13 +78,13 @@ jQuery(document).ready(function() {
     }
 
     function fillBoxes(parent,r,c){
-        parent.html('')
+        parent.html('');
         var count = r * c;
-        for(i=1; i <= count; i++){
+        for(var i=1; i <= count; i++){
             parent.append($("#gridBox").clone(true, true));
         }
     }
-    function setTheGround(parent,cells){
+    function setTheGround(parent,cells) {
         parent.removeClass('adcont-1');
         parent.removeClass('adcont-2');
         parent.removeClass('adcont-3');
@@ -94,7 +94,7 @@ jQuery(document).ready(function() {
         parent.addClass('adcont-'+cells);
         parent.addClass('adContBB');
     }
-    $('.adm-inp-numb').keydown(function(e){
+    $('.adm-inp-numb').keydown(function(e) {
         e.preventDefault();
     });
 
@@ -103,12 +103,12 @@ jQuery(document).ready(function() {
 
     var currentSelector ;
 
-    $('#adm-homeInner .gridSelPro').click(function(){
+    $('#adm-homeInner .gridSelPro').click(function() {
         currentSelector = $(this);
         productAdView(currentSelector);
     });
 
-    $(window).keydown(function(e){
+    $(window).keydown(function(e) {
         if(e.keyCode == 27 && window.location.pathname.startsWith('/admin/homepage')) {
             restorToProductView(currentSelector);
         }
@@ -118,15 +118,19 @@ jQuery(document).ready(function() {
         });
 
 
-    function productAdView(that){
+    function productAdView(that) {
         that.addClass('admSelFulView');
         that.find('.adm-proText').hide();
         that.find('.adm-proSearch').show();
     }
 
-    function restorToProductView(that){
+    function restorToProductView(that) {
         that.removeClass('admSelFulView');
           that.find('.adm-proText').show();
           that.find('.adm-proSearch').hide();
     }
+
+    $("#searchProducts").click(function() {
+        $()
+    })
 });

@@ -50,12 +50,13 @@ class AdvertisementController extends Controller {
         $category = Category::find($request->get('category_id'));
         if ($category->isDescendantOf(Category::find(1))) { // motors
             $motor = Motor::create($request->only('chassis_no', 'model', 'color', 'doors'));
-            $ad = $motor->globexs();
+            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'state', 'city', 'phone', 'quantity'])));
+            $motor->advertisments()->save($ad);
         } else {
             $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'state', 'city', 'phone', 'quantity'])));
         }
         // array_merge = add two arrays together
-        $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'images']));
+        $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'price']));
         $ad->product()->save($product);
         $source = public_path() . '/uploads/temp/' . Session::getId() . '/';
         $destination = public_path() . '/uploads/ads/' . $ad->id . '/';
@@ -74,7 +75,7 @@ class AdvertisementController extends Controller {
 //                    'advertisement_id' => $ad->id,
 //                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
 //                ]);
-                $ad->images()->create([
+                $product->images()->create([
                     'product_id' => $product->id,
                     'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
                 ]);

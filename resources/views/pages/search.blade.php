@@ -52,7 +52,7 @@
                     <span > No results for the search " Keyword " </span>
                 @else
                     @foreach($products as $product)
-                    <a href="{{ $product->type== 0 ? 'products'.'/'.$product->id : 'advertisements' .'/'.$product->id }}" class="productCont b-fakeLink">
+                    <a href="{{ url($product->producible_type == 'App\Globex' ? 'products'.'/'.$product->id : 'advertisements' .'/'.$product->id) }}" class="productCont b-fakeLink">
                         <div class="product-thumbnail">
                             <!-- <img src="" class="" /> -->
 

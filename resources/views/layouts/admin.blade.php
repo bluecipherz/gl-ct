@@ -57,7 +57,7 @@
 	{{--@include('layouts.jslinks')--}}
     {!! HTML::script('js/jquery-2.1.4.js') !!}
     {!! HTML::script('js/app.js') !!}
-    {{--{!! HTML::script('js/category.js') !!}--}}
+    {!! HTML::script('js/category.js') !!}
     {!! HTML::script('js/dashboard.js') !!}
     {!! HTML::script('js/systemFunction.js') !!}
     {!! HTML::script('js/homePageManager.js') !!}

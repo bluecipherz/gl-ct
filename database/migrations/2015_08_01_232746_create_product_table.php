@@ -33,7 +33,9 @@ class CreateProductTable extends Migration {
             $table->integer('stock');
             $table->integer('price_rule_id')->unsigned()->nullable();
             $table->foreign('price_rule_id')->references('id')->on('price_rules')->onDelete('cascade');
+//            $table->unsignedInteger('globexable_id');
             $table->unsignedInteger('globexable_id');
+            $table->string('globexable_type');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -49,8 +51,9 @@ class CreateProductTable extends Migration {
             $table->string('state')->nullable();
             $table->string('city');
             $table->string('phone');
-            $table->string('quantity')->default(1);
+            $table->integer('quantity')->default(1);
             $table->unsignedInteger('advertisable_id');
+            $table->string('advertisable_type');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -62,16 +65,18 @@ class CreateProductTable extends Migration {
             $table->string('model');
             $table->string('color');
             $table->tinyInteger('doors');
+//            $table->unsignedInteger('motorable_id');
+//            $table->string('motorable_type');
             $table->timestamps();
             $table->softDeletes();
         });
 
-        Schema::create('motorables', function (Blueprint $table) {
-            $table->unsignedInteger('motor_id');
-            $table->foreign('motor_id')->references('id')->on('products_motors')->onDelete('cascade');
-            $table->unsignedInteger('motorable_id');
-            $table->string('motorable_type');
-        });
+//        Schema::create('motorables', function (Blueprint $table) {
+//            $table->unsignedInteger('motor_id');
+//            $table->foreign('motor_id')->references('id')->on('products_motors')->onDelete('cascade');
+//            $table->unsignedInteger('motorable_id');
+//            $table->string('motorable_type');
+//        });
     }
 
 	/**

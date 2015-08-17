@@ -52,7 +52,8 @@ class AdminPanelController extends Controller {
         // array_flip() = exchange keys and values in an array
         return view('admin.main')
             ->with('products', Globex::paginate())
-            ->with('cats', Category::whereDepth(2)->lists('name', 'id'));
+            ->with('cats', Category::whereDepth(2)->lists('name', 'id'))
+            ->with('categories', Category::all());
     }
 
     public function categories()
@@ -89,7 +90,7 @@ class AdminPanelController extends Controller {
     public function advertisements(AdvertisementRepository $advertisements)
     {
         return view('admin.main')
-            ->with('advertisements', Advertisement::paginate());
+            ->with('advertisements', Advertisement::with('product', 'advertisable')->paginate());
     }
     public function homePage(ProductRepository $products, CategoryRepository $categories)
     {

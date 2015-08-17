@@ -646,19 +646,21 @@ jQuery(document).ready(function() {
     $('.upPhoto').dropzone(dropAction).show();
 
     $('#post_ad').click(function() {
-        var attributes = [{
+        var attributes = {
             'title' : $('#adTitle').val(),
             'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
             'price' : $('#adPrice').val(),
-            'images' : $('#adPics').val(),
+            'brand' : '',
+            'quantity' : 1,
+            //'images' : $('#adPics').val(),
             'name' : $('#customerName').val(),
             'pin' : $('#customerPin').val(),
             'address' : $('#customerAddress').val(),
             'state' : $('#customerState').val(),
             'city' : $('#customerCity').val(),
             'phone' : $('#customerPhone').val()
-        }];
+        };
 
         var cat = new Category($('#adCatId').val());
 
@@ -669,6 +671,8 @@ jQuery(document).ready(function() {
             attributes.color = $("#adColor").val();
             attributes.doors = $("#adDoors").val();
         }
+
+        console.log(attributes);
 
         //console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {
