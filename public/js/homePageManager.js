@@ -92,6 +92,7 @@ jQuery(document).ready(function() {
             var gridbox = gridBox.clone(true, true);
             gridbox.click(function() {
                 productAdView($(this).find('.gridSelPro'));
+                currentSelector = $(this).find('.gridSelPro');
             });
             gridbox.find('#searchProducts').keydown(searchFunc);
             currentSelector = gridbox.find('.gridSelPro');
@@ -134,11 +135,11 @@ jQuery(document).ready(function() {
         that.addClass('admSelFulView');
         that.find('.adm-proText').hide();
         that.find('.adm-proSearch').show();
-        that.show();
+        //that.show();
     }
 
     function restorToProductView(that) {
-        that.hide();
+       // that.hide();
         that.removeClass('admSelFulView');
         that.find('.adm-proText').show();
         that.find('.adm-proSearch').hide();

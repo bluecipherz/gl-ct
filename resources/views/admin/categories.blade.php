@@ -120,7 +120,7 @@
                                     <tr>
                                         <td><a href="{{ url('/admin/categories?view=all') }}">{{ $category->name }}</a></td>
                                         <td>{{ $levels[$category->getLevel()] }}</td>
-                                        <td>{{ $category->parent()->first()['name'] }}</td>
+                                        <td>{{ $category->parent()->first()['name'] }}</td>asdasd
                                         <td>
                                             <div>
                                                 {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
