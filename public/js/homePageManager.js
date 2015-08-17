@@ -89,7 +89,10 @@ jQuery(document).ready(function() {
         parent.html('');
         var count = r * c;
         for(var i=1; i <= count; i++){
-            var gridbox = gridBox.clone(true, true).click(addProd);
+            var gridbox = gridBox.clone(true, true);
+            gridbox.click(function() {
+                productAdView($(this).find('.gridSelPro'));
+            });
             gridbox.find('#searchProducts').keydown(searchFunc);
             currentSelector = gridbox.find('.gridSelPro');
             parent.append(gridbox);
@@ -115,7 +118,6 @@ jQuery(document).ready(function() {
     var currentSelector ;
 
     var addProd = function($e) {
-        productAdView($($e.target).find('.gridSelPro'));
     }
 
     $(window).keydown(function(e) {
@@ -132,12 +134,14 @@ jQuery(document).ready(function() {
         that.addClass('admSelFulView');
         that.find('.adm-proText').hide();
         that.find('.adm-proSearch').show();
+        that.show();
     }
 
     function restorToProductView(that) {
+        that.hide();
         that.removeClass('admSelFulView');
-          that.find('.adm-proText').show();
-          that.find('.adm-proSearch').hide();
+        that.find('.adm-proText').show();
+        that.find('.adm-proSearch').hide();
     }
 
     var productCont = $("<div/>").addClass('productCont b-fakeLink');
@@ -149,19 +153,21 @@ jQuery(document).ready(function() {
 
     var searchFunc = function($e) {
         if($e.keyCode == 13) {
-            var input = $($e.target).val();
+            var searchBar = $($e.target);
+            var input = searchBar.val();
             var terms = input.trim().replace(/\s+/g, '+');
             $.get('/products/search?q=' + terms)
                 .success(function(data) {
                     console.log(data);
-                    $(".adm-searchSec").empty();
+                    searchBar.parent().parent().find(".adm-searchSec").empty();
                     $.each(data, function(key, value) {
                         var prodiv = productCont.clone().click(function() {
                             //console.log(value.id);
                             var $this = $(this);
-                            $this.parent().parent().parent().parent().find('input[type="hidden"]').prop('value', value.id);
-                            $this.parent().parent().parent().find('.adm-proText').text(value.title);
-                            restorToProductView(currentSelector);
+                            var gridSel = $this.parent().parent().parent();
+                            gridSel.parent().find('input[type="hidden"]').prop('value', value.id);
+                            gridSel.find('.adm-proText').text(value.title);
+                            restorToProductView(gridSel);
                         });
                         if(value.images[0] == undefined) {
                             prodiv.find('img').attr('src', '/img/noImage.jpg');
@@ -172,7 +178,7 @@ jQuery(document).ready(function() {
                         prodiv.find('.productPrice').text(value.price);
                         prodiv.find('.product-desc-small').text(value.description);
                         console.log(prodiv);
-                        $(".adm-searchSec").append(prodiv);
+                        searchBar.parent().parent().find(".adm-searchSec").append(prodiv);
                     });
                 }).fail(function(data) {
                     console.log(data.responseText);

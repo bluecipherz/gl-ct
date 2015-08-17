@@ -99,7 +99,7 @@
 
             <!-- This part hidden -->
 
-            <div style="display:none;" id="gridBoxCont" class="grid-boxez">
+            <div style="display:none;">
 
                 <!-- This part is the basic grid -->
 
@@ -109,7 +109,7 @@
                             <div class="GridHName">
                                 <span>Grid name</span>
                             </div>
-                            <div><input type="text" name="gridTitle" placeholder="Title"/></div>
+                            <div><input type="text" name="gridTitle" place holder="Title"/></div>
                         </div>
                         <div class="GridHSettings">
                             <div class="adm-inp-set">
@@ -124,7 +124,7 @@
                         </div>
                         <div class="GridHAfter" style="display:none">
                             <button class="adm-nav-btns edit-grid">Edit</button>
-                            <button class="adm-nav-btns save-grid" id="save-grid">Save</button>
+                            <button class="adm-nav-btns save-grid">Save</button>
                         </div>
                     </div>
                     <div class="GridCont">
@@ -136,14 +136,13 @@
 
                 <!-- This part is the adbox grid -->
 
-                <a class="grid-box">
-                    <input type="hidden" name="product" />
+                <a id="gridBox">
                     <div class="gridSelPro ">
                         <div class="adm-proText" >Add Product</div>
                         <div class="adm-proSearch" >
                             <div class="adm-searchhead">
-                                <input type="text" class="adm-search" placeholder="Search Products " id="searchProducts"/>
-                                <!--<div class="adm-searchClose"> X </div>-->
+                                <input type="text" class="adm-search" placeholder="Search Products " />
+                                <div class="adm-searchClose"> X </div>
                             </div>
                             <div class="adm-searchSec productsCont">
 
