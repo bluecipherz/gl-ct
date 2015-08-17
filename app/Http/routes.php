@@ -225,5 +225,12 @@ Route::get('shitzu', function (AdminPanelRepository $repository) {
 //    return response()->json(array_search('admin/products', array_column($repository->getPages(), 'request', 'title')));
 //    return response()->json(array_keys(array_column($repository->getPages(), 'request', 'title'), 'admin/products'));
 //    return action('AuthController@registerAdmin');
-    return response()->json(App\Product::all());
+//    return response()->json(App\Product::has('producible')->get());
+
+    $motor = App\Motor::find(7);
+    $product = App\Product::find(307);
+    $ad = App\Advertisement::find(101);
+    $ads = App\Advertisement::all();
+
+    return response()->json($ads[4]->product);
 });

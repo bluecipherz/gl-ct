@@ -50,11 +50,17 @@
 
     @elseif($category->getLevel() == 1)
     <!-- Sub Category -->
-        kooz
-
+        @foreach($category->children()->get() as $post)
+            <h4><a href="{{ route('categories.show', $post) }}">{{ $post->name }}</a></h4>
+            @foreach($post->products as $product)
+                <a href="{{ route('products.show', $product) }}">{{ $product->title }}</a>
+            @endforeach
+        @endforeach
     @elseif($category->getLevel() == 2)
     <!-- Post Category -->
-        pacha kooz
+        @foreach($category->products as $product)
+            <div><a href="{{ route('products.show', $product) }}">{{ $product->title }}</a></div>
+        @endforeach
     @endif
 
 </div>	

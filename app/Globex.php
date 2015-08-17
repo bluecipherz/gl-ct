@@ -35,9 +35,4 @@ class Globex extends Product {
         return $this->morphTo();
     }
 
-    public function motors()
-    {
-        return $this->morphedByMany('App\Motor', 'motorable');
-    }
-
 }

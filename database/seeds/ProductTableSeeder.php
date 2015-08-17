@@ -1,20 +1,18 @@
 <?php
 
-use Illuminate\Database\Seeder;
- 
 class ProductTableSeeder extends DatabaseSeeder {
  
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
-        DB::table('products')->delete();
- 
+        DB::table('products_globex')->delete();
+
         $faker = $this->getFaker();
 
         $categories = App\Category::allLeaves()->get();
         $category_count = count($categories);
 
-		for($i = 0; $i < 1000; $i++)
+		for($i = 0; $i < 200; $i++)
 		{
             $product = App\Product::create([
                 'title' => $faker->sentence(rand(1, 3)),

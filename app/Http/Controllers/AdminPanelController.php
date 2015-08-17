@@ -89,7 +89,7 @@ class AdminPanelController extends Controller {
     public function advertisements(AdvertisementRepository $advertisements)
     {
         return view('admin.main')
-            ->with('advertisements', Advertisement::paginate());
+            ->with('advertisements', Advertisement::with('product', 'advertisable')->paginate());
     }
     public function homePage(ProductRepository $products, CategoryRepository $categories)
     {

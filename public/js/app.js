@@ -12,12 +12,12 @@ $.ajaxSetup({
     }
 });
 
-var script = document.createElement('script');
-script.src = '/js/category.js';
-script.onload = function() {
-    console.log('[app.js] loading scripts');
-};
-document.head.appendChild(script);
+//var script = document.createElement('script');
+//script.src = '/js/category.js';
+//script.onload = function() {
+//    console.log('[app.js] loading scripts');
+//};
+//document.head.appendChild(script);
 
 $.loadScript = function(url, callback) {
     jQuery.ajax({

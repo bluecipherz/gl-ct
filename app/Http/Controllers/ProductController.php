@@ -1,18 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use App\Category;
-use App\Image;
 use App\Motor;
 use App\Product;
 use App\Repositories\CategoryRepository;
-use DB;
 use App\Globex;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use File;
 use Input;
+use DB;
 
 class ProductController extends Controller {
 
@@ -21,7 +19,7 @@ class ProductController extends Controller {
         if ($request->ajax()) {
             return response()->json(Globex::all()->lists('name'));
         } else {
-            abort(404);
+            return response('Not found', 404);
         }
 	}
 
@@ -70,24 +68,27 @@ class ProductController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+//        return response()->json($request->all());
         $category = Category::find($request->get('category_id'));
         if ($category->isDescendantOf(Category::find(1))) { // motors
             $motor = Motor::create($request->only('chassis_no', 'model', 'color', 'doors'));
-            $globex = $motor->globexs();
+            $globex = Globex::create($request->only('stock'));
+            $motor->globexs()->save($globex);
         } else {
             $globex = Globex::create($request->only('stock'));
         }
-        $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'images']));
+        $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'price']));
         $globex->product()->save($product);
-        $file = Input::file('images');
-//        $files = Input::file('images');
+//        $file = Input::file('images');
+        $files = Input::file('images');
         $dir = public_path() . '/uploads/products/' . $globex->id . '/';
         if(!File::exists($dir)) {
             mkdir($dir, 0777, true);
         }
-//        foreach ($files as $file) {
-            $filename = sha1($file->getClientOriginalName() . time());
-            $extension = $file->getClientOriginalExtension();
+        foreach ($files as $file) {
+            if($file != null) {
+                $filename = sha1($file->getClientOriginalName() . time());
+                $extension = $file->getClientOriginalExtension();
 //            echo $filename . '<br>';
 //            $image = Image::create([
 //                'imageable_id' => $globex->id,
@@ -95,13 +96,14 @@ class ProductController extends Controller {
 //                'url' => url('/uploads/globex/' . $globex->id . '/' . $filename . '.' . $extension)
 //            ]);
 //            $globex->images()->save($image);
-            $imgdata = [
-                'product_id' => $product->id,
-                'url' => url('/uploads/products/' . $globex->id . '/' . $filename . '.' . $extension)
-            ];
-            $product->images()->create($imgdata);
-            $file->move($dir, $filename . '.' . $extension);
-//        }
+                $imgdata = [
+                    'product_id' => $product->id,
+                    'url' => url('/uploads/products/' . $globex->id . '/' . $filename . '.' . $extension)
+                ];
+                $product->images()->create($imgdata);
+                $file->move($dir, $filename . '.' . $extension);
+            }
+        }
 //        echo 'ok' ;
 		return redirect()->back()->with('message', 'Created');
 	}
@@ -114,7 +116,7 @@ class ProductController extends Controller {
 	 */
 	public function show($id)
 	{
-		$product = Globex::find($id);
+		$product = Product::find($id);
         return view('pages.product.show',compact('product'));
 	}
 

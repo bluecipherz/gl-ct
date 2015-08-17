@@ -16,13 +16,12 @@ class Motor extends Model {
 
     public function advertisments()
     {
-        return $this->morphedByMany('App\Advertisement', 'advertisable');
+        return $this->morphMany('App\Advertisement', 'advertisable');
     }
 
     public function globexs()
     {
-        return $this->morphedByMany('App\Globex', 'globexable');
+        return $this->morphMany('App\Globex', 'globexable');
     }
-
 
 }

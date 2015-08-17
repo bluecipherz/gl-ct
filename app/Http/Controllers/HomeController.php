@@ -69,11 +69,11 @@ class HomeController extends Controller {
         $q = Input::get('q');
         if ($q) {
             $searchTerms = explode(' ', $q);
-            $products = Product::with('images');
+            $products = Product::all();
             foreach($searchTerms as $term) {
                 $products->where('title', 'LIKE', '%' . $term . '#');
             }
-            return view('pages.search', ['products' => $products->get(), 'categories' => $categories->getCats()]);
+            return view('pages.search', ['products' => $products, 'categories' => $categories->getCats()]);
         }
     }
 

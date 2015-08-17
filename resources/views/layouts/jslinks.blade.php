@@ -6,6 +6,7 @@
 <script src="{{ asset('/js/imageHandler.js') }}"></script>
 <script src="{{ asset('/js/pushNotification.js') }}"></script>
 {!! HTML::script('js/dropzone.js') !!}
+{!! HTML::script('js/category.js') !!}
 <script src="{{ asset('/js/script.js') }}"></script>
 <script src="{{ asset('/js/app-products.js') }}"></script>
 <script src="{{ asset('/js/static-page.js') }}"></script>
