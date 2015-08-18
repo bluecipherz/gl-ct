@@ -30,8 +30,8 @@
                 @endfor
             </div>
             <div class="pro-addDetails" >
-                <div>
-                    {{ $product->description }} sdhf sdfsdfiusdifsdfbshdfsd sd dcks dsdf dkfksdksdh kfkahsaisiasd sdiasdiasdia sdiasida dias das dasidhiasdohohsdosdsddd  dsa sdoas doads oahdsoasdoa
+                <div class=" b-fullText">
+                    {{ $product->description }}
                 </div>
                 @if($product->brand != "")
                 <div>
@@ -106,7 +106,7 @@
                                 <div>
                                     <span>Address </span>
                                 </div>
-                                <div>
+                                <div class=" b-fullText">
                                     {{ $product->producible->advertisable->address }}
                                 </div>
                             </div>
