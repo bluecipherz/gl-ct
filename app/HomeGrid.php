@@ -10,7 +10,7 @@ class HomeGrid extends Model {
 
     public function slots()
     {
-        return $this->hasMany('App\GridSlot');
+        return $this->hasMany('App\GridSlot', 'homegrid_id');
     }
 
 }
