@@ -71,6 +71,7 @@ class CategoryController extends Controller {
 	public function show($id)
 	{
         $category = Category::find($id);
+        $ads = $category->products;
         return view('pages.category', compact('category'));
 	}
 

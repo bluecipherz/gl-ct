@@ -161,7 +161,7 @@ jQuery(document).ready(function() {
     var desc = $("<div/>").addClass("product-description").attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').appendTo(productCont);
     desc.append($("<h4/>"));
     desc.append($("<div/>").addClass("productPrice"));
-    desc.append($("<div/>").addClass('product-desc-small'));
+    //desc.append($("<div/>").addClass('product-desc-small'));
 
     var searchFunc = function($e) {
         if($e.keyCode == 13) {
@@ -188,7 +188,7 @@ jQuery(document).ready(function() {
                         }
                         prodiv.find('h4').text(value.title);
                         prodiv.find('.productPrice').text(value.price);
-                        prodiv.find('.product-desc-small').text(value.description);
+                        //prodiv.find('.product-desc-small').text(value.description);
                         //console.log(prodiv);
                         searchBar.parent().parent().find(".adm-searchSec").append(prodiv);
                     });

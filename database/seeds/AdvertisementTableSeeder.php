@@ -22,6 +22,9 @@ class AdvertisementTableSeeder extends DatabaseSeeder {
                 'price' => rand(1, 50000),
                 'brand' => $faker->company,
             ]);
+            $product->images()->create([
+                'url' => url('/img/noImage.jpg')
+            ]);
 			$ad = App\Advertisement::create([
 				'customer_id' => rand(1, 100),
                 'name' => $faker->name,

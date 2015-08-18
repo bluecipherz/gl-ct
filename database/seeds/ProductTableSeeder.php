@@ -21,6 +21,9 @@ class ProductTableSeeder extends DatabaseSeeder {
                 'brand' => $faker->company,
                 'category_id' => $categories[rand(0, $category_count - 1)]->id,
             ]);
+            $product->images()->create([
+                'url' => url('/img/noImage.jpg')
+            ]);
             $globex = App\Globex::create([
                 'stock' => rand(0, 100),
                 'price_rule_id' => rand(1, 10)
