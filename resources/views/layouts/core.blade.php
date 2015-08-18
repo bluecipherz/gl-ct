@@ -84,7 +84,6 @@
             @endif
 			<div class="loginMB">
 				<h2>Login</h2>
-				disable TAB button
 				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				
 				<div class="form-group">
@@ -92,7 +91,7 @@
 					<div class="pn-popup"></div>
 				</div>
 				<div class="form-group">
-                    <input type="text" placeholder="Your Password" class="glob-control" id="auth-login-pass"/>
+                    <input type="text" placeholder="Your Password" class="glob-control noFwdTab" id="auth-login-pass"/>
 					<div class="pn-popup"></div>
 				</div>
 				
@@ -104,7 +103,7 @@
 				<h2 >Register with</h2>
 				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				<div class="form-group">
-					<input type="text" placeholder="Your Email" class="glob-control" id="auth-register-email" name="email"/>
+					<input type="text" placeholder="Your Email" class="glob-control noBwdTab" id="auth-register-email" name="email"/>
 					<div class="pn-popup"></div>
 				</div>
 				<div class="form-group">

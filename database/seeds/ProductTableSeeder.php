@@ -22,7 +22,7 @@ class ProductTableSeeder extends DatabaseSeeder {
                 'category_id' => $categories[rand(0, $category_count - 1)]->id,
             ]);
             $product->images()->create([
-                'url' => url('/img/noImage.jpg')
+                'url' => '/img/noImage.jpg'
             ]);
             $globex = App\Globex::create([
                 'stock' => rand(0, 100),

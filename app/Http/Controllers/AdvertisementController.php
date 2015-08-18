@@ -23,7 +23,11 @@ class AdvertisementController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $data = [
+            'myads' => Auth::customer()->get()->advertisements,
+            'cats' => Category::whereDepth(2)->lists('name', 'id')
+        ];
+        return view('pages.myads', $data);
 	}
 
 	/**
@@ -76,7 +80,7 @@ class AdvertisementController extends Controller {
 //                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
 //                ]);
                 $product->images()->create([
-                    'product_id' => $product->id,
+//                    'product_id' => $product->id,
                     'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
                 ]);
             }
@@ -118,7 +122,8 @@ class AdvertisementController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        return response()->json(Input::all());
+//        return response()->json('Updated');
 	}
 
 

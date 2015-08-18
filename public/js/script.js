@@ -752,6 +752,18 @@ jQuery(document).ready(function() {
         }
     };
 
+    $(".noFwdTab").keydown(function($e) {
+        if($e.keyCode == 9) {
+            $e.preventDefault();
+        }
+    });
+
+    $(".noBwdTab").keydown(function($e) {
+        if($e.keyCode == 9 && $e.shiftKey) {
+            $e.preventDefault();
+        }
+    });
+
     $.get('/categories/all')
         .success(function(data) {
             //console.log('[script.js] fetching categories : ' + data)
@@ -760,5 +772,70 @@ jQuery(document).ready(function() {
         .fail(function(data) {
             console.log('[script.js] error fetching categories')
         });
+
+
+    $(".edit-ad").click(function(e) {
+        console.log('ok');
+        var panel = $(this).parent().parent().parent().parent();
+        panel.find('.panel-heading .ad-title').hide();
+        panel.find('.panel-heading input').show();
+        panel.find('.panel-heading .save-ad').show();
+        $(this).hide();
+        $(panel.find('.form-horizontal .form-group')).each(function() {
+            $this = $(this);
+            $this.find('div > label').hide();
+            $this.find('div > input').show();
+            $this.find('div > textarea').show();
+            $this.find('div > select').show()
+        });
+    });
+
+    $(".save-ad").click(function(e) {
+        var saveBtn = $(this);
+        var panel = $(this).parent().parent().parent().parent();
+        panel.spin();
+        var ad_id = panel.find('input[type="hidden"]').prop('value');
+        var data = {
+            _method : 'PATCH',
+            title : panel.find('input[name="title"]').val(),
+            price : panel.find('input[name="price"]').val(),
+            description : panel.find('textarea[name="description"]').val(),
+            brand : panel.find('input[name="brand"]').val(),
+            category_id : panel.find('select[name="category_id"]').val(),
+            name : panel.find('input[name="name"]').val(),
+            pin : panel.find('input[name="pin"]').val(),
+            address : panel.find('textarea[name="address"]').val(),
+            state : panel.find('input[name="state"]').val(),
+            city : panel.find('input[name="city"]').val(),
+            phone : panel.find('input[name="phone"]').val(),
+        };
+        var cat = new Category(data.category_id);
+        if(cat.isDescendantOf(new Category(1))) { // motors
+            data.chassis_no = panel.find('input[name="chassis_no"]').val();
+            data.model = panel.find('input[name="model"]').val();
+            data.color = panel.find('input[name="color"]').val();
+            data.doors = panel.find('input[name="doors"]').val();
+        }
+        $.post('/advertisements/' + ad_id, data).success(function(data) {
+            console.log(data);
+            panel.spin(false);
+            panel.find('.panel-heading .ad-title').show();
+            panel.find('.panel-heading input[name="title"]').hide();
+            panel.find('.panel-heading .edit-ad').show();
+            saveBtn.hide();
+            $(panel.find('.form-horizontal .form-group')).each(function() {
+                $this = $(this);
+                $this.find('div > label').show();
+                $this.find('div > input').hide();
+                $this.find('div > textarea').hide();
+                $this.find('div > select').hide()
+            });
+        }).fail(function(data) {
+            console.log(data.responseText);
+        })
+
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
 
 });

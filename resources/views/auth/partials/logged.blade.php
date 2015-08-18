@@ -4,7 +4,7 @@
 		<a class="ac-logout" href="/auth/logout">Logout</a>
 	</div>
 	<div class="ac-cont">
-		<a class="ac-myads cust-input addCat ac-s-btn">My Ads</a>
+		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('advertisements.index') }}">My Ads</a>
 		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ url('editprofile') }}">Edit My Profile</a>
 		<div class="ac-profile">
 			<div class="ac-c-head">My Profile</div>

@@ -1,4 +1,7 @@
 <script src="{{ asset('/js/jquery-2.1.4.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/js/spin.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.spin.js') }}"></script>
 <script src="{{ asset('/js/app.js') }}"></script>
 <script src="{{ asset('/js/jquery.countdown.js') }}"></script>
 <script src="{{ asset('/js/systemFunction.js') }}"></script>
