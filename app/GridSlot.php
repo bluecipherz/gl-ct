@@ -13,4 +13,9 @@ class GridSlot extends Model {
         return $this->belongsTo('App\HomeGrid');
     }
 
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
 }

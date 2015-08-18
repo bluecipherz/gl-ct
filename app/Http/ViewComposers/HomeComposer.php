@@ -8,6 +8,7 @@
 
 namespace App\Http\ViewComposers;
 
+use App\HomeGrid;
 use Illuminate\View\View;
 use App\Repositories\HomeRepository;
 
@@ -22,6 +23,7 @@ class HomeComposer {
     public function compose(View $view)
     {
         $view->with('catset', $this->home->getCatSet());
+        $view->with('homegrids', HomeGrid::all());
     }
 
 }

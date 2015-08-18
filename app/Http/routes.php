@@ -85,6 +85,8 @@ Route::resource('products', 'ProductController');
 //Route::resource('motors', 'MotorController');
 Route::post('resellerimages/all', 'ResellerImageController@all');
 Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store', 'destroy']]);
+Route::get('homegrids/reset', 'HomeGridController@reset');
+Route::resource('homegrids', 'HomeGridController');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('dashboard', ['uses' => 'AdminPanelController@dashboard', 'as' => 'admin.dashboard']);

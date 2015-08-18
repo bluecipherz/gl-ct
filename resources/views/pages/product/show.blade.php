@@ -100,20 +100,21 @@
                 @if($product->producible_type == 'App\Advertisement')
                     <div class="pro-seller-details">
                             <div>
-                                <span>Seller Name </span> {{ $product->producible->advertisable->name }}
+                                <span>Seller Name </span> {{ $product->producible->name }}
                             </div>
                             <div>
                                 <div>
                                     <span>Address </span>
                                 </div>
                                 <div>
-                                    {{ $product->producible->advertisable->address }}
+                                    {{ $product->producible->address }}
                                 </div>
                             </div>
                             <div>
-                                <span>City </span> {{ $product->producible->advertisable->city }}
+                                <span>City </span> {{ $product->producible->city }}
                             </div>
-                                <span>Phone no:  </span> {{ $product->producible->advertisable->phone }}
+                            <div>
+                                <span>Phone no:  </span> {{ $product->producible->phone }}
                             </div>
                     </div>
                 @elseif($product->producible_type == 'App\Globex')

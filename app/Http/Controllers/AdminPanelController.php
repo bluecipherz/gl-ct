@@ -4,6 +4,7 @@ use App\Admin;
 use App\Advertisement;
 use App\Category;
 use App\Customer;
+use App\HomeGrid;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -96,7 +97,8 @@ class AdminPanelController extends Controller {
     {
         return view('admin.main')
             ->with('products', $products->paginate())
-            ->with('cats', $categories->all(['name']));
+            ->with('cats', $categories->all(['name']))
+            ->with('homegrids', HomeGrid::all());
     }
 
     public function orders(OrderRepository $orders, OrderItemRepository $orderItems)
