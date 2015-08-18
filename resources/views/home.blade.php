@@ -3,24 +3,14 @@
 @section('title','Home')
 @section('content')
 
-    <?php
-            $GridName = 'New Grid';
-            $Gproduct_id = 3;
-            $rows = 2;
-            $cols = 3;
-            $slots = ['prod 1',
-                    'prod 2',
-                    'prod 3',
-                    'prod 4',
-                    'prod 5',
-                    'prod 6',
-            ];
-    ?>
+
 <div class="homeNav">
 	<div class="boxx" style="height:inherit; position: relative; padding-left:20px;">
 		<div class="hnCat-btn">
-			<div class="cbtn b-fakeLink">CATEGORIES <span class=""></span></div>
+			<div class="cbtn ">CATEGORIES <span class=""></span></div>
 			<div class="catList">
+
+
 				@foreach($catset as $cat)
 				<div class="catItem BendLineBase">
 					<a href="{{ route('categories.show', $cat['id']) }}" class="catLi cItem"> {{ $cat['title'] }}</a>
@@ -45,12 +35,18 @@
 					</div>
 				</div>
 				@endforeach
+
+
+
 			</div>
 		</div>
-		<div class="hnExtra">
-			<a href="dealsoftheday">Deals of the day</a>
-			<a href="superdeals">Super deals</a>
-		</div>	
+
+		{{--<div class="hnExtra" >--}}
+			{{--<a href="dealsoftheday">Deals of the day</a>--}}
+			{{--<a href="superdeals">Super deals</a>--}}
+		{{--</div>--}}
+
+
 	</div>
 </div>
 <div class="homeTopAd">
@@ -82,7 +78,7 @@
 
             {{--loop starts--}}
 
-            @forelse($homegrids as $homegrid)
+            @foreach($homegrids as $homegrid)
                 <div>
                     <span class="adhead">{{ $homegrid->name }}</span>
                     <div class="adcont-{{ $homegrid->cols }}">
@@ -97,19 +93,7 @@
                         @endforeach
                     </div>
                 </div>
-            @empty
-                <div>
-                    <span class="adhead">{{ $GridName }}</span>
-                    <div class="adcont-{{ $cols }} ">
-                        @foreach( $slots as $slot )
-                            <a href="link">
-                                <div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
-                                <div class="adtitle"><div>{{ $slot  }}</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-            @endforelse
+            @endforeach
 
             {{--loop ends--}}
 

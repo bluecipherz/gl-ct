@@ -10,476 +10,1728 @@ class CategoryTableSeeder extends Seeder {
         DB::table('categories')->delete();
 
         $categories = [
+            [
+                'name' => 'Motors',
+                'children' => [
+                    [
+                        'name' => 'Used Cars for Sale',
+                        'children' => [
+                            ['name' => 'AUDI'],
+                            ['name' => 'BMW'],
+                            ['name' => 'Ford'],
+                            ['name' => 'LandRover'],
+                            ['name' => 'Mercedes Benz'],
+                            ['name' => 'Ferrari'],
+                            ['name' => 'Bently']
+                        ],
+                    ],
+                    [
+                        'name' => 'Heavy Vehicles',
+                        'children' => [
+                            ['name' => 'City bus'],
+                            ['name' => 'Coach'],
+                            ['name' => 'Coaster'],
+                            ['name' => 'School bus'],
+                            ['name' => 'All terrain cranes'],
+                            ['name' => 'Tower cranes'],
+                            ['name' => 'Tractor cranes'],
+                            ['name' => 'Truck loading'],
+                            ['name' => 'Curtain slider'],
+                            ['name' => 'Dolly trailer'],
+                            ['name' => 'Extendable trailer'],
+                            ['name' => 'Flat deck'],
+                            ['name' => 'Low loader'],
+                            ['name' => 'Cherry picker'],
+                            ['name' => 'Crane truck'],
+                            ['name' => 'Dual cab'],
+                            ['name' => 'Fire truck'],
+                            ['name' => 'Prime mover'],
+                            ['name' => 'Refrigerated truck'],
+                            ['name' => 'Service vehicles'],
+                            ['name' => 'Tow & tilt'],
+                            ['name' => 'Wrecking'],
+                            ['name' => 'Water tank'],
+                            ['name' => 'Tipper'],
+                            ['name' => 'Forklift-all terrain'],
+                            ['name' => 'Forklift-Diesel'],
+                            ['name' => 'Forklift-Electrical'],
+                            ['name' => 'Forklift-Side loader'],
+                        ],
+                    ],
+                    [
+                        'name' => 'Motorcycles',
+                        'children' => [
+                            ['name' => 'Cruiser / Chopper'],
+                            ['name' => 'Moped'],
+                            ['name' => 'Off-Road/Dual Purpose'],
+                            ['name' => 'Scooter'],
+                            ['name' => 'Sport Bike'],
+                            ['name' => 'Standard Motorcycle'],
+                            ['name' => 'Touring'],
+                            ['name' => 'Trike']
+                        ]
+                    ],
+                    [
+                        'name' => 'Boats',
+                        'children' => [
+                            ['name' => 'Fishing boat'],
+                            ['name' => 'Outboard dayboat'],
+                            ['name' => 'Pontoon/House boat'],
+                            ['name' => 'Racing boat'],
+                            ['name' => 'Sleeper/Mini Yacht'],
+                            ['name' => 'Wakeboarding/ski boat'],
+                            ['name' => 'yacht'],
+                            ['name' => 'Canoe/Row boat'],
+                            ['name' => 'Paddle boat'],
+                            ['name' => 'Cruiser/day sailor'],
+                            ['name' => 'DhowVoilier'],
+                            ['name' => 'Dinghy'],
+                            ['name' => 'Racer'],
+                            ['name' => 'Sailing yacht'],
+
+                        ]
+                    ]
+                ],
+            ],
+            [
+                'name' => 'Auto Accessories',
+                'children' => [
+                    [
+                        'name' => 'Apparel, Merchandise & Accessories',
+                        'children' => [
+                            ['name' => 'Apparel'],
+                            ['name' => 'Boat Accessories'],
+                            ['name' => 'Cat / 4x4 Accessories'],
+                            ['name' => 'Merchandise'],
+                            ['name' => 'Motorcycle Accessories']
+                        ]
+                    ],
+                    [
+                        'name' => 'Automotive Tools',
+                        'children' => [
+                            ['name' => 'Tool Accessories'],
+                            ['name' => 'Tool Sets'],
+                            ['name' => 'Tools']
+                        ]
+                    ]
+                ],
+            ],
+            [
+                'name' => 'Auto Spare Parts',
+                'children' => [
+                    [
+                        'name' => 'Boat Parts',
+                        'children' => [
+                            ['name' => 'Body Parts & Accessories'],
+                            ['name' => 'Engine Parts'],
+                            ['name' => 'Plumbing & Ventilation']
+                        ]
+                    ],
+                    [
+                        'name' => 'Car Parts',
+                        'children' => [
+                            ['name' => 'A/C & Heating Parts'],
+                            ['name' => 'Batteries'],
+                            ['name' => 'Brakes'],
+                            ['name' => 'Engine & Computer Parts'],
+                            ['name' => 'Exhaust / Air Intake'],
+                            ['name' => 'Exterior Parts'],
+                            ['name' => 'Interior Parts'],
+                            ['name' => 'Lighting'],
+                            ['name' => 'Suspension'],
+                            ['name' => 'Wheel / Tires']
+                        ]
+                    ],
+                    [
+                        'name' => 'Motorcycle Parts',
+                        'children' => [
+                            ['name' => 'Accessories'],
+                            ['name' => 'Body & Frames'],
+                            ['name' => 'Engines & Components'],
+                            ['name' => 'Lighting'],
+                            ['name' => 'Wheels / Tires'],
+                            ['name' => 'Number Plates']
+                        ]
+                    ]
+                ],
+            ],
+            [
+                'name' => 'Jobs',
+                'children' => [
+                    [
+                        'name' => 'Accounting',
+                        'children' => [
+                            ['name' => 'Accounting Business Executive'],
+                            ['name' => 'Accounting Executive'],
+                            ['name' => 'Accounting Inside Sales Executive'],
+                            ['name' => 'Accounting Manager'],
+                            ['name' => 'Accountant'],
+                            ['name' => 'Accounting Administrator'],
+                            ['name' => 'Accounting Assistant'],
+                            ['name' => 'Accounting Associate'],
+                            ['name' => 'Accounting Clerk'],
+                            ['name' => 'Accounting Manager'],
+                            ['name' => 'Accounting Supervisor'],
+                            ['name' => 'Accounts Payable Assistant'],
+                            ['name' => 'Accounts receivable accountant'],
+                            ['name' => 'Accounts receivable collector'],
+                            ['name' => 'Administrative assistant'],
+                            ['name' => 'Administrative executive'],
+                            ['name' => 'Administrative officer'],
+                            ['name' => 'Administrative receptionist'],
+                            ['name' => 'Administrative secretary'],
+                            ['name' => 'Associate accountant'],
+                            ['name' => 'Audit accountant'],
+                            ['name' => 'Auditor'],
+                            ['name' => 'Business account executive'],
+                            ['name' => 'Cost accountant'],
+                            ['name' => 'Credit officer'],
+                            ['name' => 'Executive secretary'],
+                            ['name' => 'External auditor'],
+                            ['name' => 'Finance accountant'],
+                            ['name' => 'Finance accounting manager'],
+                            ['name' => 'Finance controller'],
+                            ['name' => 'Finance manager'],
+                            ['name' => 'Financial analyst'],
+                            ['name' => 'Internal Auditor'],
+                            ['name' => 'Jewellery associate'],
+                            ['name' => 'Kitchen Helper'],
+                            ['name' => 'Logistics coordinator'],
+                            ['name' => 'Marketing executive'],
+                            ['name' => 'Office administrator'],
+                            ['name' => 'Office assistant'],
+                            ['name' => 'Purchase assistant'],
+                            ['name' => 'Teacher'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Airlines & Aviation',
+                        'children' => [
+                            ['name' => 'Purchase Buyer'],
+                            ['name' => 'Sales Manager'],
+                            ['name' => 'Travel Agent'],
+                            ['name' => 'Travel Consultant']
+                        ]
+                    ],
+                    [
+                        'name' => 'Architecture & Interior Design',
+                        'children' => [
+                            ['name' => '.NET Architect'],
+                            ['name' => 'Architectural Designer'],
+                            ['name' => 'AutoCAD Drafter'],
+                            ['name' => 'Business Development Director'],
+                            ['name' => 'CNC Programmer'],
+                            ['name' => 'CAD Designer'],
+                            ['name' => 'Civil Engineer'],
+                            ['name' => 'Design Engineer'],
+                            ['name' => 'Electrical engineer'],
+                            ['name' => 'Electrician Helper'],
+                            ['name' => 'Electro mechanical technician'],
+                            ['name' => 'Project manager'],
+                            ['name' => 'Estimator'],
+                            ['name' => 'Graphic Designer'],
+                            ['name' => 'HR assistant'],
+                            ['name' => 'HVAC engineer'],
+                            ['name' => 'Industrial designer'],
+                            ['name' => 'Interior Designer'],
+                            ['name' => 'Landscape designer'],
+                            ['name' => 'Maintenance Coordinator'],
+                            ['name' => 'Maintenance Technician '],
+                            ['name' => 'Marketing executive'],
+                            ['name' => 'Mechanical engineer'],
+                            ['name' => 'production manager'],
+                            ['name' => 'Procurement coordinator'],
+                            ['name' => 'Procurement engineer'],
+                            ['name' => 'production manager'],
+                            ['name' => 'Production supervisor'],
+                            ['name' => 'Project coordinator'],
+                            ['name' => 'Project engineer'],
+                            ['name' => 'Project manager'],
+                            ['name' => 'Sales agent'],
+                            ['name' => 'Sales & marketing representative'],
+                            ['name' => 'Sales executive'],
+                            ['name' => 'Sales representative'],
+                            ['name' => 'Structural engineer'],
+                            ['name' => 'Surveyor'],
+                            ['name' => 'Visual merchandiser'],
+                            ['name' => 'Warehouse manager'],
+                            ['name' => 'Electrical Design Engineer']
+                        ]
+                    ],
+                    [
+                        'name' => 'Automotive',
+                        'children' => [
+                            ['name' => '.NET engineer'],
+                            ['name' => 'ASE technician'],
+                            ['name' => 'Auto mechanic'],
+                            ['name' => 'Automotive professional'],
+                            ['name' => 'Automotive technician'],
+                            ['name' => 'Customer care agent'],
+                            ['name' => 'Diesel Mechanic '],
+                            ['name' => 'Door Service Technician '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Mechanical Engineer '],
+                            ['name' => 'Sales Executive'],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Sales Professional '],
+                            ['name' => 'Sales Technician '],
+                            ['name' => 'Shop Manager '],
+                            ['name' => 'Tig Welder '],
+
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Art & Entertainment',
+                        'children' => [
+                            ['name' => 'Art Graphic Designer '],
+                            ['name' => 'Artist '],
+                            ['name' => 'Photographer '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Web Designer '],
+                             ['name' => 'Audio Visual Technician  '],
+                    ],
+                ],
                 [
-                    'name' => 'Motors',
-                    'children' => [
+                        'name' => 'Banking & Finance',
+                        'children' => [
+
+
+                            ['name' => '.NET Web Developer  '],
+                            ['name' => 'Account Outside Sales Executive  '],
+                            ['name' => 'Accountant  '],
+                            ['name' => 'Administrative Receptionist  '],
+                            ['name' => 'Administrative Secretary  '],
+                            ['name' => 'Business Account Executive  '],
+                            ['name' => 'Business Associate  '],
+                            ['name' => 'Business Developer  '],
+                            ['name' => 'Business Development Assistant  '],
+                            ['name' => 'Business Development Consultant  '],
+                            ['name' => 'Business Development Manager  '],
+                            ['name' => 'Cash Teller  '],
+                            ['name' => 'Client Relation Manager  '],
+                            ['name' => 'Collection Agent  '],
+                            ['name' => 'Compliance Officer  '],
+                            ['name' => 'Credit Assistant  '],
+                            ['name' => 'Customer Care Assistant  '],
+                            ['name' => 'Finance Accountant  '],
+                            ['name' => 'Finance Controller  '],
+                            ['name' => 'Finance Manager  '],
+                            ['name' => 'Investment Consultant  '],
+                            ['name' => 'Marketing Executive  '],
+                            ['name' => 'Operations Manager  '],
+                            ['name' => 'Relationship Manager  '],
+                            ['name' => 'Sales Executive  '],
+                            ['name' => 'Sales Manager  '],
+                            ['name' => 'Sales Officer  '],
+                            ['name' => 'Sales Outside Sales Executive  '],
+                            ['name' => 'Sales Professional  '],
+                            ['name' => 'Sales Representative  '],
+                            ['name' => 'Telesales Representative  '],
+
+
+                    ],
+                ],
+                  [
+                        'name' => 'Beauty ',
+                        'children' => [
+                            ['name' => 'Account Outside Sales Executive  '],
+                            ['name' => 'Accountant  '],
+                            ['name' => 'Asp.Net Developer  '],
+                            ['name' => 'Barber  '],
+                            ['name' => 'Broker  '],
+                            ['name' => 'Call Center Customer Service Representative  '],
+                            ['name' => 'Cashier Clerk '],
+                            ['name' => 'Corporate Legal Secretary  '],
+                            ['name' => 'Customer Relation Representative  '],
+                            ['name' => 'Hairstylist  '],
+                            ['name' => 'Hearing Aid Specialist  '],
+                            ['name' => 'Licensed Massage Therapist  '],
+                            ['name' => 'Makeup Artist  '],
+                            ['name' => 'Manicurist  '],
+                            ['name' => 'Massage Therapist  '],
+                            ['name' => 'Office Assistant  '],
+                            ['name' => 'Personal Trainer  '],
+                            ['name' => 'Receptionist Assistant  '],
+                            ['name' => 'Sales Executive  '],
+                            ['name' => 'Salon Manager  '],
+                            ['name' => 'Spa Manager  '],
+                            ['name' => 'Training Coordinator  '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Business Development ',
+                        'children' => [
+                            ['name' => 'Account Inside Sales Executive '],
+                            ['name' => 'Account Manager '],
+                            ['name' => 'Account Marketing Executive '],
+                            ['name' => 'Account Outside Sales Executive '],
+                            ['name' => 'Account Sales Executive '],
+                            ['name' => 'Administrative Office Assistant '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'ASE Technician '],
+                            ['name' => 'Business Consultant '],
+                            ['name' => 'Business Developer '],
+                            ['name' => 'Business Development Assistant '],
+                            ['name' => 'Business Development Consultant '],
+                            ['name' => 'Business Development Coordinator '],
+                            ['name' => 'Business Development Director'],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Business Development Professional '],
+                            ['name' => 'Business Manager '],
+                            ['name' => 'Client Relation Specialist '],
+                            ['name' => 'Customer Service Administrator '],
+                            ['name' => 'Inside Sales Executive '],
+                            ['name' => 'Key Account Manager '],
+                            ['name' => 'Legal Secretary '],
+                            ['name' => 'Marketing Coordinator '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Mortgage Consultant '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Office Manager '],
+                            ['name' => 'Project Coordinator '],
+                            ['name' => 'Quality Engineer '],
+                            ['name' => 'Regional Sales Manager '],
+                            ['name' => 'Relationship Manager '],
+                            ['name' => 'SEO Specialist '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Representative '],
+                            ['name' => 'Secretary '],
+                            ['name' => 'Telemarketing Representative '],
+                            ['name' => 'Territory Manager '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Construction ',
+                        'children' => [
+                            ['name' => 'Accountant '],
+                            ['name' => 'Administrative Assistant  '],
+                            ['name' => 'Air Condition Technician  '],
+                            ['name' => 'Assistant Project Manager  '],
+                            ['name' => 'Autocad Draftsman  '],
+                            ['name' => 'Cad Draftsman  '],
+                            ['name' => 'Civil Engineer  '],
+                            ['name' => 'Construction Labour  '],
+                            ['name' => 'Construction Manager  '],
+                            ['name' => 'Construction Supervisor  '],
+                            ['name' => 'Construction Worker  '],
+                            ['name' => 'Design Engineer  '],
+                            ['name' => 'Electrician Technician  '],
+                            ['name' => 'Estimator  '],
+                            ['name' => 'HR Assistant  '],
+                            ['name' => 'HVAC Technician  '],
+                            ['name' => 'Industrial Maintenance Technician '],
+                            ['name' => 'Land Surveyor '],
+                            ['name' => 'Landscape Architect  '],
+                            ['name' => 'Maintenance Supervisor  '],
+                            ['name' => 'Marketing Executive  '],
+                            ['name' => 'Mechanical Engineer  '],
+                            ['name' => 'Office Secretary  '],
+                            ['name' => 'Plumbing Technician  '],
+                            ['name' => 'Project Coordinator  '],
+                            ['name' => 'Project Engineer  '],
+                            ['name' => 'Project Manager  '],
+                            ['name' => 'Pump Operator  '],
+                            ['name' => 'Purchase Assistant  '],
+
+                            ['name' => 'Purchase Coordinator  '],
+                            ['name' => 'Safety Officer  '],
+                            ['name' => 'Sales Engineer  '],
+                            ['name' => 'Sales Executive  '],
+                            ['name' => 'Sales Manager  '],
+                            ['name' => 'Secretary  '],
+                            ['name' => 'Senior Accountant  '],
+                            ['name' => 'Service Engineer  '],
+                            ['name' => 'Service Technician  '],
+                            ['name' => 'Stone Mason  '],
+                            ['name' => 'Store Supervisor  '],
+                            ['name' => 'Structural Engineer  '],
+                            ['name' => 'Surveyor  '],
+                            ['name' => 'Tax Supervisor  '],
+                            ['name' => 'Technical Engineer  '],
+                            ['name' => 'Technical Manager  '],
+                            ['name' => 'Technical Sales Engineer  '],
+                            ['name' => 'Warehouse Assistant  '],
+                            ['name' => 'Welder  '],
+                            ['name' => 'Welding Inspector  '],
+                            ['name' => 'Account Manager  '],
+                            ['name' => 'Account Outside Sales Manager  '],
+                            ['name' => 'Accounting Associate  '],
+                            ['name' => 'Administrative Secretary  '],
+                            ['name' => 'Assistant Facility Manager  '],
+                            ['name' => 'Cad Technician  '],
+                            ['name' => 'Civil Designer  '],
+                            ['name' => 'Computer Operator  '],
+                            ['name' => 'Concrete Worker  '],
+                            ['name' => 'Construction Assistant  '],
+                            ['name' => 'Construction Foreperson  '],
+                            ['name' => 'Control Engineer  '],
+                            ['name' => 'Crane Operator  '],
+                            ['name' => 'ER Technician  '],
+                            ['name' => 'Engineer Project Manager  '],
+                            ['name' => 'Equipment Driver  '],
+                            ['name' => 'Executive Assistant  '],
+                            ['name' => 'Finance Manager  '],
+                            ['name' => 'Fire Engineer  '],
+                            ['name' => 'Graphic Designer  '],
+                            ['name' => 'Interior Designer '],
+                            ['name' => 'Marketing Sales Leader '],
+                            ['name' => 'Medical Office Coordinator '],
+                            ['name' => 'Office Clerk '],
+                            ['name' => 'Paint Supervisor '],
+                            ['name' => 'Payroll Assistant '],
+                            ['name' => 'Plant Manager '],
+                            ['name' => 'Procurement Engineer '],
+                            ['name' => 'Procurement Manager '],
+                            ['name' => 'Production Supervisor '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Consulting ',
+                        'children' => [
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'Architectural Designer '],
+                            ['name' => 'Auditor '],
+                            ['name' => 'Business Consultant '],
+                            ['name' => 'Business Development Consultant'],
+                            ['name' => 'CRM Consultant '],
+                            ['name' => 'Civil Structural Engineer '],
+                            ['name' => 'Corporate Trainer '],
+                            ['name' => 'Design Engineer '],
+                            ['name' => 'Executive Assistant '],
+                            ['name' => 'Executive Recruiter'],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Mechanical Design Engineer '],
+                            ['name' => 'Process Improvement Engineer'],
+                            ['name' => 'Project Manager '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Telemarketing Representative '],
+                            ['name' => 'Writer '],
+
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Customer Service ',
+                        'children' => [
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Air Condition Technician '],
+                            ['name' => 'As400 Administrator '],
+                            ['name' => 'Call Center Customer Service Representative '],
+                            ['name' => 'Call Center Manager '],
+                            ['name' => 'Customer Account Representative '],
+                            ['name' => 'Customer Account Specialist '],
+                            ['name' => 'Customer Care Agent '],
+                            ['name' => 'Customer Care Assistant '],
+                            ['name' => 'Customer Service Clerk '],
+                            ['name' => 'Customer Service Coordinator '],
+                            ['name' => 'Customer Service Driver '],
+                            ['name' => 'Customer Service Manager '],
+                            ['name' => 'Customer Service Receptionist '],
+                            ['name' => 'Customer Service Representative '],
+                            ['name' => 'Customer Support Agent '],
+                            ['name' => 'Customer Support Representative '],
+                            ['name' => 'Electronic Technician '],
+                            ['name' => 'Inside Sales Coordinator '],
+                            ['name' => 'Marketing Assistant '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Massage Therapist '],
+                            ['name' => 'Office Administrator '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Office Clerk '],
+                            ['name' => 'Office Executive '],
+                            ['name' => 'Office Manager '],
+                            ['name' => 'Office Secretary '],
+                            ['name' => 'Pharmacist '],
+                            ['name' => 'Quality Analyst '],
+                            ['name' => 'Relationship Manager '],
+                            ['name' => 'SEO Specialist '],
+                            ['name' => 'Sales Administrator '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Assistant '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Officer '],
+                            ['name' => 'Sales Representative '],
+                            ['name' => 'Security Guard '],
+                            ['name' => 'Surveyor '],
+                            ['name' => 'Tax Supervisor '],
+                            ['name' => 'Telesales Representative '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Education ',
+                        'children' => [
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Assistant Teacher '],
+                            ['name' => 'Branch Manager '],
+                            ['name' => 'Business Developer '],
+                            ['name' => 'Childcare Worker '],
+                            ['name' => 'Children Care Teacher '],
+                            ['name' => 'Classroom Teacher '],
+                            ['name' => 'Computer Operator '],
+                            ['name' => 'ESL Instructor '],
+                            ['name' => 'English Teacher   '],
+                            ['name' => 'Finance Assistant '],
+                            ['name' => 'HR Assistant '],
+                            ['name' => 'Kindergarten Teacher '],
+                            ['name' => 'Maths Instructor '],
+                            ['name' => 'Middle School Principal '],
+                            ['name' => 'Music Teacher '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Preschool Teacher '],
+                            ['name' => 'Relationship Manager '],
+                            ['name' => 'Speech Language Pathologist '],
+                            ['name' => 'Teacher Assistant '],
+                            ['name' => 'Toddler Teacher '],
+                            ['name' => 'Training Coordinator '],
+
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Engineering ',
+                        'children' => [
+                            ['name' => '.NET Architect '],
+                            ['name' => '.NET Engineer '],
+                            ['name' => 'Air Condition Technician '],
+                            ['name' => 'Autocad Draftsman '],
+                            ['name' => 'Civil Engineer '],
+                            ['name' => 'Civil Structural Engineer '],
+                            ['name' => 'Design Engineer '],
+                            ['name' => 'Draftsman '],
+                            ['name' => 'ER Technician '],
+                            ['name' => 'Electrical Engineer '],
+                            ['name' => 'Engineer Project Manager '],
+                            ['name' => 'Estimator '],
+                            ['name' => 'HVAC Engineer '],
+                            ['name' => 'HVAC Technician '],
+                            ['name' => 'Interior Designer '],
+                            ['name' => 'Landscape Architect '],
+                            ['name' => 'Maintenance Technician '],
+                            ['name' => 'Marketing Manager '],
+                            ['name' => 'Mechanical Design Engineer '],
+                            ['name' => 'Mechanical Drafter '],
+                            ['name' => 'Mechanical Engineer '],
+                            ['name' => 'Mechanical Technician '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Office Secretary '],
+                            ['name' => 'Plumbing Technician '],
+                            ['name' => 'Procurement Manager '],
+                            ['name' => 'Product Manager '],
+                            ['name' => 'Production Engineer '],
+                            ['name' => 'Production Manager '],
+                            ['name' => 'Project Coordinator '],
+                            ['name' => 'Project Engineer '],
+                            ['name' => 'Project Manager '],
+                            ['name' => 'Refrigeration Technician '],
+                            ['name' => 'Repair Technician '],
+                            ['name' => 'Safety Engineer '],
+                            ['name' => 'Sales Engineer '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Security System Engineer '],
+                            ['name' => 'Service Engineer '],
+                            ['name' => 'Service Technician '],
+                            ['name' => 'Software Development Engineer '],
+                            ['name' => 'Structural Designer '],
+                            ['name' => 'Structural Engineer '],
+                            ['name' => 'Surveyor '],
+                            ['name' => 'Technical Engineer '],
+                            ['name' => 'Technical Sales Engineer '],
+                            ['name' => 'Technical Support Agent '],
+                            ['name' => 'Technical Support Engineer '],
+                            ['name' => 'Telemarketing Sales Representative '],
+                            ['name' => 'Web Developer '],
+                            ['name' => 'Welder '],
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Alarm Technician '],
+                            ['name' => 'ASE Technician '],
+                            ['name' => 'Audio Technician '],
+                            ['name' => 'Biomedical Engineer '],
+                            ['name' => 'Build Maintenance Technician '],
+                            ['name' => 'CNC Machine Operator '],
+                            ['name' => 'Chemical Engineer '],
+                            ['name' => 'Chemist '],
+                            ['name' => 'Claim Consultant '],
+                            ['name' => 'Construction Foreperson '],
+                            ['name' => 'Cost Estimator '],
+                            ['name' => 'Diesel Mechanic '],
+                            ['name' => 'Drafter '],
+                            ['name' => 'Embedded Engineer '],
+                            ['name' => 'Facility Manager '],
+                            ['name' => 'Fire Engineer '],
+                            ['name' => 'Marine Mechanic  '],
+                            ['name' => 'Maintenance Engineer '],
+                            ['name' => 'Maintenance Coordinator '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Event Management ',
+                        'children' => [
+                            ['name' => 'Account Manager '],
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'Art Graphic Designer '],
+                            ['name' => 'Audio Visual Technician '],
+                            ['name' => 'Business Development Assistant '],
+                            ['name' => 'Business Development Consultant '],
+                            ['name' => 'Event Coordinator '],
+                            ['name' => 'Event Manager '],
+                            ['name' => 'Computer Operator '],
+                            ['name' => 'Floral Designer '],
+                            ['name' => 'Graphic Designer '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Procurement Coordinator '],
+                            ['name' => 'Project Manager '],
+                            ['name' => 'Promotions Assistant '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Secretary '],
+                            ['name' => 'Telesales Representative '],
+                            ['name' => 'Transport Driver '],
+                            ['name' => 'Videographer '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Fashion ',
+                        'children' => [
+                            ['name' => 'Account Outside Sales Executive '],
+                            ['name' => 'Accountant '],
+                            ['name' => 'Drafter '],
+                            ['name' => 'Fashion Designer '],
+                            ['name' => 'General Manager '],
+                            ['name' => 'Inside Sales Assistant '],
+                            ['name' => 'Inside Sales Associate '],
+                            ['name' => 'Key Account Manager '],
+                            ['name' => 'Makeup Artist '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Pattern Maker '],
+                            ['name' => 'Photographer '],
+                            ['name' => 'Production Manager '],
+                            ['name' => 'Sales Assistant '],
+                            ['name' => 'Sales Associate '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Specialist '],
+                        ]
+                    ],
+                     [
+                        'name' => 'Food & Beverages ',
+                        'children' => [
+                            ['name' => 'Accountant '],
+                            ['name' => 'Account Sales Executive '],
+                            ['name' => 'Artist '],
+                            ['name' => 'Assistant Project Manager '],
+                            ['name' => 'Automotive Technician '],
+                            ['name' => 'Bakery Manager '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Business Sales Manager '],
+                            ['name' => 'Business Sales Representative '],
+                            ['name' => 'Cashier Clerk '],
+                            ['name' => 'Chef '],
+                            ['name' => 'Customer Service Representative '],
+                            ['name' => 'Delivery Courier '],
+                            ['name' => 'General Manager '],
+                            ['name' => 'Graphic Designer '],
+                            ['name' => 'HR Manager '],
+                            ['name' => 'Housekeeping Attendant '],
+                            ['name' => 'Kitchen Crew Members '],
+                            ['name' => 'Kitchen Helper '],
+                            ['name' => 'Maintenance Technician'],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Marketing Manager '],
+                            ['name' => 'Microbiology Technician '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Photographer '],
+                            ['name' => 'Production Supervisor '],
+                            ['name' => 'Quality Assurance Assistant '],
+                            ['name' => 'Restaurant Assistant Manager '],
+                            ['name' => 'Restaurant Manager '],
+                            ['name' => 'Restaurant Supervisor '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Assistant '],
+                            ['name' => 'Sales Associate '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Driver '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Salesperson '],
+                            ['name' => 'Salesperson '],
+                            ['name' => 'Service Technician '],
+                            ['name' => 'Sous Chef '],
+                            ['name' => 'Waiter Or Waitress '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Government / Administration ',
+                        'children' => [
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Administrative Assistant Clerk '],
+                            ['name' => 'Administrative Officer '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Business Account Executive '],
+                            ['name' => 'General Manager '],
+                            ['name' => 'Office Administrator '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Office Manager '],
+                            ['name' => 'Technical Engineer'],
+                             ['name' => 'typist'],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Hospitality & Restaurants ',
+                        'children' => [
+                            ['name' => 'Assistant Housekeeping Manager '],
+                            ['name' => 'B2B Sales Executive '],
+                            ['name' => 'Branch Manager '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Business Operation Manager '],
+                            ['name' => 'Certified Registered Nurse '],
+                            ['name' => 'Chef '],
+                            ['name' => 'Childcare Assistant '],
+                            ['name' => 'Computer Technician '],
+                            ['name' => 'Customer Service Receptionist '],
+                            ['name' => 'Delivery Manager '],
+                            ['name' => 'Dishwasher '],
+                            ['name' => 'Dispatcher '],
+                            ['name' => 'Event Coordinator '],
+                            ['name' => 'Executive Secretary '],
+                            ['name' => 'Floor Supervisor '],
+                            ['name' => 'Front Desk Agent '],
+                            ['name' => 'General Manager '],
+                            ['name' => 'HR Administrator '],
+                            ['name' => 'HR Coordinator '],
+                            ['name' => 'HR Manager '],
+                            ['name' => 'Kitchen Crew Members '],
+                            ['name' => 'Kitchen Helper'],
+                            ['name' => 'Kitchen Manager '],
+                            ['name' => 'Line Cook '],
+                            ['name' => 'Market Manager '],
+                            ['name' => 'Marketing Assistant '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Massage Therapist '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Phone Operator '],
+                            ['name' => 'Porter '],
+                            ['name' => 'Restaurant Manager '],
+                            ['name' => 'Restaurant Supervisor '],
+                            ['name' => 'Room Attendant '],
+                            ['name' => 'Security Guard '],
+                            ['name' => 'Store Clerk '],
+                            ['name' => 'Waiter Or Waitress '],
+                            ['name' => 'Accountant '],
+                            ['name' => 'Accounting Assistant '],
+                            ['name' => 'Administrative Assistant '],
+                        ]
+                    ],
+                     [
+                        'name' => 'HR & Recruitment ',
+                        'children' => [
+                            ['name' => 'Account Manager '],
+                            ['name' => 'Administrative Office Assistant '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Business Developer '],
+                            ['name' => 'Crane Operator '],
+                            ['name' => 'Electrician Helper '],
+                            ['name' => 'General Manager '],
+                            ['name' => 'HR Administrator '],
+                            ['name' => 'HR Assistant '],
+                            ['name' => 'HR Clerk '],
+                            ['name' => 'HR Coordinator '],
+                            ['name' => 'HR Manager '],
+                            ['name' => 'HR Recruiter '],
+                            ['name' => 'Human Resources Administrator '],
+                            ['name' => 'Human Resources Manager '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Recruiter '],
+                            ['name' => 'Recruitment Specialist '],
+                            ['name' => 'Secretary '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Import & Export ',
+                        'children' => [
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'Advertising Executive '],
+                            ['name' => 'Collection Clerk '],
+                            ['name' => 'Computer Operator '],
+                            ['name' => 'Export Coordinator '],
+                            ['name' => 'Key Account Manager'],
+                            ['name' => 'Logistics Assistant '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Procurement Assistant '],
+                            ['name' => 'Production Coordinator '],
+                            ['name' => 'Production Supervisor '],
+                            ['name' => 'Purchase Assistant '],
+                            ['name' => 'Safety Officer '],
+                            ['name' => 'Sales Agent '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Supply Coordinator '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Industrial & Manufacturing ',
+                        'children' => [
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Art Graphic Designer '],
+                            ['name' => 'ASE Technician '],
+                            ['name' => 'Autocad Drafter '],
+                            ['name' => 'CNC Operator '],
+                            ['name' => 'Cost Estimator'],
+                            ['name' => 'Data-Entry Operator '],
+                            ['name' => 'Electronic Technician '],
+                            ['name' => 'Finance Manager '],
+                            ['name' => 'Fork Lift Operator '],
+                            ['name' => 'General Laborer '],
+                            ['name' => 'BabyHuman Resources Manager Gear'],
+                            ['name' => 'Laboratory Assistant '],
+                            ['name' => 'Laboratory Technician '],
+                            ['name' => 'Lathe Operator '],
+                            ['name' => 'Maintenance Manager '],
+                            ['name' => 'Maintenance Technician '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Mechanical Technician '],
+                            ['name' => 'Mill Operator '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Operations Manager'],
+                            ['name' => 'Production Engineer '],
+                            ['name' => 'Production Manager '],
+                            ['name' => 'Purchase Assistant '],
+                            ['name' => 'Purchase Coordinator '],
+                            ['name' => 'Quality Control Technician '],
+                            ['name' => 'Sales Assistant '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Engineer '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Secretary '],
+                            ['name' => 'Software Engineer '],
+                            ['name' => 'Welder '],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Information Technology ',
+                        'children' => [
+                            ['name' => '.NET Developer '],
+                            ['name' => '.NET Web Developer '],
+                            ['name' => 'Application Developer '],
+                            ['name' => 'Application Software Developer '],
+                            ['name' => 'Business Account Executive '],
+                            ['name' => 'Business Development Manager'],
+                            ['name' => 'Desktop Support Technician'],
+                            ['name' => 'Inside Sales Executive '],
+                            ['name' => 'Java Developer '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Mobile Application Developer '],
+                            ['name' => 'Network Administrator '],
+                            ['name' => 'Network Engineer '],
+                            ['name' => 'Office Administrator '],
+                            ['name' => 'Oracle Developer '],
+                            ['name' => 'Pc Technician '],
+                            ['name' => 'Phone Technician '],
+                            ['name' => 'Php Developer '],
+                            ['name' => 'Printer Technician '],
+                            ['name' => 'Product Manager '],
+                            ['name' => 'Project Coordinator '],
+                            ['name' => 'Project Engineer '],
+                            ['name' => 'Project Manager'],
+                            ['name' => 'Repair Technician '],
+                            ['name' => 'Sales Account Executive '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Sales Coordinator'],
+                            ['name' => 'Sales Engineer '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Secretary'],
+                            ['name' => 'Security Engineer '],
+                            ['name' => 'Security System Engineer '],
+                            ['name' => 'Server Administrator '],
+                            ['name' => 'Service Engineer '],
+                            ['name' => 'Software Developer '],
+                            ['name' => 'Software Engineer '],
+                            ['name' => 'Software Test Engineer '],
+                            ['name' => 'System Administrator '],
+                            ['name' => 'Technical Analyst '],
+                            ['name' => 'Technical Engineer '],
+                            ['name' => 'Technical Manager '],
+                            ['name' => 'Technical Support Analyst '],
+                            ['name' => 'Telesales Representative '],
+                            ['name' => 'Vb.Net Developer '],
+                            ['name' => 'Web Designer'],
+                            ['name' => 'Web Developer '],
+                            ['name' => 'Web Graphic Designer '],
+                            ['name' => 'Accountant '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'ASE Technician '],
+                            ['name' => 'Asp.Net Developer '],
+                            ['name' => 'Autocad Draftsman '],
+                            ['name' => 'Business Operation Manager '],
+                            ['name' => 'C# .net Developer '],
+                            ['name' => 'CRM Consultant'],
+                            ['name' => 'CRM Developer '],
+                            ['name' => 'Computer Support Technician '],
+                            ['name' => 'Content Writer '],
+                            ['name' => 'Customer Service Administrative Assistant '],
+                            ['name' => 'Customer Service Agent '],
+                            ['name' => 'Customer Support Analyst '],
+                            ['name' => 'Desktop Support Engineer '],
+                            ['name' => 'ERP Business Analyst '],
+                            ['name' => 'Electronic Technician '],
+                            ['name' => 'Game Developer '],
+                            ['name' => 'Graphic Designer'],
+                            ['name' => 'HR Administrator '],
+                            ['name' => 'Information Technology Business Analyst '],
+                            ['name' => 'Inside Sales Assistant '],
+                            ['name' => 'Java Consultant '],
+                            ['name' => 'Marketing Account Executive '],
+                            ['name' => 'Marketing Manager '],
+                            ['name' => 'Marketing Specialist '],
+                            ['name' => 'Network Support Technician '],
+                            ['name' => 'Oracle DBA'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Insurance ',
+                        'children' => [
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Document Clerk'],
+                            ['name' => 'Financial Advisor '],
+                            ['name' => 'Insurance Agent '],
+                            ['name' => 'Insurance Broker '],
+                            ['name' => 'Insurance Executive '],
+                            ['name' => 'Insurance Sales Agent '],
+                            ['name' => 'Relationship Manager '],
+                            ['name' => 'Sales Advisor '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Sales Representative '],
+                            ['name' => 'Senior Accountant '],
+                            ['name' => 'Typist '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Legal Services ',
+                        'children' => [
+                            ['name' => 'Law Attorney  '],
+                            ['name' => 'Corporate Legal Secretary '],
+                            ['name' => 'Legal Assistant'],
+                            ['name' => 'Legal Secretary '],
+                            ['name' => 'Litigation Legal Assistant '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Logistics & Distribution ',
+                        'children' => [
+                            ['name' => 'Account Outside Sales Manager '],
+                            ['name' => 'Administrative Assistant Clerk '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Broker '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Computer Operator '],
+                            ['name' => 'Customer Service Coordinator '],
+                            ['name' => 'Delivery Courier '],
+                            ['name' => 'Document Clerk '],
+                            ['name' => 'Editor '],
+                            ['name' => 'Executive Secretary '],
+                            ['name' => 'HR Assistant '],
+                            ['name' => 'Inventory Control Clerk '],
+                            ['name' => 'Logistics Assistant '],
+                            ['name' => 'Logistics Coordinator '],
+                            ['name' => 'Logistics Specialist '],
+                            ['name' => 'Marketing Manager '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Purchase Assistant '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Specialist '],
+                            ['name' => 'Sales Supervisor '],
+                            ['name' => 'Shipping Coordinator '],
+                            ['name' => 'Store Supervisor '],
+                            ['name' => 'Territory Manager '],
+                            ['name' => 'Warehouse Assistant '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Marketing & Advertising ',
+                        'children' => [
+                            ['name' => '.NET Developer '],
+                            ['name' => '.NET Web Developer '],
+                            ['name' => 'Account Marketing Executive '],
+                            ['name' => 'Account Sales Executive '],
+                            ['name' => 'Advertising Sales Executive '],
+                            ['name' => 'Art Graphic Designer '],
+                            ['name' => 'Business Developer '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Copywriter '],
+                            ['name' => 'Market Development Representative '],
+                            ['name' => 'Market Research Analyst '],
+                            ['name' => 'Market Research Assistant '],
+                            ['name' => 'Marketing Administrator '],
+                            ['name' => 'Marketing Assistant'],
+                            ['name' => 'Marketing Associate '],
+                            ['name' => 'Marketing Consultant '],
+                            ['name' => 'Marketing Coordinator '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Marketing Manager '],
+                            ['name' => 'Marketing Professional '],
+                            ['name' => 'Office Manager '],
+                            ['name' => 'Personal Care Assistant '],
+                            ['name' => 'Php Developer '],
+                            ['name' => 'Production Manager '],
+                            ['name' => 'Promotions Executive '],
+                            ['name' => 'Purchase Buyer '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Assistant '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Engineer '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Sales Marketing Associate '],
+                            ['name' => 'Sales Merchandiser '],
+                            ['name' => 'Sales Officer '],
+                            ['name' => 'Sales Representative '],
+                            ['name' => 'Sales Specialist '],
+                            ['name' => 'Social Media Specialist '],
+                            ['name' => 'Telemarketing Agent '],
+                            ['name' => 'Telemarketing Sales Representative '],
+                            ['name' => 'Web Developer '],
+                            ['name' => 'Writer '],
+                            ['name' => 'Account Executive'],
+                            ['name' => 'Account Manager'],
+                            ['name' => 'Account Outside Sales Executive '],
+                            ['name' => 'Account Sales Manager '],
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Administrative Assistant Coordinator '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Advertising Account Executive '],
+                            ['name' => 'Advertising Sales Manager '],
+                            ['name' => 'Advertising Sales Representative'],
+                            ['name' => 'Business Account Executive '],
+                            ['name' => 'Business Development Consultant '],
+                            ['name' => 'Community Manager '],
+                            ['name' => 'Data Analyst '],
+                            ['name' => 'Graphic Design Specialist '],
+                            ['name' => 'Help Desk Supervisor '],
+                        ]
+                    ],
+                    [
+                        'name' => 'Media ',
+                        'children' => [
+                            ['name' => 'Art Graphic Designer '],
+                            ['name' => 'Artist '],
+                            ['name' => 'Assistant Director '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Business Sales Representative '],
+                            ['name' => 'Content Writer '],
+                            ['name' => 'Editor '],
+                            ['name' => 'Executive Secretary '],
+                            ['name' => 'Graphic Designer '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Photographer '],
+                            ['name' => 'Public Relations Marketing Specialist '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Social Media Specialist '],
+                            ['name' => 'Software Developer '],
+                            ['name' => 'Video Editor '],
+                            ['name' => 'Videographer '],
+                            ['name' => 'Web Designer '],
+                            ['name' => 'Web Developer '],
+                        ]
+                    ],
+                    [
+                        'name' => 'Medical & Helthcare ',
+                        'children' => [
+                            ['name' => 'Certified Dental Assistant '],
+                            ['name' => 'Certified Nurse '],
+                            ['name' => 'Certified Nurse Assistant'],
+                            ['name' => 'Certified Registered Nurse '],
+                            ['name' => 'Clinical Laboratory Technician '],
+                            ['name' => 'Clinical Manager '],
+                            ['name' => 'Clinical Psychologist '],
+                            ['name' => 'Dental Assistant '],
+                            ['name' => 'Dental Technician '],
+                            ['name' => 'Dentist '],
+                            ['name' => 'Dermatologist '],
+                            ['name' => 'Doctor '],
+                            ['name' => 'ER Technician '],
+                            ['name' => 'Laboratory Technologist '],
+                            ['name' => 'Massage Therapist'],
+                            ['name' => 'Medical Doctor '],
+                            ['name' => 'Medical Laboratory Technician '],
+                            ['name' => 'Medical Sales Representative '],
+                            ['name' => 'Neurologist '],
+                            ['name' => 'Nurse Manager '],
+                            ['name' => 'Nursing Supervisor '],
+                            ['name' => 'Occupational Therapist '],
+                            ['name' => 'Pediatric Dentist  '],
+                            ['name' => 'Orthodontist '],
+                            ['name' => 'Pathologist '],
+                            ['name' => 'Pharmacist '],
+                            ['name' => 'Phlebotomist '],
+                            ['name' => 'Phone Operator '],
+                            ['name' => 'Procurement Assistant '],
+                            ['name' => 'Program Manager '],
+                            ['name' => 'Project Coordinator '],
+                            ['name' => 'Project Manager '],
+                            ['name' => 'Radiologist '],
+                            ['name' => 'Receptionist Clerk '],
+                            ['name' => 'Registered Dental Assistant '],
+                            ['name' => 'Registered Medical Nurse '],
+                            ['name' => 'Registered Respiratory Therapist'],
+                            ['name' => 'Registered Staff Nurse '],
+                            ['name' => 'Respiratory Therapist '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sonographer  '],
+                            ['name' => 'Speech Language Pathologist '],
+                            ['name' => 'Speech Therapist '],
+                            ['name' => 'Staff Nurse '],
+                            ['name' => 'Therapist Assistant '],
+                            ['name' => 'X-Ray Technician '],
+                            ['name' => 'Anesthesiologist '],
+                            ['name' => 'Biomedical Engineer '],
+                            ['name' => 'Chemist '],
+                            ['name' => 'Clinical Therapist '],
+                            ['name' => 'Cosmetologist '],
+                            ['name' => 'Dental Hygienist '],
+                            ['name' => 'Dietitian '],
+                            ['name' => 'ER Nurse '],
+                            ['name' => 'Family Physician '],
+                            ['name' => 'Gynecologist '],
+                            ['name' => 'HR Assistant '],
+                            ['name' => 'Hygienist '],
+                            ['name' => 'Licensed Registered Nurse '],
+                            ['name' => 'MRI Technician '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Medical Physician '],
+                            ['name' => 'Medical Receptionist '],
+                            ['name' => 'Medical Secretary '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Oil, Gas & Energy ',
+                        'children' => [
+                            ['name' => 'Administrative Assistant Coordinator'],
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'CNC Lathe Machinist '],
+                            ['name' => 'Laboratory Analyst'],
+                            ['name' => 'Mechanical Inspector '],
+                            ['name' => 'Pipe Welder '],
+                            ['name' => 'Procurement Coordinator'],
+                            ['name' => 'Production Manager '],
+                            ['name' => 'Project Manager '],
+                            ['name' => 'Quality Manager '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Tig Welder '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Public Relations ',
+                        'children' => [
+                            ['name' => 'Account Manager '],
+                            ['name' => 'Accountant '],
+                            ['name' => 'Administrative Receptionist '],
+                            ['name' => 'Business Manager '],
+                            ['name' => 'Clerk  '],
+                            ['name' => 'Public Relations Coordinator '],
+                            ['name' => 'Public Relations Manager '],
+                            ['name' => 'Relationship Manager '],
+                            ['name' => 'Typist '],
+                            ['name' => 'Executive Secretary'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Real Estate ',
+                        'children' => [
+                            ['name' => 'Accounting Assistant '],
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Account Inside Sales Manager '],
+                            ['name' => 'Administrative Manager '],
+                            ['name' => 'Administrative Receptionist'],
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'Agent Service Representative '],
+                            ['name' => 'Asset Manager '],
+                            ['name' => 'Assistant Teacher '],
+                            ['name' => 'Broker '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Customer Service Agent'],
+                            ['name' => 'Executive Secretary '],
+                            ['name' => 'Facility Maintenance Manager '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Photographer '],
+                            ['name' => 'Property Manager '],
+                            ['name' => 'Real Estate Agent '],
+                            ['name' => 'Real Estate Associate '],
+                            ['name' => 'Retail Consultant '],
+                            ['name' => 'Sales Agent '],
+                            ['name' => 'Sales And Marketing Representative '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Director '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Telesales Agent '],
+                            ['name' => 'Telesales Representative '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Retail & Consumer Goods ',
+                        'children' => [
+                            ['name' => 'Assistant Buyer '],
+                            ['name' => 'Customer Service Assistant '],
+                            ['name' => 'Customer Service Representative '],
+                            ['name' => 'Inside Sales Assistant '],
+                            ['name' => 'Inside Sales Coordinator'],
+                            ['name' => 'Logistics Coordinator '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Production Manager '],
+                            ['name' => 'Project Coordinator '],
+                            ['name' => 'Purchase Coordinator '],
+                            ['name' => 'Retail Sales Representative '],
+                            ['name' => 'Retail Store Manager '],
+                            ['name' => 'Retail Supervisor '],
+                            ['name' => 'Sales Associate '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Manager '],
+                            ['name' => 'Sales Merchandiser '],
+                            ['name' => 'Shop Manager '],
+                            ['name' => 'Store Supervisor '],
+                            ['name' => 'Visual Merchandiser '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Safety & Security ',
+                        'children' => [
+                            ['name' => 'Alarm Technician '],
+                            ['name' => 'Design Engineer '],
+                            ['name' => 'Electrician Technician '],
+                            ['name' => ' Security Guard '],
+                            ['name' => 'Safety Officer '],
+                             ['name' => 'Fire and Safety Officer'],
+                             ['name' => 'Security Officer'],
+
+                        ]
+                    ],
+                     [
+                        'name' => 'Sales ',
+                        'children' => [
+                            ['name' => 'Account Sales Executive '],
+                            ['name' => 'Account Sales Manager '],
+                            ['name' => 'Advertising Sales Executive '],
+                            ['name' => 'B2B Sales Executive '],
+                            ['name' => 'B2B Sales Representative '],
+                            ['name' => 'Business Sales Representative '],
+                            ['name' => 'Field Sales Representative '],
+                            ['name' => 'Inside Sales Coordinator '],
+                            ['name' => 'Inside Sales Executive '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Medical Sales Representative '],
+                            ['name' => 'Retail Sales Representative '],
+                            ['name' => 'Sales Administrator '],
+                            ['name' => 'Sales Agent '],
+                            ['name' => 'Sales Consultant '],
+                            ['name' => 'Sales Coordinator '],
+                            ['name' => 'Sales Engineer '],
+                            ['name' => 'Sales Executive '],
+                            ['name' => 'Sales Marketing Associate '],
+                            ['name' => 'Sales Merchandiser '],
+                            ['name' => 'Sales Officer '],
+                            ['name' => 'Sales Supervisor '],
+                            ['name' => 'Salesperson '],
+                            ['name' => 'Technical Sales Engineer '],
+                            ['name' => 'Telemarketing Sales Representative '],
+                            ['name' => 'Telesales Agent '],
+                            ['name' => 'Inside Sales Manager '],
+                            ['name' => 'Inside Sales Assistant '],
+                            ['name' => 'Marketing Sales Leader '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Outside Sales Account Executive '],
+                            ['name' => 'Purchasing Manager '],
+                            ['name' => 'Retail Store Assistant '],
+                            ['name' => 'Sales Advisor '],
+                            ['name' => 'Shop Manager '],
+                            ['name' => 'Tax Supervisor '],
+                            ['name' => 'Visual Merchandiser '],
+                        ]
+                    ],
+                    [
+                        'name' => 'Secretarial ',
+                        'children' => [
+                            ['name' => 'Accountant '],
+                            ['name' => 'Accounting Assistant'],
+                            ['name' => 'Administrative Assistant'],
+                            ['name' => 'Administrative Executive'],
+                            ['name' => 'Administrative Office Assistant '],
+                            ['name' => 'Administrative Office Manager '],
+                            ['name' => 'Administrative Officer '],
+                            ['name' => 'Administrative Receptionist'],
+                            ['name' => 'Administrative Secretary '],
+                            ['name' => 'Client Relation Specialist '],
+                            ['name' => 'Corporate Executive '],
+                            ['name' => 'Customer Service Agent '],
+                            ['name' => 'Customer Service Receptionist '],
+                            ['name' => 'Executive Assistant '],
+                            ['name' => 'Executive Secretary '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Sports & Fitness ',
+                        'children' => [
+                            ['name' => 'Fitness Coach '],
+                            ['name' => 'Horse Trainer '],
+                            ['name' => 'Fitness Instructor'],
+                            ['name' => 'Personal Trainer'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Telecommunications  ',
+                        'children' => [
+                            ['name' => 'Account Inside Sales Executive '],
+                            ['name' => 'Call Center Customer Service Representative '],
+                            ['name' => 'Marketing Executive '],
+                            ['name' => 'Telesales Representative '],
+                            ['name' => 'Telemarketing Agent '],
+                            ['name' => 'Test Engineer '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Transportation  ',
+                        'children' => [
+                            ['name' => 'Crane Operator '],
+                            ['name' => 'Customer Service Driver '],
+                            ['name' => 'Delivery Cdl Driver '],
+                            ['name' => 'Sales Driver '],
+                            ['name' => 'School Bus Driver '],
+                            ['name' => 'Taxi Driver '],
+                            ['name' => 'Tractor Trailer Driver '],
+                            ['name' => 'Transport Driver '],
+                            ['name' => 'Transportation Coordinator '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Travel & Tourism ',
+                        'children' => [
+                            ['name' => 'Account Executive '],
+                            ['name' => 'Accountant '],
+                            ['name' => 'Administrative Assistant '],
+                            ['name' => 'Business Development Manager '],
+                            ['name' => 'Office Assistant '],
+                            ['name' => 'Operations Manager '],
+                            ['name' => 'Reservation Agent '],
+                            ['name' => 'Reservation Manager '],
+                            ['name' => 'Ticketing Agent '],
+                            ['name' => 'Tour Manager '],
+                            ['name' => 'Travel Agent '],
+                            ['name' => 'Travel Consultant '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Veterinary & Animals  ',
+                        'children' => [
+                            ['name' => 'Animal Caretaker '],
+                            ['name' => 'Dog Groomer '],
+                            ['name' => 'Veterinary Assistant '],
+                            ['name' => 'Veterinary Receptionist '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Warehousing  ',
+                        'children' => [
+                            ['name' => 'Asbestos Worker '],
+                            ['name' => 'Construction Worker '],
+                            ['name' => 'Forklift Operator '],
+                            ['name' => 'Gardener '],
+                            ['name' => 'General Labourer '],
+                            ['name' => 'Inventory Assistant '],
+                            ['name' => 'Logistics Manager '],
+                            ['name' => 'Phone Operator '],
+                            ['name' => 'Security Guard '],
+                            ['name' => 'Warehouse Assistant '],
+                            ['name' => 'Warehouse Coordinator '],
+                            ['name' => 'Warehouse Labourer '],
+                            ['name' => 'Warehouse Manager '],
+                            ['name' => 'Warehouse Supervisor '],
+
+                        ]
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Classifieds',
+                'children' => [
+                    [
+                        'name' => 'Baby Items',
+                        'children' => [
+                            ['name' => 'Baby Gear'],
+                            ['name' => 'Baby Toys'],
+                            ['name' => 'Feeding'],
+                            ['name' => 'Nursery Furniture & Accessories'],
+                            ['name' => 'Safety & Health'],
+                            ['name' => 'Strollers & Car Seats']
+                        ]
+                    ],
+                    [
+                        'name' => 'Books',
+                        'children' => [
+                            ['name' => 'Audio books'],
+                            ['name' => 'Book Accessories'],
+                            ['name' => 'Children\'s Books'],
+                            ['name' => 'Digital / EBooks'],
+                            ['name' => 'Fiction'],
+                            ['name' => 'Non fiction'],
+                            ['name' => 'Textbooks']
+                        ]
+                    ],
+                    [
+                        'name' => 'Business & Industrial',
+                        'children' => [
+                            ['name' => 'Agriculture & Forestry'],
+                            ['name' => 'Business for Sale'],
+                            ['name' => 'Commercial Printing & Copy Machines'],
+                            ['name' => 'Construction'],
+                            ['name' => 'Electrical Equipment'],
+                            ['name' => 'Food & Beverage'],
+                            ['name' => 'Healthcare & Lab'],
+                            ['name' => 'Industrial Supplies'],
+                            ['name' => 'Manufacturing '],
+                            ['name' => 'Office Furniture & Equipment '],
+                            ['name' => 'Packing & Shipping '],
+                            ['name' => 'Retail & Services'],
+                        ]
+                    ],
+                    [
+                        'name' => 'Collectibles ',
+                        'children' => [
+                            ['name' => 'Antiques'],
+                            ['name' => 'Art '],
+                            ['name' => 'Decorations '],
+                            ['name' => 'Memorabilia '],
+                            ['name' => 'Pens & Writing Instruments '],
+                            ['name' => 'Rocks/Fossils/Artifacts '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Cameras & Imaging  ',
+                        'children' => [
+                            ['name' => 'Binoculars/Telescopes '],
+                            ['name' => 'Camcorder Accessories '],
+                            ['name' => 'Camcorders '],
+                            ['name' => 'Camera Accessories '],
+                            ['name' => '. Digital Cameras '],
+                            ['name' => 'Digital Photo Frames '],
+                            ['name' => 'Film Cameras '],
+                            ['name' => 'Lenses, Filters & Lighting '],
+                            ['name' => 'Professional Equipment '],
+                            ['name' => 'Tripods & Stands '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Clothing & Accessories ',
+                        'children' => [
+                            ['name' => 'Clothing '],
+                            ['name' => 'Costumes & Uniforms '],
+                            ['name' => 'Fragrances '],
+                            ['name' => 'Handbags, Bags & Wallets'],
+                            ['name' => 'Luggage'],
+                            ['name' => 'Men Accessories'],
+                            ['name' => 'Shoes/Footwear'],
+                            ['name' => 'Vintage & Highend Clothing '],
+                            ['name' => 'Wedding Apparel '],
+                            ['name' => 'Women Accessories'],
+                        ]
+                    ],
+                    [
+                        'name' => 'Computers & Networking ',
+                        'children' => [
+                            ['name' => 'Accessories'],
+                            ['name' => 'Computer Components '],
+                            ['name' => 'Computers '],
+                            ['name' => 'Networking & Communication '],
+                            ['name' => 'Software '],
+                            ['name' => 'Monitors, Printers & Other Peripherals '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Electronics ',
+                        'children' => [
+                            ['name' => 'Car Electronics '],
+                            ['name' => 'DVD & Home Theater'],
+                            ['name' => '. Electronic Accessories '],
+                            ['name' => 'Gadgets '],
+                            ['name' => '. Home Audio & Turntables '],
+                            ['name' => 'Mp3 Players and Portable Audio '],
+                            ['name' => 'Satellite & Cable TV '],
+                            ['name' => '. Satellite Radio '],
+                            ['name' => 'Televisions '],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Furniture, Home & Garden ',
+                        'children' => [
+                            ['name' => 'Curtains & Blinds'],
+                            ['name' => 'Furniture  '],
+                            ['name' => 'Garden & Outdoor '],
+                            ['name' => 'Home Accessories '],
+                            ['name' => 'Lighting & Fans '],
+                            ['name' => 'Rugs & Carpets'],
+                            ['name' => 'Tools & Home Improvement'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Gaming ',
+                        'children' => [
+                            ['name' => 'Gaming Accessories'],
+                            ['name' => 'Gaming Merchandise '],
+                            ['name' => 'Gaming Systems'],
+                            ['name' => 'Video Games'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Home Appliances ',
+                        'children' => [
+                            ['name' => 'Large Appliances / White Goods'],
+                            ['name' => 'Outdoor Appliances '],
+                            ['name' => 'Small Bathroom Appliances'],
+                            ['name' => 'Small Kitchen Appliances'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Mobile Phones & PDA ',
+                        'children' => [
+                            ['name' => 'Mobile Phones'],
+                            ['name' => 'Mobile Accessories'],
+                            ['name' => 'PDA'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Pets ',
+                        'children' => [
+                            ['name' => 'Lost & Found Pets '],
+                            ['name' => 'Pet Accessories '],
+                            ['name' => 'Pets for Free Adoption'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Sports Equipment ',
+                        'children' => [
+                            ['name' => 'Camping & Hiking'],
+                            ['name' => 'Cycling'],
+                            ['name' => 'Exercise Equipment'],
+                            ['name' => 'Golf'],
+                            ['name' => 'Indoor Sports '],
+                            ['name' => 'Team Sports'],
+                            ['name' => 'Tennis & Racquet Sports'],
+                            ['name' => 'Water Sports '],
+                            ['name' => 'Winter Sports'],
+                            ['name' => '. Others'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Tickets & Vouchers: ',
+                        'children' => [
+                            ['name' => 'Concerts  '],
+                            ['name' => 'Events '],
+                            ['name' => 'Movies '],
+                            ['name' => 'Sporting Events  '],
+                            ['name' => 'Theater '],
+                            ['name' => 'Travel'],
+
+                        ]
+                    ],
+                    [
+                        'name' => 'Toys ',
+                        'children' => [
+                            ['name' => 'Action Figures & Toy Vehicles'],
+                            ['name' => 'Classic & Vintage Vehicles'],
+                            ['name' => 'Dolls & Stuffed Animals'],
+                            ['name' => 'Educational Toys'],
+                            ['name' => 'Electronic & Remote Control Toys'],
+                            ['name' => 'Games & Puzzles'],
+                            ['name' => 'Hobbies'],
+                            ['name' => 'Outdoor Toys & Structures'],
+                            ['name' => 'PlaySchool Toys'],
+
+                        ]
+                    ],
+                ],
+            ],
+            [	'name' => 'Property',
+                'children' => [
+
                         [
-                            'name' => 'Used Cars for Sale',
+                            'name' => 'Property for Sale',
                             'children' => [
-                                ['name' => 'AUDI'],
-                                ['name' => 'BMW'],
-                                ['name' => 'Ford'],
-                                ['name' => 'LandRover'],
-                                ['name' => 'Mercedes Benz'],
-                                ['name' => 'Ferrari'],
-                                ['name' => 'Bently']
+                                ['name' => 'Apartment for Sale'],
+                                ['name' => 'Villa / House for Sale'],
+                                ['name' => 'Commercial for Sale'],
+                                ['name' => 'Multiple Units for Sale'],
+                                ['name' => 'Land for Sale']
                             ],
                         ],
-                        [
-                            'name' => 'Heavy Vehicles',
-                            'children' => [
-                                ['name' => 'Buses'],
-                                ['name' => 'Cranes'],
-                                ['name' => 'Forklifts'],
-                                ['name' => 'Trailers'],
-                                ['name' => 'Trucks'],
-                                ['name' => 'Tankers'],
-                                ['name' => 'Parts & Engine']
-                            ],
-                        ],
-                        [
-                            'name' => 'Motorcycles',
-                            'children' => [
-                                ['name' => 'Cruiser / Chopper'],
-                                ['name' => 'Moped'],
-                                ['name' => 'Off-Road/Dual Purpose'],
-                                ['name' => 'Scooter'],
-                                ['name' => 'Sport Bike'],
-                                ['name' => 'Standard Motorcycle'],
-                                ['name' => 'Touring'],
-                                ['name' => 'Trike']
-                            ]
-                        ],
-                        [
-                            'name' => 'Boats',
-                            'children' => [
-                                ['name' => 'Motor Boats'],
-                                ['name' => 'Row / Paddle Boats'],
-                                ['name' => 'Sail Boats']
-                            ]
-                        ]
-                    ],
-                ],
-                [
-                    'name' => 'Auto Accessories',
-                    'children' => [
-                        [
-                            'name' => 'Apparel, Merchandise & Accessories',
-                            'children' => [
-                                ['name' => 'Apparel'],
-                                ['name' => 'Boat Accessories'],
-                                ['name' => 'Cat / 4x4 Accessories'],
-                                ['name' => 'Merchandise'],
-                                ['name' => 'Motorcycle Accessories']
-                            ]
-                        ],
-                        [
-                            'name' => 'Automotive Tools',
-                            'children' => [
-                                ['name' => 'Tool Accessories'],
-                                ['name' => 'Tool Sets'],
-                                ['name' => 'Tools']
-                            ]
-                        ]
-                    ],
-                ],
-                [
-                    'name' => 'Auto Spare Parts',
-                    'children' => [
-                        [
-                            'name' => 'Boat Parts',
-                            'children' => [
-                                ['name' => 'Body Parts & Accessories'],
-                                ['name' => 'Engine Parts'],
-                                ['name' => 'Plumbing & Ventilation']
-                            ]
-                        ],
-                        [
-                            'name' => 'Car Parts',
-                            'children' => [
-                                ['name' => 'A/C & Heating Parts'],
-                                ['name' => 'Batteries'],
-                                ['name' => 'Brakes'],
-                                ['name' => 'Engine & Computer Parts'],
-                                ['name' => 'Exhaust / Air Intake'],
-                                ['name' => 'Exterior Parts'],
-                                ['name' => 'Interior Parts'],
-                                ['name' => 'Lighting'],
-                                ['name' => 'Suspension'],
-                                ['name' => 'Wheel / Tires']
-                            ]
-                        ],
-                        [
-                            'name' => 'Motorcycle Parts',
-                            'children' => [
-                                ['name' => 'Accessories'],
-                                ['name' => 'Body & Frames'],
-                                ['name' => 'Engines & Components'],
-                                ['name' => 'Lighting'],
-                                ['name' => 'Wheels / Tires'],
-                                ['name' => 'Number Plates']
-                            ]
-                        ]
-                    ],
-                ],
-                [
-                    'name' => 'Jobs',
-                    'children' => [
-                        [
-                            'name' => 'Accounting',
-                            'children' => [
-                                ['name' => 'Accounting Business Executive'],
-                                ['name' => 'Accounting Executive'],
-                                ['name' => 'Accounting Inside Sales Executive'],
-                                ['name' => 'Accounting Manager'],
-                                ['name' => 'Accountant'],
-                                ['name' => 'Accounting Administrator'],
-                                ['name' => 'Accounting Assistant'],
-                                ['name' => 'Accounting Associate'],
-                                ['name' => 'Accounting Clerk'],
-                                ['name' => 'Accounting Manager'],
-                                ['name' => 'Accounting Supervisor'],
-                                ['name' => 'Accounts Payable Assistant'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Airlines & Aviation',
-                            'children' => [
-                                ['name' => 'Purchase Buyer'],
-                                ['name' => 'Sales Manager'],
-                                ['name' => 'Travel Agent'],
-                                ['name' => 'Travel Consultant']
-                            ]
-                        ],
-                        [
-                            'name' => 'Architecture & Interior Design',
-                            'children' => [
-                                ['name' => '.NET Architect'],
-                                ['name' => 'Architectural Designer'],
-                                ['name' => 'AutoCAD Drafter'],
-                                ['name' => 'Business Development Director'],
-                                ['name' => 'CNC Programmer'],
-                                ['name' => 'CAD Designer'],
-                                ['name' => 'Civil Engineer'],
-                                ['name' => 'Design Engineer'],
-                                ['name' => 'Draftsman'],
-                                ['name' => 'Electrical Design Engineer']
-                            ]
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'Classifieds',
-                    'children' => [
-                        [
-                            'name' => 'Baby Items',
-                            'children' => [
-                                ['name' => 'Baby Gear'],
-                                ['name' => 'Baby Toys'],
-                                ['name' => 'Feeding'],
-                                ['name' => 'Nursery Furniture & Accessories'],
-                                ['name' => 'Safety & Health'],
-                                ['name' => 'Strollers & Car Seats']
-                            ]
-                        ],
-                        [
-                            'name' => 'Books',
-                            'children' => [
-                                ['name' => 'Audiobooks'],
-                                ['name' => 'Book Accessories'],
-                                ['name' => 'Children\'s Books'],
-                                ['name' => 'Digital / EBooks'],
-                                ['name' => 'Fiction'],
-                                ['name' => 'Nonfiction'],
-                                ['name' => 'Textbooks']
-                            ]
-                        ],
-                        [
-                            'name' => 'Business & Industrial',
-                            'children' => [
-                                ['name' => 'Agriculture & Forestry'],
-                                ['name' => 'Business for Sale'],
-                                ['name' => 'Commercial Printing & Copy Machines'],
-                                ['name' => 'Construction'],
-                                ['name' => 'Electrical Equipment'],
-                                ['name' => 'Food & Beverage'],
-                                ['name' => 'Healthcare & Lab'],
-                                ['name' => 'Industrial Supplies']
-                            ]
-                        ]
-                    ],
-                ],
-                [
-                    'name' => 'Property for Sale',
-                    'children' => [
-                        ['name' => 'Apartment for Sale'],
-                        ['name' => 'Villa / House for Sale'],
-                        ['name' => 'Commercial for Sale'],
-                        ['name' => 'Multiple Units for Sale'],
-                        ['name' => 'Land for Sale']
-                    ],
-                ],
-                [
+                    [
                     'name' => 'Property for Rent',
                     'children' => [
-                        [
-                            'name' => 'Apartment / Flat for Rent',
-                            'children' => [
-                                ['name' => 'Property for Rent1-1'],
-                                ['name' => 'Property for Rent1-2'],
-                                ['name' => 'Property for Rent1-3'],
-                                ['name' => 'Property for Rent1-4'],
-                                ['name' => 'Property for Rent1-5'],
-                                ['name' => 'Property for Rent1-6']
+
+                                ['name' => 'Apartment / Flat for Rent'],
+                                ['name' => 'Villa/House for Rent'],
+                                ['name' => 'Commercial for Rent'],
+                                ['name' => 'Rooms for rent'],
+                                ['name' => 'Rooms wanted'],
+                                ['name' => 'Short Term (Monthly)'],
+                                ['name' => 'Short Term (Daily)  '],
                             ]
                         ],
-                        [
-                            'name' => 'Villa / House for Rent',
-                            'children' => [
-                                ['name' => 'Property for Rent2-1'],
-                                ['name' => 'Property for Rent2-2'],
-                                ['name' => 'Property for Rent2-3'],
-                                ['name' => 'Property for Rent2-4'],
-                                ['name' => 'Property for Rent2-5'],
-                                ['name' => 'Property for Rent2-6']
-                            ]
-                        ],
-                        [
-                            'name' => 'Commercial for Rent',
-                            'children' => [
-                                ['name' => 'Property for Rent3-1'],
-                                ['name' => 'Property for Rent3-2'],
-                                ['name' => 'Property for Rent3-3'],
-                                ['name' => 'Property for Rent3-4'],
-                                ['name' => 'Property for Rent3-5'],
-                                ['name' => 'Property for Rent3-6']
-                            ]
-                        ]
-                    ],
+
+
                 ],
-                [
-                    'name' => 'Home & Kitchen',
-                    'children' => [
-                        [
-                            'name' => 'Home & Kitchen1-1-1',
-                            'children' => [
-                                ['name' => 'Home & Kitchen1-1'],
-                                ['name' => 'Home & Kitchen1-2'],
-                                ['name' => 'Home & Kitchen1-3'],
-                                ['name' => 'Home & Kitchen1-4'],
-                                ['name' => 'Home & Kitchen1-5'],
-                                ['name' => 'Home & Kitchen1-6'],
-                                ['name' => 'Home & Kitchen1-7'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Home & Kitchen2-1-1',
-                            'children' => [
-                                ['name' => 'Home & Kitchen2-1'],
-                                ['name' => 'Home & Kitchen2-2'],
-                                ['name' => 'Home & Kitchen2-3'],
-                                ['name' => 'Home & Kitchen2-4'],
-                                ['name' => 'Home & Kitchen2-5'],
-                                ['name' => 'Home & Kitchen2-6'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Home & Kitchen3-1-1',
-                            'children' => [
-                                ['name' => 'Home & Kitchen3-1'],
-                                ['name' => 'Home & Kitchen3-2'],
-                                ['name' => 'Home & Kitchen3-3'],
-                                ['name' => 'Home & Kitchen3-4'],
-                                ['name' => 'Home & Kitchen3-5'],
-                                ['name' => 'Home & Kitchen3-6'],
-                                ['name' => 'Home & Kitchen3-7'],
-                            ]
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'Electronics',
-                    'children' => [
-                        [
-                            'name' => 'Electricals1-1-1',
-                            'children' => [
-                                ['name' => 'Electrical1-1'],
-                                ['name' => 'Electrical1-2'],
-                                ['name' => 'Electrical1-3'],
-                                ['name' => 'Electrical1-4'],
-                                ['name' => 'Electrical1-5'],
-                                ['name' => 'Electrical1-6'],
-                                ['name' => 'Electrical1-7'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Electricals2-1-1',
-                            'children' => [
-                                ['name' => 'Electrical2-1'],
-                                ['name' => 'Electrical2-2'],
-                                ['name' => 'Electrical2-3'],
-                                ['name' => 'Electrical2-4'],
-                                ['name' => 'Electrical2-5'],
-                                ['name' => 'Electrical2-6'],
-                                ['name' => 'Electrical2-7'],
-                                ['name' => 'Electrical2-8'],
-                                ['name' => 'Electrical2-9'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Electricals3-1-1',
-                            'children' => [
-                                ['name' => 'Electrical3-1'],
-                                ['name' => 'Electrical3-2'],
-                                ['name' => 'Electrical3-3'],
-                                ['name' => 'Electrical3-4'],
-                                ['name' => 'Electrical3-5'],
-                                ['name' => 'Electrical3-6'],
-                            ]
-                        ]
-                    ],
-                ],
-                [
-                    'name' => 'Apartments',
-                    'children' => [
-                        [
-                            'name' => 'Apartment1-1-1',
-                            'children' => [
-                                ['name' => 'Apartment1-1'],
-                                ['name' => 'Apartment1-2'],
-                                ['name' => 'Apartment1-3'],
-                                ['name' => 'Apartment1-4'],
-                                ['name' => 'Apartment1-5'],
-                                ['name' => 'Apartment1-6'],
-                                ['name' => 'Apartment1-8'],
-                                ['name' => 'Apartment1-9'],
-                                ['name' => 'Apartment1-10'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Apartment2-1-1',
-                            'children' => [
-                                ['name' => 'Apartment2-1'],
-                                ['name' => 'Apartment2-2'],
-                                ['name' => 'Apartment2-3'],
-                                ['name' => 'Apartment2-4'],
-                                ['name' => 'Apartment2-5'],
-                                ['name' => 'Apartment2-6'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Apartment3-1-1',
-                            'children' => [
-                                ['name' => 'Apartment3-1'],
-                                ['name' => 'Apartment3-2'],
-                                ['name' => 'Apartment3-3'],
-                            ]
-                        ]
-                    ],
-                ],
-                [
-                    'name' => 'Villas',
-                    'children' => [
-                        [
-                            'name' => 'Villas1-1-1',
-                            'children' => [
-                                ['name' => 'Villas1-1'],
-                                ['name' => 'Villas1-2'],
-                                ['name' => 'Villas1-3'],
-                                ['name' => 'Villas1-4'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Villas2-1-1',
-                            'children' => [
-                                ['name' => 'Villas2-1'],
-                                ['name' => 'Villas2-2'],
-                                ['name' => 'Villas2-3'],
-                                ['name' => 'Villas2-4'],
-                                ['name' => 'Villas2-5'],
-                                ['name' => 'Villas2-6'],
-                                ['name' => 'Villas2-7'],
-                                ['name' => 'Villas2-8'],
-                            ]
-                        ],
-                        [
-                            'name' => 'Villas3-1-1',
-                            'children' => [
-                                ['name' => 'Villas3-1'],
-                                ['name' => 'Villas3-2'],
-                                ['name' => 'Villas3-3'],
-                                ['name' => 'Villas3-4'],
-                                ['name' => 'Villas3-5'],
-                                ['name' => 'Villas3-6'],
-                            ]
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'All of Globex',
-                    'children' => [
-                        [
-                            'name' => 'AllofGlobex1-1-1',
-                            'children' => [
-                                ['name' => 'AllofGlobex1-1'],
-                                ['name' => 'AllofGlobex1-2'],
-                                ['name' => 'AllofGlobex1-3'],
-                                ['name' => 'AllofGlobex1-4'],
-                                ['name' => 'AllofGlobex1-5'],
-                            ]
-                        ],
-                        [
-                            'name' => 'AllofGlobex2-1-1',
-                            'children' => [
-                                ['name' => 'AllofGlobex2-1'],
-                                ['name' => 'AllofGlobex2-2'],
-                                ['name' => 'AllofGlobex2-3'],
-                                ['name' => 'AllofGlobex2-4'],
-                                ['name' => 'AllofGlobex2-5'],
-                            ]
-                        ],
-                        [
-                            'name' => 'AllofGlobex3-1-1',
-                            'children' => [
-                                ['name' => 'AllofGlobex3-1'],
-                                ['name' => 'AllofGlobex3-2'],
-                                ['name' => 'AllofGlobex3-3'],
-                                ['name' => 'AllofGlobex3-4'],
-                                ['name' => 'AllofGlobex3-5'],
-                            ]
-                        ],
-                        [
-                            'name' => 'AllofGlobex4-1-1',
-                            'children' => [
-                                ['name' => 'AllofGlobex4-1'],
-                                ['name' => 'AllofGlobex4-2'],
-                                ['name' => 'AllofGlobex4-3'],
-                                ['name' => 'AllofGlobex4-4'],
-                                ['name' => 'AllofGlobex4-5'],
-                            ]
-                        ],
-                        [
-                            'name' => 'AllofGlobex5-1-1',
-                            'children' => [
-                                ['name' => 'AllofGlobex5-1'],
-                                ['name' => 'AllofGlobex5-2'],
-                                ['name' => 'AllofGlobex5-3'],
-                                ['name' => 'AllofGlobex5-4'],
-                                ['name' => 'AllofGlobex5-5'],
-                            ]
-                        ],
-                        [
-                            'name' => 'AllofGlobex6-1-1',
-                            'children' => [
-                                ['name' => 'AllofGlobex6-1'],
-                                ['name' => 'AllofGlobex6-2'],
-                                ['name' => 'AllofGlobex6-3'],
-                                ['name' => 'AllofGlobex6-4'],
-                                ['name' => 'AllofGlobex6-5'],
-                            ]
-                        ],
-                    ],
-                ],
+            ],
 		];
 		
 		App\Category::buildTree($categories);

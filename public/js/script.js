@@ -838,4 +838,27 @@ jQuery(document).ready(function() {
 
     $('[data-toggle="tooltip"]').tooltip();
 
+
+    // Post floating button initialization
+
+
+    if(!window.location.pathname.startsWith('/advertisements') && !window.location.pathname.startsWith('/admin')  ){
+        $('.float-postad').fadeIn();
+    }
+    $('.float-postad > .closBtn').click(function(){
+        $('.float-postad').fadeOut();
+        setTimeout($('.float-postad').show(),360000 );
+    });
+
+    var lastScrollTop = 0;
+    $(window).scroll(function () {
+        var st = $(this).scrollTop();
+        if (st > lastScrollTop){
+            //echo('Down');
+        } else {
+            //echo('Up');
+        }
+        lastScrollTop = st;
+    });
+
 });

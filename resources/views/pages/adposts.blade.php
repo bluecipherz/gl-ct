@@ -30,7 +30,7 @@
 							<div class="regbtnOuter">Dont have an account? <span class="b-fakeLink regbtn">Register</span></div>
 						</div>
 						<div class="w-log-sec-3" >
-							<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
+                            <a class="backbtn cust-btn -btn-back" btnId="1" href="{{ url('/') }}" >Back</a>
 							<div class="cust-btn -btn-next" id="login-btn" btnId="1" >Login</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 								<div class="w-reg-sec2-text">Already have an account? <span class="b-fakeLink logbtn" > Login </span></div>
 							</div>
 							<div class="w-reg-sec-3" >
-								<div class="backbtn cust-btn -btn-back" btnId="1" >Back</div>
+								<a class="backbtn cust-btn -btn-back" btnId="1" href="{{ url('/')  }}" >Back</a>
 								<div class="cust-btn -btn-next" id="register-btn" btnId="1" >Register</div>
 							</div>	
 						</div>	
