@@ -245,6 +245,7 @@ body{
     border:5px solid #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     transition:transform .5s, box-shadow .5s;
+    z-index:999999;
 }
     .float-postad > .closBtn{
         width:20px;

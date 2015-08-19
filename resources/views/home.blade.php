@@ -2,8 +2,6 @@
 @extends('layouts.core')
 @section('title','Home')
 @section('content')
-
-
 <div class="homeNav">
 	<div class="boxx" style="height:inherit; position: relative; padding-left:20px;">
 		<div class="hnCat-btn">
@@ -94,6 +92,7 @@
                     </div>
                 </div>
             @endforeach
+<<<<<<< HEAD
 
             {{--loop ends--}}
 
@@ -218,6 +217,8 @@
 					</a>
 				</div>
 			</div>
+=======
+>>>>>>> 60f8fc824826b83f8c0463348a2e00d3fefabd00
 			
 		</div>
 	</div>
