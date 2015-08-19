@@ -810,9 +810,9 @@ jQuery(document).ready(function() {
      * add the form groups in the given array
      * @param datas
      */
-    function populateFields(datas) {
+    function populateFields(datas, form) {
         var added = {};
-        $(".form-horizontal .form-group").each(function(e) {
+        form.children('.form-group').each(function(e) {
             var lbl = $(this).children('label');
             var fldName = lbl.attr('for');
             var fldText = lbl.text();
@@ -820,14 +820,18 @@ jQuery(document).ready(function() {
                 added[fldName] = fldText; // mark as added to avoid duplication
             }
         });
+        console.log(added);
         for(var attr in datas) {
-            if(!attr in added) { // skip if already added
+            //console.log(attr);
+            //if(attr in added) { // skip if already added
                 var nGrp = formGrp.clone();
                 nGrp.children('label').text(datas[attr]).attr('for', attr);
                 nGrp.find('div > label').text(datas[attr]).attr('for', attr);
                 nGrp.find('div > input').attr('name', attr);
                 $('.form-horizontal').append(nGrp);
-            }
+            //} else {
+            //    console.log(attr + ' : field already in form');
+            //}
         }
     }
 
@@ -835,8 +839,8 @@ jQuery(document).ready(function() {
      * remove the form groups in the given array
      * @param datas
      */
-    function removeFields(datas) {
-        $(".form-horizontal .form-group").each(function(e) {
+    function removeFields(datas, form) {
+        form.children('.form-group').each(function(e) {
             var fldName = $(this).children('label').attr('for');
             if(fldName in datas) {
                 $(this).remove();
@@ -850,12 +854,12 @@ jQuery(document).ready(function() {
     $("select[name='category_id']").change(function(e) {
         var cat_id = $(this).val();
         var cat = new Category(cat_id);
-        if(cat.isDescendantOf(1)) {
+        if(cat.isDescendantOf(1)) { // if child of motors
             if (window.location.pathname.startsWith('/advertisements')) {
-                populateFields(motorAttrs);
+                populateFields(motorAttrs, $(this).parent().parent().parent());
             }
         } else {
-            removeFields(motorAttrs);
+            removeFields(motorAttrs, $(this).parent().parent().parent());
         }
     });
 
