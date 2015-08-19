@@ -137,6 +137,12 @@
 		</div>
 	</div>
 
+    <div class="float-postad">
+        <div class="closBtn">X</div>
+        <a href="{{ route('advertisements.create') }}">
+           <div class="FloatText"> Post free Ad ! ! </div>
+        </a>
+    </div>
 	@yield('content')
 
 	<!-- Scripts -->

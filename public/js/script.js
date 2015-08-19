@@ -842,6 +842,7 @@ jQuery(document).ready(function() {
      */
     function populateFields(datas, form) {
         var added = {};
+        var hel = ['Doors','Color']
         form.children('.form-group').each(function(e) {
             var lbl = $(this).children('label');
             var fldName = lbl.attr('for');
@@ -852,17 +853,27 @@ jQuery(document).ready(function() {
         });
         console.log(added);
         for(var attr in datas) {
-            //console.log(attr);
-            //if(attr in added) { // skip if already added
+            console.log(attr);
+            if('Doors' in hel) { // skip if already added
                 var nGrp = formGrp.clone();
                 nGrp.children('label').text(datas[attr]).attr('for', attr);
                 nGrp.find('div > label').text(datas[attr]).attr('for', attr);
                 nGrp.find('div > input').attr('name', attr);
                 $('.form-horizontal').append(nGrp);
-            //} else {
-            //    console.log(attr + ' : field already in form');
-            //}
+            } else {
+                console.log(attr + ' : field already in form');
+            }
         }
+
+    }
+
+
+    function cool(){
+        $('#motorInp').hide();
+    }
+
+    function cool2(){
+        $('#motorInp').show();
     }
 
     /**
@@ -886,10 +897,10 @@ jQuery(document).ready(function() {
         var cat = new Category(cat_id);
         if(cat.isDescendantOf(1)) { // if child of motors
             if (window.location.pathname.startsWith('/advertisements')) {
-                populateFields(motorAttrs, $(this).parent().parent().parent());
+                cool2();
             }
         } else {
-            removeFields(motorAttrs, $(this).parent().parent().parent());
+            cool();
         }
     });
 
@@ -970,5 +981,28 @@ jQuery(document).ready(function() {
     });
 
     $('[data-toggle="tooltip"]').tooltip(); // enable all tooltips
+
+
+    // Post floating button initialization
+
+
+    if(!window.location.pathname.startsWith('/advertisements') && !window.location.pathname.startsWith('/admin')  ){
+        $('.float-postad').fadeIn();
+    }
+    $('.float-postad > .closBtn').click(function(){
+        $('.float-postad').fadeOut();
+        setTimeout($('.float-postad').show(),360000 );
+    });
+
+    var lastScrollTop = 0;
+    $(window).scroll(function () {
+        var st = $(this).scrollTop();
+        if (st > lastScrollTop){
+            //echo('Down');
+        } else {
+            //echo('Up');
+        }
+        lastScrollTop = st;
+    });
 
 });

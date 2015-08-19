@@ -149,4 +149,10 @@ class AdminPanelController extends Controller {
         return view('admin.main')->with('reports', Report::all());
     }
 
+    public function deleteAd($id)
+    {
+        Advertisement::delete($id);
+        $report = new Report();
+    }
+
 }

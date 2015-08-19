@@ -14,7 +14,7 @@
 						<span class="ac-c-l">First Name</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yet</span>
+						<span> </span>
 					</td>
 				</tr>
 				<tr>
@@ -22,7 +22,7 @@
 						<span class="ac-c-l">Last Name</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yet </span>
+						<span>  </span>
 					</td>
 				</tr>	
 			</table>
@@ -33,7 +33,7 @@
 						<span class="ac-c-l">PIN</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yet</span>
+						<span></span>
 					</td>
 				</tr>
 				<tr>
@@ -41,7 +41,7 @@
 						<span class="ac-c-l">Address</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yetNot set yet </span>
+						<span>  </span>
 					</td>
 				</tr>
 				<tr>
@@ -49,7 +49,7 @@
 						<span class="ac-c-l">State</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yet</span>
+						<span> </span>
 					</td>
 				</tr>
 				<tr>
@@ -57,7 +57,7 @@
 						<span class="ac-c-l">City</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yet </span>
+						<span> </span>
 					</td>
 				</tr>
 				<tr>
@@ -65,7 +65,7 @@
 						<span class="ac-c-l">Phone</span>
 					</td>	
 					<td class="td2">
-						<span>Not set yet </span>
+						<span>  </span>
 					</td>
 				</tr>
 			</table>
