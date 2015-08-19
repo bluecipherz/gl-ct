@@ -236,3 +236,12 @@ Route::get('shitzu', function (AdminPanelRepository $repository) {
 
     return response()->json(App\Category::whereDepth(2)->lists('name', 'id'));
 });
+Route::get('files', function () {
+    $dir = public_path() . '/uploads/products/201';
+    $files = File::files($dir);
+//    $files = scandir($dir);
+//    echo get_class($files);
+    foreach ($files as $file) {
+        echo $file;
+    }
+});

@@ -67,4 +67,83 @@ jQuery(document).ready(function() {
     });
 
 
+    /**
+     * Form field template
+     * @type {*|jQuery}
+     */
+    var formGrp = $("<div/>").addClass('form-group');
+    $("<label/>").addClass('control-label col-lg-2 col-md-2').appendTo(formGrp);
+    var dspDiv = $("<div/>").addClass('col-lg-6 col-md-6').appendTo(formGrp);
+    $("<input/>").attr('type', 'text').addClass('form-control').appendTo(dspDiv);
+
+    /**
+     * extra attributes for 'MOTOR' category
+     * @type {{chassis_no: string, model: string, color: string, doors: string}}
+     */
+    var motorAttrs = {
+        chassis_no : 'Chassis no',
+        model : 'Model',
+        color : 'Color',
+        doors : 'Doors'
+    };
+
+    /**
+     * add the form groups in the given array
+     * @param datas
+     */
+    function populateFields(datas) {
+        var added = {};
+        $(".form-horizontal .form-group").each(function(e) {
+            var lbl = $(this).children('label');
+            var fldName = lbl.attr('for');
+            var fldText = lbl.text();
+            console.log('checking ' + fldText);
+            if(fldName in datas) {
+                added[fldName] = fldText; // mark as added to avoid duplication
+                console.log(fldName + ', already preset');
+            }
+        });
+        for(var attr in datas) {
+            console.log('trying ' + attr);
+            if(!attr in added) { // skip if already added
+                console.log('adding ' + attr);
+                var nGrp = formGrp.clone();
+                nGrp.children('label').text(datas[attr]).attr('for', attr);
+                nGrp.find('div > input').attr('name', attr);
+                $('.form-horizontal .form-group:last-child').before(nGrp);
+            }
+        }
+    }
+
+    /**
+     * remove the form groups in the given array
+     * @param datas
+     */
+    function removeFields(datas) {
+        $(".form-horizontal .form-group").each(function(e) {
+            var fldName = $(this).children('label').attr('for');
+            if(fldName in datas) {
+                $(this).remove();
+            }
+        });
+    }
+
+    /**
+     * Myads category select action.
+     */
+    $("select[name='category_id']").change(function(e) {
+        var cat_id = $(this).val();
+        var cat = new Category(cat_id);
+        console.log(cat_id);
+        if(cat.isDescendantOf(1)) {
+            if (window.location.pathname.startsWith('/admin/products')) {
+                console.log('populating fields');
+                populateFields(motorAttrs);
+            }
+        } else {
+            console.log('removing fields');
+            removeFields(motorAttrs);
+        }
+    });
+
 });

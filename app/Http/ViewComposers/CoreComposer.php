@@ -25,7 +25,7 @@ class CoreComposer {
 //        $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('1 as type'));
 //        $motorQuery = Motor::with('images')->select('id', 'title', 'description','price', DB::raw('2 as type'));
 //        $this->products = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
-        $this->products = Product::has('producible')->get();
+        $this->products = Product::with('producible')->get();
     }
 
     public function compose(View $view)
