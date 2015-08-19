@@ -93,25 +93,37 @@ jQuery(document).ready(function() {
      */
     function populateFields(datas) {
         var added = {};
-        $(".form-horizontal .form-group").each(function(e) {
-            var lbl = $(this).children('label');
-            var fldName = lbl.attr('for');
+        $(".form-horizontal > .form-group > div > input[type='text']").each(function(e) {
+            var lbl = $(this).parent().parent().children('label');
+            var fldName = $(this).attr('name');
             var fldText = lbl.text();
-            console.log('checking ' + fldText);
+            //console.log('checking ' + fldText);
             if(fldName in datas) {
                 added[fldName] = fldText; // mark as added to avoid duplication
-                console.log(fldName + ', already preset');
+                //console.log(fldName + " : " + fldText);
+                //console.log(added);
+                //console.log(fldName + ', already preset');
             }
         });
+        //console.log(datas);
+        //console.log(added);
         for(var attr in datas) {
-            console.log('trying ' + attr);
+            //console.log('trying ' + attr);
             if(!attr in added) { // skip if already added
-                console.log('adding ' + attr);
+                //console.log('adding ' + attr);
                 var nGrp = formGrp.clone();
                 nGrp.children('label').text(datas[attr]).attr('for', attr);
                 nGrp.find('div > input').attr('name', attr);
                 $('.form-horizontal .form-group:last-child').before(nGrp);
+            } else {
+                //console.log(attr + " : " + datas[attr] + " | already added");
             }
+        }
+        for(var attr in datas) {
+            var nGrp = formGrp.clone();
+            nGrp.children('label').text(datas[attr]).attr('for', attr);
+            nGrp.find('div > input').attr('name', attr);
+            $('.form-horizontal .form-group:eq(-2)').before(nGrp);
         }
     }
 
@@ -123,6 +135,7 @@ jQuery(document).ready(function() {
         $(".form-horizontal .form-group").each(function(e) {
             var fldName = $(this).children('label').attr('for');
             if(fldName in datas) {
+                console.log('removing ' + fldName);
                 $(this).remove();
             }
         });
@@ -134,14 +147,14 @@ jQuery(document).ready(function() {
     $("select[name='category_id']").change(function(e) {
         var cat_id = $(this).val();
         var cat = new Category(cat_id);
-        console.log(cat_id);
+        //console.log(cat_id);
         if(cat.isDescendantOf(1)) {
             if (window.location.pathname.startsWith('/admin/products')) {
-                console.log('populating fields');
+                //console.log('populating fields');
                 populateFields(motorAttrs);
             }
         } else {
-            console.log('removing fields');
+            //console.log('removing fields');
             removeFields(motorAttrs);
         }
     });

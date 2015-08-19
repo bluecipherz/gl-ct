@@ -41,7 +41,7 @@
 						<div class="panel-body">
 							{!! Form::open(['route' => 'products.store', 'method' => 'POST', 'class' => 'form-horizontal', 'files' => 'true', 'id' => 'product_add']) !!}
 								<div class="form-group">
-									{!! Form::label('title', 'Name', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
+									{!! Form::label('title', 'Title', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
 									<div class="col-lg-6 col-md-6">	
 									{!! Form::text('title', null, ['class' => 'form-control', 'required' => 'true']) !!}
 									</div>
@@ -85,6 +85,30 @@
                                         {{--</div>--}}
                                     </div>
                                 </div>
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('chassis_no', 'Chassis no', ['class' => 'col-lg-2 col-md-2 control-label']) !!}--}}
+                                {{--<div class="col-lg-6 col-md-6">--}}
+                                    {{--{!! Form::text('chassis_no', null, ['class' => 'form-control', 'required' => 'true']) !!}--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('model', 'Model', ['class' => 'col-lg-2 col-md-2 control-label']) !!}--}}
+                                {{--<div class="col-lg-6 col-md-6">--}}
+                                    {{--{!! Form::text('model', null, ['class' => 'form-control', 'required' => 'true']) !!}--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('color', 'Color', ['class' => 'col-lg-2 col-md-2 control-label']) !!}--}}
+                                {{--<div class="col-lg-6 col-md-6">--}}
+                                    {{--{!! Form::text('color', null, ['class' => 'form-control', 'required' => 'true']) !!}--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('doors', 'Doors', ['class' => 'col-lg-2 col-md-2 control-label']) !!}--}}
+                                {{--<div class="col-lg-6 col-md-6">--}}
+                                    {{--{!! Form::text('doors', null, ['class' => 'form-control', 'required' => 'true']) !!}--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                                 <div class="form-group ">
                                     {!! Form::label('images', 'Images', ['class' => 'col-lg-2 col-md-2 control-label']) !!}
                                     <div class="col-lg-6 col-md-6 adm-pro-img-inp" id="adm-pro-img-inp">
