@@ -105,35 +105,40 @@
                             </div>
                         </div>
                         @if($ad->advertisable_type == 'App\Motor')
-                            <div class="form-group-sm form-group">
-                                {!! Form::label('chassis_no', 'Chassis no', ['class' => 'control-label col-lg-2 col-md-2']) !!}
-                                <div class="col-lg-10 col-md-10">
-                                    {!! Form::label('chassis_no', $ad->advertisable->chassis_no, ['class' => 'control-label']) !!}
-                                    {!! Form::text('chassis_no', $ad->advertisable->chassis_no, ['class' => 'form-control', 'style' => 'display:none;']) !!}
-                                </div>
-                            </div>
-                            <div class="form-group-sm form-group">
-                                {!! Form::label('model', 'Model', ['class' => 'control-label col-lg-2 col-md-2']) !!}
-                                <div class="col-lg-10 col-md-10">
-                                    {!! Form::label('model', $ad->advertisable->model, ['class' => 'control-label']) !!}
-                                    {!! Form::text('model', $ad->advertisable->model, ['class' => 'form-control', 'style' => 'display:none;']) !!}
-                                </div>
-                            </div>
-                            <div class="form-group-sm form-group">
-                                {!! Form::label('color', 'Color', ['class' => 'control-label col-lg-2 col-md-2']) !!}
-                                <div class="col-lg-10 col-md-10">
-                                    {!! Form::label('color', $ad->advertisable->color, ['class' => 'control-label']) !!}
-                                    {!! Form::text('color', $ad->advertisable->color, ['class' => 'form-control', 'style' => 'display:none;']) !!}
-                                </div>
-                            </div>
-                            <div class="form-group-sm form-group">
-                                {!! Form::label('doors', 'Doors', ['class' => 'control-label col-lg-2 col-md-2']) !!}
-                                <div class="col-lg-10 col-md-10">
-                                    {!! Form::label('doors', $ad->advertisable->doors, ['class' => 'control-label']) !!}
-                                    {!! Form::text('doors', $ad->advertisable->doors, ['class' => 'form-control', 'style' => 'display:none;']) !!}
-                                </div>
-                            </div>
+                            <div id="motorInp">
+                        @else
+                            <div id="motorInp" style="display:none;">
                         @endif
+
+                                <div class="form-group-sm form-group">
+                                    {!! Form::label('chassis_no', 'Chassis no', ['class' => 'control-label col-lg-2 col-md-2']) !!}
+                                    <div class="col-lg-10 col-md-10">
+                                        {!! Form::label('chassis_no', $ad->advertisable->chassis_no, ['class' => 'control-label']) !!}
+                                        {!! Form::text('chassis_no', $ad->advertisable->chassis_no, ['class' => 'form-control', 'style' => 'display:none;']) !!}
+                                    </div>
+                                </div>
+                                <div class="form-group-sm form-group">
+                                    {!! Form::label('model', 'Model', ['class' => 'control-label col-lg-2 col-md-2']) !!}
+                                    <div class="col-lg-10 col-md-10">
+                                        {!! Form::label('model', $ad->advertisable->model, ['class' => 'control-label']) !!}
+                                        {!! Form::text('model', $ad->advertisable->model, ['class' => 'form-control', 'style' => 'display:none;']) !!}
+                                    </div>
+                                </div>
+                                <div class="form-group-sm form-group">
+                                    {!! Form::label('color', 'Color', ['class' => 'control-label col-lg-2 col-md-2']) !!}
+                                    <div class="col-lg-10 col-md-10">
+                                        {!! Form::label('color', $ad->advertisable->color, ['class' => 'control-label']) !!}
+                                        {!! Form::text('color', $ad->advertisable->color, ['class' => 'form-control', 'style' => 'display:none;']) !!}
+                                    </div>
+                                </div>
+                                <div class="form-group-sm form-group">
+                                    {!! Form::label('doors', 'Doors', ['class' => 'control-label col-lg-2 col-md-2']) !!}
+                                    <div class="col-lg-10 col-md-10">
+                                        {!! Form::label('doors', $ad->advertisable->doors, ['class' => 'control-label']) !!}
+                                        {!! Form::text('doors', $ad->advertisable->doors, ['class' => 'form-control', 'style' => 'display:none;']) !!}
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                     <div class="panel-footer">
                         Posted : {{ $ad->product->created_at }}
