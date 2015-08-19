@@ -651,8 +651,8 @@ jQuery(document).ready(function() {
             'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
             'price' : $('#adPrice').val(),
-            'brand' : '',
-            'quantity' : 1,
+            'brand' : '', // temp implementation
+            'quantity' : 1, // temp implementation
             //'images' : $('#adPics').val(),
             'name' : $('#customerName').val(),
             'pin' : $('#customerPin').val(),
@@ -713,6 +713,10 @@ jQuery(document).ready(function() {
             })
     });
 
+    /**
+     * Dropzone global settings
+     * @type {{init: Function, success: Function, removedfile: Function}}
+     */
     Dropzone.options.globexDropView = {
         init : function() {
             var myDropzone = this;
@@ -752,18 +756,27 @@ jQuery(document).ready(function() {
         }
     };
 
+    /**
+     * Disable forward tab button
+     */
     $(".noFwdTab").keydown(function($e) {
         if($e.keyCode == 9) {
             $e.preventDefault();
         }
     });
 
+    /**
+     * Disable backward tab btn
+     */
     $(".noBwdTab").keydown(function($e) {
         if($e.keyCode == 9 && $e.shiftKey) {
             $e.preventDefault();
         }
     });
 
+    /**
+     * Retrieve all categories from the server
+     */
     $.get('/categories/all')
         .success(function(data) {
             setCats(data);
@@ -772,12 +785,20 @@ jQuery(document).ready(function() {
             console.log(data.responseText);
         });
 
+    /**
+     * Form field template
+     * @type {*|jQuery}
+     */
     var formGrp = $("<div/>").addClass('form-group form-group-sm');
     $("<label/>").addClass('control-label col-lg-2 col-md-2').appendTo(formGrp);
     var dspDiv = $("<div/>").addClass('col-lg-10 col-md-10').appendTo(formGrp);
     $("<label/>").addClass('control-label').hide().appendTo(dspDiv);
     $("<input/>").attr('type', 'text').addClass('form-control').appendTo(dspDiv);
 
+    /**
+     * extra attributes for 'MOTOR' category
+     * @type {{chassis_no: string, model: string, color: string, doors: string}}
+     */
     var motorAttrs = {
         chassis_no : 'Chassis no',
         model : 'Model',
@@ -785,25 +806,47 @@ jQuery(document).ready(function() {
         doors : 'Doors'
     };
 
+    /**
+     * add the form groups in the given array
+     * @param datas
+     */
     function populateFields(datas) {
-        for(attr in datas) {
-            var nGrp = formGrp.clone();
-            nGrp.children('label').text(datas[attr]).attr('for', attr);
-            nGrp.find('div > label').text(datas[attr]).attr('for', attr);
-            nGrp.find('div > input').attr('name', attr);
-            $('.form-horizontal').append(nGrp);
+        var added = {};
+        $(".form-horizontal .form-group").each(function(e) {
+            var lbl = $(this).children('label');
+            var fldName = lbl.attr('for');
+            var fldText = lbl.text();
+            if(fldName in datas) {
+                added[fldName] = fldText; // mark as added to avoid duplication
+            }
+        });
+        for(var attr in datas) {
+            if(!attr in added) { // skip if already added
+                var nGrp = formGrp.clone();
+                nGrp.children('label').text(datas[attr]).attr('for', attr);
+                nGrp.find('div > label').text(datas[attr]).attr('for', attr);
+                nGrp.find('div > input').attr('name', attr);
+                $('.form-horizontal').append(nGrp);
+            }
         }
     }
 
+    /**
+     * remove the form groups in the given array
+     * @param datas
+     */
     function removeFields(datas) {
         $(".form-horizontal .form-group").each(function(e) {
-            var grpDiv = $(this);
-            if(grpDiv.children('label').attr('for') in motorAttrs) {
-                console.log('must be removed');
+            var fldName = $(this).children('label').attr('for');
+            if(fldName in datas) {
+                $(this).remove();
             }
         });
     }
 
+    /**
+     * Myads category select action.
+     */
     $("select[name='category_id']").change(function(e) {
         var cat_id = $(this).val();
         var cat = new Category(cat_id);
@@ -816,6 +859,9 @@ jQuery(document).ready(function() {
         }
     });
 
+    /**
+     * Myads edit ad button
+     */
     $(".edit-ad").click(function(e) {
         console.log('ok');
         var panel = $(this).parent().parent().parent().parent();
@@ -832,6 +878,9 @@ jQuery(document).ready(function() {
         });
     });
 
+    /**
+     * Myads save edited ad
+     */
     $(".save-ad").click(function(e) {
         var saveBtn = $(this);
         var panel = $(this).parent().parent().parent().parent();
@@ -850,6 +899,7 @@ jQuery(document).ready(function() {
             state : panel.find('input[name="state"]').val(),
             city : panel.find('input[name="city"]').val(),
             phone : panel.find('input[name="phone"]').val(),
+            quantity : panel.find('input[name="quantity"]').val()
         };
         var cat = new Category(data.category_id);
         if(cat.isDescendantOf(1)) { // motors
@@ -860,24 +910,31 @@ jQuery(document).ready(function() {
         }
         $.post('/advertisements/' + ad_id, data).success(function(data) {
             console.log(data);
-            panel.spin(false);
             panel.find('.panel-heading .ad-title').show();
             panel.find('.panel-heading input[name="title"]').hide();
             panel.find('.panel-heading .edit-ad').show();
             saveBtn.hide();
             $(panel.find('.form-horizontal .form-group')).each(function() {
-                $this = $(this);
+                var $this = $(this);
+                var input = $this.find('div > input, textarea');
+                input.each(function() {
+                    var $this = $(this);
+                    //console.log($(this).val());
+                    $this.parent().find('label').text($this.val());
+                });
+                //console.log(input.get()); // show supported
                 $this.find('div > label').show();
                 $this.find('div > input').hide();
                 $this.find('div > textarea').hide();
                 $this.find('div > select').hide()
             });
+            panel.spin(false);
         }).fail(function(data) {
             console.log(data.responseText);
         })
 
     });
 
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip(); // enable all tooltips
 
 });

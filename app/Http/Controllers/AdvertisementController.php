@@ -16,6 +16,11 @@ use Input;
 
 class AdvertisementController extends Controller {
 
+    public function __construct()
+    {
+//        $this->middleware('auth', ['index']);
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -122,8 +127,36 @@ class AdvertisementController extends Controller {
 	 */
 	public function update($id)
 	{
-        return response()->json(Input::all());
-//        return response()->json('Updated');
+//        return response()->json(Input::all());
+        $ad = Advertisement::find($id);
+        $productData = [
+            'title' => Input::get('title'),
+            'price' => Input::get('price'),
+            'description' => Input::get('description'),
+            'brand' => Input::get('brand'),
+            'category_id' => Input::get('category_id'),
+        ];
+        $ad->product->update($productData);
+        $adData = [
+            'name' => Input::get('name'),
+            'pin' => Input::get('pin'),
+            'address' => Input::get('address'),
+            'state' => Input::get('state'),
+            'city' => Input::get('city'),
+            'phone' => Input::get('phone'),
+            'quantity' => Input::get('quantity'),
+        ];
+        $ad->update($adData);
+        if ($ad->advertisable_type == 'App\Motor') {
+            $motorData = [
+                'chassis_no' => Input::get('chassis_no'),
+                'model' => Input::get('model'),
+                'color' => Input::get('color'),
+                'doors' => Input::get('doors'),
+            ];
+            $ad->advertisable->update($motorData);
+        }
+        return response()->json('Updated');
 	}
 
 
