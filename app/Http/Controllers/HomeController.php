@@ -74,7 +74,7 @@ class HomeController extends Controller {
                 $products->where('title', 'LIKE', '%' . $term . '%');
             }
 //            return $products->count();
-            return view('pages.search', ['products' => $products->get(), 'categories' => $categories->getCats()]);
+            return view('pages.search', ['products' => $products->get(), 'categories' => $categories->getCats(), 'query' => $q]);
         }
     }
 

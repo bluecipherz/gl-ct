@@ -46,6 +46,8 @@ class Category extends Node {
 //                $products->add($postcat->products);
                 $cats = array_merge($cats, $postcat->products->lists('id'));
             }
+        } else if ($this->depth == 2) {
+            return $this->products->lists('id');
         }
         return $cats;
 //        return $products;

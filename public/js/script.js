@@ -1,5 +1,22 @@
 jQuery(document).ready(function() {
-	
+
+    /******************************************************
+     *                    TEMPLATES                       *
+     *****************************************************/
+
+    /**
+     * Search result product display slot
+     * @type {*|jQuery}
+     */
+    var prodSlot = $("<a/>").addClass('productCont b-fakeLink');
+    var prodThumb = $("<div/>").addClass('product-thumbnail').appendTo(prodSlot);
+    prodThumb.append($("<span/>").addClass('sampleThumb').append($("<img/>")));
+    var prodDesc = $("<div/>").addClass('product-description').attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').appendTo(prodSlot);
+    $("<h4/>").appendTo(prodDesc);
+    $("<div/>").addClass('productPrice').appendTo(prodDesc);
+    $("<div/>").addClass('product-desc-small').appendTo(prodDesc);
+
+
 	$(".catList > div").hover(
 		function(){
 			$(this).find(".catCont").css({"display":"block"});
@@ -696,17 +713,49 @@ jQuery(document).ready(function() {
     });
 
     var catChangeAction = function() {
+        var productsCont = $("#schProRset");
         var selectedCats = [];
         $('#category-list > p > input[type="checkbox"]:checked').each(function(index) {
             selectedCats.push($(this).val());
         });
+        var searchQ = $("#search_q").val();
         //console.log(selectedCats);
-        $.post('/getproducts', {cats : selectedCats})
-            .success(function(data) {
-                console.log(data);
-            }).fail(function(data) {
-                console.log(data.responseText);
-            });
+        if(selectedCats.length > 0) {
+            productsCont.spin();
+            $.post('/categories/getproducts', {cats : selectedCats, search : searchQ})
+                .success(function(data) {
+                    productsCont.empty();
+                    //console.log(data);
+                    if(data.length > 0) {
+                        for(var proObj in data) {
+                            //console.log(data[proObj]);
+                            var product = data[proObj];
+                            var url = product.producible_type == 'App\\Globex' ? '/products/' + product.id : '/advertisements/' + product.id;
+                            var imgurl = product.images[0] == undefined ? 'img/noImage.jpg' : product.images[0].url;
+                            var title = product.title;
+                            var price = product.price;
+                            var desc = product.description;
+
+                            //console.log([url, imgurl, title, price, desc]);
+
+                            var psSlot = prodSlot.clone(true, true);
+                            psSlot.attr('href', url);
+                            psSlot.find('img').attr('src', imgurl);
+                            psSlot.find('h4').text(title.length > 20 ? title.substr(0, 20) + '...' : title);
+                            psSlot.find('.product-description').attr('title', title).tooltip();
+                            psSlot.find('.productPrice').text(price);
+                            psSlot.find('.product-desc-small').text(desc.length > 60 ? desc.substr(0, 60) + '...' : desc);
+
+                            productsCont.append(psSlot);
+                        }
+                    } else {
+                        productsCont.append($("<p>").text('No results found for "' + searchQ + '"'))
+                    }
+                    productsCont.spin(false);
+                }).fail(function(data) {
+                    console.log(data.responseText);
+                });
+        }
     };
 
     var checkBoxPara = $("<p/>");
@@ -732,14 +781,6 @@ jQuery(document).ready(function() {
             populateCatList(getCats(0), catlist);
         } else {
             populateCatList(new Category(id).children(), catlist);
-            //$.post('/categories/' + id + '/children')
-            //    .success(function(data) {
-            //        //console.log(data);
-            //        populateCatList(data, catlist);
-            //    })
-            //    .fail(function(data) {
-            //        console.log('fail');
-            //    })
         }
     });
 

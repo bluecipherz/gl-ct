@@ -88,7 +88,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Dinghy'],
                             ['name' => 'Racer'],
                             ['name' => 'Sailing yacht'],
-
                         ]
                     ]
                 ],
@@ -278,8 +277,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Technician '],
                             ['name' => 'Shop Manager '],
                             ['name' => 'Tig Welder '],
-
-
                         ]
                     ],
                     [
@@ -290,14 +287,12 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Photographer '],
                             ['name' => 'Sales Executive '],
                             ['name' => 'Web Designer '],
-                             ['name' => 'Audio Visual Technician  '],
+                            ['name' => 'Audio Visual Technician  '],
+                         ],
                     ],
-                ],
-                [
+                    [
                         'name' => 'Banking & Finance',
                         'children' => [
-
-
                             ['name' => '.NET Web Developer  '],
                             ['name' => 'Account Outside Sales Executive  '],
                             ['name' => 'Accountant  '],
@@ -329,11 +324,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Professional  '],
                             ['name' => 'Sales Representative  '],
                             ['name' => 'Telesales Representative  '],
-
-
+                        ],
                     ],
-                ],
-                  [
+                    [
                         'name' => 'Beauty ',
                         'children' => [
                             ['name' => 'Account Outside Sales Executive  '],
@@ -358,7 +351,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Salon Manager  '],
                             ['name' => 'Spa Manager  '],
                             ['name' => 'Training Coordinator  '],
-
                         ]
                     ],
                     [
@@ -403,10 +395,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Secretary '],
                             ['name' => 'Telemarketing Representative '],
                             ['name' => 'Territory Manager '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Construction ',
                         'children' => [
                             ['name' => 'Accountant '],
@@ -438,7 +429,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Project Manager  '],
                             ['name' => 'Pump Operator  '],
                             ['name' => 'Purchase Assistant  '],
-
                             ['name' => 'Purchase Coordinator  '],
                             ['name' => 'Safety Officer  '],
                             ['name' => 'Sales Engineer  '],
@@ -489,10 +479,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Procurement Engineer '],
                             ['name' => 'Procurement Manager '],
                             ['name' => 'Production Supervisor '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Consulting ',
                         'children' => [
                             ['name' => 'Administrative Secretary '],
@@ -513,11 +502,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Consultant '],
                             ['name' => 'Telemarketing Representative '],
                             ['name' => 'Writer '],
-
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Customer Service ',
                         'children' => [
                             ['name' => 'Administrative Assistant '],
@@ -565,10 +552,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Surveyor '],
                             ['name' => 'Tax Supervisor '],
                             ['name' => 'Telesales Representative '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Education ',
                         'children' => [
                             ['name' => 'Administrative Assistant '],
@@ -594,11 +580,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Teacher Assistant '],
                             ['name' => 'Toddler Teacher '],
                             ['name' => 'Training Coordinator '],
-
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Engineering ',
                         'children' => [
                             ['name' => '.NET Architect '],
@@ -672,7 +656,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Marine Mechanic  '],
                             ['name' => 'Maintenance Engineer '],
                             ['name' => 'Maintenance Coordinator '],
-
                         ]
                     ],
                     [
@@ -699,7 +682,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Telesales Representative '],
                             ['name' => 'Transport Driver '],
                             ['name' => 'Videographer '],
-
                         ]
                     ],
                     [
@@ -725,7 +707,7 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Specialist '],
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Food & Beverages ',
                         'children' => [
                             ['name' => 'Accountant '],
@@ -770,10 +752,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Service Technician '],
                             ['name' => 'Sous Chef '],
                             ['name' => 'Waiter Or Waitress '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Government / Administration ',
                         'children' => [
                             ['name' => 'Administrative Assistant '],
@@ -786,11 +767,10 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Office Assistant '],
                             ['name' => 'Office Manager '],
                             ['name' => 'Technical Engineer'],
-                             ['name' => 'typist'],
-
+                            ['name' => 'typist'],
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Hospitality & Restaurants ',
                         'children' => [
                             ['name' => 'Assistant Housekeeping Manager '],
@@ -836,7 +816,7 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Administrative Assistant '],
                         ]
                     ],
-                     [
+                    [
                         'name' => 'HR & Recruitment ',
                         'children' => [
                             ['name' => 'Account Manager '],
@@ -860,10 +840,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Recruiter '],
                             ['name' => 'Recruitment Specialist '],
                             ['name' => 'Secretary '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Import & Export ',
                         'children' => [
                             ['name' => 'Administrative Assistant '],
@@ -884,10 +863,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Executive '],
                             ['name' => 'Sales Manager '],
                             ['name' => 'Supply Coordinator '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Industrial & Manufacturing ',
                         'children' => [
                             ['name' => 'Administrative Assistant '],
@@ -924,10 +902,9 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Secretary '],
                             ['name' => 'Software Engineer '],
                             ['name' => 'Welder '],
-
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Information Technology ',
                         'children' => [
                             ['name' => '.NET Developer '],
@@ -1007,7 +984,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Marketing Specialist '],
                             ['name' => 'Network Support Technician '],
                             ['name' => 'Oracle DBA'],
-
                         ]
                     ],
                     [
@@ -1030,7 +1006,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Representative '],
                             ['name' => 'Senior Accountant '],
                             ['name' => 'Typist '],
-
                         ]
                     ],
                     [
@@ -1041,7 +1016,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Legal Assistant'],
                             ['name' => 'Legal Secretary '],
                             ['name' => 'Litigation Legal Assistant '],
-
                         ]
                     ],
                     [
@@ -1075,7 +1049,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Store Supervisor '],
                             ['name' => 'Territory Manager '],
                             ['name' => 'Warehouse Assistant '],
-
                         ]
                     ],
                     [
@@ -1232,7 +1205,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Medical Physician '],
                             ['name' => 'Medical Receptionist '],
                             ['name' => 'Medical Secretary '],
-
                         ]
                     ],
                     [
@@ -1250,7 +1222,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Quality Manager '],
                             ['name' => 'Sales Executive '],
                             ['name' => 'Tig Welder '],
-
                         ]
                     ],
                     [
@@ -1266,7 +1237,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Relationship Manager '],
                             ['name' => 'Typist '],
                             ['name' => 'Executive Secretary'],
-
                         ]
                     ],
                     [
@@ -1301,7 +1271,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sales Manager '],
                             ['name' => 'Telesales Agent '],
                             ['name' => 'Telesales Representative '],
-
                         ]
                     ],
                     [
@@ -1327,7 +1296,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Shop Manager '],
                             ['name' => 'Store Supervisor '],
                             ['name' => 'Visual Merchandiser '],
-
                         ]
                     ],
                     [
@@ -1338,12 +1306,11 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Electrician Technician '],
                             ['name' => ' Security Guard '],
                             ['name' => 'Safety Officer '],
-                             ['name' => 'Fire and Safety Officer'],
-                             ['name' => 'Security Officer'],
-
+                            ['name' => 'Fire and Safety Officer'],
+                            ['name' => 'Security Officer'],
                         ]
                     ],
-                     [
+                    [
                         'name' => 'Sales ',
                         'children' => [
                             ['name' => 'Account Sales Executive '],
@@ -1403,7 +1370,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Customer Service Receptionist '],
                             ['name' => 'Executive Assistant '],
                             ['name' => 'Executive Secretary '],
-
                         ]
                     ],
                     [
@@ -1413,7 +1379,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Horse Trainer '],
                             ['name' => 'Fitness Instructor'],
                             ['name' => 'Personal Trainer'],
-
                         ]
                     ],
                     [
@@ -1425,7 +1390,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Telesales Representative '],
                             ['name' => 'Telemarketing Agent '],
                             ['name' => 'Test Engineer '],
-
                         ]
                     ],
                     [
@@ -1440,7 +1404,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Tractor Trailer Driver '],
                             ['name' => 'Transport Driver '],
                             ['name' => 'Transportation Coordinator '],
-
                         ]
                     ],
                     [
@@ -1458,7 +1421,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Tour Manager '],
                             ['name' => 'Travel Agent '],
                             ['name' => 'Travel Consultant '],
-
                         ]
                     ],
                     [
@@ -1488,7 +1450,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Warehouse Labourer '],
                             ['name' => 'Warehouse Manager '],
                             ['name' => 'Warehouse Supervisor '],
-
                         ]
                     ],
                 ],
@@ -1626,7 +1587,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Gaming Merchandise '],
                             ['name' => 'Gaming Systems'],
                             ['name' => 'Video Games'],
-
                         ]
                     ],
                     [
@@ -1636,7 +1596,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Outdoor Appliances '],
                             ['name' => 'Small Bathroom Appliances'],
                             ['name' => 'Small Kitchen Appliances'],
-
                         ]
                     ],
                     [
@@ -1645,7 +1604,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Mobile Phones'],
                             ['name' => 'Mobile Accessories'],
                             ['name' => 'PDA'],
-
                         ]
                     ],
                     [
@@ -1654,7 +1612,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Lost & Found Pets '],
                             ['name' => 'Pet Accessories '],
                             ['name' => 'Pets for Free Adoption'],
-
                         ]
                     ],
                     [
@@ -1670,7 +1627,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Water Sports '],
                             ['name' => 'Winter Sports'],
                             ['name' => '. Others'],
-
                         ]
                     ],
                     [
@@ -1682,7 +1638,6 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Sporting Events  '],
                             ['name' => 'Theater '],
                             ['name' => 'Travel'],
-
                         ]
                     ],
                     [
@@ -1697,39 +1652,35 @@ class CategoryTableSeeder extends Seeder {
                             ['name' => 'Hobbies'],
                             ['name' => 'Outdoor Toys & Structures'],
                             ['name' => 'PlaySchool Toys'],
-
                         ]
                     ],
                 ],
             ],
-            [	'name' => 'Property',
+            [
+                'name' => 'Property',
                 'children' => [
-
-                        [
-                            'name' => 'Property for Sale',
-                            'children' => [
-                                ['name' => 'Apartment for Sale'],
-                                ['name' => 'Villa / House for Sale'],
-                                ['name' => 'Commercial for Sale'],
-                                ['name' => 'Multiple Units for Sale'],
-                                ['name' => 'Land for Sale']
-                            ],
-                        ],
                     [
-                    'name' => 'Property for Rent',
-                    'children' => [
-
-                                ['name' => 'Apartment / Flat for Rent'],
-                                ['name' => 'Villa/House for Rent'],
-                                ['name' => 'Commercial for Rent'],
-                                ['name' => 'Rooms for rent'],
-                                ['name' => 'Rooms wanted'],
-                                ['name' => 'Short Term (Monthly)'],
-                                ['name' => 'Short Term (Daily)  '],
-                            ]
+                        'name' => 'Property for Sale',
+                        'children' => [
+                            ['name' => 'Apartment for Sale'],
+                            ['name' => 'Villa / House for Sale'],
+                            ['name' => 'Commercial for Sale'],
+                            ['name' => 'Multiple Units for Sale'],
+                            ['name' => 'Land for Sale']
                         ],
-
-
+                    ],
+                    [
+                        'name' => 'Property for Rent',
+                        'children' => [
+                            ['name' => 'Apartment / Flat for Rent'],
+                            ['name' => 'Villa/House for Rent'],
+                            ['name' => 'Commercial for Rent'],
+                            ['name' => 'Rooms for rent'],
+                            ['name' => 'Rooms wanted'],
+                            ['name' => 'Short Term (Monthly)'],
+                            ['name' => 'Short Term (Daily)  '],
+                        ]
+                    ],
                 ],
             ],
 		];

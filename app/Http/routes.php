@@ -77,6 +77,7 @@ Route::get('privacy-policy', function() { return view('pages.static.privacy-poli
 
 Route::post('categories/{category}/children', 'CategoryController@children');
 Route::get('categories/all', 'CategoryController@all');
+Route::post('categories/getproducts', 'CategoryController@getProducts');
 Route::resource('categories', 'CategoryController');
 
 Route::bind('emirate', function ($emirate) {
@@ -249,5 +250,6 @@ Route::get('files', function () {
 });
 
 Route::get('cats', function () {
-    return response()->json(App\Product::where('id', App\Category::find(1)->childProducts())->get());
+//    return response()->json(App\Product::whereIn('id', App\Category::find(1)->childProducts())->get());
+    return response()->json(App\Category::find(2)->childProducts());
 });

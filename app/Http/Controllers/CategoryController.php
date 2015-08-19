@@ -3,11 +3,32 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Category;
 use Input;
 
 class CategoryController extends Controller {
+
+    public function getProducts()
+    {
+        $cats = Input::get('cats');
+        $search = Input::get('search');
+        $products = new Collection;
+        foreach ($cats as $id) {
+            $product_list = Category::find($id)->childProducts();
+            $query = Product::with('images')->whereIn('id', $product_list);
+            if ($search) {
+                $searchTerms = explode(' ', $search);
+                foreach ($searchTerms as $term) {
+                    $query->where('title', 'LIKE', '%' . $term . '%');
+                }
+            }
+            $products = $products->merge($query->get());
+        }
+        return response()->json($products);
+    }
 
     public function children($id)
     {
