@@ -21,11 +21,11 @@
 				<div>
 					<div class="priceList">
 						<div class="text-muted">From</div>
-						<input type="text" class="glob-control"/>
+						<input type="text" class="glob-control" id="price-from"/>
 					</div>
 					<div class="priceList">
 						<div class="text-muted">To</div>
-						<input type="text" class="glob-control"/>
+						<input type="text" class="glob-control" id="price-to"/>
 					</div>
 				</div>
 			</div>
