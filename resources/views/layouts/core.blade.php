@@ -156,16 +156,11 @@
 						<div><a href="http://www.twitter.com"  class="fbd">Twitter</a></div>
 						<div><a href="http://www.instagram.com"  class="fbd">Instagram</a></div>
 					</div>
-					<div class="col-md-3 fbox">
-						<div><span class="fbh">UAE</span></div>
-						<div><a class="fbd">Dubai</a></div>
-						<div><a class="fbd">Abu Dhabi</a></div>
-						<div><a class="fbd">Ras al Khaimah</a></div>
-						<div><a class="fbd">Sharjah</a></div>
-						<div><a class="fbd">Fujairah</a></div>
-						<div><a class="fbd">Ajman</a></div>
-						<div><a class="fbd">Umm al Quwain</a></div>
-						<div><a class="fbd">Al Ain</a></div>
+                    <div class="col-md-3 fbox">
+                        <div><span class="fbh">UAE</span></div>
+                        @foreach($emirates as $emirate)
+						    <div><a class="fbd" href="{{ url('ads/' . $emirate->slug) }}">{{ $emirate->name }}</a></div>
+						@endforeach
 					</div>
 					<div class="col-md-3 fbox">
 						<div><span class="fbh">Company</span></div>

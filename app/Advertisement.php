@@ -11,10 +11,10 @@ class Advertisement extends Product {
         return $this->belongsTo('App\Customer');
     }
 
-//    public function images()
-//    {
-//        return $this->morphMany('App\Image', 'imageable');
-//    }
+    public function emirate()
+    {
+        return $this->belongsTo('App\Emirate');
+    }
 
     public function product()
     {

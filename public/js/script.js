@@ -695,22 +695,52 @@ jQuery(document).ready(function() {
             });
     });
 
-    $('#category-filter').change(function() {
-        var id = $(this).val();
-        $.post('/categories/' + id + '/children')
+    var catChangeAction = function() {
+        var selectedCats = [];
+        $('#category-list > p > input[type="checkbox"]:checked').each(function(index) {
+            selectedCats.push($(this).val());
+        });
+        //console.log(selectedCats);
+        $.post('/getproducts', {cats : selectedCats})
             .success(function(data) {
                 console.log(data);
-                var catlist = $('#category-list').empty();
-                $.each(data, function(key, value) {
-                    var parent = $("<p/>");
-                    parent.append($('<input/>').attr('type', 'checkbox').addClass('glob-control'));
-                    parent.append($('<label/>').text(value.name));
-                    catlist.append(parent);
-                });
-            })
-            .fail(function(data) {
-                console.log('fail');
-            })
+            }).fail(function(data) {
+                console.log(data.responseText);
+            });
+    };
+
+    var checkBoxPara = $("<p/>");
+    checkBoxPara.append($("<input/>").attr('type', 'checkbox').click(catChangeAction));
+    checkBoxPara.append($("<label/>"));
+
+    $('#category-list > p > input[type="checkbox"]').click(catChangeAction);
+
+    function populateCatList(data, catlist) {
+        catlist.empty();
+        for(var cat in data) {
+            var parent = checkBoxPara.clone(true, true);
+            parent.find('input').prop('value', data[cat]['id']);
+            parent.find('label').text(data[cat]['name']);
+            catlist.append(parent);
+        }
+    }
+
+    $('#category-filter').change(function() {
+        var id = $(this).val();
+        var catlist = $("#category-list");
+        if(id == 0) {
+            populateCatList(getCats(0), catlist);
+        } else {
+            populateCatList(new Category(id).children(), catlist);
+            //$.post('/categories/' + id + '/children')
+            //    .success(function(data) {
+            //        //console.log(data);
+            //        populateCatList(data, catlist);
+            //    })
+            //    .fail(function(data) {
+            //        console.log('fail');
+            //    })
+        }
     });
 
     /**

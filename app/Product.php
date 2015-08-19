@@ -34,4 +34,14 @@ class Product extends Model
         return $this->morphTo();
     }
 
+    public function scopeGlobexs($query)
+    {
+        return $query->where('producible_type', '=', 'App\Globex');
+    }
+
+    public function scopeAdvertisements($query, $asd)
+    {
+        return $query->where('producible_type', '=', 'App\Advertisement');
+    }
+
 }

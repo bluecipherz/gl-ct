@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Baum\Node;
@@ -27,6 +28,27 @@ class Category extends Node {
     public function products()
     {
         return $this->hasMany('App\Product');
+    }
+
+    public function childProducts()
+    {
+//        $products = new Collection;
+        $cats = [];
+        if ($this->depth == 0) {
+            foreach ($this->children()->get() as $subcat) {
+                foreach ($subcat->children()->get() as $postcat) {
+//                    $products->add($postcat->products);
+                    $cats = array_merge($cats, $postcat->products->lists('id'));
+                }
+            }
+        } else if($this->depth == 1) {
+            foreach ($this->children()->get() as $postcat) {
+//                $products->add($postcat->products);
+                $cats = array_merge($cats, $postcat->products->lists('id'));
+            }
+        }
+        return $cats;
+//        return $products;
     }
 	
 }

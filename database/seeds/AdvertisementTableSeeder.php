@@ -30,7 +30,7 @@ class AdvertisementTableSeeder extends DatabaseSeeder {
                 'name' => $faker->name,
                 'pin' => $faker->postcode,
                 'address' => $faker->address,
-                'state' => $faker->domainWord,
+                'emirate_id' => rand(1,7),
                 'city' => $faker->city,
                 'phone' => $faker->phoneNumber
 			]);

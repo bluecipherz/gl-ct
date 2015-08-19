@@ -33,7 +33,6 @@ class CreateProductTable extends Migration {
             $table->integer('stock');
             $table->integer('price_rule_id')->unsigned()->nullable();
             $table->foreign('price_rule_id')->references('id')->on('price_rules')->onDelete('cascade');
-//            $table->unsignedInteger('globexable_id');
             $table->unsignedInteger('globexable_id');
             $table->string('globexable_type');
             $table->timestamps();
@@ -48,7 +47,8 @@ class CreateProductTable extends Migration {
             $table->string('name');
             $table->integer('pin');
             $table->text('address');
-            $table->string('state')->nullable();
+            $table->unsignedInteger('emirate_id');
+            $table->foreign('emirate_id')->references('id')->on('emirates');
             $table->string('city');
             $table->string('phone');
             $table->integer('quantity')->default(1);
@@ -65,18 +65,10 @@ class CreateProductTable extends Migration {
             $table->string('model');
             $table->string('color');
             $table->tinyInteger('doors');
-//            $table->unsignedInteger('motorable_id');
-//            $table->string('motorable_type');
             $table->timestamps();
             $table->softDeletes();
         });
 
-//        Schema::create('motorables', function (Blueprint $table) {
-//            $table->unsignedInteger('motor_id');
-//            $table->foreign('motor_id')->references('id')->on('products_motors')->onDelete('cascade');
-//            $table->unsignedInteger('motorable_id');
-//            $table->string('motorable_type');
-//        });
     }
 
 	/**
@@ -89,7 +81,6 @@ class CreateProductTable extends Migration {
         Schema::dropIfExists('products');
         Schema::dropIfExists('products_globex');
         Schema::dropIfExists('products_ads');
-        Schema::dropIfExists('motorables');
         Schema::dropIfExists('products_motors');
 	}
 

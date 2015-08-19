@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Emirate;
 use App\Motor;
 use App\Product;
 use Auth;
+use Illuminate\Database\Eloquent\Collection;
 use Session;
 use App\Category;
 use App\Advertisement;
@@ -19,6 +21,16 @@ class AdvertisementController extends Controller {
     public function __construct()
     {
 //        $this->middleware('auth', ['index']);
+    }
+
+    public function stateAds(Emirate $emirate, CategoryRepository $categoryRepository)
+    {
+//        return $emirate->advertisements->count();
+        $products = new Collection;
+        foreach ($emirate->advertisements as $ad) {
+            $products->add($ad->product);
+        }
+        return view('pages.search', ['products' => $products, 'categories' => $categoryRepository->getFilterCats()]);
     }
 
 	/**

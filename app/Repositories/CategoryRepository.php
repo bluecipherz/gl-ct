@@ -47,6 +47,16 @@ class CategoryRepository extends Repository {
         return Category::roots()->get();
     }
 
+    public function getFilterCats()
+    {
+        $cats = Category::roots()->get();
+        $cats->prepend(new Category([
+            'id' => 0,
+            'name' => 'All of Globex'
+        ]));
+        return $cats;
+    }
+
     public function recursive()
     {
         $cats = Category::roots()->get();

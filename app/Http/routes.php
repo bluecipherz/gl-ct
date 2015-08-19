@@ -78,6 +78,14 @@ Route::get('privacy-policy', function() { return view('pages.static.privacy-poli
 Route::post('categories/{category}/children', 'CategoryController@children');
 Route::get('categories/all', 'CategoryController@all');
 Route::resource('categories', 'CategoryController');
+
+Route::bind('emirate', function ($emirate) {
+    return App\Emirate::whereSlug($emirate)->firstOrFail();
+});
+
+Route::get('ads/{emirate}', 'AdvertisementController@stateAds');
+
+
 Route::resource('advertisements', 'AdvertisementController');
 Route::post('products/all', 'ProductController@all');
 Route::get('products/search', 'ProductController@search');
@@ -237,11 +245,9 @@ Route::get('shitzu', function (AdminPanelRepository $repository) {
     return response()->json(App\Category::whereDepth(2)->lists('name', 'id'));
 });
 Route::get('files', function () {
-    $dir = public_path() . '/uploads/products/201';
-    $files = File::files($dir);
-//    $files = scandir($dir);
-//    echo get_class($files);
-    foreach ($files as $file) {
-        echo $file;
-    }
+    return response()->json(App\Product::advertisements('asdasd')->get());
+});
+
+Route::get('cats', function () {
+    return response()->json(App\Product::where('id', App\Category::find(1)->childProducts())->get());
 });

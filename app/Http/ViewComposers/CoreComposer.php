@@ -8,6 +8,7 @@
 
 namespace App\Http\ViewComposers;
 
+use App\Emirate;
 use App\Product;
 use Illuminate\View\View;
 use App\Globex;
@@ -17,7 +18,7 @@ use DB;
 
 class CoreComposer {
 
-    protected $products;
+    protected $products, $emirates;
 
     public function __construct()
     {
@@ -26,11 +27,13 @@ class CoreComposer {
 //        $motorQuery = Motor::with('images')->select('id', 'title', 'description','price', DB::raw('2 as type'));
 //        $this->products = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
         $this->products = Product::with('producible')->get();
+        $this->emirates = Emirate::all();
     }
 
     public function compose(View $view)
     {
         $view->with('products', $this->products);
+        $view->with('emirates', $this->emirates);
     }
 
 }

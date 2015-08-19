@@ -11,12 +11,9 @@
                 @endforeach
 			</select>
 			<div class="category-list" id="category-list"><!-- CHECKBOXES -->
-				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
-				<p><input type="checkbox" class="glob-control" /><label>Category</label></p>
+                @foreach($categories->reject(function($cat){ return $cat->id == 0; }) as $cat)
+				<p><input type="checkbox" name="category-check" value="{{ $cat->id }}"/><label>{{ $cat->name }}</label></p>
+                @endforeach
 			</div>
 			<div class="rulerCont"><hr></div>
 			<div class="priceCont">
