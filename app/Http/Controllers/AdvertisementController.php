@@ -135,7 +135,8 @@ class AdvertisementController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Advertisement::find($id)->delete();
+        return redirect()->back();
 	}
 
 

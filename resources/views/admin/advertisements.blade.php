@@ -6,6 +6,7 @@
         <div class="panel-body">
             <table class="table">
                 <tr>
+                    <th>Action</th>
                     <th>Id</th>
                     <th>Customer</th>
                     <th>Category</th>
@@ -22,6 +23,11 @@
                 </tr>
                 @forelse($advertisements as $ad)
                     <tr>
+                        <td>
+                            {!! Form::open(['route' => ['advertisements.destroy', $ad->id], 'method' => 'DELETE']) !!}
+                                <button class="btn btn-default btn-xs cat-del-btn" type="submit" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
+                            {!! Form::close() !!}
+                        </td>
                         <td>{{ $ad->id }}</td>
                         <td>{{ $ad->customer_id }}</td>
                         <td>{{ $ad->product->category_id }}</td>

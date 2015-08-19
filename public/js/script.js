@@ -766,13 +766,55 @@ jQuery(document).ready(function() {
 
     $.get('/categories/all')
         .success(function(data) {
-            //console.log('[script.js] fetching categories : ' + data)
             setCats(data);
         })
         .fail(function(data) {
-            console.log('[script.js] error fetching categories')
+            console.log(data.responseText);
         });
 
+    var formGrp = $("<div/>").addClass('form-group form-group-sm');
+    $("<label/>").addClass('control-label col-lg-2 col-md-2').appendTo(formGrp);
+    var dspDiv = $("<div/>").addClass('col-lg-10 col-md-10').appendTo(formGrp);
+    $("<label/>").addClass('control-label').hide().appendTo(dspDiv);
+    $("<input/>").attr('type', 'text').addClass('form-control').appendTo(dspDiv);
+
+    var motorAttrs = {
+        chassis_no : 'Chassis no',
+        model : 'Model',
+        color : 'Color',
+        doors : 'Doors'
+    };
+
+    function populateFields(datas) {
+        for(attr in datas) {
+            var nGrp = formGrp.clone();
+            nGrp.children('label').text(datas[attr]).attr('for', attr);
+            nGrp.find('div > label').text(datas[attr]).attr('for', attr);
+            nGrp.find('div > input').attr('name', attr);
+            $('.form-horizontal').append(nGrp);
+        }
+    }
+
+    function removeFields(datas) {
+        $(".form-horizontal .form-group").each(function(e) {
+            var grpDiv = $(this);
+            if(grpDiv.children('label').attr('for') in motorAttrs) {
+                console.log('must be removed');
+            }
+        });
+    }
+
+    $("select[name='category_id']").change(function(e) {
+        var cat_id = $(this).val();
+        var cat = new Category(cat_id);
+        if(cat.isDescendantOf(1)) {
+            if (window.location.pathname.startsWith('/advertisements')) {
+                populateFields(motorAttrs);
+            }
+        } else {
+            removeFields(motorAttrs);
+        }
+    });
 
     $(".edit-ad").click(function(e) {
         console.log('ok');
@@ -810,7 +852,7 @@ jQuery(document).ready(function() {
             phone : panel.find('input[name="phone"]').val(),
         };
         var cat = new Category(data.category_id);
-        if(cat.isDescendantOf(new Category(1))) { // motors
+        if(cat.isDescendantOf(1)) { // motors
             data.chassis_no = panel.find('input[name="chassis_no"]').val();
             data.model = panel.find('input[name="model"]').val();
             data.color = panel.find('input[name="color"]').val();
