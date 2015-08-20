@@ -56,65 +56,10 @@ class HomeController extends Controller {
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-//            echo $validator->messages();
             return redirect()->back()->with('errors', $validator->messages());
         }
-        $message = Message::create(array_except($request->all(), ['_token']));
-//        print_r($message);
+        Message::create(array_except($request->all(), ['_token']));
         return redirect('/contact-us')->withMessage('Message Sent.');
-    }
-
-    public function search(CategoryRepository $categories)
-    {
-        $q = Input::get('q');
-        if ($q) {
-            $searchTerms = explode(' ', $q);
-            $products = Product::with('images', 'producible');
-            foreach($searchTerms as $term) {
-                $products->where('title', 'LIKE', '%' . $term . '%');
-            }
-//            return $products->count();
-            return view('pages.search', ['products' => $products->get(), 'categories' => $categories->getCats(), 'query' => $q]);
-        }
-    }
-
-    public function eloquentSearch(CategoryRepository $categories)
-    {
-        $q = Input::get('q');
-        if ($q) {
-            $searchTerms = explode(' ', $q);
-            $productQuery = Globex::with('images')->select('id', 'title', 'description', 'price', DB::raw('0 as type'));
-            $adQuery = Advertisement::with('images')->select('id', 'title', 'description','price', DB::raw('1 as type'));
-            $motorQuery = Motor::with('images')->select('id', 'title', 'description','price', DB::raw('2 as type'));
-            foreach ($searchTerms as $term) {
-                $adQuery->where('title', 'LIKE', '%' . $term . '%');
-                $productQuery->where('title', 'LIKE', '%' . $term . '%');
-                $motorQuery->where('title', 'LIKE', '%' . $term . '%');
-            }
-            $results = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
-            return view('pages.search', ['products' => $results, 'categories' => $categories->getCats()]);
-        }
-    }
-
-    public function dbSearch(CategoryRepository $categories)
-    {
-        $q = Input::get('q');
-        if ($q) {
-            $searchTerms = explode(' ', $q);
-            $productQuery = DB::table('products')->select('id', 'title', 'description','price', DB::raw('1 as type'));
-            $adQuery = DB::table('advertisements')->select('id', 'title', 'description','price', DB::raw('0 as type'));
-            foreach ($searchTerms as $term) {
-                $adQuery->where('title', 'LIKE', '%' . $term . '%');
-                $productQuery->where('title', 'LIKE', '%' . $term . '%');
-            }
-            $results = $productQuery->union($adQuery)->get();
-            return view('pages.search', ['products' => $results , 'categories' => $categories->getCats()]);
-        }
-    }
-
-    public function createGrid()
-    {
-
     }
 
 }

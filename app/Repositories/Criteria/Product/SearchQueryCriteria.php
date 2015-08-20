@@ -30,8 +30,8 @@ class SearchQueryCriteria extends Criteria {
     {
         $searchTerms = explode(' ', $this->query);
         foreach ($searchTerms as $term) {
-            $model->where('title', 'LIKE', '%' . $term . '%');
+            $query = $model->where('title', 'LIKE', '%' . $term . '%');
         }
-        return $model;
+        return $query;
     }
 }

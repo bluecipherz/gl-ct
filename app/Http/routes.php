@@ -18,8 +18,6 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('search', 'HomeController@search');
-
 // Route::controllers([
 //	 'auth' => 'Auth\AuthController',
 	// 'password' => 'Auth\PasswordController',
@@ -75,9 +73,7 @@ Route::get('about-us', function() { return view('pages.static.about-us'); });
 Route::get('terms-of-use', function() { return view('pages.static.terms-of-use'); });
 Route::get('privacy-policy', function() { return view('pages.static.privacy-policy'); });
 
-Route::post('categories/{category}/children', 'CategoryController@children');
-Route::get('categories/all', 'CategoryController@all');
-Route::post('categories/getproducts', 'CategoryController@getProducts');
+Route::post('categories/all', 'CategoryController@all');
 Route::resource('categories', 'CategoryController');
 
 Route::bind('emirate', function ($emirate) {
@@ -89,9 +85,9 @@ Route::get('ads/{emirate}', 'AdvertisementController@stateAds');
 
 Route::resource('advertisements', 'AdvertisementController');
 Route::post('products/all', 'ProductController@all');
-Route::get('products/search', 'ProductController@search');
+Route::get('/search', 'ProductController@getSearch');
+Route::post('/search', 'ProductController@postSearch');
 Route::resource('products', 'ProductController');
-//Route::resource('motors', 'MotorController');
 Route::post('resellerimages/all', 'ResellerImageController@all');
 Route::resource('resellerimages', 'ResellerImageController', ['only' => ['store', 'destroy']]);
 Route::get('homegrids/reset', 'HomeGridController@reset');
@@ -249,7 +245,11 @@ Route::get('files', function () {
     return response()->json(App\Product::advertisements('asdasd')->get());
 });
 
-Route::get('cats', function () {
+Route::get('cats', function (\App\Repositories\ProductRepository $repository) {
 //    return response()->json(App\Product::whereIn('id', App\Category::find(1)->childProducts())->get());
-    return response()->json(App\Category::find(2)->childProducts());
+//    return response()->json(App\Category::find(2)->childProducts());
+//    $repository->pushCriteria(new \App\Repositories\Criteria\Product\SearchQueryCriteria('asd'));
+//    return response()->json(count($repository->all()));
+    $query = App\Product::whereIn('id', [1,2,3])->whereIn('id', [7,8,9]);
+    return response()->json(count($query->get()));
 });

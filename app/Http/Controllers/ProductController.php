@@ -7,6 +7,11 @@ use App\Repositories\CategoryRepository;
 use App\Globex;
 use App\Http\Requests;
 
+use App\Repositories\Criteria\Product\CategoryCriteria;
+use App\Repositories\Criteria\Product\PriceAboveCriteria;
+use App\Repositories\Criteria\Product\PriceBelowCriteria;
+use App\Repositories\Criteria\Product\SearchQueryCriteria;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use File;
 use Input;
@@ -14,36 +19,45 @@ use DB;
 
 class ProductController extends Controller {
 
+    protected $repository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this->repository = $productRepository;
+    }
+
 	public function all(Request $request)
 	{
         if ($request->ajax()) {
             return response()->json(Globex::all()->lists('name'));
-        } else {
-            return response('Not found', 404);
         }
 	}
 
-	public function search(Request $request, CategoryRepository $categoryRepository)
+	public function getSearch(CategoryRepository $repository)
 	{
-		$q = $request->get('q');
-		if($q) {
-			$searchTerms = explode(' ', $q);
-			$query = Product::with('producible', 'images');
-			foreach($searchTerms as $term)
-			{
-				$query->where('title', 'LIKE', '%' . $term . '%');
-			}
-			$results = $query->get();
-            if ($request->ajax()) {
-                return response()->json($results);
-            } else {
-                return view('pages.search', ['products' => $results, 'categories' => $categoryRepository->getCats()]);
-            }
-		} else {
-			$products = Globex::all();
-			return view('pages.search',  ['products' => $products, 'categories' => $categoryRepository->getCats()]);
-		}
+        $search = Input::get('search');
+//        $search = 'as';
+//        $cats = [1, 63];
+        if($search) $this->repository->pushCriteria(new SearchQueryCriteria($search));
+//        $this->repository->getByCriteria(new CategoryCriteria($cats));
+//        $this->repository->pushCriteria(new PriceBelowCriteria(5000));
+//        $this->repository->pushCriteria(new PriceAboveCriteria(45000));
+//        return response()->json(count($this->repository->all()));
+        return view('pages.search', ['products' => $this->repository->all(), 'categories' => $repository->getFilterCats()]);
 	}
+
+    public function postSearch()
+    {
+        $cats = Input::get('cats');
+        $search = Input::get('search');
+        $priceabove = Input::get('priceabove');
+        $pricebelow = Input::get('pricebelow');
+        if ($cats) $this->repository->pushCriteria(new CategoryCriteria($cats));
+        if ($search) $this->repository->pushCriteria(new SearchQueryCriteria($search));
+        if ($priceabove) $this->repository->pushCriteria(new PriceAboveCriteria($priceabove));
+        if ($pricebelow) $this->repository->pushCriteria(new PriceBelowCriteria($pricebelow));
+        return response()->json($this->repository->all());
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -83,7 +97,6 @@ class ProductController extends Controller {
         }
         $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'price']));
         $globex->product()->save($product);
-//        $file = Input::file('images');
         $files = Input::file('images');
         $dir = public_path() . '/uploads/products/' . $globex->id . '/';
         if(!File::exists($dir)) {
@@ -93,13 +106,6 @@ class ProductController extends Controller {
             if($file != null) {
                 $filename = sha1($file->getClientOriginalName() . time());
                 $extension = $file->getClientOriginalExtension();
-//            echo $filename . '<br>';
-//            $image = Image::create([
-//                'imageable_id' => $globex->id,
-//                'imageable_type' => get_class($globex),
-//                'url' => url('/uploads/globex/' . $globex->id . '/' . $filename . '.' . $extension)
-//            ]);
-//            $globex->images()->save($image);
                 $imgdata = [
                     'product_id' => $product->id,
                     'url' => url('/uploads/products/' . $globex->id . '/' . $filename . '.' . $extension)
@@ -108,7 +114,6 @@ class ProductController extends Controller {
                 $file->move($dir, $filename . '.' . $extension);
             }
         }
-//        echo 'ok' ;
 		return redirect()->back()->with('message', 'Created');
 	}
 

@@ -261,21 +261,17 @@ jQuery(document).ready(function() {
 	});
 	$("#serachBtn").click(function(){searchq();});
 	function searchq(){
-		// search
-		//var path = '/search';
-		//var input = $("#search_q").val();
-		//var terms = input.trim().replace(/\s+/g, '+');
-		//var url = path + '?q=' + terms;
-		//if(!window.location.pathname.startsWith(path)) {
-		//	window.location.replace(path + '?q=' + terms);
-		//}
-		//$.get(path + '?q=' + input).success(function(rsp) {
-		//	$(".productsCont").html($(rsp).find(".productsCont").html());
-		//	/* HISTORY API */
-		//	if(url != window.location) {
-		//		window.history.pushState({path : url}, '', url);
-		//	}
-		//});
+        var searchQ = $("#search_q").val();
+        var searchTerms = searchQ.trim().replace(/\s+/g, '+');
+        var searchUrl = '/search?q=' + searchTerms;
+
+        //if(!window.location.pathname.startsWith('/search')  || !window.location.pathname.startsWith('/ads')) {
+        //    window.location.replace(searchUrl);
+        //}
+
+        if(searchUrl != window.location) {
+            window.history.pushState({path : searchUrl}, '', searchUrl);
+        }
 
         var productsCont = $("#schProRset");
         var selectedCats = [];
@@ -283,18 +279,18 @@ jQuery(document).ready(function() {
         $('#category-list > p > input[type="checkbox"]:checked').each(function(index) {
             selectedCats.push($(this).val());
         });
-        if(selectedCats.length == 0) {
+        if(scat_id != 0 && selectedCats.length == 0) {
             selectedCats.push(scat_id);
-            //console.log('adding supercat');
         }
-        var searchQ = $("#search_q").val();
         var priceFrom = $("#price-from").val();
         var priceTo = $("#price-to").val();
 
-        //console.log(selectedCats);
+        var data = {search : searchQ, cats : selectedCats, priceabove : priceFrom, pricebelow : priceTo};
+
+        console.log(selectedCats);
         //if(selectedCats.length > 0) { // dont filter if no option is selected
         productsCont.spin();
-        $.post('/categories/getproducts', {cats : selectedCats, search : searchQ, pricefrom : priceFrom, priceto : priceTo})
+        $.post('/search', data)
             .success(function(data) {
                 productsCont.empty();
                 //console.log(data);
@@ -304,7 +300,7 @@ jQuery(document).ready(function() {
                         //console.log(data[proObj]);
                         var product = data[proObj];
                         var url = product.producible_type == 'App\\Globex' ? '/products/' + product.id : '/advertisements/' + product.id;
-                        var imgurl = product.images[0] == undefined ? 'img/nosImage.jpg' : product.images[0].url;
+                        var imgurl = product.images == undefined ? 'img/noImage.jpg' : product.images[0].url;
                         var title = product.title;
                         var price = product.price;
                         var desc = product.description;
@@ -862,7 +858,7 @@ jQuery(document).ready(function() {
     /**
      * Retrieve all categories from the server
      */
-    $.get('/categories/all')
+    $.post('/categories/all')
         .success(function(data) {
             setCats(data);
         })

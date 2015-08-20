@@ -12,14 +12,15 @@ namespace App\Repositories\Criteria\Product;
 use App\Category;
 use App\Repositories\Contracts\RepositoryInterface as Repository;
 use App\Repositories\Criteria\Criteria;
+use Illuminate\Database\Eloquent\Builder;
 
 class CategoryCriteria extends Criteria {
 
-    protected $category_list;
+    protected $cat_list;
 
-    public function __construct($category_list)
+    public function __construct($cat_list)
     {
-        $this->category_list = $category_list;
+        $this->cat_list = $cat_list;
     }
 
     /**
@@ -29,10 +30,10 @@ class CategoryCriteria extends Criteria {
      */
     public function apply($model, Repository $repository)
     {
-        foreach ($this->category_list as $id) {
-            $product_list = Category::find($id)->childProducts();
-            $model->whereIn('id', $product_list);
+        $product_list = [];
+        foreach ($this->cat_list as $cat) {
+            $product_list = array_merge($product_list, Category::find($cat)->childProducts());
         }
-        return $model;
+        return $model->whereIn('id', $product_list);
     }
 }
