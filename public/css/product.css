@@ -149,6 +149,7 @@
     display:block;
     float:left;
     overflow:hidden;
+    width:100%;
 }
 .pro-relAdsOuter > a{
     width:20% !important;
