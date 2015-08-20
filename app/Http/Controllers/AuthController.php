@@ -46,7 +46,7 @@ class AuthController extends Controller {
         if ($request->ajax()) {
             return view('auth.partials.logged');
         } else {
-            return redirect()->back()->withMessage('Account Created');
+            return redirect('/')->withMessage('Account Created');
         }
     }
 

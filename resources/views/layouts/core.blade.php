@@ -103,18 +103,18 @@
 				<h2 >Register with</h2>
 				<div class="gl-contain-60-c"><span class="g-logo-contain gl-contain-60" ></span></div>
 				<div class="form-group">
-					<input type="text" placeholder="Your Email" class="glob-control noBwdTab" id="auth-register-email" name="email"/>
+					<input type="email" placeholder="Your Email" class="glob-control noBwdTab" id="auth-register-email" name="email"/>
 					<div class="pn-popup"></div>
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="Your Password" class="glob-control" id="auth-register-pass" name="password"/>
+					<input type="password" placeholder="Your Password" class="glob-control" id="auth-register-pass" name="password"/>
 					<div class="pn-popup"></div>
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="Confirm Password" class="glob-control" id="auth-register-pass-again" name="password_confirmation"/>
+					<input type="password" placeholder="Confirm Password" class="glob-control" id="auth-register-pass-again" name="password_confirmation"/>
 					<div class="pn-popup"></div>
 				</div>
-				<div class="lbox-errorM">Thanks for being a part of globexkart</div>
+				<div class="lbox-errorM">Thanks for being a part of Globexkart</div>
 				<div class="form-group"><button class="glob-control" id="auth-register-btn">Register</button></div>
 				<div class="form-group">Already have an account ? <span class="b-fakeLink-text regMBLbtn">Login</span></div>
 			</div>

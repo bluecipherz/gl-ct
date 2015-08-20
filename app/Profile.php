@@ -13,4 +13,9 @@ class Profile extends Model {
         return $this->belongsTo('App\Customer');
     }
 
+    public function emirate()
+    {
+        return $this->belongsTo('App\Emirate');
+    }
+
 }

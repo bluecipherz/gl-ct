@@ -9,6 +9,14 @@
 namespace App\Http\ViewComposers;
 
 
+use Auth;
+use Illuminate\View\View;
+
 class LoggedComposer {
+
+    public function compose(View $view)
+    {
+        $view->with('customer', Auth::customer()->get());
+    }
 
 }

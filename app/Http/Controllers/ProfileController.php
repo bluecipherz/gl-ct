@@ -29,7 +29,8 @@ class ProfileController extends Controller {
 	 */
 	public function create()
 	{
-        if(!Auth::customer()->get()->profile()) {
+        $customer = Auth::customer()->get();
+        if(!count($customer->profile)) {
             $profile = Profile::create([
                 'customer_id' => Auth::customer()->get()->id
             ]);
@@ -88,7 +89,7 @@ class ProfileController extends Controller {
         ];
 //          return response()->json($data);
             Profile::find($id)->update($data);
-        return redirect()->url('/home');
+        return redirect('/home');
 	}
 
 	/**

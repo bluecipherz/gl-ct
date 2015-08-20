@@ -32,6 +32,7 @@ use App\Shipper;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Input;
+use Validator;
 
 class AdminPanelController extends Controller {
 
@@ -41,7 +42,7 @@ class AdminPanelController extends Controller {
     public function __construct(AdminPanelRepository $adminpanel)
     {
         $this->adminPanel = $adminpanel;
-        $this->middleware('admin');
+//        $this->middleware('admin');
     }
 
     public function dashboard()
@@ -100,6 +101,14 @@ class AdminPanelController extends Controller {
             ->with('products', $products->paginate())
             ->with('cats', $categories->all(['name']))
             ->with('homegrids', HomeGrid::all());
+    }
+
+    public function setHomeWall()
+    {
+        $image = Input::file('image');
+//        return get_class($image);
+        $image->move(public_path() . '/img/ads/', '1.jpg');
+        return redirect()->back();
     }
 
     public function orders(OrderRepository $orders, OrderItemRepository $orderItems)

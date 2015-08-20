@@ -34,6 +34,7 @@ Route::get('admin-x965/logout', function () {
     Auth::admin()->logout();
     return redirect('/');
 });
+Route::post('post-home-wall', 'AdminPanelController@setHomeWall');
 
 Route::post(sha1('admin-login'), 'AuthController@loginAdmin');
 

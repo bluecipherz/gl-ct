@@ -18,6 +18,7 @@ class ComposerServiceProvider extends ServiceProvider {
         $this->app->view->composer('admin.main', 'App\Http\ViewComposers\AdminComposer');
         $this->app->view->composer('home', 'App\Http\ViewComposers\HomeComposer');
         $this->app->view->composer('layouts.core', 'App\Http\ViewComposers\CoreComposer');
+        $this->app->view->composer('auth.partials.logged', 'App\Http\ViewComposers\LoggedComposer');
 	}
 
 	/**
