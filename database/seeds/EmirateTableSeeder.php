@@ -3,9 +3,9 @@ use Illuminate\Database\Seeder;
 
 /**
  * Created by PhpStorm.
- * User: BCz Workstation #01
- * Date: 8/19/2015
- * Time: 5:18 AM
+ * User: bazi
+ * Date: 19-Aug-15
+ * Time: 9:29 PM
  */
 
 class EmirateTableSeeder extends Seeder {
@@ -21,7 +21,7 @@ class EmirateTableSeeder extends Seeder {
             ['id' => 4, 'name' => 'Fujairah', 'slug' => 'fujairah'],
             ['id' => 5, 'name' => 'Ras al Khaimah', 'slug' => 'ras-al-khaimah'],
             ['id' => 6, 'name' => 'Sharjah', 'slug' => 'sharjah'],
-            ['id' => 7, 'name' => 'Umm al Quwain', 'slug' =>  'umm-al-quwain']
+            ['id' => 7, 'name' => 'Umm al Quwain', 'slug' => 'umm-al-quwain']
         ];
 
         DB::table('emirates')->insert($emirates);

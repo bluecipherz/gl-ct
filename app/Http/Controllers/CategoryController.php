@@ -3,11 +3,51 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Category;
 use Input;
 
 class CategoryController extends Controller {
+
+    public function getProducts()
+    {
+        $cats = Input::get('cats');
+//        $cats = [1, 63, 74, 97, 1227, 1356];
+        $search = Input::get('search');
+//        $search = 'as';
+        $products = new Collection;
+        if ($cats && $search) {
+//            echo 'qwe';
+            foreach ($cats as $id) {
+                $product_list = Category::find($id)->childProducts();
+                $query = Product::with('images')->whereIn('id', $product_list);
+                $searchTerms = explode(' ', $search);
+                foreach ($searchTerms as $term) {
+                    $query->where('title', 'LIKE', '%' . $term . '%');
+                }
+                $products = $products->merge($query->get());
+            }
+        } else if ($cats) {
+//            echo 'zxc';
+            foreach ($cats as $id) {
+                $product_list = Category::find($id)->childProducts();
+                $query = Product::with('images')->whereIn('id', $product_list);
+                $products = $products->merge($query->get());
+            }
+        } else if ($search) {
+//            echo 'asd';
+            $query = Product::with('images');
+            $searchTerms = explode(' ', $search);
+            foreach ($searchTerms as $term) {
+                $query->where('title', 'LIKE', '%' . $term . '%');
+            }
+            $products = $products->merge($query->get());
+        }
+//        return response()->json($products->count());
+        return response()->json($products);
+    }
 
     public function children($id)
     {

@@ -21,11 +21,11 @@
 				<div>
 					<div class="priceList">
 						<div class="text-muted">From</div>
-						<input type="text" class="glob-control"/>
+						<input type="text" class="glob-control" id="price-from"/>
 					</div>
 					<div class="priceList">
 						<div class="text-muted">To</div>
-						<input type="text" class="glob-control"/>
+						<input type="text" class="glob-control" id="price-to"/>
 					</div>
 				</div>
 			</div>
@@ -44,9 +44,9 @@
 			<div class="top-links">
 				<a href="#">Price</a> | <a href="#">Relevance</a> | <a href="#">Discount</a> | <a href="#">Popular</a>
 			</div>
-			<div class="productsCont">
+			<div class="productsCont" id="schProRset">
                 @if($products->count() < 1)
-                    <span > No results for the search " Keyword " </span>
+                    <span> No results found for " {{ $query or 'Search' }} " </span>
                 @else
                     @foreach($products as $product)
                     <a href="{{ url($product->producible_type == 'App\Globex' ? 'products'.'/'.$product->id : 'advertisements' .'/'.$product->id) }}" class="productCont b-fakeLink">

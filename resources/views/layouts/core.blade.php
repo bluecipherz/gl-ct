@@ -42,7 +42,7 @@
 				</div>
 				<div class="searchBarOuter" >
 					<div class="serachBar" >
-                        <input type="text" id="search_q" class="serachField" placeholder="Search here" list="searchList"/>
+                        <input type="text" id="search_q" class="serachField" placeholder="Search here" list="searchList" value="{{ $query or '' }}"/>
                         <datalist id="searchList">
                             @foreach($products as $product)
                                 <option>{{ $product->title }}</option>
