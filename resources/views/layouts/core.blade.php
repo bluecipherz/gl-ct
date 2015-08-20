@@ -148,7 +148,7 @@
 	<!-- Scripts -->
 	
 	<footer>
-		<div class="footerH">
+		<div class="footerH  visible-md visible-lg">
 			<div class="boxx">
 				<div class="col-md-12">
 					<div class="col-md-3 fbox">

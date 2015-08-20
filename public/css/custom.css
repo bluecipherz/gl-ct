@@ -407,10 +407,10 @@ body{
 	display:none;
 	float:left;
 	position:absolute;
-	left:220px;
+	left:200px;
 	top:40px;
 	height:calc(12px * 40 ) ;
-	width:calc(100% - 220px);
+	width:calc(100% - 200px);
 	background:#fbfbfb;
 	box-shadow:4px 2px 5px rgba(0,0,0,0.2);
 	z-index:99;
@@ -487,10 +487,10 @@ body{
 	display:block;
 	float:left;
 	position:absolute;
-	left:220px;
+	left:200px;
 	top:0px;
 	height:calc(12px * 40 ) ;
-	width:calc(100% - 220px);
+	width:calc(100% - 200px);
 	background:#fff;
 	box-shadow:1px 1px 1px rgba(0,0,0,0.2);
 	
@@ -2163,6 +2163,7 @@ label:hover:before {
 	footer{
 		width:100%;
 		min-height:400px;
+        border-top:1px solid rgba(0,0,0,0.1);
 	}
 	
 	.footerH{
