@@ -16,13 +16,13 @@ class Category extends Node {
 
     public function treeProducts() {
         // Get ids of descendants
-        $categories = $this->descendants()->lists('id');
+        $categories = $this->leaves()->lists('id');
 
         // Include the id of category itself
         // $categories[] = $categories->getKey();
 
         // Get Products
-        return Globex::whereIn('category_id', $categories)->get();
+        return Product::whereIn('category_id', $categories)->get();
     }
 
     public function products()
@@ -46,6 +46,8 @@ class Category extends Node {
 //                $products->add($postcat->products);
                 $cats = array_merge($cats, $postcat->products->lists('id'));
             }
+        } else if ($this->depth == 2) {
+            return $this->products->lists('id');
         }
         return $cats;
 //        return $products;

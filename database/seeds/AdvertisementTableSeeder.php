@@ -31,7 +31,7 @@ class AdvertisementTableSeeder extends DatabaseSeeder {
                 'pin' => $faker->postcode,
                 'address' => $faker->address,
                 'emirate_id' => rand(1,7),
-                'city' => $faker->city,
+//                'city' => $faker->city,
                 'phone' => $faker->phoneNumber
 			]);
             $ad->product()->save($product);

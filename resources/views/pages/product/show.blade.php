@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                             <div>
-                                <span>City </span> {{ $product->producible->city }}
+                                <span>City </span> {{ $product->producible->emirate->name }}
                             </div>
                             <div>
                                 <span>Phone no:  </span> {{ $product->producible->phone }}
@@ -131,18 +131,28 @@
             Related Ads
         </div>
         <div class="pro-relAdsOuter">
-            <div class="productCont b-fakeLink">
+            @forelse($related->get() as $product)
+            <a class="productCont b-fakeLink" href="{{route('products.show', $product)}}">
                 <div class="product-thumbnail">
-                    <span class="sampleThumb"><img src="{{ randImg(1) }}"></span>
+                    <span class="sampleThumb">
+                        @if($product->images->first())
+                        <img src="{{ $product->images->first()->url }}">
+                        @else
+                        <img src="{{ url('/img/noImage.jpg') }}">
+                        @endif
+                    </span>
                 </div>
-                <div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="title">
-                    <h4>Title</h4>
-                    <div class="productPrice">Price</div>
+                <div class="product-description"  data-toggle="tooltip" data-placement="bottom" title="{{ $product->title }}">
+                    <h4>{{ $product->title }}</h4>
+                    <div class="productPrice">{{ $product->price }}</div>
                     <div class="product-desc-small">
-                        Description
+                        {{ $product->description }}
                     </div>
                 </div>
-            </div>
+            </a>
+            @empty
+                No related products
+            @endforelse
         </div>
     </div>
 </div>

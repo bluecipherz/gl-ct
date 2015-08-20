@@ -1,5 +1,22 @@
 jQuery(document).ready(function() {
-	
+
+    /******************************************************
+     *                    TEMPLATES                       *
+     *****************************************************/
+
+    /**
+     * Search result product display slot
+     * @type {*|jQuery}
+     */
+    var prodSlot = $("<a/>").addClass('productCont b-fakeLink');
+    var prodThumb = $("<div/>").addClass('product-thumbnail').appendTo(prodSlot);
+    prodThumb.append($("<span/>").addClass('sampleThumb').append($("<img/>")));
+    var prodDesc = $("<div/>").addClass('product-description').attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').appendTo(prodSlot);
+    $("<h4/>").appendTo(prodDesc);
+    $("<div/>").addClass('productPrice').appendTo(prodDesc);
+    $("<div/>").addClass('product-desc-small').appendTo(prodDesc);
+
+
 	$(".catList > div").hover(
 		function(){
 			$(this).find(".catCont").css({"display":"block"});
@@ -244,21 +261,77 @@ jQuery(document).ready(function() {
 	});
 	$("#serachBtn").click(function(){searchq();});
 	function searchq(){
-		// search
-		var path = '/search';
-		var input = $("#search_q").val();
-		var terms = input.trim().replace(/\s+/g, '+');
-		var url = path + '?q=' + terms;
-		if(!window.location.pathname.startsWith(path)) {
-			window.location.replace(path + '?q=' + terms);
-		}
-		$.get(path + '?q=' + input).success(function(rsp) {
-			$(".productsCont").html($(rsp).find(".productsCont").html());
-			/* HISTORY API */
-			if(url != window.location) {
-				window.history.pushState({path : url}, '', url);
-			}
-		});
+        var searchQ = $("#search_q").val();
+        var searchTerms = searchQ.trim().replace(/\s+/g, '+');
+        var searchUrl = '/search?q=' + searchTerms;
+
+        if(!window.location.pathname.startsWith('/search')) {
+            console.log(window.location.pathname);
+            if(!window.location.pathname.startsWith('/ads')) {
+                window.location.replace(searchUrl);
+            }
+        } else {
+            if(searchUrl != window.location.pathname) {
+                //console.log(history);
+                window.history.pushState({path : searchUrl}, '', searchUrl);
+            }
+        }
+
+
+
+        var productsCont = $("#schProRset");
+        var selectedCats = [];
+        var scat_id = $("#category-filter").val();
+        $('#category-list > p > input[type="checkbox"]:checked').each(function(index) {
+            selectedCats.push($(this).val());
+        });
+        if(scat_id != 0 && selectedCats.length == 0) {
+            selectedCats.push(scat_id);
+        }
+        var priceFrom = $("#price-from").val();
+        var priceTo = $("#price-to").val();
+
+        var data = {search : searchQ, cats : selectedCats, priceabove : priceFrom, pricebelow : priceTo};
+
+        console.log(selectedCats);
+        //if(selectedCats.length > 0) { // dont filter if no option is selected
+        productsCont.spin();
+        $.post('/search', data)
+            .success(function(data) {
+                productsCont.empty();
+                //console.log(data);
+                console.log(data.length + ' search results found');
+                if(data.length > 0) {
+                    for(var proObj in data) {
+                        //console.log(data[proObj]);
+                        var product = data[proObj];
+                        var url = product.producible_type == 'App\\Globex' ? '/products/' + product.id : '/advertisements/' + product.id;
+                        var imgurl = product.images == undefined ? '/img/noImage.jpg' : product.images[0].url;
+                        var title = product.title;
+                        var price = product.price;
+                        var desc = product.description;
+
+                        //console.log([url, imgurl, title, price, desc]);
+
+                        var psSlot = prodSlot.clone(true, true);
+                        psSlot.attr('href', url);
+                        psSlot.find('img').attr('src', imgurl);
+                        psSlot.find('h4').text(title.length > 20 ? title.substr(0, 20) + '...' : title);
+                        psSlot.find('.product-description').attr('title', title).tooltip();
+                        psSlot.find('.productPrice').text(price);
+                        psSlot.find('.product-desc-small').text(desc.length > 60 ? desc.substr(0, 60) + '...' : desc);
+
+                        productsCont.append(psSlot);
+                    }
+                } else {
+                    productsCont.append($("<p>").text('No results found for "' + searchQ + '"'))
+                }
+                productsCont.spin(false);
+            }).fail(function(data) {
+                console.log(data.responseText);
+            });
+        //}
+
 	}
 
     // Wizard tab 2 input triggers
@@ -651,14 +724,13 @@ jQuery(document).ready(function() {
             'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
             'price' : $('#adPrice').val(),
-            'brand' : '', // temp implementation
-            'quantity' : 1, // temp implementation
+            //'brand' : '', // temp implementation
+            //'quantity' : 1, // temp implementation
             //'images' : $('#adPics').val(),
             'name' : $('#customerName').val(),
             'pin' : $('#customerPin').val(),
             'address' : $('#customerAddress').val(),
-            'state' : $('#customerState').val(),
-            'city' : $('#customerCity').val(),
+            'emirate_id' : $('#customerCity').val(),
             'phone' : $('#customerPhone').val()
         };
 
@@ -696,17 +768,7 @@ jQuery(document).ready(function() {
     });
 
     var catChangeAction = function() {
-        var selectedCats = [];
-        $('#category-list > p > input[type="checkbox"]:checked').each(function(index) {
-            selectedCats.push($(this).val());
-        });
-        //console.log(selectedCats);
-        $.post('/getproducts', {cats : selectedCats})
-            .success(function(data) {
-                console.log(data);
-            }).fail(function(data) {
-                console.log(data.responseText);
-            });
+        searchq();
     };
 
     var checkBoxPara = $("<p/>");
@@ -730,16 +792,10 @@ jQuery(document).ready(function() {
         var catlist = $("#category-list");
         if(id == 0) {
             populateCatList(getCats(0), catlist);
+            searchq();
         } else {
             populateCatList(new Category(id).children(), catlist);
-            //$.post('/categories/' + id + '/children')
-            //    .success(function(data) {
-            //        //console.log(data);
-            //        populateCatList(data, catlist);
-            //    })
-            //    .fail(function(data) {
-            //        console.log('fail');
-            //    })
+            searchq();
         }
     });
 
@@ -807,7 +863,7 @@ jQuery(document).ready(function() {
     /**
      * Retrieve all categories from the server
      */
-    $.get('/categories/all')
+    $.post('/categories/all')
         .success(function(data) {
             setCats(data);
         })

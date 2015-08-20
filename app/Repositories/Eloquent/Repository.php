@@ -62,6 +62,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
      * @return mixed
      */
     public function all($columns = array('*')) {
+        $this->applyCriteria();
         return $this->model->get($columns);
     }
 
@@ -130,14 +131,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
             throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
 
         return $this->model = $model;
-    }
-
-    /**
-     * @return Model
-     */
-    public function getModel()
-    {
-        return $this->model;
     }
 
     /**

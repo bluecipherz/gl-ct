@@ -5,7 +5,11 @@
 	</div>
 	<div class="ac-cont">
 		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('advertisements.index') }}">My Ads</a>
-		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ url('editprofile') }}">Edit My Profile</a>
+        @if(Auth::customer()->get()->profile)
+		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('profile.edit', Auth::customer()->get()->profile) }}">Edit My Profile</a>
+        @else
+        <a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('profile.create') }}">Edit My Profile</a>
+        @endif
 		<div class="ac-profile">
 			<div class="ac-c-head">My Profile</div>
 			<table>

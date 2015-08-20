@@ -3,23 +3,19 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Category;
 use Input;
 
 class CategoryController extends Controller {
 
-    public function children($id)
+    public function all(Request $request)
     {
-        $category = Category::find($id);
-        if($category) {
-            return response()->json($category->children->all());
+        if ($request->ajax()) {
+            return response()->json(Category::all());
         }
-    }
-
-    public function all()
-    {
-        return response()->json(Category::all());
     }
 
 	/**
@@ -71,7 +67,6 @@ class CategoryController extends Controller {
 	public function show($id)
 	{
         $category = Category::find($id);
-        $ads = $category->products;
         return view('pages.category', compact('category'));
 	}
 

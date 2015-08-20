@@ -42,6 +42,11 @@ class CategoryRepository extends Repository {
         return $cattree;
     }
 
+    public function getSubCats()
+    {
+        return Category::whereDepth(1)->get();
+    }
+
     public function getCats()
     {
         return Category::roots()->get();

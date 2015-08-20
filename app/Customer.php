@@ -27,4 +27,9 @@ class Customer extends Model implements AuthenticatableContract, CanResetPasswor
         return $this->hasMany('App\Advertisement');
     }
 
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
+
 }

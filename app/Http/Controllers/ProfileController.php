@@ -1,11 +1,16 @@
 <?php namespace App\Http\Controllers;
 
+use App\Emirate;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Profile;
+use Auth;
+use Input;
+use App\Customer;
 
-class MotorController extends Controller {
+class ProfileController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +19,7 @@ class MotorController extends Controller {
 	 */
 	public function index()
 	{
-        return 'index';
+		//
 	}
 
 	/**
@@ -24,7 +29,12 @@ class MotorController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        if(!Auth::customer()->get()->profile()) {
+            $profile = Profile::create([
+                'customer_id' => Auth::customer()->get()->id
+            ]);
+        }
+        return redirect()->route('profile.edit', $profile);
 	}
 
 	/**
@@ -32,9 +42,9 @@ class MotorController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store()
 	{
-        return 'ok';
+		//
 	}
 
 	/**
@@ -56,7 +66,8 @@ class MotorController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $profile = Profile::find($id);
+        return view('pages.editprofile', ['profile' => $profile, 'emirates' => Emirate::all()]);
 	}
 
 	/**
@@ -67,7 +78,17 @@ class MotorController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $data = [
+            'first_name' => Input::get('first_name'),
+            'last_name' => Input::get('last_name'),
+            'address' => Input::get('address'),
+            'pin' => Input::get('pin'),
+            'emirate_id' => Input::get('emirate_id'),
+            'phone' => Input::get('phone'),
+        ];
+//          return response()->json($data);
+            Profile::find($id)->update($data);
+        return redirect()->url('/home');
 	}
 
 	/**

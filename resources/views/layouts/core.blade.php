@@ -42,7 +42,7 @@
 				</div>
 				<div class="searchBarOuter" >
 					<div class="serachBar" >
-                        <input type="text" id="search_q" class="serachField" placeholder="Search here" list="searchList"/>
+                        <input type="text" id="search_q" class="serachField" placeholder="Search here" list="searchList" value="{{ $searchQuery or '' }}"/>
                         <datalist id="searchList">
                             @foreach($products as $product)
                                 <option>{{ $product->title }}</option>
@@ -95,7 +95,7 @@
 					<div class="pn-popup"></div>
 				</div>
 				
-				<div class="lbox-errorM">Thanks for being a part of globexkart</div>
+				<div class="lbox-errorM">Thanks for being a part of Globexkart</div>
 				<div class="form-group"><button class="glob-control" id="auth-login-btn">Login</button></div>
 				<div class="form-group">Don't have an account ? <span class="b-fakeLink-text loginMBLbtn">Register Now</span></div>
 			</div>
@@ -148,7 +148,7 @@
 	<!-- Scripts -->
 	
 	<footer>
-		<div class="footerH">
+		<div class="footerH  visible-md visible-lg">
 			<div class="boxx">
 				<div class="col-md-12">
 					<div class="col-md-3 fbox">

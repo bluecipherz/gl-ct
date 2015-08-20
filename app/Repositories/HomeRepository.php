@@ -72,4 +72,25 @@ class HomeRepository {
         return $catset;
     }
 
+    public function getSubCatSet()
+    {
+        $catarray = [];
+        $cats = Category::whereDepth(1)->get();
+        $counter = 0;
+        for ($col = 0; $col < 3; $col++) {
+            $fillmore = true;
+            $row = 0;
+            $colarray = [];
+            while ($fillmore) {
+                if(isset($cats[$counter])) {
+                    $colarray[$row] = ['id' => $cats[$counter]->id, 'name' => $cats[$counter]->name];
+                } else break;
+                $row++;$counter++;
+                if($row > 11) $fillmore = false;
+            }
+            $catarray[$col] = $colarray;
+        }
+        return $catarray;
+    }
+
 }

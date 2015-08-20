@@ -41,6 +41,7 @@ class AdminPanelController extends Controller {
     public function __construct(AdminPanelRepository $adminpanel)
     {
         $this->adminPanel = $adminpanel;
+        $this->middleware('admin');
     }
 
     public function dashboard()
