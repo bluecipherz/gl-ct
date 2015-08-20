@@ -1,6 +1,6 @@
 @media (min-width: 768px) {
     .boxx {
-        width: 970px;
+        width: 768px;
     }
 }
 
@@ -14,15 +14,28 @@
     .boxx {
         width: 970px;
     }
+
+    .catCont{
+        display:none;
+        float:left;
+        position:absolute;
+        left:200px;
+        top:40px;
+        height:calc(12px * 40 ) ;
+        width:calc(100% - 200px);
+        background:#fbfbfb;
+        box-shadow:4px 2px 5px rgba(0,0,0,0.2);
+        z-index:99;
+    }
 }
 
 /* min width */
 
 @media (max-width: 768px) {
     .boxx {
-        min-width: 970px;
+        width: 768px;
     }
-	.footerH{
-		display:none;
-	}
+    .homeTop{
+        margin-top: 0px;
+    }
 }

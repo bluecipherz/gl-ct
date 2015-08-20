@@ -2,8 +2,8 @@
 @extends('layouts.core')
 @section('title','Home')
 @section('content')
-<div class="homeNav">
-	<div class="boxx" style="height:inherit; position: relative; padding-left:20px;">
+<div class="homeNav visible-sm visible-md visible-lg">
+	<div class="boxx" style="height:inherit; position: relative; padding-left:0px;">
 		<div class="hnCat-btn">
 			<div class="cbtn ">CATEGORIES <span class=""></span></div>
 			<div class="catList">
@@ -47,7 +47,7 @@
 
 	</div>
 </div>
-<div class="homeTopAd">
+<div class="homeTopAd visible-sm visible-md visible-lg">
 	<div class="boxx" style="position: relative; padding-left:0px;">
 		<div class="homeTopAdCont">
 			<img src="img/ads/1.jpg">
@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<div class="boxx">
+<div class="boxx ">
 	<div class="row">
 		<div class="homeTop">
 			<div>
@@ -92,134 +92,6 @@
                     </div>
                 </div>
             @endforeach
-<<<<<<< HEAD
-
-            {{--loop ends--}}
-
-            <div>
-				<span class="adhead">Motors</span>
-				<div class="adcont-3 ">
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-				</div>
-			</div>
-
-
-            <div >
-                <span class="adhead">Mobile And Accessories</span>
-                <div class="adcont-4">
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                    <a href="link">
-                        <div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-                        <div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-                    </a>
-                </div>
-            </div>
-			<div>
-				<span class="adhead">Spares</span>
-				<div class="adcont-5">
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(2); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(2); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(2); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(2); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(2); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-				</div>
-			</div>
-
-			<div >
-				<span class="adhead">Hot Searches</span>
-				<div class="adcont-4">
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-					<a href="link">
-						<div class="adimg"><img src=" <?php  echo randImg(3); ?> "></div>
-						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
-					</a>
-				</div>
-			</div>
-=======
->>>>>>> 60f8fc824826b83f8c0463348a2e00d3fefabd00
-			
 		</div>
 	</div>
 </div>
