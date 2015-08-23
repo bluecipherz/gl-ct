@@ -5,10 +5,9 @@ class Globex extends Product {
 
     protected $table = "products_globex";
 
-//    public function images()
-//    {
-//        return $this->morphMany('App\Image', 'imageable');
-//    }
+    protected $guarded = ['id'];
+
+    public $timestamps = false;
 
     public function orders()
     {

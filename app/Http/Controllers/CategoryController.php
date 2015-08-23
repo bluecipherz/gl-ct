@@ -11,13 +11,6 @@ use Input;
 
 class CategoryController extends Controller {
 
-    public function all(Request $request)
-    {
-        if ($request->ajax()) {
-            return response()->json(Category::all());
-        }
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -25,7 +18,7 @@ class CategoryController extends Controller {
 	 */
 	public function index()
 	{
-
+		return Category::all();
 	}
 
 	/**

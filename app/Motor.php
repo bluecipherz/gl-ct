@@ -14,7 +14,9 @@ class Motor extends Model {
 
     protected $guarded = ["id"];
 
-    public function advertisments()
+    public $timestamps = false;
+
+    public function advertisements()
     {
         return $this->morphMany('App\Advertisement', 'advertisable');
     }

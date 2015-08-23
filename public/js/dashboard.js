@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 
 
     console.log('[dashboard.js] ready sir');
-        $.post('/categories/all')
+        $.get('/categories')
             .success(function(data) {
                 //console.log('fetching categories : ' + data)
                 cats = data;

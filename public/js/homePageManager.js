@@ -17,8 +17,6 @@ jQuery(document).ready(function() {
     $("<div/>").addClass('adm-searchhead').append($("<input/>").attr('type', 'text').addClass('adm-search').attr('placeholder', 'Search Products').attr('id', 'searchProducts')).appendTo(proSearch);
     $("<div/>").addClass("adm-searchSec productsCont").appendTo(proSearch);
 
-    defStruct();
-
     var gridID = 1;
     createGrid(gridID);
 
@@ -27,14 +25,6 @@ jQuery(document).ready(function() {
     });
 
     function createGrid(gridId){
-        //$("#adm-homeInner").append($("#baseGrid").clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
-        console.log(baseGrid);
-        $("#adm-homeInner").append($(baseGrid).clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
-        gridId++;
-        gridID = gridId;
-    }
-
-    function defStruct(){
         //$("#adm-homeInner").append($("#baseGrid").clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
         console.log(baseGrid);
         $("#adm-homeInner").append($(baseGrid).clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
@@ -178,7 +168,7 @@ jQuery(document).ready(function() {
             var searchBar = $($e.target);
             var input = searchBar.val();
             var terms = input.trim().replace(/\s+/g, '+');
-            $.get('/products/search?q=' + terms)
+            $.post('/search', {search: terms})
                 .success(function(data) {
                     //console.log(data);
                     searchBar.parent().parent().find(".adm-searchSec").empty();
@@ -191,7 +181,7 @@ jQuery(document).ready(function() {
                             gridSel.find('.adm-proText').text(value.title);
                             restorToProductView(gridSel);
                         });
-                        if(value.images[0] == undefined) {
+                        if(value.images == undefined) {
                             prodiv.find('img').attr('src', '/img/noImage.jpg');
                         } else {
                             prodiv.find('img').attr('src', value.images[0].url);

@@ -35,8 +35,6 @@ class CreateProductTable extends Migration {
             $table->foreign('price_rule_id')->references('id')->on('price_rules')->onDelete('cascade');
             $table->unsignedInteger('globexable_id');
             $table->string('globexable_type');
-            $table->timestamps();
-            $table->softDeletes();
         });
 
         Schema::create('products_ads', function(Blueprint $table)
@@ -54,8 +52,6 @@ class CreateProductTable extends Migration {
             $table->integer('quantity')->default(1);
             $table->unsignedInteger('advertisable_id');
             $table->string('advertisable_type');
-            $table->timestamps();
-            $table->softDeletes();
         });
 
         Schema::create('products_motors', function(Blueprint $table)
@@ -65,8 +61,6 @@ class CreateProductTable extends Migration {
             $table->string('model');
             $table->string('color');
             $table->tinyInteger('doors');
-            $table->timestamps();
-            $table->softDeletes();
         });
 
     }

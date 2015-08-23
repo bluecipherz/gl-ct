@@ -126,7 +126,7 @@ class ProductController extends Controller {
 	public function show($id)
 	{
 		$product = Product::find($id);
-        $related = Product::whereCategoryId($product->category->id)->where('id', '!=', $product->id)->take(4);
+        $related = $product->related();
         return view('pages.product.show', ['product' => $product, 'related' => $related]);
 	}
 
@@ -160,7 +160,7 @@ class ProductController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        Product::destroy($id);
 	}
 
 }

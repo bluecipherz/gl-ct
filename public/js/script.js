@@ -863,7 +863,7 @@ jQuery(document).ready(function() {
     /**
      * Retrieve all categories from the server
      */
-    $.post('/categories/all')
+    $.get('/categories')
         .success(function(data) {
             setCats(data);
         })

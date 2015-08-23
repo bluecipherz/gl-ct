@@ -24,7 +24,7 @@
                 @forelse($advertisements as $ad)
                     <tr>
                         <td>
-                            {!! Form::open(['route' => ['advertisements.destroy', $ad->id], 'method' => 'DELETE']) !!}
+                            {!! Form::open(['route' => ['products.destroy', $ad->id], 'method' => 'DELETE']) !!}
                                 <button class="btn btn-default btn-xs cat-del-btn" type="submit" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
                             {!! Form::close() !!}
                         </td>

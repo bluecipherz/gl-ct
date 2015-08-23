@@ -6,6 +6,8 @@ class Advertisement extends Product {
 
     protected $guarded = ['id'];
 
+    public $timestamps = false;
+
     public function customer()
     {
         return $this->belongsTo('App\Customer');

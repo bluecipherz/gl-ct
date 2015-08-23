@@ -34,6 +34,11 @@ class Product extends Model
         return $this->morphTo();
     }
 
+    public function related()
+    {
+        return Product::whereCategoryId($this->category_id)->where('id', '!=', $this->id)->take(4);
+    }
+
     public function scopeGlobexs($query)
     {
         return $query->where('producible_type', '=', 'App\Globex');
