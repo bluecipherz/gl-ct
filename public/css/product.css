@@ -148,5 +148,9 @@
 .pro-relAdsOuter{
     display:block;
     float:left;
-    padding:10px;
+    overflow:hidden;
+    width:100%;
+}
+.pro-relAdsOuter > a{
+    width:20% !important;
 }

@@ -5,7 +5,11 @@
 	</div>
 	<div class="ac-cont">
 		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('advertisements.index') }}">My Ads</a>
-		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ url('editprofile') }}">Edit My Profile</a>
+        @if(Auth::customer()->get()->profile)
+		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('profile.edit', Auth::customer()->get()->profile) }}">Edit My Profile</a>
+        @else
+        <a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('profile.create') }}">Edit My Profile</a>
+        @endif
 		<div class="ac-profile">
 			<div class="ac-c-head">My Profile</div>
 			<table>
@@ -14,7 +18,7 @@
 						<span class="ac-c-l">First Name</span>
 					</td>	
 					<td class="td2">
-						<span> </span>
+						<span>{{ isset(Auth::customer()->get()->profile->first_name) ? Auth::customer()->get()->profile->first_name : '' }}</span>
 					</td>
 				</tr>
 				<tr>
@@ -22,7 +26,7 @@
 						<span class="ac-c-l">Last Name</span>
 					</td>	
 					<td class="td2">
-						<span>  </span>
+						<span>{{ isset(Auth::customer()->get()->profile->last_name) ? Auth::customer()->get()->profile->last_name : '' }}</span>
 					</td>
 				</tr>	
 			</table>
@@ -33,7 +37,7 @@
 						<span class="ac-c-l">PIN</span>
 					</td>	
 					<td class="td2">
-						<span></span>
+						<span>{{ isset(Auth::customer()->get()->profile->pin) ? Auth::customer()->get()->profile->pin : '' }}</span>
 					</td>
 				</tr>
 				<tr>
@@ -41,15 +45,7 @@
 						<span class="ac-c-l">Address</span>
 					</td>	
 					<td class="td2">
-						<span>  </span>
-					</td>
-				</tr>
-				<tr>
-					<td class="td1">	
-						<span class="ac-c-l">State</span>
-					</td>	
-					<td class="td2">
-						<span> </span>
+						<span>{{ isset(Auth::customer()->get()->profile->address) ? Auth::customer()->get()->profile->address : '' }}</span>
 					</td>
 				</tr>
 				<tr>
@@ -57,7 +53,7 @@
 						<span class="ac-c-l">City</span>
 					</td>	
 					<td class="td2">
-						<span> </span>
+						<span>{{ isset(Auth::customer()->get()->profile->emirate->name) ? Auth::customer()->get()->profile->emirate->name : '' }}</span>
 					</td>
 				</tr>
 				<tr>
@@ -65,7 +61,7 @@
 						<span class="ac-c-l">Phone</span>
 					</td>	
 					<td class="td2">
-						<span>  </span>
+						<span>{{ isset(Auth::customer()->get()->profile->phone) ? Auth::customer()->get()->profile->phone : '' }}</span>
 					</td>
 				</tr>
 			</table>

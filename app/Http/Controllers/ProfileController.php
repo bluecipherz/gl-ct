@@ -1,22 +1,16 @@
 <?php namespace App\Http\Controllers;
 
+use App\Emirate;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Product;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\Category;
+use App\Profile;
+use Auth;
 use Input;
+use App\Customer;
 
-class CategoryController extends Controller {
-
-    public function all(Request $request)
-    {
-        if ($request->ajax()) {
-            return response()->json(Category::all());
-        }
-    }
+class ProfileController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -25,7 +19,7 @@ class CategoryController extends Controller {
 	 */
 	public function index()
 	{
-
+		//
 	}
 
 	/**
@@ -35,7 +29,13 @@ class CategoryController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        $customer = Auth::customer()->get();
+        if(!count($customer->profile)) {
+            $profile = Profile::create([
+                'customer_id' => Auth::customer()->get()->id
+            ]);
+        }
+        return redirect()->route('profile.edit', $profile);
 	}
 
 	/**
@@ -45,17 +45,7 @@ class CategoryController extends Controller {
 	 */
 	public function store()
 	{
-        $name = Input::get('name');
-        $level = Input::get('level');
-        $parent = Input::get('parent');
-
-        $node = Category::create(['name' => $name]);
-        if ($level > 0) {
-            $node->makeChildOf(Category::find($parent));
-        } else {
-            $node->makeRoot();
-        }
-        return redirect()->back();
+		//
 	}
 
 	/**
@@ -66,8 +56,7 @@ class CategoryController extends Controller {
 	 */
 	public function show($id)
 	{
-        $category = Category::find($id);
-        return view('pages.category', compact('category'));
+		//
 	}
 
 	/**
@@ -78,7 +67,8 @@ class CategoryController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $profile = Profile::find($id);
+        return view('pages.editprofile', ['profile' => $profile, 'emirates' => Emirate::all()]);
 	}
 
 	/**
@@ -89,10 +79,17 @@ class CategoryController extends Controller {
 	 */
 	public function update($id)
 	{
-        Category::find($id)->update([
-            'name' => Input::get('name')
-        ]);
-        return response()->json('success');
+        $data = [
+            'first_name' => Input::get('first_name'),
+            'last_name' => Input::get('last_name'),
+            'address' => Input::get('address'),
+            'pin' => Input::get('pin'),
+            'emirate_id' => Input::get('emirate_id'),
+            'phone' => Input::get('phone'),
+        ];
+//          return response()->json($data);
+            Profile::find($id)->update($data);
+        return redirect('/home');
 	}
 
 	/**
@@ -103,8 +100,7 @@ class CategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-        Category::find($id)->delete();
-        return redirect()->back();
+		//
 	}
 
 }

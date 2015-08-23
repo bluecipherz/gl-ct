@@ -217,7 +217,7 @@
 						<div class="w2-inp-label" >Name</div>
 						<div class="w2-inp-label" >PIN</div>
 						<div class="w2-inp-label w2-inp-label-t" >Address</div>
-						<div class="w2-inp-label" >City</div>
+						<div class="w2-inp-label" >Emirate</div>
 						<div class="w2-inp-label" >Phone</div>
 					</div>
 					<div class="w2-inp" >
@@ -234,7 +234,11 @@
                             <div class="pn-popup"></div>
                         </div>
                         <div>
-                            <input type="text" class="cust-input w2-inp-f inp-type-inline" placeholder="Your city" name="city" id="customerCity"/>
+                            <select type="text" class="cust-input w2-inp-f inp-type-inline" placeholder="Your city" name="city" id="customerCity">
+                            @foreach($emirates as $emirate)
+                                <option value="{{ $emirate->id }}">{{ $emirate->name }}</option>
+                            @endforeach
+                            </select>
                             <div class="pn-popup"></div>
                         </div>
                         <div>

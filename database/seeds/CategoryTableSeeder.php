@@ -1683,6 +1683,16 @@ class CategoryTableSeeder extends Seeder {
                     ],
                 ],
             ],
+            [
+                'name' => 'Electronics',
+                'children' => [
+                    [
+                        'name' => 'Mobile phones',
+                        'children' => [
+                        ],
+                    ],
+                ],
+            ],
 		];
 		
 		App\Category::buildTree($categories);

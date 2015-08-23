@@ -46,7 +46,7 @@
 			</div>
 			<div class="productsCont" id="schProRset">
                 @if($products->count() < 1)
-                    <span> No results found for " {{ $query or 'Search' }} " </span>
+                    <span> No results found for " {{ $searchQuery or 'Search' }} " </span>
                 @else
                     @foreach($products as $product)
                     <a href="{{ url($product->producible_type == 'App\Globex' ? 'products'.'/'.$product->id : 'advertisements' .'/'.$product->id) }}" class="productCont b-fakeLink">

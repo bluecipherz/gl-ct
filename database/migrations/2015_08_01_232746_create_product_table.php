@@ -18,7 +18,7 @@ class CreateProductTable extends Migration {
             $table->string('title');
             $table->integer('price');
             $table->text('description');
-            $table->string('brand');
+            $table->string('brand')->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedInteger('producible_id');
@@ -49,7 +49,7 @@ class CreateProductTable extends Migration {
             $table->text('address');
             $table->unsignedInteger('emirate_id');
             $table->foreign('emirate_id')->references('id')->on('emirates');
-            $table->string('city');
+//            $table->string('city');
             $table->string('phone');
             $table->integer('quantity')->default(1);
             $table->unsignedInteger('advertisable_id');

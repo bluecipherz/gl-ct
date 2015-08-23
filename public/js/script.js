@@ -265,13 +265,19 @@ jQuery(document).ready(function() {
         var searchTerms = searchQ.trim().replace(/\s+/g, '+');
         var searchUrl = '/search?q=' + searchTerms;
 
-        //if(!window.location.pathname.startsWith('/search')  || !window.location.pathname.startsWith('/ads')) {
-        //    window.location.replace(searchUrl);
-        //}
-
-        if(searchUrl != window.location) {
-            window.history.pushState({path : searchUrl}, '', searchUrl);
+        if(!window.location.pathname.startsWith('/search')) {
+            console.log(window.location.pathname);
+            if(!window.location.pathname.startsWith('/ads')) {
+                window.location.replace(searchUrl);
+            }
+        } else {
+            if(searchUrl != window.location.pathname) {
+                //console.log(history);
+                window.history.pushState({path : searchUrl}, '', searchUrl);
+            }
         }
+
+
 
         var productsCont = $("#schProRset");
         var selectedCats = [];
@@ -300,7 +306,7 @@ jQuery(document).ready(function() {
                         //console.log(data[proObj]);
                         var product = data[proObj];
                         var url = product.producible_type == 'App\\Globex' ? '/products/' + product.id : '/advertisements/' + product.id;
-                        var imgurl = product.images == undefined ? 'img/noImage.jpg' : product.images[0].url;
+                        var imgurl = product.images == undefined ? '/img/noImage.jpg' : product.images[0].url;
                         var title = product.title;
                         var price = product.price;
                         var desc = product.description;
@@ -718,14 +724,13 @@ jQuery(document).ready(function() {
             'category_id' : $('#adCatId').val(),
             'description' : $('#adDesc').val(),
             'price' : $('#adPrice').val(),
-            'brand' : '', // temp implementation
-            'quantity' : 1, // temp implementation
+            //'brand' : '', // temp implementation
+            //'quantity' : 1, // temp implementation
             //'images' : $('#adPics').val(),
             'name' : $('#customerName').val(),
             'pin' : $('#customerPin').val(),
             'address' : $('#customerAddress').val(),
-            'state' : $('#customerState').val(),
-            'city' : $('#customerCity').val(),
+            'emirate_id' : $('#customerCity').val(),
             'phone' : $('#customerPhone').val()
         };
 

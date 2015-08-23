@@ -26,12 +26,12 @@ class AdRequest extends Request {
 			'category_id' => 'required',
             'description' => 'required',
             'price' => 'required',
-            // 'images' => 'required',
+//            'images' => 'required',
+//            'quantity' => 'required',
             'name' => 'required',
             'pin' => 'required',
             'address' => 'required',
-//            'state' => 'required',
-            'city' => 'required',
+            'emirate_id' => 'required',
             'phone' => 'required'
 		];
 	}

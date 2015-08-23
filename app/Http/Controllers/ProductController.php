@@ -35,7 +35,7 @@ class ProductController extends Controller {
 
 	public function getSearch(CategoryRepository $repository)
 	{
-        $search = Input::get('search');
+        $search = Input::get('q');
 //        $search = 'as';
 //        $cats = [1, 63];
         if($search) $this->repository->pushCriteria(new SearchQueryCriteria($search));
@@ -43,7 +43,7 @@ class ProductController extends Controller {
 //        $this->repository->pushCriteria(new PriceBelowCriteria(5000));
 //        $this->repository->pushCriteria(new PriceAboveCriteria(45000));
 //        return response()->json(count($this->repository->all()));
-        return view('pages.search', ['products' => $this->repository->all(), 'categories' => $repository->getFilterCats()]);
+        return view('pages.search', ['products' => $this->repository->all(), 'categories' => $repository->getFilterCats(), 'searchQuery' => $search]);
 	}
 
     public function postSearch()
@@ -126,7 +126,8 @@ class ProductController extends Controller {
 	public function show($id)
 	{
 		$product = Product::find($id);
-        return view('pages.product.show',compact('product'));
+        $related = Product::whereCategoryId($product->category->id)->where('id', '!=', $product->id)->take(4);
+        return view('pages.product.show', ['product' => $product, 'related' => $related]);
 	}
 
 	/**

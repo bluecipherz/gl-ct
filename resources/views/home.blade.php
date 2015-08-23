@@ -33,9 +33,21 @@
 					</div>
 				</div>
 				@endforeach
-
-
-
+                <div class="catItem BendLineBase">
+                    <a href="" class="catLi cItem"> All of Globex </a>
+                    <div class="catCont">
+                        @foreach($subcats as $cats)
+                            {{--{{ $subcats->count() }}--}}
+                            <div class="catSec-1 col-md-4">
+                                @foreach($cats as $item)
+                                <a href="{{ route('categories.show', $item['id']) }}"  class="catContHeadItems cItem">
+                                    {{ $item['name'] }} <span class="catPointer"> < </span>
+                                </a>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
 			</div>
 		</div>
 
@@ -58,22 +70,23 @@
 <div class="boxx ">
 	<div class="row">
 		<div class="homeTop">
+            <!--
 			<div>
 				<span class="adhead"><span style="float:left; margin-right:10px;">Super Deals - <span style="font-size:90%;">Ends in </span></span><span class="adhead-timer"> </span></span>
 				<div class="adcont-2">
-					<a href="link"> 
+					<a href="link">
 						<div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
 						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
 						<div class="addesc"> This is a kinda product </br> - This product has this</br> - This product has this</br> - This product has this</div>
-					</a>	
-					<a href="link"> 
+					</a>
+					<a href="link">
 						<div class="adimg"><img src=" <?php  echo randImg(1); ?> "></div>
 						<div class="adtitle"><div>Title</div><div class="priceT"><?php  echo mt_rand(20,9999); ?> AED</div></div>
 						<div class="addesc"> This is a kinda product </br> - This product has this</br> - This product has this</br> - This product has this</div>
-					</a>	
+					</a>
 				</div>
 			</div>
-
+            -->
             {{--loop starts--}}
 
             @foreach($homegrids as $homegrid)

@@ -17,6 +17,8 @@ jQuery(document).ready(function() {
     $("<div/>").addClass('adm-searchhead').append($("<input/>").attr('type', 'text').addClass('adm-search').attr('placeholder', 'Search Products').attr('id', 'searchProducts')).appendTo(proSearch);
     $("<div/>").addClass("adm-searchSec productsCont").appendTo(proSearch);
 
+    defStruct();
+
     var gridID = 1;
     createGrid(gridID);
 
@@ -25,6 +27,14 @@ jQuery(document).ready(function() {
     });
 
     function createGrid(gridId){
+        //$("#adm-homeInner").append($("#baseGrid").clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
+        console.log(baseGrid);
+        $("#adm-homeInner").append($(baseGrid).clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
+        gridId++;
+        gridID = gridId;
+    }
+
+    function defStruct(){
         //$("#adm-homeInner").append($("#baseGrid").clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());
         console.log(baseGrid);
         $("#adm-homeInner").append($(baseGrid).clone(true, true).addClass('.gridNo-'+ gridID ).fadeIn());

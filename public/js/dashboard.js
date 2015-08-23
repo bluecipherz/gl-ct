@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 
 
     console.log('[dashboard.js] ready sir');
-        $.get('/categories/all')
+        $.post('/categories/all')
             .success(function(data) {
                 //console.log('fetching categories : ' + data)
                 cats = data;
@@ -23,7 +23,8 @@ jQuery(document).ready(function() {
                 setupParentList(level_cats);
             })
             .fail(function(data) {
-                console.log('[dashboard.js] error fetching categories')
+                //console.log('[dashboard.js] error fetching categories')
+                console.log(data.responseText);
             });
     //}
 

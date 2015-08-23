@@ -30,6 +30,11 @@ Route::get('/auth/logout', 'AuthController@logoutCustomer');
 Route::get('admin-x965', function() {
     return view('admin.login');
 });
+Route::get('admin-x965/logout', function () {
+    Auth::admin()->logout();
+    return redirect('/');
+});
+Route::post('post-home-wall', 'AdminPanelController@setHomeWall');
 
 Route::post(sha1('admin-login'), 'AuthController@loginAdmin');
 
@@ -62,10 +67,7 @@ Route::get('proview', function() {
 	return view('pages.proview', compact('products'));
 });
 
-Route::get('editprofile', function() {
-	return view('pages.editprofile');
-});
-
+Route::resource('profile', 'ProfileController');
 
 Route::get('help', function() { return view('pages.static.help'); });
 Route::get('contact-us', function() { return view('pages.contact-us'); });
@@ -245,11 +247,12 @@ Route::get('files', function () {
     return response()->json(App\Product::advertisements('asdasd')->get());
 });
 
-Route::get('cats', function (\App\Repositories\ProductRepository $repository) {
+Route::get('cats', function (\App\Repositories\HomeRepository $repository) {
 //    return response()->json(App\Product::whereIn('id', App\Category::find(1)->childProducts())->get());
 //    return response()->json(App\Category::find(2)->childProducts());
 //    $repository->pushCriteria(new \App\Repositories\Criteria\Product\SearchQueryCriteria('asd'));
 //    return response()->json(count($repository->all()));
     $query = App\Product::whereIn('id', [1,2,3])->whereIn('id', [7,8,9]);
-    return response()->json(count($query->get()));
+//    return response()->json(count($query->get()));
+    return response()->json($repository->getSubCatSet());
 });

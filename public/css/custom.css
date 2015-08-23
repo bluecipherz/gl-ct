@@ -414,6 +414,7 @@ body{
 	background:#fbfbfb;
 	box-shadow:4px 2px 5px rgba(0,0,0,0.2);
 	z-index:99;
+    overflow:hidden;
 }
 .catContHead{
 	display:inline_block;

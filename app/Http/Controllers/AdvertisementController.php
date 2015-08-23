@@ -54,7 +54,7 @@ class AdvertisementController extends Controller {
 	 */
 	public function create(CategoryRepository $categoryRepository)
 	{
-        return view('pages.adposts')->with('categories', $categoryRepository->getCats());
+        return view('pages.adposts', ['categories' => $categoryRepository->getCats(), 'emirates' => Emirate::all()]);
 	}
 
     /**
@@ -71,10 +71,10 @@ class AdvertisementController extends Controller {
         $category = Category::find($request->get('category_id'));
         if ($category->isDescendantOf(Category::find(1))) { // motors
             $motor = Motor::create($request->only('chassis_no', 'model', 'color', 'doors'));
-            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'state', 'city', 'phone', 'quantity'])));
+            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'emirate_id', 'phone'])));
             $motor->advertisments()->save($ad);
         } else {
-            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'state', 'city', 'phone', 'quantity'])));
+            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'emirate_id', 'phone'])));
         }
         // array_merge = add two arrays together
         $product = Product::create($request->only(['title', 'description', 'brand', 'category_id', 'price']));
@@ -117,7 +117,8 @@ class AdvertisementController extends Controller {
 	public function show($id)
 	{
         $product = Product::find($id);
-        return view('pages.product.show', compact('product'));
+        $related = Product::with('images')->whereCategoryId($product->category->id)->where('id', '!=', $product->id)->take(5);
+        return view('pages.product.show', ['product' => $product, 'related' => $related]);
 	}
 
 	/**
