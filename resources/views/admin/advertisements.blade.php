@@ -29,18 +29,18 @@
                             {!! Form::close() !!}
                         </td>
                         <td>{{ $ad->id }}</td>
-                        <td>{{ $ad->customer_id }}</td>
-                        <td>{{ $ad->product->category_id }}</td>
-                        <td>{{ $ad->product->title }}</td>
-                        <td>{{ str_limit($ad->product->description, 50) }}</td>
-                        <td>{{ $ad->product->price }}</td>
-                        <td>{{ $ad->name }}</td>
-                        <td>{{ $ad->pin }}</td>
-                        <td>{{ $ad->address }}</td>
-                        <td>{{ $ad->state }}</td>
-                        <td>{{ $ad->city }}</td>
-                        <td>{{ $ad->phone }}</td>
-                        <td>{{ $ad->product->images->count() }}</td>
+                        <td>{{ $ad->producible->customer_id }}</td>
+                        <td>{{ $ad->category_id }}</td>
+                        <td>{{ $ad->title }}</td>
+                        <td>{{ str_limit($ad->description, 50) }}</td>
+                        <td>{{ $ad->price }}</td>
+                        <td>{{ $ad->producible->name }}</td>
+                        <td>{{ $ad->producible->pin }}</td>
+                        <td>{{ $ad->producible->address }}</td>
+                        <td>{{ $ad->producible->state }}</td>
+                        <td>{{ $ad->producible->city }}</td>
+                        <td>{{ $ad->producible->phone }}</td>
+                        <td>{{ $ad->images->count() }}</td>
                     </tr>
                 @empty
                 <tr>

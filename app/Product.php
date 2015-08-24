@@ -39,12 +39,12 @@ class Product extends Model
         return Product::whereCategoryId($this->category_id)->where('id', '!=', $this->id)->take(4);
     }
 
-    public function scopeGlobexs($query)
+    public function scopeGlobex($query)
     {
         return $query->where('producible_type', '=', 'App\Globex');
     }
 
-    public function scopeAdvertisements($query, $asd)
+    public function scopeAdvertisements($query)
     {
         return $query->where('producible_type', '=', 'App\Advertisement');
     }

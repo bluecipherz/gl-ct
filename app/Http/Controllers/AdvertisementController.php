@@ -71,8 +71,7 @@ class AdvertisementController extends Controller {
         $category = Category::find($request->get('category_id'));
         if ($category->isDescendantOf(Category::find(1))) { // motors
             $motor = Motor::create($request->only('chassis_no', 'model', 'color', 'doors'));
-            $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'emirate_id', 'phone'])));
-            $motor->advertisments()->save($ad);
+            $ad = $motor->advertisements()->create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'emirate_id', 'phone'])));
         } else {
             $ad = Advertisement::create(array_merge($attributes, $request->only(['name', 'pin', 'address', 'emirate_id', 'phone'])));
         }
@@ -84,27 +83,29 @@ class AdvertisementController extends Controller {
         if(!file_exists($destination)) {
             mkdir($destination, 0777, true); // create directory if doesn't exists
         }
-        $files = scandir($source); // list files in directory
-        $delete = [];
-        foreach ($files as $file) {
-            // in_array() = check for values in array
-            if(in_array($file, ['.', '..'])) continue;
-            if (copy($source . $file, $destination . $file)) {
-                $delete[] = $source . $file;
-//                $ad->images()->create([
-//                    'customer_id' => Auth::customer()->get()->id,
-//                    'advertisement_id' => $ad->id,
-//                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
-//                ]);
-                $product->images()->create([
-//                    'product_id' => $product->id,
-                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
-                ]);
-            }
-        }
-        foreach ($delete as $file) {
-            unlink($file); // delete file
-        }
+		if(file_exists($source)) { // check if directory exists
+			$files = scandir($source); // list files in directory
+			$delete = [];
+			foreach ($files as $file) {
+				// in_array() = check for values in array
+				if(in_array($file, ['.', '..'])) continue;
+				if (copy($source . $file, $destination . $file)) {
+					$delete[] = $source . $file;
+	//                $ad->images()->create([
+	//                    'customer_id' => Auth::customer()->get()->id,
+	//                    'advertisement_id' => $ad->id,
+	//                    'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
+	//                ]);
+					$product->images()->create([
+	//                    'product_id' => $product->id,
+						'url' => url('/uploads/ads/' . $ad->id . '/' . $file)
+					]);
+				}
+			}
+			foreach ($delete as $file) {
+				unlink($file); // delete file
+			}
+		}
         return response()->json('success');
 	}
 

@@ -16,12 +16,12 @@
 								</tr>
 								@forelse($products as $product)
 								<tr>
-									<td>{{ $product->product->title }}</td>
-									<td>{{ $product->product->brand }}</td>
-									<td><span class="glyphicon glyphicon-usd"></span> {{ $product->product->price }}</td>
-									<td>{{ str_limit($product->product->description, 50) }}</td>
-									<td>{{ $product->stock }}</td>
-                                    <td>{{ $product->product->images->count() }}</td>
+									<td>{{ $product->title }}</td>
+									<td>{{ $product->brand }}</td>
+									<td><span class="glyphicon glyphicon-usd"></span> {{ $product->price }}</td>
+									<td>{{ str_limit($product->description, 50) }}</td>
+									<td>{{ $product->producible->stock }}</td>
+                                    <td>{{ $product->images->count() }}</td>
 								</tr>
 								@empty
 								<tr>

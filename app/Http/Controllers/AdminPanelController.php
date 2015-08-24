@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Message;
+use App\Product;
 use App\Report;
 use App\Role;
 use App\Order;
@@ -54,7 +55,7 @@ class AdminPanelController extends Controller {
     {
         // array_flip() = exchange keys and values in an array
         return view('admin.main')
-            ->with('products', Globex::paginate())
+            ->with('products', Product::globex()->paginate())
             ->with('cats', Category::whereDepth(2)->lists('name', 'id'))
             ->with('categories', Category::all());
     }
@@ -93,7 +94,7 @@ class AdminPanelController extends Controller {
     public function advertisements(AdvertisementRepository $advertisements)
     {
         return view('admin.main')
-            ->with('advertisements', Advertisement::with('product', 'advertisable')->paginate());
+            ->with('advertisements', Product::advertisements()->paginate());
     }
     public function homePage(ProductRepository $products, CategoryRepository $categories)
     {
