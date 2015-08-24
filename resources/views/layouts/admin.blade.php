@@ -55,7 +55,7 @@
     <!-- Scripts -->
 
 	{{--@include('layouts.jslinks')--}}
-    {!! HTML::script('js/jquery-2.1.4.js') !!}
+    {!! HTML::script('js/jquery-2.1.4.min.js') !!}
     {!! HTML::script('js/app.js') !!}
     {!! HTML::script('js/category.js') !!}
     {!! HTML::script('js/dashboard.js') !!}
