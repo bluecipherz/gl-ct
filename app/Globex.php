@@ -1,7 +1,7 @@
 <?php namespace App;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Globex extends Product {
+class Globex extends Model {
 
     protected $table = "products_globex";
 
