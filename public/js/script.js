@@ -803,9 +803,9 @@ jQuery(document).ready(function() {
         searchq();
     };
 
-    var checkBoxPara = $("<p/>");
-    checkBoxPara.append($("<input/>").attr('type', 'checkbox').click(catChangeAction));
-    checkBoxPara.append($("<label/>"));
+    var checkBoxPara = $("<tr/>");
+    checkBoxPara.append($("<td/>")).append($("<input/>").attr('type', 'checkbox').click(catChangeAction));
+    checkBoxPara.append($("<td/>")).append($("<label/>"));
 
     $('#category-list > p > input[type="checkbox"]').click(catChangeAction);
 
