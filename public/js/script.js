@@ -764,7 +764,8 @@ jQuery(document).ready(function() {
         }).fail(function(data) {
             console.log(data.responseText);
 			pushNotification(data.responseText['title'],2 , "Field Required" ,7000 ,true, 1000);
-            $(".AdSummery").spin(false);
+            overlay.spin(false);
+            overlay.remove();
         });
     });
 
