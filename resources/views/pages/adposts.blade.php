@@ -34,14 +34,14 @@
 							<div class="cust-btn -btn-next" id="login-btn" btnId="1" >Login</div>
 						</div>
 					</div>
-					<div class="w-reg">
+					<div class="w-reg" id="register-pg">
 						<div class="w-reg-1">
 							<div class="w-reg-sec-1" >
 								<span  class="w-reg-head"  >Register with </span><div ><span class="g-logo-contain gl-contain-60" ></span></div>
 							</div>
 							<div class="w-reg-sec-2" >
                                 <div>
-								    <input type="text" class="cust-input-block unTabUp" placeholder="Your email" id="register-email"/>
+								    <input type="email" class="cust-input-block unTabUp" placeholder="Your email" id="register-email"/>
                                     <div class="pn-popup"></div>
                                 </div>
                                 <div>
@@ -67,8 +67,8 @@
 				</div> 
 				<div class="loggedin">
 					<div class="lgin-sec-1">
-						<span>GLOBEXCART</span>
-					</div> 
+                        <div class="gl-contain-70-c"><span class="g-logo-contain gl-contain-70" ></span></div>
+                    </div>
 					<div class="lgin-sec-2">
 						You are already logged in. want to login </br>from different account ?
 					</div> 

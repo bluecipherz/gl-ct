@@ -715,7 +715,7 @@ body{
 	left : 0;
 	width : 100%;
 	height : 102%;
-	z-index: 9999999;
+	z-index: 5001;
 	background-color : rgba(0,0,0,0.5); /* dim the background */
 }
 
@@ -871,9 +871,11 @@ body{
 	background:#e8e8e8;
 	background:#fff;
 	text-align:left;
-	margin:2px 0 2px 0;
+	margin:2px 5px 2px 0;
+    padding-right:10px;
 	border-bottom:1px solid rgba(0,0,0,0.05);
     font-weight:100;
+    width:25%;
 }
  .ac-profile .ac-text{
 	font-weight:200;
@@ -881,11 +883,12 @@ body{
 }
 .td2{
 	background:#f4f4f4;
-	background:#fff;
 	text-align:left;
-	padding:0 5px 0 5px;
+	padding:0 5px 0 10px;
 	border-bottom:3px solid #fff;
-    font-weight:100;
+    font-weight:300;
+    font-size:110%;
+    width:75%;
 }
 .td2 > input ,.td2 > textarea {
 	
@@ -893,6 +896,9 @@ body{
 .ac-profile > .ac-c-head > div{
 	float:left;
 	background:red;
+}
+.ac-profile > table{
+    width:100%;
 }
  .ac-profile > .ac-c-head{
 	display:block;
@@ -1498,7 +1504,7 @@ label:hover:before {
 		.lgin-sec-3{
 			height:100px;	
 			width:100%;
-			padding-left:calc((100% - (100px + 25px + 100px + 25px + 250px))/2);
+			padding-left:calc((100% - (100px +  25px + 250px))/2);
 		}
 		
 		.lgin-sec-3 .loginbtn{

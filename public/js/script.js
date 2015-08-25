@@ -128,8 +128,8 @@ jQuery(document).ready(function() {
                 })
                 .fail(function (response) {
                     console.log('fail : ' + response.responseText);
-                    if(response.responseText.email) pnPopup('register-email', response.responseText.email);
-                    if(response.responseText.password) pnPopup('register-password', response.responseText.password);
+                    if(response.responseJSON.email) pnPopup('register-email', response.responseJSON.email[0]);
+                    if(response.responseJSON.password) pnPopup('register-password', response.responseJSON.password[0]);
                 });
         }
     });
@@ -229,9 +229,11 @@ jQuery(document).ready(function() {
 	
 	$(".regbtn").click(function() {
 		$(".w-log").css({"margin-top":"-400px"});
+
 	});
 	$(".logbtn").click(function() {
 		$(".w-log").css({"margin-top":"0px"});
+
 	});
 	
 		var btbId = 4;
@@ -718,7 +720,16 @@ jQuery(document).ready(function() {
 
     $('.upPhoto').dropzone(dropAction).show();
 
+    $.fn.spin.presets.shitzu = {
+        zIndex : 999999,
+        color : "#fff"
+    }
+
     $('#post_ad').click(function() {
+        //$("#wizardT-4").fadeTo('fast', .5);
+        var overlay = jQuery('<div class="overlay"></div>');
+        overlay.appendTo(document.body);
+        overlay.spin('shitzu');
         var attributes = {
             'title' : $('#adTitle').val(),
             'category_id' : $('#adCatId').val(),
@@ -749,13 +760,33 @@ jQuery(document).ready(function() {
         //console.log(attributes);
         $.post('/advertisements', attributes).success(function(data) {
             console.log('success ' + data.responseText);
-            window.location.replace('/home');
-            pushNotification('Advertisement posted', 'success', 'Success');
+            window.location.replace('/home?postad=success');
         }).fail(function(data) {
             console.log(data.responseText);
 			pushNotification(data.responseText['title'],2 , "Field Required" ,7000 ,true, 1000);
+            $(".AdSummery").spin(false);
         });
     });
+
+    var $_GET = {};
+
+    document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+        function decode(s) {
+            return decodeURIComponent(s.split("+").join(" "));
+        }
+
+        $_GET[decode(arguments[1])] = decode(arguments[2]);
+    });
+
+    if($_GET['postad'] == 'success') {
+        pushNotification('Advertisement posted', 'success', 'Success');
+    }
+
+    if(window.location.pathname.startsWith('/advertisements/create')) {
+        if($_GET['page'] == 'register') {
+            $(".w-log").css({"margin-top":"-400px"});
+        } else if($_GET['page'] == 'login') {}
+    }
 
     $('#logoutBtn').click(function() {
         $.get('/auth/logout')

@@ -16,49 +16,39 @@
 			<div>
 				<span class="s-h1" >Respond to an ad <span>+</span></span>
 				<div>
-					</br>While viewing the ad you are interested in, scroll to the bottom of the page.
-					</br>In the “Respond to the Ad” box, fill in the information requested and write your message.
-					</br>Press the “send reply” button, and you're done!
-					</br>The advertiser will receive your message directly to his/her email inbox.
+					</br>Search for the ad you have interested.
+					</br>Contact the seller using the details provided in the right side of the ad.
 				</div>
 			</div>	
 			<div>
 				<span class="s-h1" >Register/Sign up <span>+</span></span>
 				<div>
-					</br>Click on the “Register” link at the top of the page above “Place an Ad”.
-					</br>Fill in all of the required information, agree to the Terms, and click the “sign up” button.
-					</br>Dubizzle will send you a verification message to the email you provided.
-					</br>Click on the verification link from the email (Check your spam folder if you don't find it).
+					</br>Click on the account button on the top next to the search bar.
+					</br>Click on 'Register Now'.
+					</br>Fill in all of the required information and click on register.
 					</br>Your registration is now complete, you can now fill out your profile.
 				</div>
 			</div>	
 			<div>
-				<span class="s-h1" >Report Abuse <span>+</span></span>
+				<span class="s-h1" >Edit your Ad <span>+</span></span>
 				<div>
-					</br>On each listing you will see a skull and cross bones icon, click on this icon to report abuse.
-					</br>Once you have clicked on this icon, you will be given options to describe the abuse.
-					</br>After reporting, your report will be viewed by our support staff.
-					</br>If you have encountered fraud or a scam that needs immediate attention, please contact us.
-				</div>
-			</div>	
-			<div>
-				<span class="s-h1" >Edit/Delete your Ad <span>+</span></span>
-				<div>
-					</br>Make sure you are logged into your account on Dubizzle.
-					</br>Go to your account page by clicking on the “Account” link at the top of the page above “Place an Ad”.
-					</br>Click on the “My Ads” tab.
-					</br>From this page you can edit or delete any of your ads on Dubizzle.
+					</br>Make sure you are logged into your account on Globexkart.
+                    </br>Click on the account button on the top next to the search bar.
+                    </br>click on 'My Ads' button.
+					</br>click on the Edit button on the top right of the panel.
+					</br>From this page you can edit any of your ads on Globexkart.
+					</br>Click 'OK'.
 				</div>
 			</div>	
 			<div>
 				<span class="s-h1" >Edit account info <span>+</span></span>
-				<div>
-					</br>Make sure you are logged into your account on Dubizzle.
-					</br>Go to your account page by clicking on the “Account” link at the top of the page above “Place an Ad”.
-					</br>Click on the “My Profile” tab.
-					</br>Click on the “Edit my profile” button to edit your information.
-					</br>To edit account settings click on the “Account Settings” button in the My Profile box.
-				</div>
+                <div>
+                    </br>Make sure you are logged into your account on Globexkart.
+                    </br>Click on the account button on the top next to the search bar.
+                    </br>click on 'Edit my profile' button.
+                    </br>From this page you can edit your profile.
+                    </br>Click 'Done editing'.
+                </div>
 			</div>	
 		</div>		
 	</div>	
