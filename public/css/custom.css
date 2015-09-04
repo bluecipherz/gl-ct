@@ -72,7 +72,7 @@ body{
 	font-family:Dosis;
 }
 .message > div > .mIcon{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:80px;
 	height:80px;
@@ -80,7 +80,7 @@ body{
 	padding:10px;
 }
 .message > div > .mCont{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:calc( 100% - 200px );
 	min-width:calc( 100% - 200px );
@@ -104,7 +104,7 @@ body{
 	/*padding-bottom:10px;*/
 }
 .message > div > .mAction{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:80px;
 	height:80px;
@@ -155,7 +155,7 @@ body{
 	height:80px;
 }
 .logoBarOuter{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	padding:0px;
 	padding-top:20px;
@@ -169,11 +169,11 @@ body{
 	color:#9a59b5;
 }
 .searchBarOuter{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:calc(100% - 430px);
 }
-.serachBar{
+.searchBar{
 	margin-top:20px;
 	height:40px;
 	border:1px solid rgba(0,0,0,0.2);
@@ -182,7 +182,7 @@ body{
 	margin-left:1%;
 }
 .serachField{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:85%;
 	height:100%;
@@ -197,7 +197,7 @@ body{
 
 }
 .serachBtn{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	background:#9a59b5;
 	width:15%;
@@ -208,13 +208,13 @@ body{
 	cursor:pointer;
 }
 .userBarOuter{
-	display:inline:block;
+	display:inline-block;
 	height:100%;
 	padding-top:20px;
 	width:230px;
 }
 .userBtn{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	position:relative;
 	min-width:40px;
@@ -328,14 +328,14 @@ body{
 	background:#f5f5f5;
 }
 .hnCat-btn{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:200px;
 	height:inherit;
 }
 
 .hnCat-btn > .cbtn{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:200px;
 	height:100%;
@@ -350,13 +350,13 @@ body{
 
 
 .hnExtra{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	height:100%;
 }
 
 .hnExtra > a{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	height:40px;
 	padding:10px 10px 0px 10px;
@@ -388,7 +388,7 @@ body{
 	color:rgba(0,0,0,0.6);
 }
 .catList > .catItem {
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:200px;
 	height:60px;
@@ -417,7 +417,7 @@ body{
     overflow:hidden;
 }
 .catContHead{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:100%;
 	height:40px;
@@ -434,7 +434,7 @@ body{
 	background:rgba(0,0,0,0.08);
 }
 .catItem .catContHeadItems{
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	width:100%;
 	height:40px;
@@ -468,7 +468,7 @@ body{
 }
 
 .catPointer{
-	display:inline_block;
+	display:inline-block;
 	margin-left:30px;
 	font-famliy:Dosis;
 	opacity:0;
@@ -749,6 +749,7 @@ body{
 	padding:0px;
 }
 .login-box{
+    position: absolute;
 	height: 500px;
 }
 
@@ -802,6 +803,21 @@ body{
 .account{
 	font-family:Dosis;
 	font-weight:300;
+}
+.acnt-r-closBtn{
+    position:absolute;
+    display:block;
+    float:right;
+
+    left:0px;
+    top:0px;
+
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#aaa;
+    color:#fff;
+    border:3px solid #fff;
 }
 .account > .ac-head{
 	position:relative;
@@ -923,6 +939,11 @@ body{
 	background:#5e3c5f;
 	color:#fff;
 	padding:8px 0 8px 0;
+    width:45%;
+    min-width:45%;
+    max-width:45%;
+    margin-right:2.5%;
+    margin-left:2.5%;
 }
 .account > .ac-cont > .ac-myads:hover{
 	cursor:pointer;
@@ -1334,6 +1355,43 @@ label:hover:before {
 	color:#3fa800;
 }
 
+/*=================================================================== HOME DROPDOWN ==========================================================================*/
+
+
+.hmdd-btn{
+    display:block;
+    float:left;
+    text-align:center;
+
+    width:60px;
+    height:40px;
+    font-family:Dosis;
+    font-weight:300;
+    font-size:150%;
+    color:#fff;
+    background:#6d6d6d;
+}
+ .hmdd-btn:active{
+    background:#385f78;
+}
+ .mor-btn{
+     display:block;
+     float:left;
+     margin:5px 15px;
+     height:25px;
+     width:30px;
+ }
+.mor-btn > span{
+    display:block;
+    float:left;
+    height:20%;
+    margin:7.1% 0 7.1% 0;
+    width:100%;
+    background:#fff;
+    border-radius:5px;
+}
+/*=================================================================== HOME DROPDOWN ENDS ==========================================================================*/
+
 /**
 	reusable pattern below
 	all codes below have been designed and patterned to be reused again
@@ -1408,7 +1466,7 @@ label:hover:before {
 .cust-btn{
 	font-family:Dosis;
 	font-weight:200;
-	display:inline_block;
+	display:inline-block;
 	float:left;
 	min-width:100px;
 	padding:10px;
@@ -1465,7 +1523,7 @@ label:hover:before {
 			display:block;!important
 		}
 		.cust-input {
-			display:inline_block;!important
+			display:inline-block;!important
 		}
 
 		.cust-input:focus,.cust-input-block:focus{
@@ -1488,7 +1546,7 @@ label:hover:before {
 		.lgin-sec-1{
 			height:120px;
 			font-family:Code-H;
-			display:inline_block;
+			display:inline-block;
 			padding-top:50px;
 			color:rgba(0,0,0,0.7);
 			font-size:400%;
@@ -1606,7 +1664,7 @@ label:hover:before {
 				padding:10px 0 0 50px;
 			}
 			.w-reg-head{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				font-size:200%;
 				text-align:left;
@@ -1616,7 +1674,7 @@ label:hover:before {
 			}
 
 			.w-reg-headL{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				font-family:Code-H;
 				display:block;
@@ -1654,26 +1712,26 @@ label:hover:before {
 			}
 	{ address }
 		#wizardT-2{
-			display:inline_block;
+			display:inline-block;
 			float:left;
 			padding-bottom:20px;
 			min-height:500px;
 		}
 		.w2-sec1{
-			display:inline_block;
+			display:inline-block;
 			float:left;
 			width:55%;
 			min-height:400px;
 		}
 		.w2-sec2{
-			display:inline_block;
+			display:inline-block;
 			float:left;
 			width:45%;
 			min-height:400px;
 		}
 
 			.w2-labOuter{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				width:35%;
 				min-height:400px;
@@ -1692,7 +1750,7 @@ label:hover:before {
 				margin-bottom:105px;
 			}
 			.w2-inp{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				width:65%;
 				min-height:400px;
@@ -1838,7 +1896,7 @@ label:hover:before {
 				padding-left:10px;
 			}
 			.selpathText{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				padding:5px 10px 5px 10px;
 				background:rgba(0,0,0,0.6);
@@ -1848,7 +1906,7 @@ label:hover:before {
 				margin-top:5px;
 			}
 			.selpathArrow{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				padding:5px;
 				font-weight:500;
@@ -1860,7 +1918,7 @@ label:hover:before {
 				margin: 5px;
 			}
 			.selCatPopTitle, .selCatPopBackBtn{
-				display:inline_block;
+				display:inline-block;
 				float:left;
 				padding:5px;
 				width:calc( 100% - 100px );
@@ -1893,7 +1951,7 @@ label:hover:before {
 				display:none;
 			}
 		.w2-inp-label{
-			display:inline_block;
+			display:inline-block;
 			height:50px;
 			background:#f6f6f6;
 			width:120px;
@@ -1963,7 +2021,7 @@ label:hover:before {
 	{ review }
 
 	#wizardT-3 {
-		display:inline_block;
+		display:inline-block;
 		float:left;
 		padding-bottom:20px;
 		min-height:400px;
@@ -1972,14 +2030,14 @@ label:hover:before {
 	{ register }
 
 	#wizardT-4 {
-		display:inline_block;
+		display:inline-block;
 		float:left;
 		padding-bottom:20px;
 		min-height:400px;
 	}
 
 	#wizardT-4 .w4-tab{
-		display:inline_block;
+		display:inline-block;
 		float:left;
 		width:200px;
 		height:100%;
@@ -1999,7 +2057,7 @@ label:hover:before {
 	}
 	#wizardT-4 .w4-tab .w4-tab-act:hover{cursor:default};
 	#wizardT-4 .w4-content{
-		display:inline_block;
+		display:inline-block;
 		float:left;
 		width:calc( 100% - 200px );
 		height:400px;
@@ -2115,19 +2173,19 @@ label:hover:before {
 		padding-right:30px;
 	}
 	.w4-c-sec-3 > div{
-		display:inline_block;
+		display:inline-block;
 		float:right;
 		margin:10px;
 	}
 	.w4-c-sec-3 > span{
-		display:inline_block;
+		display:inline-block;
 		float:right;
 		margin:25px 10px 0px 0px;
 		color:#e0e0e0;
 		font-size:80%;
 	}
 	.upPhoto,.addPhoto{
-		display:inline_block;
+		display:inline-block;
 		float:left;
 		width:90px;
 		height:90px;
@@ -2177,11 +2235,14 @@ label:hover:before {
 		display:block;
 		float:left;
 		width:100%;
+		min-width:100%;
 		min-height:400px;
 		background:#504056;
 		font-family:Dosis;
 	}
 	.fbox{
+        display:block;
+        float:left;
 		margin-top:50px;
 		/*background:#692684;*/
 		min-height:100px;

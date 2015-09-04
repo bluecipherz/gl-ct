@@ -30,18 +30,34 @@
 <body>
 	
 	<nav class="mainNav ">
-		<div class="NavTop" >
+		<div class="NavTop visible-xs" >
 			<div class="boxx" >
-					
+                <div class="logoBarOuter b-untouchable">
+                    <a href="{{ url('/home') }}"><span class="logoimg"> <img draggable="false"  src="{{ asset('img/logo/LOGO-60.png') }}"> </span></a>
+                </div>
+                <div class="userBarOuter pull-right b-untouchable">
+                    <a class="userBtn userBtn-help"  href="{{ url('/help') }}">
+                        <img src="{{ asset('img/nav/help.png') }}">
+                        <div>Help</div>
+                    </a>
+                    <div class="userBtn acctBtn">
+                        <img src="{{ asset('img/nav/account.png') }}">
+                        <div>Account</div>
+                    </div>
+                    <a class="userBtn"  href="{{ route('advertisements.create') }}">
+                        <img src="{{ asset('img/nav/more.png') }}">
+                        <div>Post ad</div>
+                    </a>
+                </div>
 			</div>
 		</div>
-		<div class="NavBottom" >
+		<div class="NavBottom " >
 			<div class="boxx" >
-				<div class="logoBarOuter b-untouchable">
+				<div class="logoBarOuter b-untouchable hidden-xs">
 					<a href="{{ url('/home') }}"><span class="logoimg"> <img draggable="false"  src="{{ asset('img/logo/LOGO-60.png') }}"> </span></a>
 				</div>
-				<div class="searchBarOuter" >
-					<div class="serachBar" >
+				<div class="searchBarOuter " >
+					<div class="searchBar" >
                         <input type="text" id="search_q" class="serachField" placeholder="Search here" list="searchList" value="{{ $searchQuery or '' }}"/>
                         <datalist id="searchList">
                             @foreach($products as $product)
@@ -51,7 +67,7 @@
                         <div class="serachBtn" id="serachBtn"> <span class="searchIcon2"></span></div>
                     </div>
 				</div>
-				<div class="userBarOuter pull-right b-untouchable">
+				<div class="userBarOuter pull-right b-untouchable hidden-xs">
 					<a class="userBtn"  href="{{ url('/help') }}">
 						<img src="{{ asset('img/nav/help.png') }}">
 						<div>Help</div>
@@ -65,14 +81,27 @@
 						<div>Post ad</div>
 					</a>
 				</div>
+
+                <div class="hmdd-btn  visible-xs ">
+                    <div class="mor-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
 			</div>
 		</div>
 	</nav>
+
 	<div class="mainNav-f ">
 	</div>
+
+
 	<div class="overlay col-md-12 mainReg">
 		<div class="overlay-backbtn"></div>
 		<div class="login-box login-box-main col-md-4 col-md-offset-4">
+            <div class="acnt-r-closBtn overlay-backbtn"> X </div>
             @if(Auth::customer()->check())
             <div class="loggedMB">
                 @include('/auth/partials/logged')
@@ -148,7 +177,7 @@
 	<!-- Scripts -->
 	
 	<footer>
-		<div class="footerH  visible-md visible-lg">
+		<div class="footerH  ">
 			<div class="boxx">
 				<div class="col-md-12">
 					<div class="col-md-3 fbox">

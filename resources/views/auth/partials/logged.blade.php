@@ -4,11 +4,11 @@
 		<a class="ac-logout" href="/auth/logout">Logout</a>
 	</div>
 	<div class="ac-cont">
-		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('advertisements.index') }}">My Ads</a>
+		<a class="cust-input ac-myads  addCat ac-s-btn" href="{{ route('advertisements.index') }}">My Ads</a>
         @if(Auth::customer()->get()->profile)
-		<a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('profile.edit', Auth::customer()->get()->profile) }}">Edit My Profile</a>
+		<a class="cust-input ac-myads  addCat ac-s-btn" href="{{ route('profile.edit', Auth::customer()->get()->profile) }}">Edit My Profile</a>
         @else
-        <a class="ac-myads cust-input addCat ac-s-btn" href="{{ route('profile.create') }}">Edit My Profile</a>
+        <a class="cust-input ac-myads  addCat ac-s-btn" href="{{ route('profile.create') }}">Edit My Profile</a>
         @endif
 		<div class="ac-profile">
 			<div class="ac-c-head">My Profile</div>
