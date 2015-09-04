@@ -101,7 +101,7 @@
 	<div class="overlay col-md-12 mainReg">
 		<div class="overlay-backbtn"></div>
 		<div class="login-box login-box-main col-md-4 col-md-offset-4">
-            <div class="acnt-r-closBtn overlay-backbtn"> X </div>
+            <div class=" acnt-r-closBtn "> X </div>
             @if(Auth::customer()->check())
             <div class="loggedMB">
                 @include('/auth/partials/logged')
@@ -120,7 +120,7 @@
 					<div class="pn-popup"></div>
 				</div>
 				<div class="form-group">
-                    <input type="text" placeholder="Your Password" class="glob-control noFwdTab" id="auth-login-pass"/>
+                    <input type="password" placeholder="Your Password" class="glob-control noFwdTab" id="auth-login-pass"/>
 					<div class="pn-popup"></div>
 				</div>
 				

@@ -809,16 +809,20 @@ body{
     display:block;
     float:right;
 
-    left:0px;
+    right:0px;
     top:0px;
-
-    width:28px;
-    height:28px;
+    padding: 12px 0 0 0px;
+    width:50px;
+    height:50px;
     border-radius:50%;
     background:#aaa;
     color:#fff;
     border:3px solid #fff;
 }
+    .acnt-r-closBtn:hover{
+        cursor:pointer;
+        background:#222;
+    }
 .account > .ac-head{
 	position:relative;
 	display:block;
@@ -827,7 +831,7 @@ body{
 	height:60px;
 	background: #313131;
 }
-.account > .ac-head > .ac-logout{
+.account > .ac-head > .ac-logout,.account > .ac-head > .ac-cls{
 	position:absolute;
 	top:15px;
 	right:15px;
@@ -835,9 +839,13 @@ body{
 	float:left;
 	padding: 5px 10px 5px 10px;
 	color:#fff;
-	background: #5e3c5f;
+	background: #8c648c;
 }
-.account > .ac-head > .ac-logout:hover {
+.account > .ac-head > .ac-logout{
+    right:55px;
+    border-left:#313131 10px solid;
+}
+.account > .ac-head > .ac-logout:hover ,.account > .ac-head > .ac-cls:hover {
 	color:#fff;
 	background: #88348a;
 }

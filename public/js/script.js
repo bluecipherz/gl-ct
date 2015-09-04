@@ -64,7 +64,13 @@ jQuery(document).ready(function() {
 	$(".overlay-backbtn").click(function(){
 		hideOverlay();
 	});
-	
+    $(".ac-cls").click(function(){
+        hideOverlay();
+    });
+	$(".acnt-r-closBtn").click(function(){
+        hideOverlay();
+    });
+
 	function hideOverlay() {
 		$(".mainReg").css({"opacity":"0"});
 		$("body").css("overflow", "auto");

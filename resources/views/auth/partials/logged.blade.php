@@ -1,7 +1,8 @@
 <div class="account">
 	<div class="ac-head">
-		<div class="ac-name" >Logged in as <span> {{ Auth::customer()->get()->email }} </span> </div>
+		<div class="ac-name" ><span> {{ Auth::customer()->get()->email }} </span> </div>
 		<a class="ac-logout" href="/auth/logout">Logout</a>
+		<a class=" ac-cls">X</a>
 	</div>
 	<div class="ac-cont">
 		<a class="cust-input ac-myads  addCat ac-s-btn" href="{{ route('advertisements.index') }}">My Ads</a>
