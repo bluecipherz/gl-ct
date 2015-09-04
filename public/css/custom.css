@@ -1398,6 +1398,53 @@ label:hover:before {
     background:#fff;
     border-radius:5px;
 }
+.nav-dropCont{
+    display:none;
+}
+.nav-dropCont > a{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-bottom: solid 2px #eee;
+
+    font-family:Dosis;
+    font-size:130%;
+    font-weight:200;
+    text-align:left;
+    padding:10px 0 0 20px;
+
+    color:#444;
+
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,efefef+100 */
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 1%, rgba(239,239,239,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,255,255,1)), color-stop(100%,rgba(239,239,239,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(239,239,239,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(239,239,239,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(239,239,239,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 1%,rgba(239,239,239,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#efefef',GradientType=0 ); /* IE6-9 */
+
+}
+
+.nav-dropCont > a:nth-child(odd) {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,c6c6c6+100 */
+    background: rgb(224,224,224); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(224,224,224,1) 0%, rgba(198,198,198,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,224,224,1)), color-stop(100%,rgba(198,198,198,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(224,224,224,1) 0%,rgba(198,198,198,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(224,224,224,1) 0%,rgba(198,198,198,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(224,224,224,1) 0%,rgba(198,198,198,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(224,224,224,1) 0%,rgba(198,198,198,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#c6c6c6',GradientType=0 ); /* IE6-9 */
+
+}
+.nav-dropCont > a:hover,.nav-dropCont > a:active{
+    cursor:pointer;
+}
 /*=================================================================== HOME DROPDOWN ENDS ==========================================================================*/
 
 /**

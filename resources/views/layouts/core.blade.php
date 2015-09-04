@@ -97,6 +97,15 @@
 	<div class="mainNav-f ">
 	</div>
 
+    <div class="visible-xs ">
+        <div class="nav-dropCont">
+            @for($i=0;$i<7 ; $i++)
+                <a href="">
+                    Motor
+                </a>
+            @endfor
+        </div>
+    </div>
 
 	<div class="overlay col-md-12 mainReg">
 		<div class="overlay-backbtn"></div>

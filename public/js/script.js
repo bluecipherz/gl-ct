@@ -56,7 +56,7 @@ jQuery(document).ready(function() {
 		if($pageName != "login"){
             //console.log('clicked2');
 			$(".mainReg").css({"display":"block"});
-			$("body").css("overflow", "hidden");
+			//$("body").css("overflow", "hidden");
 			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
 		}
 	});
@@ -71,10 +71,11 @@ jQuery(document).ready(function() {
         hideOverlay();
     });
 
+
 	function hideOverlay() {
 		$(".mainReg").css({"opacity":"0"});
-		$("body").css("overflow", "auto");
-		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 500);
+		//$("body").css("overflow", "auto");
+		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 100);
 	}
 	
 	$(".loginMBLbtn").click(function(){
@@ -84,7 +85,14 @@ jQuery(document).ready(function() {
 	$(".regMBLbtn").click(function(){
 		$(".loginMB").css({"margin-top":"0"}); 
 	});
-	
+
+    var navDrop = false;
+
+
+    $(".hmdd-btn").click(function(){
+        $('.nav-dropCont').slideToggle(500);
+    });
+
 	
 	that = "";
 	attrId =1;
