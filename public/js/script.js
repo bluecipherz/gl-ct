@@ -56,7 +56,7 @@ jQuery(document).ready(function() {
 		if($pageName != "login"){
             //console.log('clicked2');
 			$(".mainReg").css({"display":"block"});
-			$("body").css("overflow", "hidden");
+			//$("body").css("overflow", "hidden");
 			setTimeout(function(){ $(".mainReg").css({"opacity":"1"}); }, 10);
 		}
 	});
@@ -64,11 +64,18 @@ jQuery(document).ready(function() {
 	$(".overlay-backbtn").click(function(){
 		hideOverlay();
 	});
-	
+    $(".ac-cls").click(function(){
+        hideOverlay();
+    });
+	$(".acnt-r-closBtn").click(function(){
+        hideOverlay();
+    });
+
+
 	function hideOverlay() {
 		$(".mainReg").css({"opacity":"0"});
-		$("body").css("overflow", "auto");
-		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 500);
+		//$("body").css("overflow", "auto");
+		setTimeout(function(){ $(".mainReg").css({"display":"none"}); }, 100);
 	}
 	
 	$(".loginMBLbtn").click(function(){
@@ -78,7 +85,14 @@ jQuery(document).ready(function() {
 	$(".regMBLbtn").click(function(){
 		$(".loginMB").css({"margin-top":"0"}); 
 	});
-	
+
+    var navDrop = false;
+
+
+    $(".hmdd-btn").click(function(){
+        $('.nav-dropCont').slideToggle(500);
+    });
+
 	
 	that = "";
 	attrId =1;
@@ -813,9 +827,9 @@ jQuery(document).ready(function() {
         searchq();
     };
 
-    var checkBoxPara = $("<p/>");
-    checkBoxPara.append($("<input/>").attr('type', 'checkbox').click(catChangeAction));
-    checkBoxPara.append($("<label/>"));
+    var checkBoxPara = $("<tr/>");
+    checkBoxPara.append($("<td/>")).append($("<input/>").attr('type', 'checkbox').click(catChangeAction));
+    checkBoxPara.append($("<td/>")).append($("<label/>"));
 
     $('#category-list > p > input[type="checkbox"]').click(catChangeAction);
 

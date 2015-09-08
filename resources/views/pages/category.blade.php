@@ -83,7 +83,7 @@
         @endforeach
     @elseif($category->getLevel() == 2)
     <!-- Post Category -->
-        @foreach($category->products as $product)
+        @forelse($category->products as $product)
 
             {{--<div><a href="{{ route('products.show', $product) }}">{{ $product->title }}</a></div>--}}
 
@@ -106,8 +106,11 @@
                     </div>
                 </div>
             </a>
+        @empty
 
-        @endforeach
+            <span class="cat-noProd"> There is no product in this category</span>
+
+        @endforelse
     @endif
 
 </div>	
