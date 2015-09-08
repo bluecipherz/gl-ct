@@ -99,11 +99,11 @@
 
     <div class="visible-xs ">
         <div class="nav-dropCont">
-            @for($i=0;$i<7 ; $i++)
-                <a href="">
-                    Motor
+            @foreach($categories as $cat)
+                <a href="{{ route('categories.show', $cat) }}">
+                    {{ $cat->name }}
                 </a>
-            @endfor
+            @endforeach
         </div>
     </div>
 

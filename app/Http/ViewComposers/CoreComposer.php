@@ -15,10 +15,11 @@ use App\Globex;
 use App\Advertisement;
 use App\Motor;
 use DB;
+use App\Category;
 
 class CoreComposer {
 
-    protected $products, $emirates;
+    protected $products, $emirates, $cats;
 
     public function __construct()
     {
@@ -28,12 +29,14 @@ class CoreComposer {
 //        $this->products = $adQuery->get()->merge($productQuery->get())->merge($motorQuery->get());
         $this->products = Product::with('producible')->get();
         $this->emirates = Emirate::all();
+		$this->cats = Category::whereDepth(0)->get();
     }
 
     public function compose(View $view)
     {
         $view->with('products', $this->products);
         $view->with('emirates', $this->emirates);
+		$view->with('categories', $this->cats);
     }
 
 }
