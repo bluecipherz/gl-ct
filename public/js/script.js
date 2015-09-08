@@ -274,12 +274,17 @@ jQuery(document).ready(function() {
             }
         } else {
             if(searchUrl != window.location.pathname) {
-                //console.log(history);
-                window.history.pushState({path : searchUrl}, '', searchUrl);
+                // console.log(history);
+                window.history.pushState(null, null, searchUrl);
             }
         }
 
+		_searchQ(searchQ);
 
+	}
+	
+	function _searchQ(searchQ) {
+	
 
         var productsCont = $("#schProRset");
         var selectedCats = [];
@@ -333,7 +338,6 @@ jQuery(document).ready(function() {
                 console.log(data.responseText);
             });
         //}
-
 	}
 
     // Wizard tab 2 input triggers
@@ -464,18 +468,24 @@ jQuery(document).ready(function() {
 	/**
      * Go back action
      */
-	window.addEventListener("popstate", function(e) {
-		history.back();
+
+	$(window).bind('popstate', function(event){
+			// history.back();
+        if(window.location.pathname.startsWith('/search')) {
+			var searchq = location.search.substr(location.search.indexOf('=') + 1);
+			_searchQ(searchq);
+			console.log(location);
+		}
 	});
 	
 	// END HISTORY API
 	
     //if(window.location.pathname.startsWith('/admin')) {
-        $.post('/products/all').success(function(response) {
+        // $.post('/products/all').success(function(response) {
             //$("#search_q").autocomplete({
             //    source : response
             //});
-        });
+        // });
     //}
 
 	//ADMIN
