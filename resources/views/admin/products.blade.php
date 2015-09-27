@@ -13,6 +13,7 @@
 									<th>Description</th>
 									<th>Stock</th>
 									<th>Images</th>
+									<th>Options</th>
 								</tr>
 								@forelse($products as $product)
 								<tr>
@@ -22,6 +23,13 @@
 									<td>{{ str_limit($product->description, 50) }}</td>
 									<td>{{ $product->producible->stock }}</td>
                                     <td>{{ $product->images->count() }}</td>
+									<td>
+                                            <div>
+                                                {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
+                                                <button class="btn btn-default btn-xs cat-del-btn" type="submit" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
+                                                {!! Form::close() !!}
+											</div>
+									</td>
 								</tr>
 								@empty
 								<tr>
