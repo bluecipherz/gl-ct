@@ -97,7 +97,7 @@
                                                 {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
                                                 <button class="btn btn-default btn-xs cat-del-btn" type="submit" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
                                                 {!! Form::close() !!}
-                                                <button class="btn btn-default btn-xs cat-edit-btn" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
+                                                <!--<button class="btn btn-default btn-xs cat-edit-btn" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>-->
                                             </div>
                                         </td>
                                     </tr>

@@ -25,7 +25,7 @@
                                     <td>{{ $product->images->count() }}</td>
 									<td>
                                             <div>
-                                                {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
+                                                {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'DELETE']) !!}
                                                 <button class="btn btn-default btn-xs cat-del-btn" type="submit" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
                                                 {!! Form::close() !!}
 											</div>
