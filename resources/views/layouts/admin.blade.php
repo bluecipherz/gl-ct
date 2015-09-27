@@ -42,9 +42,11 @@
     <div class="adm-container">
         <div class="row">
             @include('admin.sidebar')
-            <div class="adm-sidebar-r">
-
+            <!--
+			<div class="adm-sidebar-r">
+				This section is admin right side bar
             </div>
+			-->
             <div class="adm-cont" >
                 @yield('content')
             </div>
